@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { MobileNav } from "./MobileNav";
 import { useCart } from "@/viewmodel/client/useCart";
+import { useAuth } from "@/viewmodel/client/useAuth";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -13,6 +14,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const { cartCount } = useCart();
+  const { user, signInWithGoogle, logout } = useAuth();
 
   return (
     <>
@@ -66,7 +68,24 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
           </Link>
 
           {/* Desktop & Mobile Utilities */}
-          <div className="flex items-center gap-[26px] flex-shrink-0 whitespace-nowrap font-sans uppercase text-[11px] tracking-[0.2em] opacity-85">
+          <div className="flex items-center gap-[22px] flex-shrink-0 whitespace-nowrap font-sans uppercase text-[11px] tracking-[0.2em] opacity-85">
+            {/* Customer Authentication Status */}
+            {user ? (
+              <div className="hidden md:flex items-center gap-2">
+                <span className="font-medium text-[#E8621B]">{user.displayName?.split(" ")[0]}</span>
+                <button onClick={logout} className="text-[9px] opacity-60 hover:opacity-100 underline">
+                  LOGOUT
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={signInWithGoogle}
+                className="hidden md:block hover:text-[#E8621B] transition-colors"
+              >
+                SIGN IN
+              </button>
+            )}
+
             <Link href="/track/VLR-4821" className="hidden md:block hover:text-[#E8621B] transition-colors">
               SEARCH
             </Link>

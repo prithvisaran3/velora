@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/viewmodel/client/useCart";
+import { useAuth } from "@/viewmodel/client/useAuth";
 import { Price } from "@/view/primitives/Price";
 import { Button } from "@/view/primitives/Button";
 import { applyCoupon } from "@/viewmodel/actions/applyCoupon";
@@ -13,7 +14,8 @@ import { paise } from "@/model/domain/types";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { cartItems, totalPaise, clearCart } = useCart();
+  const { cartItems, clearCart } = useCart();
+  const { user, signInWithGoogle } = useAuth();
 
   const [name, setName] = useState("Ananya Sundaram");
   const [phone, setPhone] = useState("9876543210");
@@ -30,6 +32,13 @@ export default function CheckoutPage() {
   const [appliedCouponName, setAppliedCouponName] = useState("");
   const [couponError, setCouponError] = useState("");
   const [couponSuccess, setCouponSuccess] = useState("");
+
+  // Pre-fill user details when signed in via Google
+  useEffect(() => {
+    if (user) {
+      if (user.displayName) setName(user.displayName);
+    }
+  }, [user]);
 
   const activeItem = cartItems[0] || {
     id: "vlr-001",
@@ -75,7 +84,6 @@ export default function CheckoutPage() {
 
     const ref = `VLR-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    // Record Payment Entry in Firestore for Payment History tracking
     await recordPayment({
       orderId: `ord-${Date.now()}`,
       orderReference: ref,
@@ -116,7 +124,34 @@ export default function CheckoutPage() {
 
       {/* D6 Single 720px Column */}
       <div className="w-full max-w-[720px] px-6 py-[56px] pb-[72px] flex flex-col gap-[36px]">
-        <h1 className="font-display text-[46px] text-[#241F1C]">Your bag</h1>
+        <div className="flex items-baseline justify-between">
+          <h1 className="font-display text-[46px] text-[#241F1C]">Your bag</h1>
+          <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#241F1C]/60">
+            GUEST CHECKOUT SUPPORTED
+          </span>
+        </div>
+
+        {/* Optional Google Sign-In Banner */}
+        {!user ? (
+          <div className="bg-[#F6EAD6] p-4 border border-[#241F1C]/15 flex items-center justify-between">
+            <div className="flex flex-col">
+              <span className="font-sans text-[12px] font-medium text-ink">Have a Google Account?</span>
+              <span className="font-sans text-[10px] opacity-75">Sign in to auto-fill name & delivery details</span>
+            </div>
+            <button
+              type="button"
+              onClick={signInWithGoogle}
+              className="bg-white text-ink border border-[#241F1C]/25 px-4 py-2 font-sans text-[10px] uppercase tracking-wider font-bold hover:border-[#E8621B]"
+            >
+              SIGN IN WITH GOOGLE
+            </button>
+          </div>
+        ) : (
+          <div className="bg-[#12514E] text-[#FDF4E4] p-3 px-4 flex items-center justify-between">
+            <span className="font-sans text-[12px]">✓ Signed in as <strong>{user.displayName}</strong></span>
+            <span className="font-sans text-[9px] uppercase tracking-widest opacity-80">EXPRESS CHECKOUT</span>
+          </div>
+        )}
 
         {/* Item Line */}
         <div className="flex gap-5 pb-[24px] border-b border-[#241F1C]/15">
