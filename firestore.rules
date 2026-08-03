@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public read on published sarees only
+    match /sarees/{sareeId} {
+      allow read: if resource.data.status != 'draft';
+      allow write: if request.auth != null && request.auth.token.admin == true;
+
+      // Reserved subdoc for AI embeddings — deny all client access
+      match /ai/{docId} {
+        allow read, write: if false;
+      }
+    }
+
+    // Config singleton — public read
+    match /config/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // Orders & inventory locks — deny all direct client access (read/write via Server Actions only)
+    match /orders/{orderId} {
+      allow read, write: if false;
+    }
+
+    match /inventoryLocks/{lockId} {
+      allow read, write: if false;
+    }
+  }
+}
