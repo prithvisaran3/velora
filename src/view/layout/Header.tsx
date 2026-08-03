@@ -16,9 +16,10 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
 
   return (
     <>
+      {/* Header background is fixed to brand Cream #FDF4E4 (or Ink #241F1C when isDark), never saree hues */}
       <header className={cn(
-        "sticky top-0 z-40 transition-colors duration-800 ease-silk border-b border-[#F5A623]/35",
-        isDark ? "bg-[#241F1C] text-[#FDF4E4]" : "bg-[var(--page-bg,#FDF4E4)] text-[#241F1C]"
+        "sticky top-0 z-40 border-b border-[#F5A623]/35 transition-colors duration-300",
+        isDark ? "bg-[#241F1C] text-[#FDF4E4]" : "bg-[#FDF4E4] text-[#241F1C]"
       )}>
         <div className="max-w-[1440px] mx-auto px-4 md:px-16 py-4 flex items-center justify-between">
           {/* Desktop Left Nav */}

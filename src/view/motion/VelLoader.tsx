@@ -31,44 +31,47 @@ export const VelLoader: React.FC = () => {
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#FDF4E4] overflow-hidden">
-        {/* Vel Mark SVG beats */}
-        <div className="relative w-24 h-24 flex items-center justify-center z-10">
-          <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none">
-            {/* Blade outline draw */}
+        {/* Authentic Vel Logo Mark SVG */}
+        <div className="relative flex flex-col items-center gap-3 z-10">
+          <svg className="w-20 h-24" viewBox="0 0 100 124" fill="none">
+            {/* Beat 1 & 2: Saffron Blade Path */}
             <motion.path
-              d="M30 80 L50 20 L70 80"
+              d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z"
               stroke="#E8621B"
-              strokeWidth="4"
-              strokeLinecap="round"
+              strokeWidth="3"
+              fill={stage === "fill" || stage === "wipe" ? "#E8621B" : "none"}
               initial={{ pathLength: 0 }}
-              animate={{ pathLength: stage !== "draw" ? 1 : 0.8 }}
-              transition={{ duration: 0.26 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
             />
-            {/* Marigold spine + collar */}
+
+            {/* Beat 2: Marigold Spine & Collar */}
             {(stage === "close" || stage === "fill" || stage === "wipe") && (
-              <motion.path
-                d="M50 20 L50 80"
-                stroke="#F5A623"
-                strokeWidth="3"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.16 }}
-              />
-            )}
-            {/* Saffron fill flood */}
-            {(stage === "fill" || stage === "wipe") && (
-              <motion.path
-                d="M30 80 L50 20 L70 80 Z"
-                fill="#E8621B"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.1 }}
-              />
+              <>
+                <motion.path
+                  d="M50 12 L55 19 L50 78 L45 19 Z"
+                  fill="#F5A623"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.16 }}
+                />
+                <motion.path
+                  d="M37 91 L63 91 L63 98 L37 98 Z"
+                  fill="#F5A623"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.16 }}
+                />
+              </>
             )}
           </svg>
+
+          <span className="font-sans text-[9px] tracking-[0.34em] uppercase text-[#241F1C]/70">
+            BY BHARANI PATTU
+          </span>
         </div>
 
-        {/* Saffron fabric wipe panel */}
+        {/* Beat 4: Saffron Fabric Wipe Panel */}
         {stage === "wipe" && (
           <motion.div
             initial={{ y: "100%" }}

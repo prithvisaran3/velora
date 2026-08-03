@@ -15,9 +15,9 @@ export function useColourDye(selectedColour?: ColourKey) {
     }
 
     const hex = configFixture.colours[selectedColour].hex;
+    // Page background changes, but top header bar remains standard brand cream
     htmlElement.style.setProperty("--page-bg", hex);
 
-    // Dark background hues get light cream text contrast
     const darkHues: ColourKey[] = ["maroon", "peacock", "indigo", "plum"];
     if (darkHues.includes(selectedColour)) {
       htmlElement.style.setProperty("--page-fg", "#FDF4E4");
