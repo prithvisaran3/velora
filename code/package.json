@@ -1,0 +1,58 @@
+{
+  "$comment": "Velora dependency reference. Install per phase — do not install a later phase's packages early.",
+  "name": "velora",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "emulators": "firebase emulators:start --only firestore,auth",
+    "seed": "tsx scripts/seed.ts",
+    "preview": "opennextjs-cloudflare build && wrangler pages dev",
+    "deploy": "opennextjs-cloudflare build && wrangler pages deploy"
+  },
+  "dependencies": {
+    "next": "^15.4.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "framer-motion": "^11.18.0",
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.0",
+    "zod": "^3.24.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0",
+    "_phase2": "— backend —",
+    "firebase": "^11.3.0",
+    "firebase-admin": "^13.1.0",
+    "_phase3": "— integration —",
+    "imagekit": "^6.0.0",
+    "resend": "^4.1.0",
+    "_phase4": "— payments —",
+    "razorpay": "^2.9.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/react": "^19.0.0",
+    "@types/node": "^22.10.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.4.0",
+    "eslint-plugin-boundaries": "^5.0.0",
+    "vitest": "^3.0.0",
+    "@firebase/rules-unit-testing": "^4.0.1",
+    "firebase-tools": "^13.29.0",
+    "tsx": "^4.19.0",
+    "@opennextjs/cloudflare": "^1.0.0",
+    "wrangler": "^3.100.0",
+    "sharp": "^0.33.5"
+  },
+  "_notes": [
+    "Shiprocket has no official SDK — call its REST API from infrastructure/shiprocket with fetch.",
+    "eslint-plugin-boundaries enforces the MVVM import direction; configure it in Phase 1.",
+    "Remove the _phaseN marker keys before running npm install."
+  ]
+}

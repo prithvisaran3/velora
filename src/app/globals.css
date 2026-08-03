@@ -1,0 +1,117 @@
+/* Velora — design tokens. Tailwind v4 reads these via @theme; the raw vars stay usable in CSS. */
+
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FDF4E4;
+  --color-saffron: #E8621B;
+  --color-marigold: #F5A623;
+  --color-turmeric: #F8CE5A;
+  --color-pressed: #B4470F;
+  --color-ink: #241F1C;
+  --color-sand: #F6EAD6;
+  --color-peacock: #12514E;
+
+  /* saree hues — product data only, never chrome */
+  --color-saree-maroon: #8C1F3D;
+  --color-saree-peacock: #12514E;
+  --color-saree-indigo: #2E4A7D;
+  --color-saree-leaf: #4E7031;
+  --color-saree-plum: #6B3FA0;
+  --color-saree-kora: #F3EADC;
+
+  --font-display: var(--font-bodoni-moda), "Bodoni Moda", Didot, serif;
+  --font-sans: var(--font-archivo), "Archivo", Helvetica, sans-serif;
+  --font-tamil: var(--font-anek-tamil), "Anek Tamil", sans-serif;
+
+  --tracking-wordmark: 0.28em;
+  --tracking-endorsement: 0.34em;
+  --tracking-label: 0.2em;
+  --tracking-label-wide: 0.3em;
+
+  --radius-none: 0px;
+
+  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-dye: 800ms;
+  --duration-wipe: 780ms;
+  --duration-crossfade: 600ms;
+  --duration-flight: 720ms;
+  --duration-draw: 900ms;
+  --duration-hover: 220ms;
+  --duration-loupe: 220ms;
+}
+
+:root {
+  /* set by useColourDye on <html>; defaults to the brand ground */
+  --page-bg: #FDF4E4;
+  --page-fg: #241F1C;
+}
+
+html {
+  background-color: var(--page-bg);
+  transition: background-color var(--duration-dye) var(--ease-silk);
+}
+
+body {
+  margin: 0;
+  color: var(--page-fg);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Type defaults — no border radius anywhere except circles. */
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+a { color: #E8621B; text-decoration: none; }
+a:hover { color: #B4470F; }
+
+:focus-visible {
+  outline: 2px solid #F5A623;
+  outline-offset: 3px;
+}
+
+/* The wordmark's trailing letterspace must be compensated or it overruns its box. */
+.wordmark {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  margin-right: -0.28em;
+  line-height: 0.82;
+}
+.endorsement {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  margin-right: -0.34em;
+}
+
+/* Zari weave — used by the tracking stepper and the hangtag rule. */
+.zari-weave {
+  background-image: repeating-linear-gradient(90deg, #F5A623 0 7px, #F8CE5A 7px 14px);
+}
+.zari-weave-vertical {
+  background-image: repeating-linear-gradient(180deg, #F5A623 0 7px, #F8CE5A 7px 14px);
+}
+
+/* Temple hairline divider. */
+.rule-temple {
+  height: 1px;
+  background-image: linear-gradient(90deg, transparent, #F5A623 12%, #F5A623 88%, transparent);
+}
+
+/* Placeholder ground for imagery that has not shipped yet. */
+.placeholder-weave {
+  background-image: repeating-linear-gradient(135deg, #F1E3CB 0 9px, #EAD8B9 9px 18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.12s !important;
+    scroll-behavior: auto !important;
+  }
+}

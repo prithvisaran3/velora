@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Archivo:wght@300;400;500&family=Anek+Tamil:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#EDDFC8; }
+  a { color:#E8621B; text-decoration:none; border-bottom:1px solid rgba(232,98,27,.4); }
+  a:hover { color:#B4470F; border-bottom-color:#B4470F; }
+</style>
+</helmet>
+
+<section style="display:flex;flex-direction:column;gap:72px;padding:72px;font-family:Archivo,sans-serif">
+
+  <div style="display:flex;flex-direction:column;gap:18px;max-width:900px">
+    <div style="font-size:11px;letter-spacing:.42em;color:rgba(36,31,28,.5)">VELORA · E-COMMERCE DESIGN · DESKTOP 1440 + MOBILE 390</div>
+    <div style="font-family:'Bodoni Moda',serif;font-size:60px;line-height:1.02;color:#241F1C">A well-lit showroom in Erode, on the web</div>
+    <div style="font-size:14px;line-height:1.75;color:rgba(36,31,28,.78);max-width:660px;text-wrap:pretty">Saffron and marigold only — the wine wipe in your brief is replaced by a saffron fabric wipe so the site matches the finalised identity. Motion is <strong style="font-weight:500">cubic-bezier(0.16, 1, 0.3, 1)</strong> at 600–900ms everywhere: silk falling, never UI popping. Mobile frames are the source of truth; desktop is the widened version.</div>
+    <div style="display:grid;grid-template-columns:repeat(6,132px);margin-top:6px">
+      <div style="width:132px;height:76px;background:#FDF4E4;border:1px solid rgba(36,31,28,.15);box-sizing:border-box;display:flex;align-items:flex-end;padding:9px"><span style="font-size:9px;letter-spacing:.14em;color:rgba(36,31,28,.7)">CREAM #FDF4E4</span></div>
+      <div style="width:132px;height:76px;background:#E8621B;display:flex;align-items:flex-end;padding:9px;box-sizing:border-box"><span style="font-size:9px;letter-spacing:.14em;color:#FDF4E4">SAFFRON #E8621B</span></div>
+      <div style="width:132px;height:76px;background:#F5A623;display:flex;align-items:flex-end;padding:9px;box-sizing:border-box"><span style="font-size:9px;letter-spacing:.14em;color:#241F1C">MARIGOLD #F5A623</span></div>
+      <div style="width:132px;height:76px;background:#F8CE5A;display:flex;align-items:flex-end;padding:9px;box-sizing:border-box"><span style="font-size:9px;letter-spacing:.14em;color:#241F1C">TURMERIC #F8CE5A</span></div>
+      <div style="width:132px;height:76px;background:#B4470F;display:flex;align-items:flex-end;padding:9px;box-sizing:border-box"><span style="font-size:9px;letter-spacing:.14em;color:#FDF4E4">PRESSED #B4470F</span></div>
+      <div style="width:132px;height:76px;background:#241F1C;display:flex;align-items:flex-end;padding:9px;box-sizing:border-box"><span style="font-size:9px;letter-spacing:.14em;color:#FDF4E4">INK #241F1C</span></div>
+    </div>
+  </div>
+
+  <div id="desktop-home" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#E8621B;color:#FDF4E4;padding:5px 11px">D1</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Home · desktop 1440</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">HERO FABRIC VIDEO · LEGACY STRIP · OCCASION · COLOUR · NEW IN · CURATOR · INSTAGRAM</div>
+    </div>
+
+    <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;right:26px;width:3px;height:100%;background:rgba(36,31,28,.08)"><div style="width:3px;height:34%;background:#F5A623"></div></div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px">
+        <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
+          <div style="display:flex;align-items:flex-end">
+            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+            <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
+          </div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+        </div>
+        <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (0)</span></div>
+      </div>
+      <div style="height:1px;background:linear-gradient(90deg,rgba(245,166,35,0),#F5A623 12%,#F5A623 88%,rgba(245,166,35,0))"></div>
+
+      <div style="height:660px;background:repeating-linear-gradient(118deg,#E9D9BE 0 22px,#E3D0B0 22px 44px);position:relative;display:flex;align-items:flex-end">
+        <div style="position:absolute;top:26px;left:26px;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:rgba(36,31,28,.6);background:rgba(253,244,228,.9);padding:6px 10px">hero video · 8s silent loop · silk falling in raking light · poster frame ships first, video lazy-loads after LCP</div>
+        <div style="padding:64px;display:flex;flex-direction:column;gap:26px;max-width:840px">
+          <div style="font-family:'Bodoni Moda',serif;font-size:104px;line-height:.94;color:#241F1C;text-wrap:balance">Handpicked, never<br>warehoused.</div>
+          <div style="font-size:15px;line-height:1.7;color:rgba(36,31,28,.8);max-width:520px">Forty-eight sarees chosen this month by our curator in Erode. Every one at ₹3,000, every one seen and felt before it is listed.</div>
+          <div style="display:flex;gap:14px;align-items:center">
+            <div style="background:#E8621B;color:#FDF4E4;font-size:12px;letter-spacing:.22em;padding:18px 34px">SEE THIS MONTH'S EDIT</div>
+            <div style="border:1px solid rgba(36,31,28,.35);color:#241F1C;font-size:12px;letter-spacing:.22em;padding:17px 30px">SHOP BY COLOUR</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#241F1C;padding:44px 64px;display:flex;align-items:center;justify-content:space-between;gap:48px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:38px;color:#FDF4E4;line-height:1.1">The Erode house,<br>since 1978.</div>
+        <div style="display:flex;gap:56px">
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623">47</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(253,244,228,.65)">YEARS TRADING</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623">3</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(253,244,228,.65)">GENERATIONS</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623">48</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(253,244,228,.65)">SAREES A MONTH</span></div>
+        </div>
+      </div>
+
+      <div style="padding:72px 64px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font-family:'Bodoni Moda',serif;font-size:44px;color:#241F1C">Shop by occasion</div>
+          <div style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.6)">MOMENTS, NOT CATEGORIES</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:16px">
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">muhurtham</span></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Muhurtham</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">reception</span></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Reception</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">temple</span></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Temple</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">festival</span></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Festival</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">office</span></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Office</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">everyday</span></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Everyday</div></div>
+        </div>
+      </div>
+
+      <div style="height:1px;background:linear-gradient(90deg,rgba(245,166,35,0),#F5A623 12%,#F5A623 88%,rgba(245,166,35,0));margin:0 64px"></div>
+
+      <div style="padding:72px 64px;display:flex;gap:64px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:20px;width:400px">
+          <div style="font-family:'Bodoni Moda',serif;font-size:44px;line-height:1.05;color:#241F1C">Shop by colour</div>
+          <div style="font-size:14px;line-height:1.75;color:rgba(36,31,28,.78)">How sarees are actually chosen. Pick a colour and the whole page dyes to that hue over 800ms — cards, background, and the vel scroll thread.</div>
+          <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55);line-height:1.7">background-color 800ms cubic-bezier(.16,1,.3,1)<br>prefers-reduced-motion → instant swap</div>
+        </div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;flex:1">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:96px;height:96px;border-radius:50%;background:#E8621B"></div><span style="font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.7)">SAFFRON</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:96px;height:96px;border-radius:50%;background:#F5A623"></div><span style="font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.7)">MARIGOLD</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:96px;height:96px;border-radius:50%;background:#8C1F3D"></div><span style="font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.7)">MAROON</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:96px;height:96px;border-radius:50%;background:#12514E"></div><span style="font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.7)">PEACOCK</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:96px;height:96px;border-radius:50%;background:#2E4A7D"></div><span style="font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.7)">INDIGO</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:96px;height:96px;border-radius:50%;background:#F3EADC;border:1px solid rgba(36,31,28,.2);box-sizing:border-box"></div><span style="font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.7)">KORA</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:96px;height:96px;border-radius:50%;background:#4E7031"></div><span style="font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.7)">LEAF</span></div>
+        </div>
+      </div>
+
+      <div style="padding:0 64px 72px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font-family:'Bodoni Moda',serif;font-size:44px;color:#241F1C">This month's edit</div>
+          <div style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.6)">48 SAREES · ALL ₹3,000</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+          <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);position:relative;display:flex;align-items:flex-end;padding:12px"><span style="position:absolute;top:12px;left:12px;background:#FDF4E4;font-size:8px;letter-spacing:.2em;padding:5px 8px;color:#241F1C">3s DRAPE LOOP</span><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">flat-lay → draped on hover</span></div><div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Kanchi border · Marigold</div><div style="font-size:11px;letter-spacing:.08em;color:rgba(36,31,28,.7)">Pure silk · ₹3,000</div></div>
+          <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);position:relative;display:flex;align-items:flex-end;padding:12px"><span style="position:absolute;top:12px;left:12px;background:#FDF4E4;font-size:8px;letter-spacing:.2em;padding:5px 8px;color:#241F1C">3s DRAPE LOOP</span><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">flat-lay → draped on hover</span></div><div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Zari pallu · Maroon</div><div style="font-size:11px;letter-spacing:.08em;color:rgba(36,31,28,.7)">Pure silk · ₹3,000</div></div>
+          <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);position:relative;display:flex;align-items:flex-end;padding:12px"><span style="position:absolute;top:12px;left:12px;background:#FDF4E4;font-size:8px;letter-spacing:.2em;padding:5px 8px;color:#241F1C">3s DRAPE LOOP</span><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">flat-lay → draped on hover</span></div><div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Temple line · Peacock</div><div style="font-size:11px;letter-spacing:.08em;color:rgba(36,31,28,.7)">Soft silk · ₹3,000</div></div>
+          <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);position:relative;display:flex;align-items:flex-end;padding:12px"><span style="position:absolute;top:12px;left:12px;background:#FDF4E4;font-size:8px;letter-spacing:.2em;padding:5px 8px;color:#241F1C">3s DRAPE LOOP</span><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">flat-lay → draped on hover</span></div><div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Kora cotton · Undyed</div><div style="font-size:11px;letter-spacing:.08em;color:rgba(36,31,28,.7)">Cotton · ₹3,000</div></div>
+        </div>
+      </div>
+
+      <div style="background:#F6EAD6;padding:72px 64px;display:flex;gap:56px;align-items:center">
+        <div style="width:360px;height:440px;background:repeating-linear-gradient(135deg,#E9D9BE 0 10px,#E1CDAA 10px 20px);display:flex;align-items:flex-end;padding:14px;flex-shrink:0"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.6)">curator portrait · shop interior, Erode</span></div>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="font-size:11px;letter-spacing:.3em;color:#B4470F">FROM THE CURATOR</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:38px;line-height:1.25;color:#241F1C;max-width:720px;text-wrap:pretty">"I have been choosing sarees in this shop since I was nineteen. I still hold every one to the light before it goes on this website."</div>
+          <div style="font-family:'Anek Tamil',sans-serif;font-size:19px;color:rgba(36,31,28,.8)">ஒவ்வொரு புடவையும் கையால் தேர்ந்தெடுக்கப்பட்டது.</div>
+          <div style="font-size:11px;letter-spacing:.22em;color:rgba(36,31,28,.6)">— LAKSHMI, SECOND GENERATION · BHARANI PATTU CENTRE</div>
+        </div>
+      </div>
+
+      <div style="padding:72px 64px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font-family:'Bodoni Moda',serif;font-size:38px;color:#241F1C">Worn by you</div>
+          <div style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.6)">@VELORA · REAL CUSTOMER PHOTOS</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px">
+          <div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div>
+          <div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div>
+          <div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div>
+          <div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div>
+          <div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div>
+          <div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div>
+        </div>
+      </div>
+
+      <div style="background:#241F1C;padding:56px 64px;display:flex;flex-direction:column;gap:44px">
+        <div style="display:flex;justify-content:space-between;gap:64px">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:flex-end">
+              <svg viewBox="0 0 100 124" style="width:20px;height:25px;margin-right:9px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#FDF4E4"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+              <div style="font-family:'Bodoni Moda',serif;font-size:31px;line-height:.82;letter-spacing:.28em;color:#FDF4E4;margin-right:-.28em">ELORA</div>
+            </div>
+            <div style="font-size:8px;letter-spacing:.34em;color:#F5A623;margin-right:-.34em">BY BHARANI PATTU</div>
+            <div style="font-family:'Anek Tamil',sans-serif;font-size:15px;color:rgba(253,244,228,.7);margin-top:8px">ஈரோடு · 1978 முதல்</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">SHOP</span><span>By colour</span><span>By occasion</span><span>New in</span><span>All sarees</span></div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">HELP</span><span>Returns &amp; exchange</span><span>Delivery timelines</span><span>Track your order</span><span>Ask on WhatsApp</span></div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">THE HOUSE</span><span>Our story</span><span>The Erode shop</span><span>Authenticity</span><span>Contact</span></div>
+        </div>
+        <div style="height:1px;background:rgba(245,166,35,.35)"></div>
+        <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;font-size:10px;letter-spacing:.2em;color:rgba(253,244,228,.6)">
+          <span>COD AVAILABLE</span><span>GST INVOICE ON EVERY ORDER</span><span>7-DAY RETURN &amp; EXCHANGE</span><span>SHIPS ACROSS INDIA · 3–6 DAYS</span><span>UPI · CARDS · NETBANKING</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="desktop-colour" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#E8621B;color:#FDF4E4;padding:5px 11px">D2</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Shop by Colour · desktop · page dyed to Maroon</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">SWATCH WHEEL · 800ms PAGE DYE · PALLU SCROLL</div>
+    </div>
+
+    <div style="width:1440px;background:#F4E7DC;border:1px solid rgba(36,31,28,.18);position:relative;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px;background:#8C1F3D">
+        <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(253,244,228,.85)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
+          <div style="display:flex;align-items:flex-end">
+            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#FDF4E4"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F8CE5A"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F8CE5A"></path></svg>
+            <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#FDF4E4;margin-right:-.28em">ELORA</div>
+          </div>
+          <div style="font-size:7px;letter-spacing:.34em;color:#F8CE5A;margin-right:-.34em">BY BHARANI PATTU</div>
+        </div>
+        <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(253,244,228,.85)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
+      </div>
+
+      <div style="padding:56px 64px 40px;display:flex;flex-direction:column;gap:34px;align-items:center">
+        <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#241F1C">Choose your colour</div>
+        <div style="display:flex;gap:26px;align-items:center;flex-wrap:wrap;justify-content:center">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:104px;height:104px;border-radius:50%;background:#8C1F3D;box-shadow:0 0 0 3px #F4E7DC,0 0 0 5px #8C1F3D"></div><span style="font-size:10px;letter-spacing:.2em;color:#241F1C">MAROON</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:88px;height:88px;border-radius:50%;background:#E8621B"></div><span style="font-size:10px;letter-spacing:.2em;color:rgba(36,31,28,.7)">SAFFRON</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:88px;height:88px;border-radius:50%;background:#F5A623"></div><span style="font-size:10px;letter-spacing:.2em;color:rgba(36,31,28,.7)">MARIGOLD</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:88px;height:88px;border-radius:50%;background:#12514E"></div><span style="font-size:10px;letter-spacing:.2em;color:rgba(36,31,28,.7)">PEACOCK</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:88px;height:88px;border-radius:50%;background:#2E4A7D"></div><span style="font-size:10px;letter-spacing:.2em;color:rgba(36,31,28,.7)">INDIGO</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:88px;height:88px;border-radius:50%;background:#4E7031"></div><span style="font-size:10px;letter-spacing:.2em;color:rgba(36,31,28,.7)">LEAF</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:88px;height:88px;border-radius:50%;background:#F3EADC;border:1px solid rgba(36,31,28,.2);box-sizing:border-box"></div><span style="font-size:10px;letter-spacing:.2em;color:rgba(36,31,28,.7)">KORA</span></div>
+        </div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55);text-align:center;line-height:1.7">selected swatch grows to 104px + 2px ring · page background, header and card frames cross-dye over 800ms cubic-bezier(.16,1,.3,1)<br>text colour is recalculated for contrast, never animated</div>
+      </div>
+
+      <div style="padding:0 64px 24px;display:flex;align-items:baseline;justify-content:space-between">
+        <div style="font-family:'Bodoni Moda',serif;font-size:34px;color:#241F1C">Maroon · 9 sarees</div>
+        <div style="display:flex;gap:18px;font-size:11px;letter-spacing:.18em;color:rgba(36,31,28,.65)"><span>SILK</span><span>COTTON</span><span>NEWEST FIRST</span></div>
+      </div>
+      <div style="padding:0 64px 64px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+        <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#E4CFC4 0 10px,#DCC4B7 10px 20px);display:flex;align-items:flex-end;padding:12px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">maroon saree · drape loop</span></div><div style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">Zari pallu · Maroon</div><div style="font-size:11px;color:rgba(36,31,28,.7)">Pure silk · ₹3,000</div></div>
+        <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#E4CFC4 0 10px,#DCC4B7 10px 20px);display:flex;align-items:flex-end;padding:12px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">maroon saree · drape loop</span></div><div style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">Temple border · Maroon</div><div style="font-size:11px;color:rgba(36,31,28,.7)">Pure silk · ₹3,000</div></div>
+        <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#E4CFC4 0 10px,#DCC4B7 10px 20px);display:flex;align-items:flex-end;padding:12px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">maroon saree · drape loop</span></div><div style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">Checked body · Maroon</div><div style="font-size:11px;color:rgba(36,31,28,.7)">Soft silk · ₹3,000</div></div>
+      </div>
+
+      <div style="background:#241F1C;padding:56px 64px;display:flex;flex-direction:column;gap:26px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font-family:'Bodoni Moda',serif;font-size:38px;color:#FDF4E4">The pallu scroll</div>
+          <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.6)">vertical scroll drives horizontal translate · desktop only · mobile falls back to staggered reveals</div>
+        </div>
+        <div style="height:230px;background:repeating-linear-gradient(90deg,#3A322C 0 12px,#443A33 12px 24px);position:relative;display:flex;align-items:center">
+          <div style="position:absolute;left:0;top:0;bottom:0;width:34%;border-right:1px solid rgba(245,166,35,.5);display:flex;align-items:flex-end;padding:16px"><span style="font-size:10px;letter-spacing:.22em;color:#F5A623">BODY</span></div>
+          <div style="position:absolute;left:34%;top:0;bottom:0;width:26%;border-right:1px solid rgba(245,166,35,.5);display:flex;align-items:flex-end;padding:16px"><span style="font-size:10px;letter-spacing:.22em;color:#F5A623">BORDER · 4 INCH ZARI</span></div>
+          <div style="position:absolute;left:60%;top:0;bottom:0;width:40%;display:flex;align-items:flex-end;padding:16px"><span style="font-size:10px;letter-spacing:.22em;color:#F5A623">PALLU · MANGAI MOTIF</span></div>
+          <span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.55);padding-left:16px">saree unrolls left → right, 2400px track</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="desktop-occasion" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#E8621B;color:#FDF4E4;padding:5px 11px">D3</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Shop by Occasion · desktop</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">SIX MOMENTS · EDITORIAL ROWS</div>
+    </div>
+
+    <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px;border-bottom:1px solid rgba(36,31,28,.12)">
+        <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
+          <div style="display:flex;align-items:flex-end">
+            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+            <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
+          </div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+        </div>
+        <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
+      </div>
+
+      <div style="padding:64px 64px 40px;display:flex;flex-direction:column;gap:16px;max-width:900px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:76px;line-height:.98;color:#241F1C">Six moments</div>
+        <div style="font-size:15px;line-height:1.75;color:rgba(36,31,28,.78);max-width:560px">Not categories. The morning of a wedding needs a different saree from a Friday at the temple, and we choose for each one separately.</div>
+      </div>
+
+      <div style="display:flex;align-items:stretch;border-top:1px solid rgba(36,31,28,.12)">
+        <div style="width:520px;height:420px;background:repeating-linear-gradient(118deg,#E9D9BE 0 14px,#E3D0B0 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.6)">muhurtham · bride, morning light</span></div>
+        <div style="flex:1;padding:56px;display:flex;flex-direction:column;gap:18px;justify-content:center">
+          <div style="font-size:11px;letter-spacing:.3em;color:#B4470F">01 · MUHURTHAM</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:52px;line-height:1.05;color:#241F1C">The morning she is given away</div>
+          <div style="font-size:14px;line-height:1.75;color:rgba(36,31,28,.78);max-width:520px">Heavy zari, deep grounds, borders that hold their shape through eight hours of ceremony. 11 sarees.</div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:6px"><div style="background:#E8621B;color:#FDF4E4;font-size:11px;letter-spacing:.22em;padding:15px 28px">SEE MUHURTHAM</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:stretch;border-top:1px solid rgba(36,31,28,.12);flex-direction:row-reverse">
+        <div style="width:520px;height:420px;background:repeating-linear-gradient(62deg,#E9D9BE 0 14px,#E3D0B0 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.6)">temple · corridor, oil lamp</span></div>
+        <div style="flex:1;padding:56px;display:flex;flex-direction:column;gap:18px;justify-content:center">
+          <div style="font-size:11px;letter-spacing:.3em;color:#B4470F">03 · TEMPLE</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:52px;line-height:1.05;color:#241F1C">Friday morning, bare feet</div>
+          <div style="font-size:14px;line-height:1.75;color:rgba(36,31,28,.78);max-width:520px">Kora cottons and light silks in turmeric, kumkum and undyed cream. Easy to wash, easy to wear again next week. 8 sarees.</div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:6px"><div style="background:#E8621B;color:#FDF4E4;font-size:11px;letter-spacing:.22em;padding:15px 28px">SEE TEMPLE</div></div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(36,31,28,.12);padding:56px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+        <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">Reception</div><div style="font-size:11px;color:rgba(36,31,28,.65)">7 sarees</div></div>
+        <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">Festival</div><div style="font-size:11px;color:rgba(36,31,28,.65)">9 sarees</div></div>
+        <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">Office</div><div style="font-size:11px;color:rgba(36,31,28,.65)">6 sarees</div></div>
+        <div style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">Everyday</div><div style="font-size:11px;color:rgba(36,31,28,.65)">7 sarees</div></div>
+      </div>
+    </div>
+  </div>
+  <div id="desktop-pdp" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#E8621B;color:#FDF4E4;padding:5px 11px">D4</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Product page · desktop</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">LOUPE MACRO ZOOM · DRAPE VIDEO · SPEC TABLE · WHATSAPP</div>
+    </div>
+
+    <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px;border-bottom:1px solid rgba(36,31,28,.12)">
+        <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
+          <div style="display:flex;align-items:flex-end">
+            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+            <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
+          </div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+        </div>
+        <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
+      </div>
+
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="width:840px;display:flex;flex-direction:column">
+          <div style="height:700px;background:repeating-linear-gradient(118deg,#E9D9BE 0 16px,#E3D0B0 16px 32px);position:relative;display:flex;align-items:center;justify-content:center">
+            <span style="position:absolute;top:16px;left:16px;font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.6);background:rgba(253,244,228,.9);padding:6px 9px">flat-lay hero · 4:5 · LCP image, no animation gate</span>
+            <div style="width:250px;height:250px;border-radius:50%;background:repeating-linear-gradient(118deg,#F3E6CC 0 5px,#E8D6B4 5px 10px);border:2px solid #F5A623;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;box-sizing:border-box"><span style="font-family:ui-monospace,monospace;font-size:11px;line-height:1.6;color:rgba(36,31,28,.75)">loupe cursor · 3× macro<br>zari + weave detail<br>follows pointer, 220ms lag</span></div>
+          </div>
+          <div style="display:flex;gap:2px">
+            <div style="flex:1;height:180px;background:repeating-linear-gradient(118deg,#E9D9BE 0 12px,#E3D0B0 12px 24px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.6)">draped on model</span></div>
+            <div style="flex:1;height:180px;background:repeating-linear-gradient(118deg,#E9D9BE 0 12px,#E3D0B0 12px 24px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.6)">pallu detail</span></div>
+            <div style="flex:1;height:180px;background:#241F1C;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;gap:6px"><span style="font-size:9px;letter-spacing:.2em;color:#F5A623">DRAPE VIDEO</span><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.65)">6s · walking, fabric in motion</span></div>
+          </div>
+        </div>
+
+        <div style="flex:1;padding:56px 56px 48px;display:flex;flex-direction:column;gap:26px">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:11px;letter-spacing:.3em;color:#B4470F">HANDPICKED · JULY EDIT</div>
+            <div style="font-family:'Bodoni Moda',serif;font-size:52px;line-height:1.04;color:#241F1C">Zari pallu<br>in maroon</div>
+            <div style="font-family:'Anek Tamil',sans-serif;font-size:17px;color:rgba(36,31,28,.75)">மரூன் ஜரிகை புடவை</div>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:14px"><span style="font-family:'Bodoni Moda',serif;font-size:38px;color:#241F1C">₹3,000</span><span style="font-size:11px;letter-spacing:.16em;color:rgba(36,31,28,.6)">INCL. GST · FREE SHIPPING</span></div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="background:#E8621B;color:#FDF4E4;font-size:12px;letter-spacing:.24em;padding:20px;text-align:center">ADD TO BAG</div>
+            <div style="border:1px solid rgba(36,31,28,.35);color:#241F1C;font-size:12px;letter-spacing:.24em;padding:19px;text-align:center">ASK ON WHATSAPP</div>
+            <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55);line-height:1.6">add-to-bag: image folds along two axes and flies to the bag icon (720ms), bag pulses once in marigold</div>
+          </div>
+          <div style="height:1px;background:rgba(36,31,28,.15)"></div>
+          <div style="display:flex;flex-direction:column;gap:0;font-size:12px">
+            <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(36,31,28,.1)"><span style="letter-spacing:.16em;color:rgba(36,31,28,.55)">FABRIC</span><span style="color:#241F1C">Pure mulberry silk</span></div>
+            <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(36,31,28,.1)"><span style="letter-spacing:.16em;color:rgba(36,31,28,.55)">LENGTH</span><span style="color:#241F1C">6.3 m incl. blouse</span></div>
+            <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(36,31,28,.1)"><span style="letter-spacing:.16em;color:rgba(36,31,28,.55)">BLOUSE PIECE</span><span style="color:#241F1C">0.8 m, attached</span></div>
+            <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(36,31,28,.1)"><span style="letter-spacing:.16em;color:rgba(36,31,28,.55)">ZARI</span><span style="color:#241F1C">Half-fine, 4 inch border</span></div>
+            <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(36,31,28,.1)"><span style="letter-spacing:.16em;color:rgba(36,31,28,.55)">CARE</span><span style="color:#241F1C">Dry clean only</span></div>
+            <div style="display:flex;justify-content:space-between;padding:13px 0"><span style="letter-spacing:.16em;color:rgba(36,31,28,.55)">WEIGHT</span><span style="color:#241F1C">640 g</span></div>
+          </div>
+          <div style="background:#F6EAD6;padding:20px;display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">AUTHENTICITY</div>
+            <div style="font-size:12px;line-height:1.7;color:rgba(36,31,28,.8)">Bought directly from the weaver's family in Kanchipuram and checked in our Erode shop. Silk mark on request. 7-day return, COD available, GST invoice with every order.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:56px 64px 72px;display:flex;flex-direction:column;gap:24px;border-top:1px solid rgba(36,31,28,.12)">
+        <div style="font-family:'Bodoni Moda',serif;font-size:34px;color:#241F1C">She also considered</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Temple line · Peacock</div><div style="font-size:11px;color:rgba(36,31,28,.65)">₹3,000</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Checked body · Maroon</div><div style="font-size:11px;color:rgba(36,31,28,.65)">₹3,000</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Kanchi border · Marigold</div><div style="font-size:11px;color:rgba(36,31,28,.65)">₹3,000</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Kora cotton · Undyed</div><div style="font-size:11px;color:rgba(36,31,28,.65)">₹3,000</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="desktop-story" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#E8621B;color:#FDF4E4;padding:5px 11px">D5</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Our Story · desktop</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">SCROLL TIMELINE · SEPIA → COLOUR · GRAIN</div>
+    </div>
+
+    <div style="width:1440px;background:#241F1C;border:1px solid rgba(36,31,28,.18);overflow:hidden">
+      <div style="padding:80px 64px 56px;display:flex;flex-direction:column;gap:20px;max-width:900px">
+        <div style="font-size:11px;letter-spacing:.34em;color:#F5A623">1978 — TODAY</div>
+        <div style="font-family:'Bodoni Moda',serif;font-size:88px;line-height:.98;color:#FDF4E4">Three generations,<br>one shop.</div>
+        <div style="font-family:'Anek Tamil',sans-serif;font-size:20px;color:rgba(253,244,228,.75)">ஈரோட்டில் மூன்று தலைமுறைகள்</div>
+      </div>
+
+      <div style="display:flex;align-items:stretch;border-top:1px solid rgba(245,166,35,.3)">
+        <div style="width:560px;height:440px;background:repeating-linear-gradient(118deg,#4A423A 0 14px,#544A40 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.6)">archival 1978 · sepia, heavy grain</span></div>
+        <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+          <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#F5A623">1978</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">A ten-foot shop on Brough Road</div>
+          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">My grandfather sold nine-yard cottons to mill workers. He kept the stock on two shelves and the accounts in his head.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:stretch;border-top:1px solid rgba(245,166,35,.3);flex-direction:row-reverse">
+        <div style="width:560px;height:440px;background:repeating-linear-gradient(62deg,#5A4C3C 0 14px,#665441 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.6)">1996 · warm mid-tone, light grain</span></div>
+        <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+          <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#F5A623">1996</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">My mother takes the counter</div>
+          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">She moved the house into silk and started travelling to Kanchipuram herself. Every saree on this site is still chosen by her.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:stretch;border-top:1px solid rgba(245,166,35,.3)">
+        <div style="width:560px;height:440px;background:repeating-linear-gradient(118deg,#E9D9BE 0 14px,#E3D0B0 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.65)">2026 · full colour, no grain</span></div>
+        <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+          <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#F5A623">2026</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">Velora</div>
+          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">The same hands, the same shop, now reaching a woman in Bengaluru who will never walk down Brough Road.</div>
+          <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.5);margin-top:8px">grain opacity and sepia filter animate to 0 as each panel enters · 900ms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="desktop-cart" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#E8621B;color:#FDF4E4;padding:5px 11px">D6</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Cart &amp; Checkout · desktop</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">SINGLE COLUMN · UPI FIRST · PIN AUTOFILL · NO UPSELLS</div>
+    </div>
+
+    <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);overflow:hidden;display:flex;flex-direction:column;align-items:center">
+      <div style="width:100%;display:flex;align-items:center;justify-content:center;padding:22px 64px;border-bottom:1px solid rgba(36,31,28,.12)">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
+          <div style="display:flex;align-items:flex-end">
+            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+            <div style="font-family:'Bodoni Moda',serif;font-size:28px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
+          </div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+        </div>
+      </div>
+
+      <div style="width:720px;padding:56px 0 72px;display:flex;flex-direction:column;gap:36px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:46px;color:#241F1C">Your bag</div>
+
+        <div style="display:flex;gap:20px;padding-bottom:24px;border-bottom:1px solid rgba(36,31,28,.15)">
+          <div style="width:110px;height:146px;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);flex-shrink:0"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+            <div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">Zari pallu · Maroon</div>
+            <div style="font-size:11px;letter-spacing:.1em;color:rgba(36,31,28,.65)">Pure mulberry silk · 6.3 m · blouse attached</div>
+            <div style="font-size:11px;letter-spacing:.16em;color:#B4470F">HANDPICKED · ONLY ONE IN STOCK</div>
+          </div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">₹3,000</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:11px;letter-spacing:.3em;color:rgba(36,31,28,.55)">DELIVERY ADDRESS</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div style="border:1px solid rgba(36,31,28,.3);padding:15px 16px;font-size:13px;color:#241F1C">Full name</div>
+            <div style="border:1px solid rgba(36,31,28,.3);padding:15px 16px;font-size:13px;color:rgba(36,31,28,.45)">Mobile number</div>
+          </div>
+          <div style="border:1px solid rgba(36,31,28,.3);padding:15px 16px;font-size:13px;color:rgba(36,31,28,.45)">Flat / house no., street, area</div>
+          <div style="display:grid;grid-template-columns:180px 1fr 1fr;gap:14px">
+            <div style="border:1px solid #E8621B;padding:15px 16px;font-size:13px;color:#241F1C">638001</div>
+            <div style="background:#F6EAD6;border:1px solid rgba(36,31,28,.15);padding:15px 16px;font-size:13px;color:rgba(36,31,28,.7)">Erode</div>
+            <div style="background:#F6EAD6;border:1px solid rgba(36,31,28,.15);padding:15px 16px;font-size:13px;color:rgba(36,31,28,.7)">Tamil Nadu</div>
+          </div>
+          <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55)">PIN lookup fills city + state on blur, fields stay editable · error state = 1px #B4470F border + 11px note under the field</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:11px;letter-spacing:.3em;color:rgba(36,31,28,.55)">PAYMENT</div>
+          <div style="border:1px solid #E8621B;background:#FBEEDF;padding:20px;display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:5px"><span style="font-size:14px;color:#241F1C">UPI — GPay, PhonePe, Paytm</span><span style="font-size:11px;color:rgba(36,31,28,.65)">Most Velora orders are paid this way</span></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#E8621B"></div>
+          </div>
+          <div style="border:1px solid rgba(36,31,28,.25);padding:20px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;color:#241F1C">Cash on delivery</span><div style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(36,31,28,.35)"></div></div>
+          <div style="border:1px solid rgba(36,31,28,.25);padding:20px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;color:#241F1C">Card / Netbanking</span><div style="width:18px;height:18px;border-radius:50%;border:1px solid rgba(36,31,28,.35)"></div></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px;border-top:1px solid rgba(36,31,28,.15)">
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(36,31,28,.75)"><span>Subtotal</span><span>₹3,000</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(36,31,28,.75)"><span>Shipping across India</span><span>Free</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px"><span style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Total</span><span style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">₹3,000</span></div>
+          <div style="font-size:11px;color:rgba(36,31,28,.6)">Inclusive of GST. Invoice emailed on dispatch.</div>
+        </div>
+
+        <div style="background:#E8621B;color:#FDF4E4;font-size:12px;letter-spacing:.24em;padding:22px;text-align:center">PLACE ORDER · ₹3,000</div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;letter-spacing:.18em;color:rgba(36,31,28,.6)"><span>7-DAY RETURN</span><span>COD AVAILABLE</span><span>GST INVOICE</span><span>DELIVERY 3–6 DAYS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="desktop-tracking" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#E8621B;color:#FDF4E4;padding:5px 11px">D7</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Order tracking · desktop</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">ZARI THREAD STEPPER</div>
+    </div>
+
+    <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);padding:64px;display:flex;flex-direction:column;gap:44px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="font-size:11px;letter-spacing:.3em;color:rgba(36,31,28,.55)">ORDER VLR-4821</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:52px;color:#241F1C">On its way to Coimbatore</div>
+        </div>
+        <div style="font-size:12px;letter-spacing:.14em;color:rgba(36,31,28,.7);text-align:right;line-height:1.9">Expected Thursday, 6 August<br>Delhivery · AWB 8827 4419<br>Paid by UPI · GST invoice sent</div>
+      </div>
+
+      <div style="position:relative;padding:40px 0 10px">
+        <div style="position:absolute;left:6%;right:6%;top:52px;height:2px;background:rgba(36,31,28,.14)"></div>
+        <div style="position:absolute;left:6%;width:56%;top:52px;height:2px;background:repeating-linear-gradient(90deg,#F5A623 0 7px,#F8CE5A 7px 14px)"></div>
+        <div style="display:flex;justify-content:space-between;position:relative">
+          <div style="width:19%;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:15px;height:15px;border-radius:50%;background:#F5A623;margin-top:5px"></div><div style="text-align:center;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Confirmed</span><span style="font-size:11px;color:rgba(36,31,28,.6)">Mon, 3 Aug · 11:04</span></div></div>
+          <div style="width:19%;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:15px;height:15px;border-radius:50%;background:#F5A623;margin-top:5px"></div><div style="text-align:center;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Packed</span><span style="font-size:11px;color:rgba(36,31,28,.6)">Mon, 3 Aug · 18:20</span></div></div>
+          <div style="width:19%;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:19px;height:19px;border-radius:50%;background:#E8621B;margin-top:3px;box-shadow:0 0 0 5px rgba(232,98,27,.18)"></div><div style="text-align:center;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Shipped</span><span style="font-size:11px;color:#B4470F">Tue, 4 Aug · 09:15</span></div></div>
+          <div style="width:19%;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:15px;height:15px;border-radius:50%;border:1px solid rgba(36,31,28,.3);margin-top:5px;box-sizing:border-box"></div><div style="text-align:center;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:19px;color:rgba(36,31,28,.5)">Out for delivery</span><span style="font-size:11px;color:rgba(36,31,28,.45)">Expected Thu</span></div></div>
+          <div style="width:19%;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:15px;height:15px;border-radius:50%;border:1px solid rgba(36,31,28,.3);margin-top:5px;box-sizing:border-box"></div><div style="text-align:center;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:19px;color:rgba(36,31,28,.5)">Delivered</span><span style="font-size:11px;color:rgba(36,31,28,.45)">—</span></div></div>
+        </div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55);text-align:center;margin-top:26px">completed track is a two-tone zari weave; on each status change the new segment is drawn left→right in 900ms, then the reached node fades up</div>
+      </div>
+
+      <div style="display:flex;gap:20px;align-items:center;background:#F6EAD6;padding:24px 28px">
+        <div style="width:80px;height:106px;background:repeating-linear-gradient(135deg,#EBDCC2 0 9px,#E3D0B0 9px 18px);flex-shrink:0"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">Zari pallu · Maroon</span><span style="font-size:11px;color:rgba(36,31,28,.65)">₹3,000 · Paid</span></div>
+        <div style="border:1px solid rgba(36,31,28,.35);color:#241F1C;font-size:11px;letter-spacing:.2em;padding:14px 24px">ASK ON WHATSAPP</div>
+      </div>
+    </div>
+  </div>
+  <div id="mobile" style="display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#241F1C;color:#FDF4E4;padding:5px 11px">M</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Mobile 390 · the primary design</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">STICKY BUY BAR · FLOATING WHATSAPP · NO PARALLAX · VIDEOS KEPT</div>
+    </div>
+
+    <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start">
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="width:390px;height:844px;background:#FDF4E4;border:1px solid rgba(36,31,28,.2);overflow:hidden;position:relative;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(36,31,28,.1)">
+            <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">MENU</span>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+              <div style="display:flex;align-items:flex-end">
+                <svg viewBox="0 0 100 124" style="width:14px;height:17px;margin-right:6px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+                <div style="font-family:'Bodoni Moda',serif;font-size:21px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
+              </div>
+              <div style="font-size:6px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+            </div>
+            <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">BAG</span>
+          </div>
+          <div style="height:400px;background:repeating-linear-gradient(118deg,#E9D9BE 0 16px,#E3D0B0 16px 32px);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;gap:16px;position:relative">
+            <span style="position:absolute;top:14px;right:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.65);background:rgba(253,244,228,.9);padding:5px 7px">hero video · poster first</span>
+            <div style="font-family:'Bodoni Moda',serif;font-size:52px;line-height:.96;color:#241F1C">Handpicked,<br>never<br>warehoused.</div>
+            <div style="background:#E8621B;color:#FDF4E4;font-size:11px;letter-spacing:.22em;padding:17px;text-align:center">SEE THIS MONTH'S EDIT</div>
+          </div>
+          <div style="background:#241F1C;padding:22px;display:flex;justify-content:space-between;align-items:center">
+            <div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#FDF4E4;line-height:1.2">The Erode house,<br>since 1978.</div>
+            <div style="display:flex;gap:18px"><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#F5A623">47</span><span style="font-size:7px;letter-spacing:.2em;color:rgba(253,244,228,.6)">YEARS</span></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#F5A623">3</span><span style="font-size:7px;letter-spacing:.2em;color:rgba(253,244,228,.6)">GENS</span></div></div>
+          </div>
+          <div style="padding:20px 18px 96px;display:flex;flex-direction:column;gap:14px">
+            <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Shop by colour</div>
+            <div style="display:flex;gap:12px;overflow:hidden;margin-right:-18px">
+              <div style="width:64px;height:64px;border-radius:50%;background:#E8621B;flex-shrink:0"></div>
+              <div style="width:64px;height:64px;border-radius:50%;background:#8C1F3D;flex-shrink:0"></div>
+              <div style="width:64px;height:64px;border-radius:50%;background:#12514E;flex-shrink:0"></div>
+              <div style="width:64px;height:64px;border-radius:50%;background:#F5A623;flex-shrink:0"></div>
+              <div style="width:64px;height:64px;border-radius:50%;background:#2E4A7D;flex-shrink:0"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:8px;border-top:1px solid rgba(36,31,28,.12)"><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">Shop by occasion</span><span style="font-size:10px;letter-spacing:.2em;color:#B4470F">SIX MOMENTS →</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;border-top:1px solid rgba(36,31,28,.12)"><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">From the curator</span><span style="font-size:10px;letter-spacing:.2em;color:#B4470F">READ →</span></div>
+            <div style="font-family:ui-monospace,monospace;font-size:9px;line-height:1.6;color:rgba(36,31,28,.5);padding-top:4px;max-width:250px">below the fold: this month's edit grid (2-up), curator's note, Instagram grid, footer</div>
+          </div>
+          <div style="position:absolute;right:16px;bottom:78px;width:52px;height:52px;border-radius:50%;background:#12514E;display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:.1em;color:#FDF4E4">WA</div>
+          <div style="position:absolute;left:0;right:0;bottom:0;background:#FDF4E4;border-top:1px solid rgba(36,31,28,.15);padding:14px 18px;display:flex;gap:12px;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:.16em;color:rgba(36,31,28,.6)">48 SAREES</span><span style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">All ₹3,000</span></div>
+            <div style="flex:1;background:#E8621B;color:#FDF4E4;font-size:11px;letter-spacing:.2em;padding:15px;text-align:center">BROWSE THE EDIT</div>
+          </div>
+        </div>
+        <div style="font-size:9px;letter-spacing:.24em;color:rgba(36,31,28,.5)">M1 · HOME</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="width:390px;height:844px;background:#F4E7DC;border:1px solid rgba(36,31,28,.2);overflow:hidden;position:relative;display:flex;flex-direction:column">
+          <div style="background:#8C1F3D;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:11px;letter-spacing:.2em;color:rgba(253,244,228,.85)">MENU</span>
+            <div style="font-family:'Bodoni Moda',serif;font-size:21px;letter-spacing:.28em;color:#FDF4E4;margin-right:-.28em">VELORA</div>
+            <span style="font-size:11px;letter-spacing:.2em;color:rgba(253,244,228,.85)">BAG</span>
+          </div>
+          <div style="padding:26px 18px 18px;display:flex;flex-direction:column;gap:18px;align-items:center">
+            <div style="font-family:'Bodoni Moda',serif;font-size:38px;line-height:1;color:#241F1C;text-align:center">Choose your colour</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#8C1F3D;box-shadow:0 0 0 3px #F4E7DC,0 0 0 5px #8C1F3D"></div><span style="font-size:8px;letter-spacing:.14em;color:#241F1C">MAROON</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#E8621B"></div><span style="font-size:8px;letter-spacing:.14em;color:rgba(36,31,28,.7)">SAFFRON</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#F5A623"></div><span style="font-size:8px;letter-spacing:.14em;color:rgba(36,31,28,.7)">MARIGOLD</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#12514E"></div><span style="font-size:8px;letter-spacing:.14em;color:rgba(36,31,28,.7)">PEACOCK</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#2E4A7D"></div><span style="font-size:8px;letter-spacing:.14em;color:rgba(36,31,28,.7)">INDIGO</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#4E7031"></div><span style="font-size:8px;letter-spacing:.14em;color:rgba(36,31,28,.7)">LEAF</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#F3EADC;border:1px solid rgba(36,31,28,.2);box-sizing:border-box"></div><span style="font-size:8px;letter-spacing:.14em;color:rgba(36,31,28,.7)">KORA</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:100%;aspect-ratio:1;border-radius:50%;background:#6B3FA0"></div><span style="font-size:8px;letter-spacing:.14em;color:rgba(36,31,28,.7)">PLUM</span></div>
+            </div>
+          </div>
+          <div style="padding:6px 18px 18px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">Maroon · 9</span><span style="font-size:10px;letter-spacing:.16em;color:rgba(36,31,28,.6)">FILTER</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div style="display:flex;flex-direction:column;gap:7px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#E4CFC4 0 8px,#DCC4B7 8px 16px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:14px;color:#241F1C">Zari · Maroon</div><div style="font-size:10px;color:rgba(36,31,28,.65)">₹3,000</div></div>
+              <div style="display:flex;flex-direction:column;gap:7px"><div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#E4CFC4 0 8px,#DCC4B7 8px 16px)"></div><div style="font-family:'Bodoni Moda',serif;font-size:14px;color:#241F1C">Temple · Maroon</div><div style="font-size:10px;color:rgba(36,31,28,.65)">₹3,000</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(36,31,28,.14);padding-top:12px"><span style="font-size:11px;letter-spacing:.18em;color:#241F1C">SEE ALL 9 MAROON SAREES</span><span style="font-size:12px;color:#B4470F">→</span></div>
+          </div>
+          <div style="position:absolute;right:16px;bottom:24px;width:52px;height:52px;border-radius:50%;background:#12514E;display:flex;align-items:center;justify-content:center;font-size:8px;color:#FDF4E4">WA</div>
+        </div>
+        <div style="font-size:9px;letter-spacing:.24em;color:rgba(36,31,28,.5)">M2 · SHOP BY COLOUR · PAGE DYED</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="width:390px;height:844px;background:#FDF4E4;border:1px solid rgba(36,31,28,.2);overflow:hidden;position:relative;display:flex;flex-direction:column">
+          <div style="height:470px;background:repeating-linear-gradient(118deg,#E9D9BE 0 16px,#E3D0B0 16px 32px);position:relative;display:flex;align-items:flex-end;padding:14px">
+            <span style="position:absolute;top:14px;left:14px;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">BACK</span>
+            <span style="position:absolute;top:14px;right:14px;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">BAG</span>
+            <div style="display:flex;gap:6px"><div style="width:26px;height:3px;background:#E8621B"></div><div style="width:26px;height:3px;background:rgba(36,31,28,.25)"></div><div style="width:26px;height:3px;background:rgba(36,31,28,.25)"></div><div style="width:26px;height:3px;background:rgba(36,31,28,.25)"></div></div>
+            <span style="position:absolute;bottom:14px;right:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.6);background:rgba(253,244,228,.9);padding:5px 7px">pinch to zoom weave</span>
+          </div>
+          <div style="padding:20px 18px 96px;display:flex;flex-direction:column;gap:14px;flex:1">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:9px;letter-spacing:.28em;color:#B4470F">HANDPICKED · JULY EDIT</span>
+              <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.04;color:#241F1C">Zari pallu in maroon</div>
+              <div style="font-family:'Anek Tamil',sans-serif;font-size:15px;color:rgba(36,31,28,.7)">மரூன் ஜரிகை புடவை</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;font-size:11px">
+              <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(36,31,28,.1)"><span style="letter-spacing:.14em;color:rgba(36,31,28,.55)">FABRIC</span><span style="color:#241F1C">Pure mulberry silk</span></div>
+              <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(36,31,28,.1)"><span style="letter-spacing:.14em;color:rgba(36,31,28,.55)">LENGTH</span><span style="color:#241F1C">6.3 m incl. blouse</span></div>
+              <div style="display:flex;justify-content:space-between;padding:11px 0"><span style="letter-spacing:.14em;color:rgba(36,31,28,.55)">ZARI</span><span style="color:#241F1C">Half-fine, 4 inch</span></div>
+            </div>
+            <div style="background:#F6EAD6;padding:12px 60px 12px 12px;display:flex;flex-direction:column;gap:5px"><span style="font-size:9px;letter-spacing:.24em;color:#B4470F">AUTHENTICITY</span><span style="font-size:11px;line-height:1.6;color:rgba(36,31,28,.8)">Weaver-direct, checked in Erode. COD · GST invoice · 7-day return.</span></div>
+          </div>
+          <div style="position:absolute;right:16px;bottom:94px;width:52px;height:52px;border-radius:50%;background:#12514E;display:flex;align-items:center;justify-content:center;font-size:8px;color:#FDF4E4">WA</div>
+          <div style="position:absolute;left:0;right:0;bottom:0;background:#FDF4E4;border-top:1px solid rgba(36,31,28,.15);padding:14px 18px;display:flex;gap:12px;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:.14em;color:rgba(36,31,28,.6)">INCL. GST</span><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#241F1C">₹3,000</span></div>
+            <div style="flex:1;background:#E8621B;color:#FDF4E4;font-size:11px;letter-spacing:.2em;padding:16px;text-align:center">ADD TO BAG</div>
+          </div>
+        </div>
+        <div style="font-size:9px;letter-spacing:.24em;color:rgba(36,31,28,.5)">M3 · PDP · STICKY BUY BAR</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="width:390px;height:844px;background:#FDF4E4;border:1px solid rgba(36,31,28,.2);overflow:hidden;display:flex;flex-direction:column">
+          <div style="padding:16px 18px;border-bottom:1px solid rgba(36,31,28,.1);display:flex;justify-content:center"><div style="font-family:'Bodoni Moda',serif;font-size:20px;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">VELORA</div></div>
+          <div style="padding:20px 18px;display:flex;flex-direction:column;gap:20px;flex:1">
+            <div style="font-family:'Bodoni Moda',serif;font-size:30px;color:#241F1C">Checkout</div>
+            <div style="display:flex;gap:14px;padding-bottom:16px;border-bottom:1px solid rgba(36,31,28,.14)">
+              <div style="width:74px;height:98px;background:repeating-linear-gradient(135deg,#F1E3CB 0 8px,#EAD8B9 8px 16px);flex-shrink:0"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:5px"><span style="font-family:'Bodoni Moda',serif;font-size:16px;color:#241F1C">Zari pallu · Maroon</span><span style="font-size:10px;color:rgba(36,31,28,.65)">Pure silk · 6.3 m</span><span style="font-size:9px;letter-spacing:.14em;color:#B4470F">ONLY ONE IN STOCK</span></div>
+              <span style="font-family:'Bodoni Moda',serif;font-size:16px;color:#241F1C">₹3,000</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-size:9px;letter-spacing:.28em;color:rgba(36,31,28,.55)">DELIVERY ADDRESS</span>
+              <div style="border:1px solid rgba(36,31,28,.3);padding:14px;font-size:12px;color:#241F1C">Priya Subramanian</div>
+              <div style="border:1px solid rgba(36,31,28,.3);padding:14px;font-size:12px;color:rgba(36,31,28,.45)">Mobile number</div>
+              <div style="display:grid;grid-template-columns:110px 1fr;gap:10px">
+                <div style="border:1px solid #E8621B;padding:14px;font-size:12px;color:#241F1C">638001</div>
+                <div style="background:#F6EAD6;border:1px solid rgba(36,31,28,.15);padding:14px;font-size:12px;color:rgba(36,31,28,.7)">Erode, Tamil Nadu</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-size:9px;letter-spacing:.28em;color:rgba(36,31,28,.55)">PAYMENT</span>
+              <div style="border:1px solid #E8621B;background:#FBEEDF;padding:15px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:#241F1C">UPI — GPay, PhonePe, Paytm</span><div style="width:15px;height:15px;border-radius:50%;background:#E8621B"></div></div>
+              <div style="border:1px solid rgba(36,31,28,.25);padding:15px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:#241F1C">Cash on delivery</span><div style="width:15px;height:15px;border-radius:50%;border:1px solid rgba(36,31,28,.35)"></div></div>
+              <div style="border:1px solid rgba(36,31,28,.25);padding:15px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:#241F1C">Card / Netbanking</span><div style="width:15px;height:15px;border-radius:50%;border:1px solid rgba(36,31,28,.35)"></div></div>
+            </div>
+            <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">Total</span><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#241F1C">₹3,000</span></div>
+              <div style="background:#E8621B;color:#FDF4E4;font-size:11px;letter-spacing:.22em;padding:18px;text-align:center">PLACE ORDER</div>
+              <div style="display:flex;justify-content:space-between;font-size:8px;letter-spacing:.16em;color:rgba(36,31,28,.6)"><span>7-DAY RETURN</span><span>COD</span><span>GST INVOICE</span><span>3–6 DAYS</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:9px;letter-spacing:.24em;color:rgba(36,31,28,.5)">M4 · CHECKOUT · UPI FIRST</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="width:390px;height:844px;background:#FDF4E4;border:1px solid rgba(36,31,28,.2);overflow:hidden;display:flex;flex-direction:column">
+          <div style="padding:16px 18px;border-bottom:1px solid rgba(36,31,28,.1);display:flex;justify-content:center"><div style="font-family:'Bodoni Moda',serif;font-size:20px;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">VELORA</div></div>
+          <div style="padding:22px 18px;display:flex;flex-direction:column;gap:26px;flex:1">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:9px;letter-spacing:.28em;color:rgba(36,31,28,.55)">ORDER VLR-4821</span>
+              <div style="font-family:'Bodoni Moda',serif;font-size:32px;line-height:1.06;color:#241F1C">On its way to Coimbatore</div>
+              <span style="font-size:11px;color:rgba(36,31,28,.7)">Expected Thursday, 6 August</span>
+            </div>
+            <div style="display:flex;gap:18px">
+              <div style="width:2px;background:rgba(36,31,28,.12);position:relative;margin-left:6px"><div style="position:absolute;top:0;width:2px;height:56%;background:repeating-linear-gradient(180deg,#F5A623 0 7px,#F8CE5A 7px 14px)"></div></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:30px;margin-left:-25px">
+                <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:13px;height:13px;border-radius:50%;background:#F5A623;margin-top:4px;flex-shrink:0"></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Confirmed</span><span style="font-size:10px;color:rgba(36,31,28,.6)">Mon, 3 Aug · 11:04</span></div></div>
+                <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:13px;height:13px;border-radius:50%;background:#F5A623;margin-top:4px;flex-shrink:0"></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Packed</span><span style="font-size:10px;color:rgba(36,31,28,.6)">Mon, 3 Aug · 18:20</span></div></div>
+                <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:17px;height:17px;border-radius:50%;background:#E8621B;margin-top:2px;flex-shrink:0;box-shadow:0 0 0 5px rgba(232,98,27,.16)"></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:18px;color:#241F1C">Shipped</span><span style="font-size:10px;color:#B4470F">Tue, 4 Aug · 09:15 · Delhivery</span></div></div>
+                <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:13px;height:13px;border-radius:50%;border:1px solid rgba(36,31,28,.3);margin-top:4px;flex-shrink:0;box-sizing:border-box"></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:18px;color:rgba(36,31,28,.5)">Out for delivery</span><span style="font-size:10px;color:rgba(36,31,28,.45)">Expected Thursday</span></div></div>
+                <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:13px;height:13px;border-radius:50%;border:1px solid rgba(36,31,28,.3);margin-top:4px;flex-shrink:0;box-sizing:border-box"></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:18px;color:rgba(36,31,28,.5)">Delivered</span><span style="font-size:10px;color:rgba(36,31,28,.45)">—</span></div></div>
+              </div>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:14px;align-items:center;background:#F6EAD6;padding:14px">
+              <div style="width:62px;height:82px;background:repeating-linear-gradient(135deg,#EBDCC2 0 8px,#E3D0B0 8px 16px);flex-shrink:0"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Bodoni Moda',serif;font-size:15px;color:#241F1C">Zari pallu · Maroon</span><span style="font-size:10px;color:rgba(36,31,28,.65)">₹3,000 · Paid by UPI</span></div>
+            </div>
+            <div style="border:1px solid rgba(36,31,28,.35);color:#241F1C;font-size:11px;letter-spacing:.2em;padding:16px;text-align:center">ASK ON WHATSAPP</div>
+          </div>
+        </div>
+        <div style="font-size:9px;letter-spacing:.24em;color:rgba(36,31,28,.5)">M5 · TRACKING · ZARI THREAD</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="width:390px;height:844px;background:#241F1C;border:1px solid rgba(36,31,28,.2);overflow:hidden;display:flex;flex-direction:column">
+          <div style="padding:24px 18px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:9px;letter-spacing:.3em;color:#F5A623">OUR STORY</span>
+            <div style="font-family:'Bodoni Moda',serif;font-size:44px;line-height:.98;color:#FDF4E4">Three generations, one shop.</div>
+            <div style="font-family:'Anek Tamil',sans-serif;font-size:15px;color:rgba(253,244,228,.72)">ஈரோட்டில் மூன்று தலைமுறைகள்</div>
+          </div>
+          <div style="height:250px;background:repeating-linear-gradient(118deg,#4A423A 0 12px,#544A40 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">1978 · sepia, heavy grain</span></div>
+          <div style="padding:20px 18px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:40px;color:#F5A623;line-height:1">1978</span><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#FDF4E4;line-height:1.25">A ten-foot shop on Brough Road</span><span style="font-size:12px;line-height:1.75;color:rgba(253,244,228,.72)">My grandfather sold nine-yard cottons to mill workers, stock on two shelves, accounts in his head.</span></div>
+          <div style="height:170px;background:repeating-linear-gradient(62deg,#5A4C3C 0 12px,#665441 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">1996 · light grain</span></div>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623;line-height:1">1996</span><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#FDF4E4">My mother takes the counter</span></div>
+        </div>
+        <div style="font-size:9px;letter-spacing:.24em;color:rgba(36,31,28,.5)">M6 · OUR STORY · STAGGERED REVEALS</div>
+      </div>
+    </div>
+  </div>
+  <div id="motion" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#241F1C;color:#FDF4E4;padding:5px 11px">S1</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Loader &amp; page transition · frame by frame</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">900ms TOTAL · SAFFRON WIPE, NOT WINE</div>
+    </div>
+
+    <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);padding:44px;display:flex;flex-direction:column;gap:36px">
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="aspect-ratio:4/3;background:#FDF4E4;border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 100 124" style="width:44px;height:55px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="none" stroke="#E8621B" stroke-width="2.5" stroke-dasharray="120 400"></path></svg>
+          </div>
+          <div style="font-size:10px;letter-spacing:.2em;color:#241F1C">0–260ms</div>
+          <div style="font-size:11px;line-height:1.6;color:rgba(36,31,28,.7)">Vel outline draws itself, stroke-dashoffset only</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="aspect-ratio:4/3;background:#FDF4E4;border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 100 124" style="width:44px;height:55px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="none" stroke="#E8621B" stroke-width="2.5"></path></svg>
+          </div>
+          <div style="font-size:10px;letter-spacing:.2em;color:#241F1C">260–420ms</div>
+          <div style="font-size:11px;line-height:1.6;color:rgba(36,31,28,.7)">Outline closes; spine and collar fade in marigold</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="aspect-ratio:4/3;background:#FDF4E4;border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 100 124" style="width:44px;height:55px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+          </div>
+          <div style="font-size:10px;letter-spacing:.2em;color:#241F1C">420–520ms</div>
+          <div style="font-size:11px;line-height:1.6;color:rgba(36,31,28,.7)">Fill floods the blade, mark held for one beat</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="aspect-ratio:4/3;border:1px solid rgba(36,31,28,.15);background:linear-gradient(0deg,#E8621B 0%,#E8621B 52%,#EE8A4A 55%,#FDF4E4 60%,#FDF4E4 100%);display:flex;align-items:flex-start;justify-content:center;padding-top:14px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.6)">fold edge, 5% soft gradient</span></div>
+          <div style="font-size:10px;letter-spacing:.2em;color:#241F1C">520–780ms</div>
+          <div style="font-size:11px;line-height:1.6;color:rgba(36,31,28,.7)">Saffron fabric panel pulls upward with a soft fold edge</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="aspect-ratio:4/3;border:1px solid rgba(36,31,28,.15);background:repeating-linear-gradient(118deg,#E9D9BE 0 12px,#E3D0B0 12px 24px);display:flex;align-items:flex-end;padding:12px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.65)">hero poster already decoded</span></div>
+          <div style="font-size:10px;letter-spacing:.2em;color:#241F1C">780–900ms</div>
+          <div style="font-size:11px;line-height:1.6;color:rgba(36,31,28,.7)">Page revealed; the wipe never gates the LCP image</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;border-top:1px solid rgba(36,31,28,.14);padding-top:28px">
+        <div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:10px;letter-spacing:.26em;color:#B4470F">EASING &amp; DURATION</div><div style="font-family:ui-monospace,monospace;font-size:11px;line-height:1.9;color:rgba(36,31,28,.78)">--ease: cubic-bezier(.16,1,.3,1)<br>page transition 780ms<br>colour dye 800ms<br>card cross-fade 600ms<br>fold-to-cart 720ms<br>divider draw 900ms<br>no spring, no bounce, no overshoot</div></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:10px;letter-spacing:.26em;color:#B4470F">PERFORMANCE RULES</div><div style="font-size:12px;line-height:1.85;color:rgba(36,31,28,.78)">Hero poster is a real &lt;img&gt; with fetchpriority=high; video attaches after LCP. Drape loops are 3s, ≤400 KB, muted, playsinline, loaded only when the card is within one viewport. Loupe zoom uses a single 1600px crop, not a tile pyramid. Pallu scroll is desktop-only and lazy-mounted.</div></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:10px;letter-spacing:.26em;color:#B4470F">REDUCED MOTION</div><div style="font-size:12px;line-height:1.85;color:rgba(36,31,28,.78)">prefers-reduced-motion → loader shows the finished mark for 200ms, wipes become 120ms cross-fades, drape loops show poster frames with a play control, colour dye is instant, dividers appear without drawing. Nothing is lost, only stilled.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="components" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:13px;letter-spacing:.2em;background:#241F1C;color:#FDF4E4;padding:5px 11px">S2</div>
+      <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Component sheet</div>
+      <div style="font-size:10px;letter-spacing:.26em;color:rgba(36,31,28,.45)">BUTTONS · CARD · SWATCH · FIELDS · NAV · FOOTER</div>
+    </div>
+
+    <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);padding:44px;display:flex;flex-direction:column;gap:40px">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">BUTTONS · 48px MIN HEIGHT, 56px ON MOBILE</div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+            <div style="background:#E8621B;color:#FDF4E4;font-size:12px;letter-spacing:.22em;padding:18px 32px">PRIMARY</div>
+            <div style="background:#B4470F;color:#FDF4E4;font-size:12px;letter-spacing:.22em;padding:18px 32px">PRESSED</div>
+            <div style="border:1px solid rgba(36,31,28,.35);color:#241F1C;font-size:12px;letter-spacing:.22em;padding:17px 30px">SECONDARY</div>
+            <div style="border:1px solid #12514E;color:#12514E;font-size:12px;letter-spacing:.22em;padding:17px 30px">ASK ON WHATSAPP</div>
+            <div style="background:rgba(36,31,28,.12);color:rgba(36,31,28,.45);font-size:12px;letter-spacing:.22em;padding:18px 32px">SOLD</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center">
+            <div style="font-size:12px;letter-spacing:.16em;color:#241F1C;border-bottom:1px solid #E8621B;padding-bottom:3px">Text link</div>
+            <div style="width:52px;height:52px;border-radius:50%;background:#12514E;display:flex;align-items:center;justify-content:center;font-size:8px;color:#FDF4E4">WA</div>
+            <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55)">hover: background → #B4470F over 220ms; focus: 2px marigold outline offset 3px</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">FORM FIELDS</div>
+          <div style="display:flex;flex-direction:column;gap:12px;max-width:420px">
+            <div style="border:1px solid rgba(36,31,28,.3);padding:15px 16px;font-size:13px;color:rgba(36,31,28,.45)">Rest — placeholder</div>
+            <div style="border:1px solid #E8621B;padding:15px 16px;font-size:13px;color:#241F1C">Focused — value typed</div>
+            <div style="background:#F6EAD6;border:1px solid rgba(36,31,28,.15);padding:15px 16px;font-size:13px;color:rgba(36,31,28,.7)">Auto-filled from PIN — editable</div>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="border:1px solid #B4470F;padding:15px 16px;font-size:13px;color:#241F1C">98765</div><span style="font-size:11px;color:#B4470F">Enter a 10-digit mobile number</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:280px 1fr;gap:40px;border-top:1px solid rgba(36,31,28,.14);padding-top:36px">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">PRODUCT CARD</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1E3CB 0 9px,#EAD8B9 9px 18px);position:relative;display:flex;align-items:flex-end;padding:12px"><span style="position:absolute;top:12px;left:12px;background:#FDF4E4;font-size:8px;letter-spacing:.2em;padding:5px 8px;color:#241F1C">3s DRAPE LOOP</span><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(36,31,28,.55)">flat-lay → draped, 600ms</span></div>
+            <div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#241F1C">Kanchi border · Marigold</div>
+            <div style="font-size:11px;letter-spacing:.08em;color:rgba(36,31,28,.7)">Pure silk · ₹3,000</div>
+            <div style="font-size:10px;letter-spacing:.16em;color:#B4470F">ONLY ONE IN STOCK</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:26px">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">COLOUR SWATCH · REST, HOVER, SELECTED, DISABLED</div>
+            <div style="display:flex;gap:26px;align-items:center">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:72px;height:72px;border-radius:50%;background:#8C1F3D"></div><span style="font-size:9px;letter-spacing:.16em;color:rgba(36,31,28,.6)">REST</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:78px;height:78px;border-radius:50%;background:#8C1F3D;box-shadow:0 0 0 1px rgba(36,31,28,.25)"></div><span style="font-size:9px;letter-spacing:.16em;color:rgba(36,31,28,.6)">HOVER</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:78px;height:78px;border-radius:50%;background:#8C1F3D;box-shadow:0 0 0 3px #FDF4E4,0 0 0 5px #8C1F3D"></div><span style="font-size:9px;letter-spacing:.16em;color:#241F1C">SELECTED</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:72px;height:72px;border-radius:50%;background:#8C1F3D;opacity:.28"></div><span style="font-size:9px;letter-spacing:.16em;color:rgba(36,31,28,.45)">SOLD OUT</span></div>
+              <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55);max-width:200px;line-height:1.7">44px minimum touch target on mobile with 12px gaps</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">SCROLL THREAD · SECTION DIVIDER</div>
+            <div style="display:flex;gap:32px;align-items:center">
+              <div style="width:3px;height:80px;background:rgba(36,31,28,.1)"><div style="width:3px;height:46%;background:#F5A623"></div></div>
+              <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(245,166,35,0),#F5A623 12%,#F5A623 88%,rgba(245,166,35,0))"></div>
+              <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.55);max-width:280px;line-height:1.7">divider is a hairline temple rule, scaled from left over 900ms on enter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;border-top:1px solid rgba(36,31,28,.14);padding-top:36px">
+        <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">NAV · DESKTOP AND MOBILE</div>
+        <div style="border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:space-between;gap:48px;padding:20px 32px">
+          <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span style="border-bottom:1px solid #E8621B;padding-bottom:3px;color:#241F1C">SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+            <div style="display:flex;align-items:flex-end">
+              <svg viewBox="0 0 100 124" style="width:17px;height:21px;margin-right:7px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+              <div style="font-family:'Bodoni Moda',serif;font-size:26px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
+            </div>
+            <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+          </div>
+          <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
+        </div>
+        <div style="width:390px;border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:space-between;padding:14px 18px">
+          <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">MENU</span>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px"><div style="font-family:'Bodoni Moda',serif;font-size:20px;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">VELORA</div><div style="font-size:6px;letter-spacing:.32em;color:rgba(36,31,28,.65);margin-right:-.32em">BY BHARANI PATTU</div></div>
+          <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">BAG</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;border-top:1px solid rgba(36,31,28,.14);padding-top:36px">
+        <div style="font-size:10px;letter-spacing:.26em;color:#B4470F">FOOTER · TRUST ROW</div>
+        <div style="background:#241F1C;padding:40px;display:flex;flex-direction:column;gap:28px">
+          <div style="display:flex;justify-content:space-between;gap:56px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:flex-end">
+                <svg viewBox="0 0 100 124" style="width:18px;height:22px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#FDF4E4"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+                <div style="font-family:'Bodoni Moda',serif;font-size:27px;line-height:.82;letter-spacing:.28em;color:#FDF4E4;margin-right:-.28em">ELORA</div>
+              </div>
+              <div style="font-size:7px;letter-spacing:.34em;color:#F5A623;margin-right:-.34em">BY BHARANI PATTU</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">SHOP</span><span>By colour</span><span>By occasion</span><span>New in</span></div>
+            <div style="display:flex;flex-direction:column;gap:9px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">HELP</span><span>Returns &amp; exchange</span><span>Delivery timelines</span><span>Track your order</span></div>
+            <div style="display:flex;flex-direction:column;gap:9px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">THE HOUSE</span><span>Our story</span><span>Authenticity</span><span>Contact</span></div>
+          </div>
+          <div style="height:1px;background:rgba(245,166,35,.35)"></div>
+          <div style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:10px;letter-spacing:.2em;color:rgba(253,244,228,.6)"><span>COD AVAILABLE</span><span>GST INVOICE</span><span>7-DAY RETURN</span><span>SHIPS ACROSS INDIA · 3–6 DAYS</span><span>UPI · CARDS · NETBANKING</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+</body>
+</html>

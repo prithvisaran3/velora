@@ -1,0 +1,14 @@
+{
+  "cream": "#FDF4E4",
+  "saffron": "#E8621B",
+  "marigold": "#F5A623",
+  "turmeric": "#F8CE5A",
+  "ink": "#241F1C",
+  "usage": {
+    "base": "cream",
+    "primary": "saffron",
+    "secondary": "marigold",
+    "tint": "turmeric (reversed grounds only)",
+    "text": "ink"
+  }
+}
