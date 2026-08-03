@@ -7,6 +7,9 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/viewmodel/client/useCart";
 import { Price } from "@/view/primitives/Price";
 import { Button } from "@/view/primitives/Button";
+import { applyCoupon } from "@/viewmodel/actions/applyCoupon";
+import { recordPayment } from "@/viewmodel/actions/recordPayment";
+import { paise } from "@/model/domain/types";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -21,6 +24,41 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<"upi" | "cod" | "card">("upi");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Coupon state
+  const [couponCode, setCouponCode] = useState("");
+  const [discountPaise, setDiscountPaise] = useState(0);
+  const [appliedCouponName, setAppliedCouponName] = useState("");
+  const [couponError, setCouponError] = useState("");
+  const [couponSuccess, setCouponSuccess] = useState("");
+
+  const activeItem = cartItems[0] || {
+    id: "vlr-001",
+    title: { en: "Deep Maroon Mangai Motif Silk Saree" },
+    fabric: "Pure Kanchipuram Mulberry Silk · 6.3 m · blouse attached",
+    priceInPaise: 385000,
+    images: [{ id: "" }],
+  };
+
+  const itemPricePaise = activeItem.priceInPaise;
+  const finalTotalPaise = Math.max(0, itemPricePaise - discountPaise);
+
+  const handleApplyCoupon = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setCouponError("");
+    setCouponSuccess("");
+
+    if (!couponCode.trim()) return;
+
+    const res = await applyCoupon(couponCode, itemPricePaise);
+    if (res.ok) {
+      setDiscountPaise(res.data.discountInPaise);
+      setAppliedCouponName(res.data.code);
+      setCouponSuccess(`✓ Coupon ${res.data.code} applied! Saved ₹${Math.round(res.data.discountInPaise / 100)}.`);
+    } else {
+      setCouponError(res.error.message);
+    }
+  };
+
   const handlePincodeBlur = () => {
     if (pincode.startsWith("63") || pincode.startsWith("60") || pincode.startsWith("64")) {
       setCity("Erode");
@@ -31,22 +69,28 @@ export default function CheckoutPage() {
     }
   };
 
-  const handleSubmitOrder = (e: React.FormEvent) => {
+  const handleSubmitOrder = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const ref = `VLR-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    // Record Payment Entry in Firestore for Payment History tracking
+    await recordPayment({
+      orderId: `ord-${Date.now()}`,
+      orderReference: ref,
+      amountInRupees: finalTotalPaise / 100,
+      method: paymentMethod,
+      status: paymentMethod === "cod" ? "initiated" : "captured",
+      gatewayProvider: paymentMethod === "cod" ? "cod" : "razorpay",
+      gatewayPaymentId: paymentMethod === "cod" ? undefined : `pay_rzp_${Date.now()}`,
+      customerPhone: phone,
+    });
+
     setTimeout(() => {
       clearCart();
-      router.push("/track/VLR-4821");
+      router.push(`/track/${ref}`);
     }, 900);
-  };
-
-  const activeItem = cartItems[0] || {
-    id: "vlr-001",
-    title: { en: "Zari pallu · Maroon" },
-    fabric: "Pure mulberry silk · 6.3 m · blouse attached",
-    priceInPaise: 300000,
-    images: [{ id: "" }],
   };
 
   return (
@@ -84,13 +128,38 @@ export default function CheckoutPage() {
           <div className="flex-1 flex flex-col gap-2">
             <h3 className="font-display text-[22px] text-[#241F1C]">{activeItem.title.en}</h3>
             <span className="font-sans text-[11px] tracking-[0.1em] text-[#241F1C]/65">
-              {activeItem.fabric || "Pure mulberry silk · 6.3 m · blouse attached"}
+              {activeItem.fabric || "Pure Kanchipuram Mulberry Silk · 6.3 m · blouse attached"}
             </span>
             <span className="font-sans text-[11px] tracking-[0.16em] text-[#B4470F] font-medium mt-1">
               HANDPICKED · ONLY ONE IN STOCK
             </span>
           </div>
-          <Price amountInPaise={activeItem.priceInPaise as any} className="text-[22px]" />
+          <Price amountInPaise={itemPricePaise as any} className="text-[22px]" />
+        </div>
+
+        {/* Coupon Code Promo Box */}
+        <div className="bg-white p-5 border border-[#241F1C]/15 flex flex-col gap-3">
+          <span className="font-sans text-[10px] tracking-[0.26em] uppercase text-[#E8621B] font-bold">
+            PROMO CODE / தள்ளுபடி கூப்பன்
+          </span>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+              placeholder="e.g. FESTIVE500 or WELCOME10"
+              className="flex-1 border border-[#241F1C]/30 p-3 font-mono text-[13px] text-[#241F1C] bg-transparent focus:outline-none focus:border-[#E8621B]"
+            />
+            <button
+              type="button"
+              onClick={handleApplyCoupon}
+              className="bg-[#241F1C] text-[#FDF4E4] px-5 font-sans text-[10px] tracking-[0.2em] uppercase font-bold"
+            >
+              APPLY
+            </button>
+          </div>
+          {couponSuccess && <span className="font-sans text-[11px] text-[#12514E] font-medium">{couponSuccess}</span>}
+          {couponError && <span className="font-sans text-[11px] text-[#B4470F] font-medium">{couponError}</span>}
         </div>
 
         <form onSubmit={handleSubmitOrder} className="flex flex-col gap-[36px]">
@@ -151,9 +220,6 @@ export default function CheckoutPage() {
                 className="w-full bg-[#F6EAD6] border border-[#241F1C]/15 p-[15px] px-[16px] font-sans text-[13px] text-[#241F1C]/70 focus:outline-none"
               />
             </div>
-            <span className="font-mono text-[10px] text-[#241F1C]/55">
-              PIN lookup fills city + state on blur, fields stay editable
-            </span>
           </div>
 
           {/* Payment Block — UPI FIRST */}
@@ -213,15 +279,24 @@ export default function CheckoutPage() {
           <div className="flex flex-col gap-[10px] pt-[8px] border-t border-[#241F1C]/15">
             <div className="flex justify-between font-sans text-[13px] text-[#241F1C]/75">
               <span>Subtotal</span>
-              <span>₹3,000</span>
+              <Price amountInPaise={itemPricePaise as any} />
             </div>
+
+            {discountPaise > 0 && (
+              <div className="flex justify-between font-sans text-[13px] text-[#12514E] font-medium">
+                <span>Coupon ({appliedCouponName})</span>
+                <span>- ₹{Math.round(discountPaise / 100).toLocaleString("en-IN")}</span>
+              </div>
+            )}
+
             <div className="flex justify-between font-sans text-[13px] text-[#241F1C]/75">
               <span>Shipping across India</span>
               <span>Free</span>
             </div>
+
             <div className="flex justify-between items-baseline mt-[6px]">
               <span className="font-display text-[26px] text-[#241F1C]">Total</span>
-              <span className="font-display text-[26px] text-[#241F1C]">₹3,000</span>
+              <Price amountInPaise={finalTotalPaise as any} className="text-[26px]" />
             </div>
             <span className="font-sans text-[11px] text-[#241F1C]/60">
               Inclusive of GST. Invoice emailed on dispatch.
@@ -234,15 +309,8 @@ export default function CheckoutPage() {
               className="py-[22px] text-[12px] tracking-[0.24em] mt-2"
               fullWidth
             >
-              {isSubmitting ? "PROCESSING..." : "PLACE ORDER · ₹3,000"}
+              {isSubmitting ? "PROCESSING..." : `PLACE ORDER · ₹${(finalTotalPaise / 100).toLocaleString("en-IN")}`}
             </Button>
-
-            <div className="flex justify-between font-sans text-[10px] tracking-[0.18em] uppercase text-[#241F1C]/60 pt-2">
-              <span>7-DAY RETURN</span>
-              <span>COD AVAILABLE</span>
-              <span>GST INVOICE</span>
-              <span>DELIVERY 3–6 DAYS</span>
-            </div>
           </div>
         </form>
       </div>

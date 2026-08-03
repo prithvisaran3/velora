@@ -23,9 +23,10 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
       )}>
         <div className="max-w-[1440px] mx-auto px-4 md:px-16 py-4 flex items-center justify-between">
           {/* Desktop Left Nav */}
-          <nav className="hidden md:flex items-center gap-[30px] flex-shrink-0 whitespace-nowrap font-sans uppercase text-[11px] tracking-[0.2em] opacity-85">
+          <nav className="hidden md:flex items-center gap-[28px] flex-shrink-0 whitespace-nowrap font-sans uppercase text-[11px] tracking-[0.2em] opacity-85">
             <Link href="/colour/maroon" className="hover:text-[#E8621B] transition-colors">SHOP BY COLOUR</Link>
             <Link href="/occasion/muhurtham" className="hover:text-[#E8621B] transition-colors">OCCASION</Link>
+            <Link href="/offers" className="hover:text-[#E8621B] transition-colors font-medium text-[#E8621B]">OFFERS</Link>
             <Link href="/saree/deep-maroon-mangai-zari-silk" className="hover:text-[#E8621B] transition-colors">NEW IN</Link>
             <Link href="/story" className="hover:text-[#E8621B] transition-colors">OUR STORY</Link>
           </nav>

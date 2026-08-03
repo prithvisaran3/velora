@@ -17,7 +17,7 @@ export default function AdminDashboardPage() {
       customer: { name: "Ananya Sundaram", phone: "9876543210" },
       address: { line1: "42 Heritage Enclave", city: "Coimbatore", state: "Tamil Nadu", pincode: "641018" },
       sareeTitle: "Deep Maroon Mangai Motif Silk Saree",
-      amountInPaise: paise(300000),
+      amountInPaise: paise(385000),
       createdAt: "2026-08-03T14:30:00Z",
     },
   ]);
@@ -45,28 +45,38 @@ export default function AdminDashboardPage() {
   return (
     <div className="max-w-[600px] mx-auto px-4 py-6 flex flex-col gap-6 min-h-screen bg-[#FDF4E4]">
       {/* Mobile Admin Header */}
-      <div className="flex items-center justify-between border-b border-[#241F1C]/15 pb-4">
-        <div className="flex flex-col">
-          <span className="wordmark text-[24px] text-ink">VELORA</span>
-          <span className="font-sans text-[9px] uppercase tracking-[0.28em] text-[#E8621B]">
-            MOBILE ADMIN PWA · ERODE
-          </span>
+      <div className="flex flex-col gap-3 border-b border-[#241F1C]/15 pb-4">
+        <div className="flex items-center justify-between">
+          <div className="flex flex-col">
+            <span className="wordmark text-[24px] text-ink">VELORA</span>
+            <span className="font-sans text-[9px] uppercase tracking-[0.28em] text-[#E8621B]">
+              MOBILE ADMIN PWA · ERODE
+            </span>
+          </div>
+
+          <Link href="/admin/add">
+            <Button variant="primary" className="h-[44px] px-4 text-[10px]">
+              + ADD SAREE
+            </Button>
+          </Link>
         </div>
 
-        <Link href="/admin/add">
-          <Button variant="primary" className="h-[44px] px-4 text-[10px]">
-            + ADD SAREE
-          </Button>
-        </Link>
+        {/* Quick Admin Subnav Links */}
+        <div className="flex items-center gap-4 font-sans text-[11px] uppercase tracking-wider text-[#241F1C]/80 pt-1">
+          <Link href="/admin" className="font-bold text-[#E8621B] underline">ORDERS</Link>
+          <Link href="/admin/offers" className="hover:text-[#E8621B]">OFFERS</Link>
+          <Link href="/admin/payments" className="hover:text-[#E8621B]">PAYMENTS</Link>
+          <Link href="/admin/add" className="hover:text-[#E8621B]">+ SAREE</Link>
+        </div>
       </div>
 
       {/* Quick Action Banner */}
-      <div className="bg-[#F6EAD6] p-4 flex items-center justify-between">
+      <div className="bg-[#F6EAD6] p-4 flex items-center justify-between border border-[#241F1C]/10">
         <div className="flex flex-col">
           <span className="font-sans text-[11px] font-medium text-ink">Quick Add Inventory</span>
           <span className="font-sans text-[10px] opacity-75">Duplicate previous saree specs in 20 sec</span>
         </div>
-        <Link href="/admin/add?duplicate=true">
+        <Link href="/admin/add">
           <Button variant="secondary" className="h-[38px] px-3 text-[9px]">
             DUPLICATE LAST
           </Button>

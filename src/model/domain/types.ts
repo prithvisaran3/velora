@@ -1,145 +1,142 @@
-/**
- * Velora domain types — src/model/domain/types.ts
- *
- * Money is always an integer in paise. Never a float, never formatted here.
- * Bilingual fields are paired so translation can be automated per field.
- * `toEmbeddingText()` lives on the entity factories, not on these types.
- */
+export type Currency = "INR";
+export type MoneyPaise = number & { readonly __brand: "paise" };
 
-export type Paise = number & { readonly __brand: "Paise" };
-export const paise = (n: number): Paise => {
-  if (!Number.isInteger(n) || n < 0) throw new Error(`Invalid paise: ${n}`);
-  return n as Paise;
-};
+export function paise(amount: number): MoneyPaise {
+  if (!Number.isInteger(amount) || amount < 0) {
+    throw new Error(`Invalid money amount in paise: ${amount}`);
+  }
+  return amount as MoneyPaise;
+}
 
-export type ColourKey =
-  | "maroon" | "peacock" | "indigo" | "leaf" | "plum" | "kora" | "saffron" | "marigold";
+export type ColourKey = "maroon" | "peacock" | "indigo" | "leaf" | "plum" | "kora" | "saffron" | "marigold";
 
-export type OccasionKey =
-  | "muhurtham" | "reception" | "temple" | "festival" | "office" | "everyday";
+export type OccasionKey = "muhurtham" | "reception" | "temple" | "festival" | "office" | "everyday";
 
 export type SareeStatus = "draft" | "available" | "reserved" | "sold";
 
-export interface Bilingual {
-  en: string;
-  ta: string;
-}
+export type AspectRatio = "3/4" | "1/1" | "4/5" | "16/9";
 
-export interface ImageRef {
-  id: string;          // ImageKit file path or local asset path
-  alt?: string;        // human alt; falls back to generated text
-  aspect: "3/4" | "1/1" | "4/5" | "16/9";
+export interface SareeImage {
+  id: string;
+  alt?: string;
+  aspect: AspectRatio;
   order: number;
 }
 
-export interface VideoRef {
-  id: string;          // ImageKit path, 3s silent drape loop
-  posterId: string;
-  durationMs: number;
-  bytes: number;       // enforced <= 400_000 at upload
-}
-
-export interface Colour {
-  key: ColourKey;
-  label: Bilingual;
-  hex: string;         // saree hue — product data, never chrome
+export interface LocalizedText {
+  en: string;
+  ta: string;
 }
 
 export interface Saree {
   id: string;
   slug: string;
-  title: Bilingual;
-  priceInPaise: Paise;          // 300000
+  title: LocalizedText;
+  priceInPaise: MoneyPaise;
   status: SareeStatus;
-  colour: Colour;
+  colour: {
+    key: ColourKey;
+    label: LocalizedText;
+    hex: string;
+  };
   occasions: OccasionKey[];
-  fabric: string;               // "Pure mulberry silk"
-  lengthCm: number;             // 630
-  blousePieceCm: number;        // 80
-  zari: string;                 // "Half-fine, 4 inch border"
-  care: string;                 // "Dry clean only"
-  weightGrams: number;          // 640
-  images: ImageRef[];
-  drapeVideo?: VideoRef;
+  fabric: string;
+  lengthCm: number;
+  blousePieceCm: number;
+  zari: string;
+  care: string;
+  weightGrams: number;
+  images: SareeImage[];
+  drapeVideo?: string;
   authenticityNote: string;
   curatorNote?: string;
-  publishedAt?: string;         // ISO
+  publishedAt?: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export type OrderStatus =
+  | "pending"
+  | "paid"
+  | "packed"
+  | "shipped"
+  | "out_for_delivery"
+  | "delivered"
+  | "cancelled"
+  | "refunded";
+
+export const STEPPER_STATES: OrderStatus[] = [
+  "pending",
+  "paid",
+  "packed",
+  "shipped",
+  "out_for_delivery",
+  "delivered",
+];
+
+export interface OrderItem {
+  sareeId: string;
+  slug: string;
+  title: LocalizedText;
+  priceInPaise: MoneyPaise;
+  imageId: string;
 }
 
 export interface Address {
   line1: string;
   line2?: string;
   landmark?: string;
-  pincode: string;              // 6 digits
-  city: string;                 // auto-filled from pincode, editable
+  city: string;
   state: string;
+  pincode: string;
 }
 
 export interface Customer {
   name: string;
-  phone: string;                // 10 digits, India
+  phone: string;
   email?: string;
 }
 
-export type PaymentMethod = "upi" | "cod" | "card" | "netbanking";
-
-export interface Payment {
-  method: PaymentMethod;
+export interface PaymentDetails {
+  method: "upi" | "cod" | "card" | "netbanking";
   provider: "razorpay" | "cod";
   razorpayOrderId?: string;
   razorpayPaymentId?: string;
-  verifiedAt?: string | null;   // null for COD
+  paidAt?: string;
 }
 
-export interface Shipment {
-  provider: "shiprocket";
-  awb?: string;
-  courier?: string;
-  trackingUrl?: string;
-  expectedAt?: string;
-  labelUrl?: string;
+export interface ShipmentDetails {
+  courier: string;
+  awb: string;
+  trackingUrl: string;
+  shippedAt: string;
+  estimatedDelivery: string;
 }
-
-export type OrderStatus =
-  | "pending" | "paid" | "packed" | "shipped" | "out_for_delivery"
-  | "delivered" | "cancelled" | "refunded";
-
-/** The five customer-facing stepper states, in order. */
-export const STEPPER_STATES = ["paid", "packed", "shipped", "out_for_delivery", "delivered"] as const;
-export type StepperState = (typeof STEPPER_STATES)[number];
 
 export interface TimelineEntry {
   status: OrderStatus;
-  at: string;                   // ISO
+  at: string;
   note?: string;
-  carrierEventId?: string;      // de-dupe key for Shiprocket webhooks
-}
-
-export interface OrderItem {
-  sareeId: string;
-  slug: string;
-  title: Bilingual;             // snapshot at purchase — do not resolve live
-  priceInPaise: Paise;
-  imageId: string;
+  carrierEventId?: string;
 }
 
 export interface Order {
   id: string;
-  reference: string;            // "VLR-4821"
+  reference: string;
   status: OrderStatus;
-  items: OrderItem[];           // single-unit sarees, usually length 1
+  items: OrderItem[];
   totals: {
-    subtotalInPaise: Paise;
-    shippingInPaise: Paise;     // 0 — free across India
-    totalInPaise: Paise;
+    subtotalInPaise: MoneyPaise;
+    discountInPaise?: MoneyPaise;
+    shippingInPaise: MoneyPaise;
+    totalInPaise: MoneyPaise;
   };
+  appliedCoupon?: string;
   customer: Customer;
   address: Address;
-  payment: Payment;
-  shipment?: Shipment;
-  timeline: TimelineEntry[];    // append-only; the ONLY source for the stepper
+  payment: PaymentDetails;
+  shipment?: ShipmentDetails;
+  timeline: TimelineEntry[];
   createdAt: string;
   updatedAt: string;
 }
@@ -147,18 +144,43 @@ export interface Order {
 export interface InventoryLock {
   sareeId: string;
   cartId: string;
-  expiresAt: string;            // 15 minutes
+  expiresAt: string;
 }
 
-/** Reserved for future AI features — shape fixed now, written to later. */
-export interface SareeAiDoc {
-  embedding?: number[];
-  embeddingModel?: string;
-  embeddedAt?: string;
-  tags?: string[];
+export interface Offer {
+  id: string;
+  code: string;
+  title: LocalizedText;
+  description: LocalizedText;
+  discountType: "percentage" | "fixed_paise" | "free_shipping";
+  discountValue: number;
+  minCartValueInPaise?: MoneyPaise;
+  maxDiscountInPaise?: MoneyPaise;
+  validFrom: string;
+  validUntil: string;
+  isActive: boolean;
+  bannerText?: LocalizedText;
+  usageLimit?: number;
+  usageCount: number;
+  createdAt: string;
 }
 
-/** Server-action result — never throw across the view boundary. */
+export interface PaymentRecord {
+  id: string;
+  orderId: string;
+  orderReference: string;
+  amountInPaise: MoneyPaise;
+  currency: Currency;
+  method: "upi" | "cod" | "card" | "netbanking";
+  status: "initiated" | "captured" | "failed" | "refunded";
+  gatewayProvider: "razorpay" | "cod";
+  gatewayPaymentId?: string;
+  gatewayOrderId?: string;
+  failureReason?: string;
+  customerPhone: string;
+  createdAt: string;
+}
+
 export type ActionResult<T> =
   | { ok: true; data: T }
   | { ok: false; error: { code: string; message: string } };

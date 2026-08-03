@@ -1,17 +1,17 @@
-import { Paise, paise } from "./types";
+import { MoneyPaise, paise } from "./types";
 
 export const Money = {
-  fromPaise: (n: number): Paise => paise(n),
-  
-  fromRupees: (rupees: number): Paise => {
-    if (!Number.isFinite(rupees) || rupees < 0) throw new Error(`Invalid rupees: ${rupees}`);
-    return paise(Math.round(rupees * 100));
+  fromPaise: (n: number): MoneyPaise => paise(n),
+  formatINR: (amountInPaise: MoneyPaise): string => {
+    const rupees = amountInPaise / 100;
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(rupees);
   },
-
-  formatRupees: (p: Paise): string => {
-    const rupees = Math.floor(p / 100);
+  formatRupees: (amountInPaise: MoneyPaise): string => {
+    const rupees = Math.round(amountInPaise / 100);
     return `₹${rupees.toLocaleString("en-IN")}`;
   },
-
-  add: (a: Paise, b: Paise): Paise => paise(a + b),
 };

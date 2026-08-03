@@ -1,9 +1,10 @@
-import { SareeRepository } from "../model/repository/sareeRepository";
-import { OrderRepository } from "../model/repository/orderRepository";
-import { sareesFixture } from "../model/fixtures/sarees";
-import { Saree, ColourKey, OccasionKey, Order } from "../model/domain/types";
+import { SareeRepository } from "@/model/repository/sareeRepository";
+import { OrderRepository } from "@/model/repository/orderRepository";
+import { Saree, Order, ColourKey, OccasionKey, Offer, PaymentRecord, paise } from "@/model/domain/types";
+import { sareesFixture } from "@/model/fixtures/sarees";
 
-class FixtureSareeRepository implements SareeRepository {
+// Client-safe repository implementations
+class ClientSareeRepository implements SareeRepository {
   async listAll(): Promise<Saree[]> {
     return sareesFixture;
   }
@@ -16,8 +17,8 @@ class FixtureSareeRepository implements SareeRepository {
   async listByOccasion(occasion: OccasionKey): Promise<Saree[]> {
     return sareesFixture.filter((s) => s.occasions.includes(occasion));
   }
-  async listLatest(limit = 8): Promise<Saree[]> {
-    return sareesFixture.slice(0, limit);
+  async listLatest(limitCount = 8): Promise<Saree[]> {
+    return sareesFixture.slice(0, limitCount);
   }
   async getBySlug(slug: string): Promise<Saree | null> {
     return sareesFixture.find((s) => s.slug === slug) || null;
@@ -25,25 +26,21 @@ class FixtureSareeRepository implements SareeRepository {
   async getById(id: string): Promise<Saree | null> {
     return sareesFixture.find((s) => s.id === id) || null;
   }
-  async listRelated(sareeId: string, limit = 4): Promise<Saree[]> {
-    const current = await this.getById(sareeId);
-    if (!current) return sareesFixture.slice(0, limit);
-    return sareesFixture
-      .filter((s) => s.id !== sareeId && (s.colour.key === current.colour.key || s.occasions.some((o) => current.occasions.includes(o))))
-      .slice(0, limit);
+  async listRelated(sareeId: string, limitCount = 4): Promise<Saree[]> {
+    return sareesFixture.filter((s) => s.id !== sareeId).slice(0, limitCount);
   }
 }
 
-class FixtureOrderRepository implements OrderRepository {
-  private orders: Order[] = [
-    {
+class ClientOrderRepository implements OrderRepository {
+  async getByReference(reference: string): Promise<Order | null> {
+    return {
       id: "ord-4821",
-      reference: "VLR-4821",
+      reference: reference.toUpperCase(),
       status: "shipped",
       items: [
         {
-          sareeId: "vlr-001",
-          slug: "deep-maroon-mangai-zari-silk",
+          sareeId: sareesFixture[0].id,
+          slug: sareesFixture[0].slug,
           title: sareesFixture[0].title,
           priceInPaise: sareesFixture[0].priceInPaise,
           imageId: sareesFixture[0].images[0].id,
@@ -51,67 +48,94 @@ class FixtureOrderRepository implements OrderRepository {
       ],
       totals: {
         subtotalInPaise: sareesFixture[0].priceInPaise,
-        shippingInPaise: 0 as any,
+        shippingInPaise: paise(0),
         totalInPaise: sareesFixture[0].priceInPaise,
       },
-      customer: {
-        name: "Ananya Sundaram",
-        phone: "9876543210",
-        email: "ananya@example.com",
-      },
-      address: {
-        line1: "42 Heritage Enclave, Race Course",
-        city: "Coimbatore",
-        state: "Tamil Nadu",
-        pincode: "641018",
-      },
-      payment: {
-        method: "upi",
-        provider: "razorpay",
-        verifiedAt: "2026-08-02T14:30:00Z",
-      },
+      customer: { name: "Ananya Sundaram", phone: "9876543210" },
+      address: { line1: "42 Heritage Enclave", city: "Coimbatore", state: "Tamil Nadu", pincode: "641018" },
+      payment: { method: "upi", provider: "razorpay" },
       shipment: {
-        provider: "shiprocket",
-        awb: "SR19784821IN",
         courier: "BlueDart Express",
-        expectedAt: "2026-08-05",
+        awb: "SR19784821IN",
+        trackingUrl: "https://bluedart.com",
+        shippedAt: "2026-08-03T10:00:00Z",
+        estimatedDelivery: "Thursday, 6 August",
       },
       timeline: [
-        { status: "paid", at: "2026-08-02T14:30:00Z", note: "Payment confirmed via UPI" },
-        { status: "packed", at: "2026-08-03T09:15:00Z", note: "Handpacked at Erode showroom" },
-        { status: "shipped", at: "2026-08-03T14:00:00Z", note: "Dispatched via BlueDart Express" },
+        { status: "pending", at: "2026-08-03T09:00:00Z", note: "Order placed" },
+        { status: "paid", at: "2026-08-03T09:02:00Z", note: "UPI Payment captured" },
+        { status: "packed", at: "2026-08-03T09:30:00Z", note: "Packed in Erode shop" },
+        { status: "shipped", at: "2026-08-03T10:00:00Z", note: "Dispatched via BlueDart" },
       ],
-      createdAt: "2026-08-02T14:28:00Z",
-      updatedAt: "2026-08-03T14:00:00Z",
-    },
-  ];
-
-  async getByReference(reference: string): Promise<Order | null> {
-    return this.orders.find((o) => o.reference.toUpperCase() === reference.toUpperCase()) || null;
+      createdAt: "2026-08-03T09:00:00Z",
+      updatedAt: "2026-08-03T10:00:00Z",
+    };
   }
 
   async getByReferenceAndPhoneLast4(reference: string, phoneLast4: string): Promise<Order | null> {
-    const order = await this.getByReference(reference);
-    if (!order) return null;
-    if (order.customer.phone.endsWith(phoneLast4)) {
-      return order;
-    }
-    return null;
+    return this.getByReference(reference);
   }
 
   async createOrder(orderData: Omit<Order, "id" | "createdAt" | "updatedAt">): Promise<Order> {
-    const newOrder: Order = {
+    return {
       ...orderData,
       id: `ord-${Date.now()}`,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
-    this.orders.push(newOrder);
-    return newOrder;
   }
 }
 
-export const container = {
-  sareeRepository: new FixtureSareeRepository(),
-  orderRepository: new FixtureOrderRepository(),
-};
+class ClientOfferRepository {
+  async listActive(): Promise<Offer[]> {
+    return [
+      {
+        id: "off-01",
+        code: "FESTIVE500",
+        title: { en: "Festive Curation Special", ta: "விழா சிறப்பு தள்ளுபடி" },
+        description: { en: "Flat ₹500 discount on handpicked silk sarees.", ta: "இன்று பட்டுப்புடவைகள் வாங்கும் போது ₹500 தள்ளுபடி." },
+        discountType: "fixed_paise",
+        discountValue: 500,
+        validFrom: "2026-01-01",
+        validUntil: "2026-12-31",
+        isActive: true,
+        usageCount: 0,
+        createdAt: "2026-01-01",
+      },
+    ];
+  }
+
+  async getByCode(code: string): Promise<Offer | null> {
+    const list = await this.listActive();
+    return list.find((o) => o.code === code.toUpperCase()) || null;
+  }
+
+  async saveOffer(offer: Offer): Promise<Offer> {
+    return offer;
+  }
+}
+
+class ClientPaymentRepository {
+  async listRecent(): Promise<PaymentRecord[]> {
+    return [];
+  }
+  async recordPayment(payment: PaymentRecord): Promise<PaymentRecord> {
+    return payment;
+  }
+}
+
+export interface Container {
+  sareeRepository: SareeRepository;
+  orderRepository: OrderRepository;
+  offerRepository: ClientOfferRepository;
+  paymentRepository: ClientPaymentRepository;
+}
+
+class DefaultContainer implements Container {
+  public sareeRepository: SareeRepository = new ClientSareeRepository();
+  public orderRepository: OrderRepository = new ClientOrderRepository();
+  public offerRepository = new ClientOfferRepository();
+  public paymentRepository = new ClientPaymentRepository();
+}
+
+export const container: Container = new DefaultContainer();

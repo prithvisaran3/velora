@@ -1,17 +1,19 @@
 import React from "react";
-import { Paise } from "@/model/domain/types";
+import { MoneyPaise } from "@/model/domain/types";
 import { Money } from "@/model/domain/money";
 import { cn } from "@/lib/utils";
 
 interface PriceProps {
-  amountInPaise: Paise;
+  amountInPaise: MoneyPaise;
   className?: string;
 }
 
 export const Price: React.FC<PriceProps> = ({ amountInPaise, className }) => {
+  const formattedPrice = Money.formatRupees(amountInPaise);
+
   return (
-    <span className={cn("font-display tracking-tight text-ink", className)}>
-      {Money.formatRupees(amountInPaise)}
+    <span className={cn("font-display font-medium text-ink", className)}>
+      {formattedPrice}
     </span>
   );
 };
