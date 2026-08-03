@@ -3,6 +3,7 @@ import { z } from "zod";
 export const sareeInputSchema = z.object({
   titleEn: z.string().min(3, "Title must be at least 3 characters"),
   titleTa: z.string().min(2, "Tamil title is required"),
+  priceInRupees: z.number().int().positive("Price must be a positive integer"),
   colourKey: z.enum(["maroon", "peacock", "indigo", "leaf", "plum", "kora", "saffron", "marigold"]),
   occasions: z.array(z.enum(["muhurtham", "reception", "temple", "festival", "office", "everyday"])).min(1),
   fabric: z.string().min(2),

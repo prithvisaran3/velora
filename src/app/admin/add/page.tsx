@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/view/primitives/Button";
 import { Field } from "@/view/primitives/Field";
 import { Swatch } from "@/view/primitives/Swatch";
-import { ColourKey, OccasionKey } from "@/model/domain/types";
+import { ColourKey, OccasionKey, paise } from "@/model/domain/types";
 import { configFixture } from "@/model/fixtures/config.fixture";
 import { duplicateLastSaree } from "@/viewmodel/actions/duplicateLastSaree";
 import { upsertSaree } from "@/viewmodel/actions/upsertSaree";
@@ -15,6 +15,7 @@ export default function AdminAddProductPage() {
   const router = useRouter();
   const [titleEn, setTitleEn] = useState("");
   const [titleTa, setTitleTa] = useState("");
+  const [priceInRupees, setPriceInRupees] = useState<number>(3800);
   const [colourKey, setColourKey] = useState<ColourKey>("maroon");
   const [selectedOccasions, setSelectedOccasions] = useState<OccasionKey[]>(["muhurtham"]);
   const [fabric, setFabric] = useState("Pure Mulberry Silk");
@@ -38,7 +39,7 @@ export default function AdminAddProductPage() {
       setCare(res.data.care);
       setWeightGrams(res.data.weightGrams);
       setAuthenticityNote(res.data.authenticityNote);
-      alert("✓ Copied specs from previous saree! Now enter Title, Colour & Images.");
+      alert("✓ Copied specs from previous saree! Now enter Title, Price, Colour & Images.");
     }
   };
 
@@ -59,6 +60,7 @@ export default function AdminAddProductPage() {
     const payload = {
       titleEn,
       titleTa,
+      priceInRupees: Number(priceInRupees),
       colourKey,
       occasions: selectedOccasions,
       fabric,
@@ -125,10 +127,10 @@ export default function AdminAddProductPage() {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        {/* Titles EN + TA */}
+        {/* Titles & Dynamic Price Input */}
         <div className="flex flex-col gap-3 bg-white p-4 border border-[#241F1C]/15">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
-            1. TITLE / பெயர்
+            1. TITLE & PRICE / பெயர் மற்றும் விலை
           </span>
           <Field
             label="TITLE (ENGLISH)"
@@ -143,6 +145,14 @@ export default function AdminAddProductPage() {
             value={titleTa}
             onChange={(e) => setTitleTa(e.target.value)}
             placeholder="எ.கா. ஆழ்ந்த அரக்கு மாங்காய் மொடிஃப் பட்டு"
+          />
+          <Field
+            label="PRICE IN RUPEES (₹)"
+            type="number"
+            required
+            value={priceInRupees}
+            onChange={(e) => setPriceInRupees(Number(e.target.value))}
+            placeholder="e.g. 3800"
           />
         </div>
 
@@ -206,15 +216,9 @@ export default function AdminAddProductPage() {
           </div>
         </div>
 
-        {/* Fixed ₹3,000 Price Note */}
-        <div className="bg-[#F6EAD6] p-4 flex items-center justify-between border border-[#241F1C]/15">
-          <span className="font-sans text-[11px] uppercase tracking-wider text-ink font-medium">STORE PRICE POINT</span>
-          <span className="font-display text-[22px] text-[#E8621B]">₹3,000</span>
-        </div>
-
         {/* Publish Action */}
         <Button variant="primary" type="submit" disabled={isSubmitting} fullWidth className="h-[56px] text-[13px]">
-          {isSubmitting ? "PUBLISHING..." : "PUBLISH SAREE TO STOREFRONT"}
+          {isSubmitting ? "PUBLISHING..." : `PUBLISH SAREE FOR ₹${priceInRupees.toLocaleString("en-IN")}`}
         </Button>
       </form>
     </div>

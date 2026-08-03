@@ -22,12 +22,13 @@ export async function upsertSaree(input: unknown): Promise<ActionResult<Saree>> 
   const slug = `${data.titleEn.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${id.slice(-4)}`;
 
   const colourConfig = configFixture.colours[data.colourKey];
+  const priceInPaise = paise(data.priceInRupees * 100);
 
   const newSaree: Saree = {
     id,
     slug,
     title: { en: data.titleEn, ta: data.titleTa },
-    priceInPaise: paise(300000),
+    priceInPaise,
     status: data.status,
     colour: {
       key: data.colourKey,

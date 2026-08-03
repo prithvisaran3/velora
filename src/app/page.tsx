@@ -32,7 +32,7 @@ export default async function HomePage() {
             Handpicked, never<br />warehoused.
           </h1>
           <p className="font-sans text-[15px] md:text-[16px] text-[#241F1C]/80 max-w-[520px] leading-[1.7]">
-            Forty-eight sarees chosen this month by our curator in Erode. Every one at ₹3,000, every one seen and felt before it is listed.
+            Forty-eight modern sarees chosen this month by our curator in Erode. Every one seen and felt before it is listed.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Link href="/saree/deep-maroon-mangai-zari-silk">
@@ -120,7 +120,7 @@ export default async function HomePage() {
       <section className="px-8 md:px-[64px] pb-[72px] flex flex-col gap-7">
         <div className="flex items-baseline justify-between">
           <h2 className="font-display text-[32px] md:text-[44px] text-[#241F1C]">This month's edit</h2>
-          <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#241F1C]/60">48 SAREES · ALL ₹3,000</span>
+          <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#241F1C]/60">48 SAREES · JULY EDIT</span>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
