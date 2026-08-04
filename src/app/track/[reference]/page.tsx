@@ -96,10 +96,7 @@ export default function TrackingPage({ params }: TrackingPageProps) {
 
           {/* D7 Zari Stepper */}
           <div className="relative py-6">
-            <ZariStepper currentStatus={order.status} />
-            <div className="font-mono text-[10px] text-ink/55 text-center mt-6">
-              completed track is a two-tone zari weave; on each status change the new segment is drawn left→right in 900ms, then the reached node fades up
-            </div>
+            <ZariStepper currentStatus={order.status} reference={order.reference} />
           </div>
 
           {/* Order Summary Box */}

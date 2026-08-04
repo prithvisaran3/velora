@@ -7,6 +7,7 @@ import { useCart } from "@/viewmodel/client/useCart";
 import { useAuth } from "@/viewmodel/client/useAuth";
 import { AuthModal } from "@/view/components/AuthModal";
 import { Wordmark } from "@/view/primitives/Wordmark";
+import { BAG_PULSE_EVENT } from "@/three/store/flight";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -19,9 +20,24 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
   const { cartCount } = useCart();
   const { user, logout } = useAuth();
   const [mounted, setMounted] = useState(false);
+  const [pulsing, setPulsing] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // The bag pulses once in marigold when a flight lands (moment 06).
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const onPulse = () => {
+      setPulsing(true);
+      timer = setTimeout(() => setPulsing(false), 620);
+    };
+    window.addEventListener(BAG_PULSE_EVENT, onPulse);
+    return () => {
+      window.removeEventListener(BAG_PULSE_EVENT, onPulse);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -78,7 +94,14 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
             <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="hidden md:block hover:text-saffron transition-colors">
               WHATSAPP
             </a>
-            <Link href="/bag" className="flex items-center gap-1.5 hover:text-saffron transition-colors font-medium">
+            <Link
+              href="/bag"
+              data-bag-target
+              className={cn(
+                "flex items-center gap-1.5 transition-colors font-medium",
+                pulsing ? "bag-pulse text-marigold" : "hover:text-saffron"
+              )}
+            >
               <span>BAG ({mounted ? cartCount : 0})</span>
             </Link>
           </div>
