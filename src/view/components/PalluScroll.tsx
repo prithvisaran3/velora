@@ -1,70 +1,61 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { UI } from "@/content/ui";
+import React from "react";
 
-gsap.registerPlugin(ScrollTrigger);
+/**
+ * The approved 2D pallu strip — the poster for moment 05.
+ *
+ * A native horizontal scroller with snap points. It used to be a GSAP pinned
+ * scrub, which was wrong twice over: ScrollTrigger's `pin` lifts the section
+ * into a pin-spacer outside React's tree, so React throws the moment it needs
+ * to remove it; and a native scroller already works with a trackpad, a touch
+ * drag, arrow keys and no JavaScript at all. Only the 3D unroll pins now, and
+ * that one is never swapped out once it is up.
+ */
+export const PalluScroll: React.FC = () => (
+  <section className="hidden md:block bg-ink text-cream my-16 py-14">
+    <div className="px-16 max-w-[760px]">
+      <span className="font-sans text-[10px] uppercase tracking-label-wide text-marigold">
+        Anatomy of a saree
+      </span>
+      <h2 className="font-display text-[36px] font-normal mt-2">
+        Six yards, end to end
+      </h2>
+      <p className="font-sans text-[14px] opacity-80 mt-4 leading-relaxed">
+        Body, border, pallu — the three parts every Tamil buyer checks, in that
+        order, and the three we photograph in that order.
+      </p>
+    </div>
 
-export const PalluScroll: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+    <div className="mt-10 flex gap-10 overflow-x-auto px-16 pb-6 snap-x snap-mandatory">
+      <article className="snap-start w-[500px] h-[420px] flex-shrink-0 placeholder-weave border border-marigold/30 p-8 flex flex-col justify-between">
+        <span className="font-sans text-[11px] uppercase tracking-widest text-turmeric">
+          01 · THE BODY / உடல்
+        </span>
+        <span className="font-display text-[24px]">
+          Six yards of mulberry silk, dyed in the hank before a single thread is
+          woven.
+        </span>
+      </article>
 
-  useEffect(() => {
-    const track = trackRef.current;
-    const container = containerRef.current;
-    if (!track || !container) return;
+      <article className="snap-start w-[500px] h-[420px] flex-shrink-0 placeholder-weave border border-marigold/30 p-8 flex flex-col justify-between">
+        <span className="font-sans text-[11px] uppercase tracking-widest text-turmeric">
+          02 · THE BORDER / கரை
+        </span>
+        <span className="font-display text-[24px]">
+          Joined by the korvai technique — a separate warp, three weavers, one
+          seam you cannot find.
+        </span>
+      </article>
 
-    const ctx = gsap.context(() => {
-      gsap.to(track, {
-        x: () => -(track.scrollWidth - window.innerWidth),
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          pin: true,
-          scrub: 1,
-          end: () => "+=2400",
-        },
-      });
-    }, container);
-
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <section ref={containerRef} className="hidden md:block bg-ink text-cream overflow-hidden my-16">
-      <div ref={trackRef} className="flex items-center h-[600px] w-max px-16 gap-16">
-        <div className="flex flex-col justify-center max-w-[400px]">
-          <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-marigold">
-            ANATOMY OF A SAREE
-          </span>
-          <h2 className="font-display text-[36px] font-normal mt-2">
-            Unrolling the Kanchipuram
-          </h2>
-          <p className="font-sans text-[14px] opacity-80 mt-4 leading-relaxed">
-            Scroll horizontally to explore the intricate architecture of a traditional handloom Kanchipuram silk saree, from the body weave to the grand pallu.
-          </p>
-        </div>
-
-        {/* Section 1: Body Weave */}
-        <div className="w-[500px] h-[440px] placeholder-weave border border-marigold/30 p-8 flex flex-col justify-between">
-          <span className="font-sans text-[11px] uppercase tracking-widest text-turmeric">1. THE BODY / உடல்</span>
-          <span className="font-display text-[24px]">Six yards of pure mulberry silk, dyed and woven with traditional motifs.</span>
-        </div>
-
-        {/* Section 2: Korvai Junction */}
-        <div className="w-[500px] h-[440px] placeholder-weave border border-marigold/30 p-8 flex flex-col justify-between">
-          <span className="font-sans text-[11px] uppercase tracking-widest text-turmeric">2. THE BORDER / கரை</span>
-          <span className="font-display text-[24px]">Attached using the ancient Korvai technique, requiring three weavers.</span>
-        </div>
-
-        {/* Section 3: Zari Pallu */}
-        <div className="w-[600px] h-[440px] placeholder-weave border border-marigold/50 p-8 flex flex-col justify-between">
-          <span className="font-sans text-[11px] uppercase tracking-widest text-marigold">3. THE PALLU / முந்தானை</span>
-          <span className="font-display text-[28px] text-turmeric">The crowning glory, richly woven with half-fine gold zari.</span>
-        </div>
-      </div>
-    </section>
-  );
-};
+      <article className="snap-start w-[600px] h-[420px] flex-shrink-0 placeholder-weave border border-marigold/50 p-8 flex flex-col justify-between">
+        <span className="font-sans text-[11px] uppercase tracking-widest text-marigold">
+          03 · THE PALLU / முந்தானை
+        </span>
+        <span className="font-display text-[28px] text-turmeric">
+          The end that shows. Half-fine gold zari, paisley after paisley.
+        </span>
+      </article>
+    </div>
+  </section>
+);
