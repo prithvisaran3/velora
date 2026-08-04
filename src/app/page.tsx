@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getHomeViewModel } from "@/viewmodel/server/home.viewmodel";
 import { Button } from "@/view/primitives/Button";
 import { SareeCard } from "@/view/components/SareeCard";
+import { HeroStage } from "@/view/components/HeroStage";
+import { PalluSection } from "@/view/components/PalluSection";
 import { OccasionGrid } from "@/view/components/OccasionGrid";
 import { configFixture } from "@/model/fixtures/config.fixture";
 import { ColourKey } from "@/model/domain/types";
@@ -18,25 +20,23 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col w-full bg-cream">
-      {/* D1 Hero Section */}
-      <section className="relative w-full h-[660px] placeholder-weave flex items-end p-8 md:p-[64px] overflow-hidden border-b border-ink/15">
-        <div className="relative z-10 max-w-[840px] flex flex-col gap-[26px]">
-          <h1 className="font-display text-[52px] md:text-[104px] text-ink leading-[0.94] text-balance">
-            {UI.hero.headline}
-          </h1>
-          <p className="font-sans text-[15px] md:text-[16px] text-ink/80 max-w-[520px] leading-[1.7]">
-            {UI.hero.subline}
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link href="/saree/deep-maroon-mangai-zari-silk">
-              <Button variant="primary">{UI.hero.ctaPrimary}</Button>
-            </Link>
-            <Link href="/colour/maroon">
-              <Button variant="secondary">{UI.hero.ctaSecondary}</Button>
-            </Link>
-          </div>
+      {/* D1 Hero Section — poster in CSS, cloth in the shared canvas */}
+      <HeroStage>
+        <h1 className="font-display text-[52px] md:text-[104px] text-ink leading-[0.94] text-balance">
+          {UI.hero.headline}
+        </h1>
+        <p className="font-sans text-[15px] md:text-[16px] text-ink/80 max-w-[520px] leading-[1.7]">
+          {UI.hero.subline}
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link href="/saree/deep-maroon-mangai-zari-silk">
+            <Button variant="primary">{UI.hero.ctaPrimary}</Button>
+          </Link>
+          <Link href="/colour/maroon">
+            <Button variant="secondary">{UI.hero.ctaSecondary}</Button>
+          </Link>
         </div>
-      </section>
+      </HeroStage>
 
       {/* D1 Legacy Strip */}
       <section className="bg-ink text-cream px-8 md:px-[64px] py-[44px] flex flex-col md:flex-row items-center justify-between gap-8">
@@ -108,6 +108,9 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* D1 Pallu unroll — scroll teaches the anatomy of the saree */}
+      <PalluSection />
 
       {/* D1 Curator Block */}
       <section className="bg-sand px-8 md:px-[64px] py-[72px] flex flex-col md:flex-row gap-12 md:gap-[56px] items-center">
