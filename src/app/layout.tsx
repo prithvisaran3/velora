@@ -5,6 +5,7 @@ import { Header } from "@/view/layout/Header";
 import { Footer } from "@/view/layout/Footer";
 import { WhatsAppFab } from "@/view/layout/WhatsAppFab";
 import { VelLoader } from "@/view/motion/VelLoader";
+import { CartProvider } from "@/viewmodel/client/useCart";
 
 const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
@@ -25,9 +26,9 @@ const anekTamil = Anek_Tamil({
 });
 
 export const metadata: Metadata = {
-  title: "Velora by Bharani Pattu · Handpicked Silk Sarees ₹3,000",
+  title: "Velora by Bharani Pattu · Handpicked Silk Sarees",
   description:
-    "Handpicked pure silk sarees, single price point ₹3,000. Family silk house in Erode, Tamil Nadu since 1978. India-only free shipping.",
+    "Handpicked pure silk sarees. Family silk house in Erode, Tamil Nadu since 1978. India-only free shipping.",
 };
 
 export default function RootLayout({
@@ -41,11 +42,13 @@ export default function RootLayout({
       className={`${bodoniModa.variable} ${archivo.variable} ${anekTamil.variable}`}
     >
       <body className="antialiased bg-[#FDF4E4] text-[#241F1C] min-h-screen flex flex-col justify-between">
-        <VelLoader />
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <WhatsAppFab />
+        <CartProvider>
+          <VelLoader />
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <WhatsAppFab />
+        </CartProvider>
       </body>
     </html>
   );
