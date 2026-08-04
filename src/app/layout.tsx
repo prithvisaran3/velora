@@ -7,6 +7,8 @@ import { WhatsAppFab } from "@/view/layout/WhatsAppFab";
 import { VelLoader } from "@/view/motion/VelLoader";
 import { CartProvider } from "@/viewmodel/client/useCart";
 import { PageTransition } from "@/view/motion/PageTransition";
+import { CanvasProvider } from "@/three/CanvasProvider";
+import { BagFlight } from "@/view/motion/BagFlight";
 import { Analytics } from "@vercel/analytics/react";
 
 const bodoniModa = Bodoni_Moda({
@@ -59,15 +61,20 @@ export default function RootLayout({
       lang="en"
       className={`${bodoniModa.variable} ${archivo.variable} ${anekTamil.variable}`}
     >
-      <body className="antialiased bg-cream text-ink min-h-screen flex flex-col justify-between">
+      {/* No background on <body>: the ground is `--page-bg` on <html>, which is
+          what the colour dye animates. An opaque body hid it. */}
+      <body className="antialiased text-ink min-h-screen flex flex-col justify-between">
         <CartProvider>
-          <VelLoader />
-          <Header />
-          <PageTransition>
-            <main className="flex-grow">{children}</main>
-          </PageTransition>
-          <Footer />
-          <WhatsAppFab />
+          <CanvasProvider>
+            <VelLoader />
+            <Header />
+            <PageTransition>
+              <main className="flex-grow">{children}</main>
+            </PageTransition>
+            <Footer />
+            <WhatsAppFab />
+            <BagFlight />
+          </CanvasProvider>
           <Analytics />
         </CartProvider>
       </body>

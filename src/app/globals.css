@@ -71,6 +71,16 @@
   /* set by useColourDye on <html>; defaults to the brand ground */
   --page-bg: var(--color-cream);
   --page-fg: var(--color-ink);
+
+  /* The shared WebGL canvas. 5 sits above page content and below the sticky
+     header (40) and modals (50); the vel loader raises it to 60 for 900ms. */
+  --velora-canvas-z: 5;
+}
+
+/* One context for the whole site — see src/three/CanvasProvider.tsx.
+   Transparent everywhere except inside an active scene's scissor rect. */
+.velora-canvas {
+  z-index: var(--velora-canvas-z);
 }
 
 html {
@@ -121,10 +131,35 @@ a:hover { color: var(--color-pressed); }
   background-image: repeating-linear-gradient(180deg, var(--color-marigold) 0 7px, var(--color-turmeric) 7px 14px);
 }
 
+/* The bag acknowledges a landed flight — once, in marigold. */
+@keyframes bag-pulse {
+  0%   { transform: scale(1); }
+  38%  { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+.bag-pulse {
+  animation: bag-pulse 620ms var(--ease-silk);
+}
+
 /* Temple hairline divider. */
 .rule-temple {
   height: 1px;
   background-image: linear-gradient(90deg, transparent, var(--color-marigold) 12%, var(--color-marigold) 88%, transparent);
+}
+
+/* Hero poster — the silk ground that renders with JS disabled, and the ground
+   the hero cloth is composited over. Raking light from the upper right, the
+   weave running at 118° exactly as approved. */
+.hero-silk {
+  background-image:
+    linear-gradient(104deg, rgba(36, 31, 28, 0.12) 0%, rgba(36, 31, 28, 0) 46%),
+    radial-gradient(120% 92% at 74% 22%, rgba(253, 244, 228, 0.9) 0%, rgba(253, 244, 228, 0) 62%),
+    repeating-linear-gradient(118deg, #E9D9BE 0 22px, #E3D0B0 22px 44px);
+}
+
+/* The drape stage — the dark ground the 3D form stands on, and the poster's. */
+.drape-stage {
+  background-image: radial-gradient(90% 80% at 60% 26%, #3A322C 0%, #14110F 72%);
 }
 
 /* Placeholder ground for imagery that has not shipped yet. */
