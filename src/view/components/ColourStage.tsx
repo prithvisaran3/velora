@@ -6,6 +6,7 @@ import { SceneView } from "@/three/SceneView";
 import { useCanvasReady, useThreeTier } from "@/three/CanvasProvider";
 import { THREE_FLAGS } from "@/three/flags";
 import { tierAllows } from "@/three/tier";
+import { useCanvasDemand } from "@/three/useCanvasDemand";
 import { DYE_CAMERA } from "@/three/scenes/heroCloth/camera";
 
 const DYE_CLOTH_SIZE: readonly [number, number] = [4.8, 3];
@@ -34,8 +35,10 @@ export const ColourStage: React.FC<{ hex: string; label: string }> = ({
   const tier = useThreeTier();
   const canvasReady = useCanvasReady();
 
-  const showCloth =
-    THREE_FLAGS.colourDye && canvasReady && tierAllows(tier, "colourDye");
+  const eligible = THREE_FLAGS.colourDye && tierAllows(tier, "colourDye");
+  useCanvasDemand(eligible);
+
+  const showCloth = eligible && canvasReady;
 
   return (
     <section className="relative w-full h-[320px] md:h-[420px] overflow-hidden border-y border-ink/10">

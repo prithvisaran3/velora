@@ -6,6 +6,7 @@ import { SceneView } from "@/three/SceneView";
 import { useCanvasReady, useThreeTier } from "@/three/CanvasProvider";
 import { THREE_FLAGS } from "@/three/flags";
 import { tierAllows } from "@/three/tier";
+import { useCanvasDemand } from "@/three/useCanvasDemand";
 import { UNROLL } from "@/lib/motion";
 import { UNROLL_CAMERA } from "@/three/scenes/palluUnroll/camera";
 import { setUnrollProgress } from "@/three/store/unroll";
@@ -66,17 +67,14 @@ export const PalluSection: React.FC<{ hex?: string }> = ({
   // Latched: once the pinned section is up it stays. A ScrollTrigger pin owns
   // its DOM node, so swapping it back out mid-session is not something React
   // can do safely.
+  const eligible =
+    THREE_FLAGS.palluUnroll && wide && tierAllows(tier, "palluUnroll");
+  useCanvasDemand(eligible);
+
   const [show3D, setShow3D] = useState(false);
   useEffect(() => {
-    if (
-      THREE_FLAGS.palluUnroll &&
-      canvasReady &&
-      wide &&
-      tierAllows(tier, "palluUnroll")
-    ) {
-      setShow3D(true);
-    }
-  }, [canvasReady, wide, tier]);
+    if (eligible && canvasReady) setShow3D(true);
+  }, [eligible, canvasReady]);
 
   useEffect(() => {
     const el = section.current;

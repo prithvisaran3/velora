@@ -24,7 +24,14 @@ import {
   watchReducedMotion,
   type Tier,
 } from "./tier";
-import { armLcpSignals, onEarlyCanvas, onLcpReady, whenIdle } from "./boot";
+import {
+  armLcpSignals,
+  canvasWanted,
+  onCanvasDemand,
+  onEarlyCanvas,
+  onLcpReady,
+  whenIdle,
+} from "./boot";
 
 const ThreeRoot = dynamic(
   () => import("./ThreeRoot").then((mod) => mod.ThreeRoot),
@@ -63,6 +70,9 @@ export const CanvasProvider: React.FC<{ children: React.ReactNode }> = ({
    * nodes that R3F has already removed. A parked context draws nothing.
    */
   const [renderTier, setRenderTier] = useState<Exclude<Tier, "low">>("mid");
+  /** True once the LCP gate has opened. Mounting also needs a scene to want it. */
+  const [gateOpen, setGateOpen] = useState(false);
+  const [wanted, setWanted] = useState(false);
 
   // Tier is a client decision; the server always renders posters.
   useEffect(() => {
@@ -92,20 +102,32 @@ export const CanvasProvider: React.FC<{ children: React.ReactNode }> = ({
 
     const offLcp = onLcpReady(() => {
       cancelIdle = whenIdle(() => {
-        if (!cancelled) setMounted(true);
+        if (!cancelled) setGateOpen(true);
       });
     });
     const offEarly = onEarlyCanvas(() => {
-      if (!cancelled) setMounted(true);
+      if (!cancelled) setGateOpen(true);
+    });
+
+    setWanted(canvasWanted());
+    const offDemand = onCanvasDemand((next) => {
+      if (!cancelled) setWanted(next);
     });
 
     return () => {
       cancelled = true;
       offLcp();
       offEarly();
+      offDemand();
       cancelIdle?.();
     };
   }, [tier]);
+
+  // Once up, the context stays up — it is the whole point of one canvas for
+  // the site. Demand only decides when it is first created.
+  useEffect(() => {
+    if (gateOpen && wanted) setMounted(true);
+  }, [gateOpen, wanted]);
 
   const value = useMemo<ThreeContextValue>(
     () => ({ tier, canvasReady: ready && tier !== "low" }),

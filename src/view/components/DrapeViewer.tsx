@@ -6,6 +6,7 @@ import { SceneView } from "@/three/SceneView";
 import { useCanvasReady, useThreeTier } from "@/three/CanvasProvider";
 import { THREE_FLAGS } from "@/three/flags";
 import { tierAllows } from "@/three/tier";
+import { useCanvasDemand } from "@/three/useCanvasDemand";
 import { DRAPE_CAMERA } from "@/three/scenes/pdpDrape/camera";
 
 const PdpDrapeScene = dynamic(
@@ -48,8 +49,13 @@ export const DrapeViewer: React.FC<DrapeViewerProps> = ({ hex, title }) => {
     return () => observer.disconnect();
   }, [seen]);
 
-  const showDrape =
-    THREE_FLAGS.pdpDrape && canvasReady && seen && tierAllows(tier, "pdpDrape");
+  // Demand is gated on intersection, so on a PDP nothing about the 3D layer is
+  // fetched until the shopper scrolls past the flat-lay. The product image
+  // never competes with it.
+  const eligible = THREE_FLAGS.pdpDrape && seen && tierAllows(tier, "pdpDrape");
+  useCanvasDemand(eligible);
+
+  const showDrape = eligible && canvasReady;
 
   return (
     <div

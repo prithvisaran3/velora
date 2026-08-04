@@ -137,6 +137,47 @@ export function armLcpSignals(): () => void {
   };
 }
 
+/* ------------------------------------------------------------------ */
+/* Demand — nobody wants a canvas, nobody pays for one                 */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The LCP gate alone is not enough. On a route that renders "Loading…" and
+ * fetches after hydration, `load` fires long before the real hero exists, so
+ * the gate opens and the 123 KB chunk downloads alongside the product image.
+ *
+ * So the canvas is also demand-driven: a route declares it wants one, and
+ * until something does, nothing is fetched. On a PDP the only scene is the
+ * drape, which declares itself on intersection — so scrolling is what pays for
+ * the context, and the flat-lay never competes with it.
+ */
+let demand = 0;
+const demandListeners = new Set<(wanted: boolean) => void>();
+
+export function canvasWanted(): boolean {
+  return demand > 0;
+}
+
+/** Returns a release function; call it when the scene no longer wants one. */
+export function requestCanvas(): () => void {
+  demand += 1;
+  if (demand === 1) demandListeners.forEach((fn) => fn(true));
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    demand -= 1;
+    if (demand === 0) demandListeners.forEach((fn) => fn(false));
+  };
+}
+
+export function onCanvasDemand(fn: (wanted: boolean) => void): () => void {
+  demandListeners.add(fn);
+  return () => {
+    demandListeners.delete(fn);
+  };
+}
+
 /** The vel loader's escape hatch — see the note at the top of this file. */
 export function requestEarlyCanvas(): void {
   if (earlyRequested) return;

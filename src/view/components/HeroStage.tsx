@@ -6,6 +6,7 @@ import { SceneView } from "@/three/SceneView";
 import { useCanvasReady, useThreeTier } from "@/three/CanvasProvider";
 import { THREE_FLAGS } from "@/three/flags";
 import { tierAllows } from "@/three/tier";
+import { useCanvasDemand } from "@/three/useCanvasDemand";
 import {
   HERO_CAMERA,
   HERO_HEX,
@@ -43,8 +44,10 @@ export const HeroStage: React.FC<{ children: React.ReactNode }> = ({
 
   const layout = wide ? HERO_LAYOUT_WIDE : HERO_LAYOUT_NARROW;
 
-  const showCloth =
-    THREE_FLAGS.heroCloth && canvasReady && tierAllows(tier, "heroCloth");
+  const eligible = THREE_FLAGS.heroCloth && tierAllows(tier, "heroCloth");
+  useCanvasDemand(eligible);
+
+  const showCloth = eligible && canvasReady;
 
   return (
     <section className="relative w-full h-[660px] overflow-hidden border-b border-ink/15 flex items-end">
