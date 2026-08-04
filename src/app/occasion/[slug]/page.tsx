@@ -35,8 +35,7 @@ export default async function OccasionPage({ params }: OccasionPageProps) {
 
       {/* D3 Editorial Row 1: Muhurtham */}
       <div className="w-full border-t border-ink/12 flex flex-col md:flex-row items-stretch">
-        <div className="w-full md:w-[520px] h-[320px] md:h-[420px] placeholder-weave flex items-end p-4 border-b md:border-b-0 md:border-r border-ink/12 flex-shrink-0">
-          <span className="font-mono text-[10px] text-ink/60">muhurtham · bride, morning light</span>
+        <div className="w-full md:w-[520px] h-[320px] md:h-[420px] placeholder-weave border-b md:border-b-0 md:border-r border-ink/12 flex-shrink-0">
         </div>
         <div className="flex-1 p-8 md:p-[56px] flex flex-col justify-center gap-4">
           <span className="font-sans text-[11px] tracking-label-wide uppercase text-pressed">
@@ -58,8 +57,7 @@ export default async function OccasionPage({ params }: OccasionPageProps) {
 
       {/* D3 Editorial Row 2: Temple */}
       <div className="w-full border-t border-ink/12 flex flex-col md:flex-row-reverse items-stretch">
-        <div className="w-full md:w-[520px] h-[320px] md:h-[420px] placeholder-weave flex items-end p-4 border-b md:border-b-0 md:border-l border-ink/12 flex-shrink-0">
-          <span className="font-mono text-[10px] text-ink/60">temple · corridor, oil lamp</span>
+        <div className="w-full md:w-[520px] h-[320px] md:h-[420px] placeholder-weave border-b md:border-b-0 md:border-l border-ink/12 flex-shrink-0">
         </div>
         <div className="flex-1 p-8 md:p-[56px] flex flex-col justify-center gap-4">
           <span className="font-sans text-[11px] tracking-label-wide uppercase text-pressed">
