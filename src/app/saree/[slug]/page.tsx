@@ -1,13 +1,15 @@
 "use client";
 
-import React, { use, useState, useEffect } from "react";
+import React, { use, useCallback, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { getProductViewModel } from "@/viewmodel/server/product.viewmodel";
 import { useCart } from "@/viewmodel/client/useCart";
+import { useBagFlight } from "@/viewmodel/client/useBagFlight";
 import { Loupe } from "@/view/components/Loupe";
 import { Price } from "@/view/primitives/Price";
 import { Button } from "@/view/primitives/Button";
 import { SareeCard } from "@/view/components/SareeCard";
+import { DrapeViewer } from "@/view/components/DrapeViewer";
 import { StickyBuyBar } from "@/view/layout/StickyBuyBar";
 import { WhatsAppFab } from "@/view/layout/WhatsAppFab";
 
@@ -20,10 +22,19 @@ export default function PDPPage({ params }: PDPPageProps) {
   const [vm, setVm] = useState<any>(null);
   const [selectedImgIdx, setSelectedImgIdx] = useState(0);
   const { addToCart, cartItems } = useCart();
+  const flyToBag = useBagFlight();
+  const mediaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     getProductViewModel(resolvedParams.slug).then(setVm);
   }, [resolvedParams.slug]);
+
+  // The bag is updated first; the flight is decoration on top of a done deal.
+  const handleAddToBag = useCallback(() => {
+    if (!vm) return;
+    addToCart(vm.saree);
+    flyToBag(mediaRef.current, vm.saree.colour.hex);
+  }, [vm, addToCart, flyToBag]);
 
   if (!vm) {
     return <div className="min-h-screen py-24 text-center font-display text-[20px]">Loading saree details...</div>;
@@ -43,11 +54,10 @@ export default function PDPPage({ params }: PDPPageProps) {
         <div className="flex flex-col md:flex-row items-stretch">
           {/* D4 Left 840px Media Column */}
           <div className="w-full md:w-[840px] flex flex-col border-r border-ink/12 flex-shrink-0">
-            <div className="relative h-[500px] md:h-[700px] bg-sand border-b border-ink/10 flex items-center justify-center overflow-hidden">
-              <span className="absolute top-4 left-4 font-mono text-[10px] text-ink/60 bg-cream/90 px-2.5 py-1 z-20">
-                FLAT-LAY HERO · 3x LOUPE MACRO ZOOM
-              </span>
-
+            <div
+              ref={mediaRef}
+              className="relative h-[500px] md:h-[700px] bg-sand border-b border-ink/10 flex items-center justify-center overflow-hidden"
+            >
               {isRealMainImg ? (
                 <Loupe src={mainImg} alt={saree.title.en} className="w-full h-full" />
               ) : (
@@ -94,6 +104,9 @@ export default function PDPPage({ params }: PDPPageProps) {
                 })}
               </div>
             )}
+
+            {/* D4 · walk around the drape (loads on intersection) */}
+            <DrapeViewer hex={saree.colour.hex} title={saree.title.en} />
           </div>
 
           {/* D4 Right Detail Column */}
@@ -120,7 +133,7 @@ export default function PDPPage({ params }: PDPPageProps) {
             <div className="flex flex-col gap-3">
               <Button
                 variant={isSoldOut ? "disabled" : "primary"}
-                onClick={() => addToCart(saree)}
+                onClick={handleAddToBag}
                 disabled={isSoldOut}
                 className="py-5 text-[12px] tracking-label"
                 fullWidth
@@ -192,7 +205,7 @@ export default function PDPPage({ params }: PDPPageProps) {
 
       <StickyBuyBar
         priceInPaise={saree.priceInPaise}
-        onAddToBag={() => addToCart(saree)}
+        onAddToBag={handleAddToBag}
         isSoldOut={isSoldOut}
       />
       <WhatsAppFab hasStickyBar />
