@@ -43,7 +43,10 @@ export const DrapeViewer: React.FC<DrapeViewerProps> = ({ hex, title }) => {
           observer.disconnect();
         }
       },
-      { rootMargin: "200px" }
+      // Half of it genuinely on screen, and no rootMargin. At 390 wide the
+      // drape's top edge sits ~130px below the fold, so a 200px margin fired
+      // at scroll 0 and put the context back in the flat-lay's way.
+      { threshold: 0.5 }
     );
     observer.observe(el);
     return () => observer.disconnect();
