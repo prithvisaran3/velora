@@ -24,10 +24,10 @@ export const CAP_RATIO = 0.75;
 type Tone = "cream" | "ink" | "saffron" | "mono";
 
 const TONE: Record<Tone, { blade: string; accent: string; text: string; endorse: string }> = {
-  cream:   { blade: "#E8621B", accent: "#F5A623", text: "text-[#241F1C]",  endorse: "text-[#241F1C]/72" },
-  ink:     { blade: "#FDF4E4", accent: "#F5A623", text: "text-[#FDF4E4]",  endorse: "text-[#F5A623]" },
-  saffron: { blade: "#FDF4E4", accent: "#F8CE5A", text: "text-[#FDF4E4]",  endorse: "text-[#F8CE5A]" },
-  mono:    { blade: "currentColor", accent: "currentColor", text: "",       endorse: "opacity-70" },
+  cream:   { blade: "var(--color-saffron)",  accent: "var(--color-marigold)", text: "text-ink",     endorse: "text-ink/72" },
+  ink:     { blade: "var(--color-cream)",    accent: "var(--color-marigold)", text: "text-cream",   endorse: "text-marigold" },
+  saffron: { blade: "var(--color-cream)",    accent: "var(--color-turmeric)", text: "text-cream",   endorse: "text-turmeric" },
+  mono:    { blade: "currentColor",          accent: "currentColor",          text: "",              endorse: "opacity-70" },
 };
 
 /** The vel mark alone. `size` is the ink height in px — pass the cap height of the type beside it. */

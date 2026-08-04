@@ -9,15 +9,15 @@ interface BadgeProps {
 
 export const Badge: React.FC<BadgeProps> = ({ children, variant = "cream", className }) => {
   const variantStyles = {
-    cream: "bg-[#FDF4E4] text-[#241F1C]",
-    pressed: "bg-[#B4470F] text-[#FDF4E4]",
-    sand: "bg-[#F6EAD6] text-[#241F1C]",
+    cream: "bg-cream text-ink",
+    pressed: "bg-pressed text-cream",
+    sand: "bg-sand text-ink",
   };
 
   return (
     <span
       className={cn(
-        "inline-block px-2 py-1 font-sans text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-medium leading-none",
+        "inline-block px-2 py-1 font-sans text-[8px] md:text-[9px] uppercase tracking-label font-medium leading-none",
         variantStyles[variant],
         className
       )}

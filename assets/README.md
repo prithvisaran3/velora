@@ -1,24 +1,18 @@
-# VELORA asset kit
+# Velora asset kit — v2
 
-Direction: negative-space vel (2a), flat colour.
+Full-capital vel V, endorsement "by Priya Mahadevan". The old kit is superseded — delete it.
 
-## Colour
-cream #FDF4E4 · saffron #E8621B · marigold #F5A623 · turmeric #F8CE5A (reversed grounds only) · ink #241F1C
+Geometry (viewBox 0 0 120 100, ink fills the box):
+blade M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z
+spine M60 6 L65 14 L60 66 L55 14 Z
+collar M45 82 L75 82 L75 89 L45 89 Z (drop below 20px)
 
-No brown fields, no gradients, no crimson.
+Sizing: mark ink height MUST equal the wordmark cap height (0.75 x font-size), aligned on the baseline.
 
-## Type
-Wordmark: Bodoni Moda, tracking 0.28em, all caps.
-Endorsement: Archivo, tracking 0.34em, caps, ~29% of wordmark cap height.
-Tamil: Anek Tamil.
+Colour: cream #FDF4E4 - saffron #E8621B - marigold #F5A623 - turmeric #F8CE5A (dark grounds only) - ink #241F1C.
+No gradients, no shadows, no outline versions, no stretching. Never recolour the spine separately from the collar.
 
-## Files
-svg/ — vector logos. Lockups use live <text>; install Bodoni Moda, Archivo and Anek Tamil (Google Fonts) or convert text to outlines before sending to a printer.
-png/ — icon and social exports (pure geometry, no font dependency).
-tokens/ — CSS variables and JSON palette for the website build.
+Type: Bodoni Moda (wordmark, .28em), Archivo (endorsement, .34em), Anek Tamil (Tamil).
+Lockup SVGs use live text - install the fonts or outline before print.
 
-## Clear space
-Minimum clear space on all sides = the width of the collar bar (26% of icon width).
-
-## Don't
-No gradients, no shadows, no outline versions, no stretching, no recolouring the spine and collar separately from the blade.
+The words "Bharani Pattu" must not appear on any asset.

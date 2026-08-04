@@ -66,12 +66,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#241F1C]/75 backdrop-blur-sm animate-fade-in">
-      <div className="w-full max-w-[440px] bg-[#FDF4E4] border border-[#241F1C]/20 shadow-2xl p-6 md:p-8 flex flex-col gap-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/75 backdrop-blur-sm animate-fade-in">
+      <div className="w-full max-w-[440px] bg-cream border border-ink/20 shadow-none p-6 md:p-8 flex flex-col gap-6 relative">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-[#241F1C]/60 hover:text-[#241F1C] font-mono text-[16px] p-2"
+          className="absolute top-4 right-4 text-ink/60 hover:text-ink font-mono text-[16px] p-2"
         >
           ✕
         </button>
@@ -82,11 +82,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Tab Selector */}
-        <div className="flex border-b border-[#241F1C]/15">
+        <div className="flex border-b border-ink/15">
           <button
             onClick={() => { setTab("signin"); setErrorMsg(""); }}
             className={`flex-1 py-3 font-sans text-[11px] uppercase tracking-[0.2em] font-medium border-b-2 transition-colors ${
-              tab === "signin" ? "border-[#E8621B] text-[#E8621B]" : "border-transparent text-[#241F1C]/50"
+              tab === "signin" ? "border-saffron text-saffron" : "border-transparent text-ink/50"
             }`}
           >
             SIGN IN
@@ -94,7 +94,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
           <button
             onClick={() => { setTab("signup"); setErrorMsg(""); }}
             className={`flex-1 py-3 font-sans text-[11px] uppercase tracking-[0.2em] font-medium border-b-2 transition-colors ${
-              tab === "signup" ? "border-[#E8621B] text-[#E8621B]" : "border-transparent text-[#241F1C]/50"
+              tab === "signup" ? "border-saffron text-saffron" : "border-transparent text-ink/50"
             }`}
           >
             CREATE ACCOUNT
@@ -105,7 +105,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         <button
           type="button"
           onClick={handleGoogleSignIn}
-          className="w-full bg-white text-[#241F1C] border border-[#241F1C]/25 py-3 font-sans text-[11px] tracking-[0.16em] uppercase font-bold flex items-center justify-center gap-3 hover:border-[#E8621B] transition-colors shadow-sm"
+          className="w-full bg-white text-ink border border-ink/25 py-3 font-sans text-[11px] tracking-[0.16em] uppercase font-bold flex items-center justify-center gap-3 hover:border-saffron transition-colors shadow-none"
         >
           <svg className="w-4 h-4" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -117,15 +117,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         <div className="flex items-center gap-3">
-          <div className="flex-1 h-[1px] bg-[#241F1C]/15" />
-          <span className="font-sans text-[9px] uppercase tracking-widest text-[#241F1C]/40">OR</span>
-          <div className="flex-1 h-[1px] bg-[#241F1C]/15" />
+          <div className="flex-1 h-[1px] bg-ink/15" />
+          <span className="font-sans text-[9px] uppercase tracking-widest text-ink/40">OR</span>
+          <div className="flex-1 h-[1px] bg-ink/15" />
         </div>
 
         {/* Error message alert */}
         {errorMsg && (
-          <div className="bg-[#B4470F]/10 border border-[#B4470F]/30 p-3 text-center">
-            <span className="font-sans text-[11px] text-[#B4470F] font-medium">{errorMsg}</span>
+          <div className="bg-pressed/10 border border-pressed/30 p-3 text-center">
+            <span className="font-sans text-[11px] text-pressed font-medium">{errorMsg}</span>
           </div>
         )}
 
@@ -133,33 +133,33 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         {tab === "signin" && (
           <form onSubmit={handleSignIn} className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
-              <label className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#241F1C]/70">EMAIL ADDRESS</label>
+              <label className="font-sans text-[9px] uppercase tracking-label text-ink/70">EMAIL ADDRESS</label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="customer@example.com"
-                className="w-full border border-[#241F1C]/25 p-3 font-sans text-[12px] bg-transparent text-[#241F1C] focus:outline-none focus:border-[#E8621B]"
+                className="w-full border border-ink/25 p-3 font-sans text-[12px] bg-transparent text-ink focus:outline-none focus:border-saffron"
               />
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#241F1C]/70">PASSWORD</label>
+              <label className="font-sans text-[9px] uppercase tracking-label text-ink/70">PASSWORD</label>
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full border border-[#241F1C]/25 p-3 font-sans text-[12px] bg-transparent text-[#241F1C] focus:outline-none focus:border-[#E8621B]"
+                className="w-full border border-ink/25 p-3 font-sans text-[12px] bg-transparent text-ink focus:outline-none focus:border-saffron"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#E8621B] text-[#FDF4E4] py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-[#B4470F] transition-colors"
+              className="w-full bg-saffron text-cream py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-pressed transition-colors"
             >
               {isSubmitting ? "SIGNING IN..." : "SIGN IN TO STORE"}
             </button>
@@ -170,32 +170,32 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         {tab === "signup" && (
           <form onSubmit={handleSignUp} className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
-              <label className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#241F1C]/70">FULL NAME</label>
+              <label className="font-sans text-[9px] uppercase tracking-label text-ink/70">FULL NAME</label>
               <input
                 type="text"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Ananya Sundaram"
-                className="w-full border border-[#241F1C]/25 p-3 font-sans text-[12px] bg-transparent text-[#241F1C] focus:outline-none focus:border-[#E8621B]"
+                className="w-full border border-ink/25 p-3 font-sans text-[12px] bg-transparent text-ink focus:outline-none focus:border-saffron"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <div className="flex flex-col gap-1">
-                <label className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#241F1C]/70">EMAIL</label>
+                <label className="font-sans text-[9px] uppercase tracking-label text-ink/70">EMAIL</label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="ananya@example.com"
-                  className="w-full border border-[#241F1C]/25 p-3 font-sans text-[12px] bg-transparent text-[#241F1C] focus:outline-none focus:border-[#E8621B]"
+                  className="w-full border border-ink/25 p-3 font-sans text-[12px] bg-transparent text-ink focus:outline-none focus:border-saffron"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#241F1C]/70">MOBILE (10 DIGITS)</label>
+                <label className="font-sans text-[9px] uppercase tracking-label text-ink/70">MOBILE (10 DIGITS)</label>
                 <input
                   type="tel"
                   required
@@ -203,13 +203,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="9876543210"
-                  className="w-full border border-[#241F1C]/25 p-3 font-sans text-[12px] bg-transparent text-[#241F1C] focus:outline-none focus:border-[#E8621B]"
+                  className="w-full border border-ink/25 p-3 font-sans text-[12px] bg-transparent text-ink focus:outline-none focus:border-saffron"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#241F1C]/70">PASSWORD</label>
+              <label className="font-sans text-[9px] uppercase tracking-label text-ink/70">PASSWORD</label>
               <input
                 type="password"
                 required
@@ -217,14 +217,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 6 characters"
-                className="w-full border border-[#241F1C]/25 p-3 font-sans text-[12px] bg-transparent text-[#241F1C] focus:outline-none focus:border-[#E8621B]"
+                className="w-full border border-ink/25 p-3 font-sans text-[12px] bg-transparent text-ink focus:outline-none focus:border-saffron"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#E8621B] text-[#FDF4E4] py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-[#B4470F] transition-colors"
+              className="w-full bg-saffron text-cream py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-pressed transition-colors"
             >
               {isSubmitting ? "CREATING ACCOUNT..." : "CREATE VELORA ACCOUNT"}
             </button>
@@ -232,11 +232,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         )}
 
         {/* GUEST SHOPPING OPTION */}
-        <div className="pt-2 border-t border-[#241F1C]/10 text-center">
+        <div className="pt-2 border-t border-ink/10 text-center">
           <button
             type="button"
             onClick={onClose}
-            className="font-sans text-[10px] tracking-[0.2em] uppercase text-[#241F1C]/65 hover:text-[#E8621B] underline"
+            className="font-sans text-[10px] tracking-label uppercase text-ink/65 hover:text-saffron underline"
           >
             CONTINUE AS GUEST (NO LOGIN REQUIRED)
           </button>

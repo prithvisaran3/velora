@@ -1,3 +1,6 @@
+> Superseded where it conflicts with `BRAND.md` and `3D-MOTION.md` (v2). Brand names and the logo
+> construction in this file were auto-updated; if anything still reads "Bharani", it is a bug — report it.
+
 # Architecture
 
 ## Stack (fixed — do not substitute)

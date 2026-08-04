@@ -3,6 +3,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* ── Brand palette ── */
   --color-cream: #FDF4E4;
   --color-saffron: #E8621B;
   --color-marigold: #F5A623;
@@ -20,17 +21,21 @@
   --color-saree-plum: #6B3FA0;
   --color-saree-kora: #F3EADC;
 
+  /* ── Type ── */
   --font-display: var(--font-bodoni-moda), "Bodoni Moda", Didot, serif;
   --font-sans: var(--font-archivo), "Archivo", Helvetica, sans-serif;
   --font-tamil: var(--font-anek-tamil), "Anek Tamil", sans-serif;
 
+  /* ── Tracking ── */
   --tracking-wordmark: 0.28em;
   --tracking-endorsement: 0.34em;
   --tracking-label: 0.2em;
   --tracking-label-wide: 0.3em;
 
+  /* ── Radii — zero everywhere except circles ── */
   --radius-none: 0px;
 
+  /* ── Motion ── */
   --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-dye: 800ms;
   --duration-wipe: 780ms;
@@ -39,12 +44,33 @@
   --duration-draw: 900ms;
   --duration-hover: 220ms;
   --duration-loupe: 220ms;
+
+  /* ── Spacing ── */
+  --spacing-gutter: 18px;
+  --spacing-gutter-lg: 64px;
+  --spacing-sticky-bar: 96px;
+  --spacing-fab-gutter: 60px;
+
+  /* ── Aspect ratios ── */
+  --aspect-ratio-saree: 3 / 4;
+  --aspect-ratio-tile: 4 / 5;
+
+  /* ── Max widths ── */
+  --max-width-measure: 62ch;
+  --max-width-checkout: 720px;
+  --max-width-media: 840px;
+
+  /* ── Display scale — clamp so mobile is primary, not a scaled-down desktop ── */
+  --font-size-display-xl: clamp(3rem, 7vw, 6.5rem);
+  --font-size-display-lg: clamp(2.5rem, 5vw, 4.75rem);
+  --font-size-display-md: clamp(1.75rem, 3vw, 2.75rem);
+  --font-size-display-sm: clamp(1.25rem, 2vw, 1.375rem);
 }
 
 :root {
   /* set by useColourDye on <html>; defaults to the brand ground */
-  --page-bg: #FDF4E4;
-  --page-fg: #241F1C;
+  --page-bg: var(--color-cream);
+  --page-fg: var(--color-ink);
 }
 
 html {
@@ -64,11 +90,11 @@ body {
 h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
 p { text-wrap: pretty; }
 
-a { color: #E8621B; text-decoration: none; }
-a:hover { color: #B4470F; }
+a { color: var(--color-saffron); text-decoration: none; }
+a:hover { color: var(--color-pressed); }
 
 :focus-visible {
-  outline: 2px solid #F5A623;
+  outline: 2px solid var(--color-marigold);
   outline-offset: 3px;
 }
 
@@ -76,29 +102,29 @@ a:hover { color: #B4470F; }
 .wordmark {
   font-family: var(--font-display);
   text-transform: uppercase;
-  letter-spacing: 0.28em;
-  margin-right: -0.28em;
+  letter-spacing: var(--tracking-wordmark);
+  margin-right: calc(var(--tracking-wordmark) * -1);
   line-height: 0.82;
 }
 .endorsement {
   font-family: var(--font-sans);
   text-transform: uppercase;
-  letter-spacing: 0.34em;
-  margin-right: -0.34em;
+  letter-spacing: var(--tracking-endorsement);
+  margin-right: calc(var(--tracking-endorsement) * -1);
 }
 
 /* Zari weave — used by the tracking stepper and the hangtag rule. */
 .zari-weave {
-  background-image: repeating-linear-gradient(90deg, #F5A623 0 7px, #F8CE5A 7px 14px);
+  background-image: repeating-linear-gradient(90deg, var(--color-marigold) 0 7px, var(--color-turmeric) 7px 14px);
 }
 .zari-weave-vertical {
-  background-image: repeating-linear-gradient(180deg, #F5A623 0 7px, #F8CE5A 7px 14px);
+  background-image: repeating-linear-gradient(180deg, var(--color-marigold) 0 7px, var(--color-turmeric) 7px 14px);
 }
 
 /* Temple hairline divider. */
 .rule-temple {
   height: 1px;
-  background-image: linear-gradient(90deg, transparent, #F5A623 12%, #F5A623 88%, transparent);
+  background-image: linear-gradient(90deg, transparent, var(--color-marigold) 12%, var(--color-marigold) 88%, transparent);
 }
 
 /* Placeholder ground for imagery that has not shipped yet. */

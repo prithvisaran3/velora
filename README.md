@@ -1,70 +1,33 @@
-# Velora — developer handoff
+# Velora — revamp handoff for Claude Code
 
-Everything needed to build the Velora storefront (velora.in) from the approved design.
-Read this file first, then `prompts/00-KICKSTART.md`.
+Existing repo: https://github.com/prithvisaran3/velora · live: https://velora-saree.vercel.app
 
-## What Velora is
-
-A saree label launched by **Bharani Pattu Centre**, a family silk house in Erode, Tamil Nadu, trading since 1978.
-Handpicked sarees, single price point **₹3,000**, women 25–45, India-only shipping.
-Positioning: Kanakavalli's taste at Pothys' price. Editorial, unhurried, tactile — a well-lit heritage showroom, not a marketplace.
-
-Endorsement line **"by Bharani Pattu"** appears under the logo in the header and the footer. Always.
-
-## What is in this bundle
+Start here: **CLAUDE.md** (put it at the repo root), then work `prompts/P0 → P4` in order.
 
 ```
-README.md                  ← you are here
-docs/ARCHITECTURE.md       stack, MVVM layering, folder structure, data model, integrations, AI-readiness
-docs/DESIGN-SPEC.md        exact tokens, type scale, every screen, every component, motion + perf budget
-docs/PHASES.md             the five delivery phases and their acceptance criteria
-prompts/00-KICKSTART.md    paste this into Cursor first — project constitution
-prompts/PHASE-1-UI.md      … through PHASE-5-TRACKING.md, one prompt per phase, in order
-code/                      drop-in config: tailwind tokens, globals.css, domain types, motion constants,
-                           .cursorrules, package.json dependency list, env.example
-design/                    the approved designs as HTML (open in a browser)
-assets/                    logo kit: SVG, PNG, favicons, Instagram avatar, brand tokens
+CLAUDE.md                            project constitution — hard rules, architecture, working agreement
+docs/BRAND.md                        palette, capital-V geometry + sizing rule, endorsement, Our Story copy
+docs/3D-MOTION.md                    the six 3D moments: technique, placement, fallback, frame budget
+docs/REVAMP-PLAN.md                  five phases with acceptance criteria
+docs/DESIGN-SPEC.md                  every screen and component, measured (auto-updated to v2 brand)
+docs/ARCHITECTURE.md                 MVVM layering, Firestore model, integrations, AI-readiness
+prompts/P0-DEBRAND.md                remove the old house name + annotations that shipped as copy
+prompts/P1-CHROME.md                 tokens, primitives, all seven screens, content out of JSX
+prompts/P2-3D.md                     the 3D layer, one moment per PR
+prompts/P3-P4-COMMERCE-TRACKING.md   images, single-unit truth, payments, tracking, admin, hardening
+code/                                drop-in: globals.css, tailwind.config.ts, lib/motion.ts (+3D constants),
+                                     view/Wordmark.tsx, three/tier.ts, three/materials/silk.ts,
+                                     types/domain.ts, scripts/check-brand.sh, package.json, env.example
+design/Velora Website v2.dc.html     the approved design — open in a browser (keep support.js beside it)
+design/Velora Direction v3.dc.html   logo before/after, palette study, Our Story rationale
+assets/                              regenerated logo kit: capital V, "by Priya Mahadevan"
 ```
 
-## About the design files
+## The three things that matter most
 
-`design/*.dc.html` are **design references built in HTML** — they show the intended look, layout, copy and motion.
-They are **not** production code and must not be copied into the app. Recreate them in Next.js + Tailwind
-using the patterns in `docs/ARCHITECTURE.md`.
+1. **"Bharani Pattu" appears nowhere.** `code/scripts/check-brand.sh` fails the build if it does — wire it into CI in P0.
+2. **The V is a full capital**, ink height == wordmark cap height, baseline-aligned. One `Wordmark` component, everywhere.
+3. **3D never delays the first product image.** One WebGL context created after LCP, poster twin for every scene,
+   device tiering, and `prefers-reduced-motion` means no canvas at all.
 
-Open them by double-clicking; `support.js` must stay next to them.
-
-| File | Contains |
-| --- | --- |
-| `design/Velora Website.dc.html` | Desktop D1–D7 (Home, Shop by Colour, Shop by Occasion, PDP, Our Story, Cart/Checkout, Tracking), Mobile M1–M6, loader/transition frames, component sheet |
-| `design/Velora Brand Kit.dc.html` | Final logo system, lockups, favicon proofs, hangtag, Instagram, web header/product-card treatment |
-| `design/Velora Identity.dc.html` | Identity exploration that led to the final mark — background only, do not build from it |
-
-## Fidelity
-
-**High fidelity.** Colours, type sizes, tracking, spacing and copy in the design files are final and should be
-matched. Where the design shows a striped placeholder with a monospace label ("saree product shot",
-"3s drape loop", "hero video"), that is real content the client will supply — build the component, use a
-placeholder image of the same aspect ratio meanwhile.
-
-## Non-negotiables
-
-1. Palette is cream / saffron / marigold / turmeric / ink. **No wine, no crimson, no brown fields, no gradients on the logo.**
-   Deep saree hues (maroon, peacock, indigo, plum, leaf) appear **only** as product colour on Shop by Colour.
-2. Motion easing is `cubic-bezier(0.16, 1, 0.3, 1)`, durations 600–900ms. Nothing bounces, nothing springs.
-3. **Mobile is the primary design.** 70%+ of traffic is Instagram on mid-range Android.
-4. No animation may delay the first product image. LCP < 2.5s on 4G, or the moment gets cut.
-5. `prefers-reduced-motion` is respected everywhere.
-6. No upsells, no countdown timers, no fake scarcity. "Only one in stock" is true — every saree is a single unit.
-7. UPI is the first and default payment method, above cards.
-
-## Build order (do not reorder)
-
-1. **Phase 1 — UI.** Every screen, static data, all motion. No backend.
-2. **Phase 2 — Backend.** Firestore data layer, repositories, server actions, admin PWA.
-3. **Phase 3 — Integration.** Wire the UI to real data; ImageKit; Resend; SEO.
-4. **Phase 4 — Payments.** Razorpay UPI-first, webhook verification, order creation.
-5. **Phase 5 — Order tracking.** Shiprocket AWB, status sync, zari-thread stepper on real data.
-
-Business sequence, in parallel with the build: Instagram + WhatsApp Business catalogue go live **before** the
-website. The site is the credibility layer that converts reel traffic, not the thing sales depend on.
+Design files are HTML **references**, not source. Recreate them in the repo's Next.js + Tailwind — never copy the markup.

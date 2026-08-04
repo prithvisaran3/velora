@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\(src|app\\)$\")",
+      "Bash(bash scripts/check-brand.sh)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(npx tsc:*)",
+      "Bash(ls /Users/prithvisaran/StudioProjects/velora/public/*.jpeg)",
+      "Bash(ls /Users/prithvisaran/StudioProjects/velora/public/*.jpg)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npx vercel:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

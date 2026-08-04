@@ -46,18 +46,18 @@ export default function AdminOffersPage() {
   };
 
   return (
-    <div className="max-w-[600px] mx-auto px-4 py-6 flex flex-col gap-6 min-h-screen bg-[#FDF4E4]">
+    <div className="max-w-[600px] mx-auto px-4 py-6 flex flex-col gap-6 min-h-screen bg-cream">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-[#241F1C]/15 pb-4">
-        <Link href="/admin" className="font-sans text-[12px] uppercase tracking-widest text-[#E8621B]">
+      <div className="flex items-center justify-between border-b border-ink/15 pb-4">
+        <Link href="/admin" className="font-sans text-[12px] uppercase tracking-widest text-saffron">
           ← Back to Orders
         </Link>
         <span className="font-display text-[20px] text-ink">Create Offer / Coupon</span>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div className="bg-white p-4 border border-[#241F1C]/15 flex flex-col gap-3">
-          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+        <div className="bg-white p-4 border border-ink/15 flex flex-col gap-3">
+          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             1. PROMO CODE / கூப்பன் குறியீடு
           </span>
           <Field
@@ -69,16 +69,16 @@ export default function AdminOffersPage() {
           />
         </div>
 
-        <div className="bg-white p-4 border border-[#241F1C]/15 flex flex-col gap-3">
-          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+        <div className="bg-white p-4 border border-ink/15 flex flex-col gap-3">
+          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             2. OFFER TITLE / தலைப்பு
           </span>
           <Field label="TITLE (ENGLISH)" required value={titleEn} onChange={(e) => setTitleEn(e.target.value)} />
           <Field label="TITLE (TAMIL / தமிழ்)" required value={titleTa} onChange={(e) => setTitleTa(e.target.value)} />
         </div>
 
-        <div className="bg-white p-4 border border-[#241F1C]/15 flex flex-col gap-3">
-          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+        <div className="bg-white p-4 border border-ink/15 flex flex-col gap-3">
+          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             3. DISCOUNT VALUE / தள்ளுபடி விவரம்
           </span>
           <div className="flex gap-3">
@@ -86,7 +86,7 @@ export default function AdminOffersPage() {
               type="button"
               onClick={() => setDiscountType("percentage")}
               className={`flex-1 py-3 font-sans text-[11px] uppercase tracking-wider border ${
-                discountType === "percentage" ? "bg-[#E8621B] text-[#FDF4E4] border-[#E8621B]" : "border-[#241F1C]/30 text-ink"
+                discountType === "percentage" ? "bg-saffron text-cream border-saffron" : "border-ink/30 text-ink hover:border-saffron"
               }`}
             >
               Percentage (%)
@@ -95,7 +95,7 @@ export default function AdminOffersPage() {
               type="button"
               onClick={() => setDiscountType("fixed_paise")}
               className={`flex-1 py-3 font-sans text-[11px] uppercase tracking-wider border ${
-                discountType === "fixed_paise" ? "bg-[#E8621B] text-[#FDF4E4] border-[#E8621B]" : "border-[#241F1C]/30 text-ink"
+                discountType === "fixed_paise" ? "bg-saffron text-cream border-saffron" : "border-ink/30 text-ink hover:border-saffron"
               }`}
             >
               Flat Amount (₹)

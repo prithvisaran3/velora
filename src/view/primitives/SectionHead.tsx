@@ -26,7 +26,7 @@ export const SectionHead: React.FC<SectionHeadProps> = ({
         {children}
       </h2>
       {subtitle && (
-        <p className="font-sans text-[13px] md:text-[15px] text-[#241F1C]/78 max-w-[62ch]">
+        <p className="font-sans text-[13px] md:text-[15px] text-ink/78 max-w-measure">
           {subtitle}
         </p>
       )}

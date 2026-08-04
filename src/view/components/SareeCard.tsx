@@ -57,7 +57,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
     >
       <Link
         href={`/saree/${saree.slug}`}
-        className="block relative aspect-[3/4] overflow-hidden border border-[#241F1C]/10 bg-[#F6EAD6]"
+        className="block relative aspect-saree overflow-hidden border border-ink/10 bg-sand"
       >
         {/* Real Image or Woven Silk Backdrop Fallback */}
         {isRealFirstImg ? (
@@ -70,7 +70,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
             onError={() => setImgError(true)}
             sizes="(max-width: 768px) 50vw, 25vw"
             className={cn(
-              "object-cover transition-opacity duration-600 ease-silk",
+              "object-cover transition-opacity duration-crossfade ease-silk",
               showDraped ? "opacity-0" : "opacity-100"
             )}
           />
@@ -78,23 +78,23 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
           <div
             className="absolute inset-0 flex flex-col justify-between p-4"
             style={{
-              background: `linear-gradient(135deg, ${saree.colour.hex || "#8C1F3D"} 0%, #241F1C 100%)`,
+              background: `linear-gradient(135deg, ${saree.colour.hex || "var(--color-saree-maroon)"} 0%, var(--color-ink) 100%)`,
             }}
           >
             <div className="flex justify-between items-start">
-              <span className="font-display text-[14px] text-[#FDF4E4] tracking-[0.2em] uppercase opacity-90">
+              <span className="font-display text-[14px] text-cream tracking-label uppercase opacity-90">
                 VELORA
               </span>
-              <div className="w-6 h-6 border border-[#F5A623] rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[#F5A623]" />
+              <div className="w-6 h-6 border border-marigold rounded-full flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-marigold" />
               </div>
             </div>
 
-            <div className="flex flex-col gap-1 border-t border-[#F5A623]/40 pt-3">
-              <span className="font-display text-[16px] text-[#FDF4E4] leading-tight">
+            <div className="flex flex-col gap-1 border-t border-marigold/40 pt-3">
+              <span className="font-display text-[16px] text-cream leading-tight">
                 {saree.title.en}
               </span>
-              <span className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#F5A623]">
+              <span className="font-sans text-[9px] tracking-label uppercase text-marigold">
                 {saree.colour.label.en} · PATTU SAREE
               </span>
             </div>
@@ -110,7 +110,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
             unoptimized={secondImg.startsWith("data:")}
             sizes="(max-width: 768px) 50vw, 25vw"
             className={cn(
-              "object-cover transition-opacity duration-600 ease-silk absolute inset-0",
+              "object-cover transition-opacity duration-crossfade ease-silk absolute inset-0",
               showDraped ? "opacity-100" : "opacity-0"
             )}
           />
@@ -124,19 +124,19 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
       </Link>
 
       <div className="flex flex-col gap-1">
-        <Link href={`/saree/${saree.slug}`} className="group-hover:text-[#E8621B] transition-colors">
+        <Link href={`/saree/${saree.slug}`} className="group-hover:text-saffron transition-colors">
           <h3 className="font-display text-[19px] text-ink font-normal line-clamp-1">
             {saree.title.en}
           </h3>
         </Link>
 
-        <div className="flex items-center justify-between text-[11px] font-sans text-[#241F1C]/70">
+        <div className="flex items-center justify-between text-[11px] font-sans text-ink/70">
           <span>{saree.fabric}</span>
-          <Price amountInPaise={saree.priceInPaise} className="font-sans text-[11px] text-[#241F1C]/80" />
+          <Price amountInPaise={saree.priceInPaise} className="font-sans text-[11px] text-ink/80" />
         </div>
 
         {isOnlyOneInStock && !isSoldOut && (
-          <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#B4470F] font-medium mt-0.5">
+          <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-pressed font-medium mt-0.5">
             ONLY ONE IN STOCK
           </span>
         )}

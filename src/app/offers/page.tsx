@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/view/primitives/Button";
 import { container } from "@/infrastructure/container";
+import { UI } from "@/content/ui";
 
 export default async function OffersPage() {
   const activeOffers = await container.offerRepository.listActive();
@@ -36,16 +37,16 @@ export default async function OffersPage() {
   const offersToDisplay = activeOffers.length > 0 ? activeOffers : fallbackOffers;
 
   return (
-    <div className="w-full bg-[#FDF4E4] min-h-screen flex flex-col">
+    <div className="w-full bg-cream min-h-screen flex flex-col">
       {/* Header */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-[64px] py-14 flex flex-col gap-4 text-center md:text-left">
-        <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#B4470F] font-medium">
+        <span className="font-sans text-[11px] tracking-label-wide uppercase text-pressed font-medium">
           CURATED SAVINGS · VELORA
         </span>
-        <h1 className="font-display text-[48px] md:text-[72px] leading-[0.98] text-[#241F1C]">
+        <h1 className="font-display text-[48px] md:text-[72px] leading-[0.98] text-ink">
           Offers & Festivities
         </h1>
-        <p className="font-sans text-[15px] leading-[1.75] text-[#241F1C]/78 max-w-[620px]">
+        <p className="font-sans text-[15px] leading-[1.75] text-ink/78 max-w-[620px]">
           Direct prices from our family shop in Erode, with special festive vouchers and complimentary gifts on handpicked modern sarees.
         </p>
       </div>
@@ -53,31 +54,31 @@ export default async function OffersPage() {
       {/* Offers Grid */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-[64px] pb-16 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
         {offersToDisplay.map((offer: any) => (
-          <div key={offer.id} className="bg-white border border-[#241F1C]/15 p-8 flex flex-col justify-between gap-6 shadow-sm">
+          <div key={offer.id} className="bg-white border border-ink/15 p-8 flex flex-col justify-between gap-6 shadow-none">
             <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between border-b border-[#241F1C]/10 pb-3">
-                <span className="font-mono text-[14px] font-bold text-[#E8621B] bg-[#FBEEDF] px-3 py-1 border border-[#E8621B]/30">
+              <div className="flex items-center justify-between border-b border-ink/10 pb-3">
+                <span className="font-mono text-[14px] font-bold text-saffron bg-saffron/10 px-3 py-1 border border-saffron/30">
                   CODE: {offer.code}
                 </span>
-                <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#241F1C]/55">
+                <span className="font-sans text-[10px] tracking-label uppercase text-ink/55">
                   VALID UNTIL {new Date(offer.validUntil).toLocaleDateString("en-IN")}
                 </span>
               </div>
 
-              <h2 className="font-display text-[28px] text-[#241F1C] mt-2">
+              <h2 className="font-display text-[28px] text-ink mt-2">
                 {offer.title.en}
               </h2>
-              <div className="font-tamil text-[16px] text-[#241F1C]/75">
+              <div className="font-tamil text-[16px] text-ink/75">
                 {offer.title.ta}
               </div>
 
-              <p className="font-sans text-[14px] leading-[1.7] text-[#241F1C]/80 mt-1">
+              <p className="font-sans text-[14px] leading-[1.7] text-ink/80 mt-1">
                 {offer.description.en}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#241F1C]/10">
-              <span className="font-sans text-[11px] tracking-[0.16em] uppercase text-[#B4470F] font-medium">
+            <div className="flex items-center justify-between pt-4 border-t border-ink/10">
+              <span className="font-sans text-[11px] tracking-label uppercase text-pressed font-medium">
                 APPLY AT CHECKOUT
               </span>
               <Link href="/colour/maroon">

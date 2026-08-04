@@ -6,6 +6,8 @@ import { Footer } from "@/view/layout/Footer";
 import { WhatsAppFab } from "@/view/layout/WhatsAppFab";
 import { VelLoader } from "@/view/motion/VelLoader";
 import { CartProvider } from "@/viewmodel/client/useCart";
+import { PageTransition } from "@/view/motion/PageTransition";
+import { Analytics } from "@vercel/analytics/react";
 
 const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
@@ -29,6 +31,22 @@ export const metadata: Metadata = {
   title: "Velora · Handpicked Silk Sarees from Erode",
   description:
     "Handpicked pure silk sarees, curated in Erode by Priya Mahadevan. India-only free shipping.",
+  openGraph: {
+    title: "Velora · Handpicked Silk Sarees from Erode",
+    description: "Handpicked pure silk sarees, curated in Erode by Priya Mahadevan. India-only free shipping.",
+    url: "https://velora-saree.vercel.app",
+    siteName: "Velora",
+    images: [
+      {
+        url: "https://velora-saree.vercel.app/brand/png/icon-flat-512.png",
+        width: 512,
+        height: 512,
+        alt: "Velora Silk Logo",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -41,13 +59,16 @@ export default function RootLayout({
       lang="en"
       className={`${bodoniModa.variable} ${archivo.variable} ${anekTamil.variable}`}
     >
-      <body className="antialiased bg-[#FDF4E4] text-[#241F1C] min-h-screen flex flex-col justify-between">
+      <body className="antialiased bg-cream text-ink min-h-screen flex flex-col justify-between">
         <CartProvider>
           <VelLoader />
           <Header />
-          <main className="flex-grow">{children}</main>
+          <PageTransition>
+            <main className="flex-grow">{children}</main>
+          </PageTransition>
           <Footer />
           <WhatsAppFab />
+          <Analytics />
         </CartProvider>
       </body>
     </html>

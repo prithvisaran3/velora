@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Badge } from "@/view/primitives/Badge";
 import { Price } from "@/view/primitives/Price";
@@ -40,26 +40,26 @@ export default function AdminPaymentsPage() {
     .reduce((sum, p) => sum + p.amountInPaise, 0);
 
   return (
-    <div className="max-w-[600px] mx-auto px-4 py-6 flex flex-col gap-6 min-h-screen bg-[#FDF4E4]">
+    <div className="max-w-[600px] mx-auto px-4 py-6 flex flex-col gap-6 min-h-screen bg-cream">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-[#241F1C]/15 pb-4">
-        <Link href="/admin" className="font-sans text-[12px] uppercase tracking-widest text-[#E8621B]">
+      <div className="flex items-center justify-between border-b border-ink/15 pb-4">
+        <Link href="/admin" className="font-sans text-[12px] uppercase tracking-widest text-saffron">
           ← Back to Orders
         </Link>
         <span className="font-display text-[20px] text-ink">Payment History</span>
       </div>
 
       {/* Revenue Card */}
-      <div className="bg-[#241F1C] text-[#FDF4E4] p-5 flex items-center justify-between shadow-sm">
+      <div className="bg-ink text-cream p-5 flex items-center justify-between shadow-none">
         <div className="flex flex-col gap-1">
-          <span className="font-sans text-[10px] tracking-[0.24em] uppercase text-[#F5A623]">
+          <span className="font-sans text-[10px] tracking-[0.24em] uppercase text-marigold">
             CAPTURED PAYMENTS
           </span>
-          <span className="font-display text-[32px] text-[#FDF4E4]">
+          <span className="font-display text-[32px] text-cream">
             ₹{(totalRevenuePaise / 100).toLocaleString("en-IN")}
           </span>
         </div>
-        <span className="font-sans text-[11px] text-[#FDF4E4]/70">
+        <span className="font-sans text-[11px] text-cream/70">
           {payments.length} Transactions
         </span>
       </div>
@@ -69,9 +69,9 @@ export default function AdminPaymentsPage() {
         <h2 className="font-display text-[18px] text-ink">Transaction History Log</h2>
 
         {payments.map((record) => (
-          <div key={record.id} className="bg-white border border-[#241F1C]/15 p-4 flex flex-col gap-3">
+          <div key={record.id} className="bg-white border border-ink/15 p-4 flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="font-sans text-[13px] font-bold text-[#E8621B]">
+              <span className="font-sans text-[13px] font-bold text-saffron">
                 {record.orderReference}
               </span>
               <Badge variant={record.status === "captured" ? "pressed" : "cream"}>
@@ -86,7 +86,7 @@ export default function AdminPaymentsPage() {
               <Price amountInPaise={record.amountInPaise} className="text-[16px] font-medium" />
             </div>
 
-            <div className="flex flex-col font-mono text-[11px] text-[#241F1C]/65 border-t border-[#241F1C]/10 pt-2 gap-1">
+            <div className="flex flex-col font-mono text-[11px] text-ink/65 border-t border-ink/10 pt-2 gap-1">
               {record.gatewayPaymentId && (
                 <span>Gateway ID: {record.gatewayPaymentId}</span>
               )}

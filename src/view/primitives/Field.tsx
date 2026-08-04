@@ -13,20 +13,20 @@ export const Field = React.forwardRef<HTMLInputElement, FieldProps>(
   ({ label, error, isAutofilled, className, ...props }, ref) => {
     return (
       <div className="flex flex-col gap-1 w-full">
-        <label className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#241F1C]/55">
+        <label className="font-sans text-[10px] uppercase tracking-label-wide text-ink/55">
           {label}
         </label>
         <input
           ref={ref}
           className={cn(
-            "w-full h-[48px] px-[16px] font-sans text-[13px] text-[#241F1C] border border-[#241F1C]/30 bg-transparent transition-colors focus:outline-none focus:border-[#E8621B]",
-            isAutofilled && "bg-[#F6EAD6] border-[#241F1C]/15",
-            error && "border-[#B4470F]",
+            "w-full h-12 px-4 font-sans text-[13px] text-ink border border-ink/30 bg-transparent transition-colors focus:outline-none focus:border-saffron",
+            isAutofilled && "bg-sand border-ink/15",
+            error && "border-pressed",
             className
           )}
           {...props}
         />
-        {error && <span className="font-sans text-[11px] text-[#B4470F] mt-0.5">{error}</span>}
+        {error && <span className="font-sans text-[11px] text-pressed mt-0.5">{error}</span>}
       </div>
     );
   }

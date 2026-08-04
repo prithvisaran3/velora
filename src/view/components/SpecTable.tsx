@@ -16,14 +16,14 @@ export const SpecTable: React.FC<SpecTableProps> = ({ saree }) => {
   ];
 
   return (
-    <div className="w-full border-t border-b border-[#241F1C]/12 py-4 my-4">
+    <div className="w-full border-t border-b border-ink/12 py-4 my-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8">
         {specs.map((spec, idx) => (
           <div key={idx} className="flex flex-col">
-            <span className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#241F1C]/55">
+            <span className="font-sans text-[11px] uppercase tracking-[0.16em] text-ink/55">
               {spec.label}
             </span>
-            <span className="font-sans text-[13px] text-[#241F1C] font-normal">
+            <span className="font-sans text-[13px] text-ink font-normal">
               {spec.value}
             </span>
           </div>

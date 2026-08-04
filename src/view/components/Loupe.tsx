@@ -43,7 +43,7 @@ export const Loupe: React.FC<LoupeProps> = ({ src, alt, className }) => {
       {/* Desktop 250px Magnifier Lens */}
       {isActive && (
         <div
-          className="hidden md:block absolute w-[250px] h-[250px] rounded-full border-2 border-[#F5A623] pointer-events-none z-20 transition-all duration-[220ms] ease-silk shadow-lg overflow-hidden"
+          className="hidden md:block absolute w-[250px] h-[250px] rounded-full border-2 border-marigold pointer-events-none z-20 transition-all duration-loupe ease-silk shadow-none overflow-hidden"
           style={{
             left: `${pos.x - 125}px`,
             top: `${pos.y - 125}px`,

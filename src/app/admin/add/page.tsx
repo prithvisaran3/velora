@@ -49,53 +49,62 @@ export default function AdminAddProductPage() {
     }
   };
 
-  // Image Upload with Client Compression
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Image Upload with Client Compression to Firebase Storage
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
 
     setIsCompressing(true);
     const newUrls: string[] = [];
-    let processedCount = 0;
 
-    Array.from(files).forEach((file) => {
+    // Dynamically import Firebase to keep initial bundle small
+    const { storage } = await import("@/infrastructure/firebase/client");
+    const { ref, uploadString, getDownloadURL } = await import("firebase/storage");
+
+    for (const file of Array.from(files)) {
       const reader = new FileReader();
-      reader.onload = (event) => {
-        const img = new window.Image();
-        img.onload = () => {
-          const canvas = document.createElement("canvas");
-          const maxDim = 2000;
-          let width = img.width;
-          let height = img.height;
+      const dataUrl = await new Promise<string>((resolve) => {
+        reader.onload = (event) => {
+          const img = new window.Image();
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            const maxDim = 2000;
+            let width = img.width;
+            let height = img.height;
 
-          if (width > maxDim || height > maxDim) {
-            if (width > height) {
-              height = Math.round((height * maxDim) / width);
-              width = maxDim;
-            } else {
-              width = Math.round((width * maxDim) / height);
-              height = maxDim;
+            if (width > maxDim || height > maxDim) {
+              if (width > height) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              } else {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
+              }
             }
-          }
 
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext("2d");
-          ctx?.drawImage(img, 0, 0, width, height);
-
-          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
-          newUrls.push(compressedDataUrl);
-          processedCount++;
-
-          if (processedCount === files.length) {
-            setImageUrls((prev) => [...prev, ...newUrls]);
-            setIsCompressing(false);
-          }
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx?.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL("image/jpeg", 0.85));
+          };
+          img.src = event.target?.result as string;
         };
-        img.src = event.target?.result as string;
-      };
-      reader.readAsDataURL(file);
-    });
+        reader.readAsDataURL(file);
+      });
+
+      try {
+        const fileRef = ref(storage, `sarees/uploads/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9]/g, "_")}.jpg`);
+        await uploadString(fileRef, dataUrl, "data_url");
+        const downloadUrl = await getDownloadURL(fileRef);
+        newUrls.push(downloadUrl);
+      } catch (error) {
+        console.error("Failed to upload image to Firebase Storage:", error);
+      }
+    }
+
+    setImageUrls((prev) => [...prev, ...newUrls]);
+    setIsCompressing(false);
   };
 
   const handleAddPastedUrl = (e: React.FormEvent) => {
@@ -174,17 +183,17 @@ export default function AdminAddProductPage() {
   ][];
 
   return (
-    <div className="max-w-[600px] mx-auto px-4 py-6 flex flex-col gap-6 min-h-screen bg-[#FDF4E4]">
+    <div className="max-w-[600px] mx-auto px-4 py-6 flex flex-col gap-6 min-h-screen bg-cream">
       {/* Admin Header */}
-      <div className="flex items-center justify-between border-b border-[#241F1C]/15 pb-4">
-        <Link href="/admin" className="font-sans text-[12px] uppercase tracking-widest text-[#E8621B]">
+      <div className="flex items-center justify-between border-b border-ink/15 pb-4">
+        <Link href="/admin" className="font-sans text-[12px] uppercase tracking-widest text-saffron">
           ← Back to Orders
         </Link>
         <span className="font-display text-[20px] text-ink">Add New Saree</span>
       </div>
 
       {/* Single-tap "Duplicate Last Product" Button */}
-      <div className="bg-[#E8621B] text-[#FDF4E4] p-4 flex items-center justify-between shadow-sm">
+      <div className="bg-saffron text-cream p-4 flex items-center justify-between shadow-none">
         <div className="flex flex-col">
           <span className="font-sans text-[12px] font-medium uppercase tracking-wider">
             DUPLICATE LAST PRODUCT
@@ -196,7 +205,7 @@ export default function AdminAddProductPage() {
         <button
           type="button"
           onClick={handleDuplicateLast}
-          className="bg-[#FDF4E4] text-[#B4470F] font-sans text-[10px] uppercase tracking-wider px-3 py-2 font-bold"
+          className="bg-cream text-pressed font-sans text-[10px] uppercase tracking-wider px-3 py-2 font-bold hover:bg-cream/90"
         >
           DUPLICATE
         </button>
@@ -204,8 +213,8 @@ export default function AdminAddProductPage() {
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         {/* Titles & Dynamic Price Input */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-[#241F1C]/15">
-          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             1. TITLE & PRICE / பெயர் மற்றும் விலை
           </span>
           <Field
@@ -233,8 +242,8 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Swatch Colour Picker */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-[#241F1C]/15">
-          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             2. COLOUR / நிறம்
           </span>
           <div className="flex items-center gap-3 overflow-x-auto py-2 no-scrollbar">
@@ -252,8 +261,8 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Occasion Chips */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-[#241F1C]/15">
-          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             3. OCCASION (MULTI-SELECT)
           </span>
           <div className="flex flex-wrap gap-2">
@@ -265,7 +274,7 @@ export default function AdminAddProductPage() {
                   type="button"
                   onClick={() => toggleOccasion(key)}
                   className={`px-3 py-2 font-sans text-[11px] uppercase tracking-wider border transition-colors ${
-                    isSelected ? "bg-[#E8621B] text-[#FDF4E4] border-[#E8621B]" : "border-[#241F1C]/30 text-ink"
+                    isSelected ? "bg-saffron text-cream border-saffron" : "border-ink/30 text-ink"
                   }`}
                 >
                   {data.title.en}
@@ -276,8 +285,8 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Specs */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-[#241F1C]/15">
-          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+          <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             4. SPECIFICATIONS
           </span>
           <Field label="FABRIC" required value={fabric} onChange={(e) => setFabric(e.target.value)} />
@@ -293,20 +302,20 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Section 5: PRODUCT PHOTOS / புகைப்படங்கள் */}
-        <div className="flex flex-col gap-4 bg-white p-4 border border-[#241F1C]/15">
+        <div className="flex flex-col gap-4 bg-white p-4 border border-ink/15">
           <div className="flex items-center justify-between">
-            <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+            <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
               5. PRODUCT PHOTOS / புகைப்படங்கள் ({imageUrls.length})
             </span>
-            {isCompressing && <span className="font-sans text-[10px] text-[#B4470F] animate-pulse">Compressing photos...</span>}
+            {isCompressing && <span className="font-sans text-[10px] text-pressed animate-pulse">Compressing photos...</span>}
           </div>
 
           {/* Mobile Camera / Multi-Upload File Input */}
-          <label className="flex flex-col items-center justify-center border-2 border-dashed border-[#E8621B]/40 hover:border-[#E8621B] bg-[#FBEEDF]/50 p-6 text-center cursor-pointer transition-colors">
-            <span className="font-sans text-[13px] font-bold text-[#E8621B]">
+          <label className="flex flex-col items-center justify-center border-2 border-dashed border-saffron/40 hover:border-saffron bg-saffron/10 p-6 text-center cursor-pointer transition-colors">
+            <span className="font-sans text-[13px] font-bold text-saffron">
               📸 TAKE PHOTO OR SELECT IMAGES
             </span>
-            <span className="font-sans text-[10px] text-[#241F1C]/65 mt-1">
+            <span className="font-sans text-[10px] text-ink/65 mt-1">
               Select multiple photos from camera or gallery (JPEG/PNG)
             </span>
             <input
@@ -319,18 +328,18 @@ export default function AdminAddProductPage() {
           </label>
 
           {/* Paste Image URL Fallback */}
-          <div className="flex gap-2 pt-1 border-t border-[#241F1C]/10">
+          <div className="flex gap-2 pt-1 border-t border-ink/10">
             <input
               type="url"
               value={pastedUrl}
               onChange={(e) => setPastedUrl(e.target.value)}
               placeholder="Or paste image URL (https://...)"
-              className="flex-1 border border-[#241F1C]/25 p-2 font-sans text-[11px] bg-transparent focus:outline-none focus:border-[#E8621B]"
+              className="flex-1 border border-ink/25 p-2 font-sans text-[11px] bg-transparent focus:outline-none focus:border-saffron"
             />
             <button
               type="button"
               onClick={handleAddPastedUrl}
-              className="bg-[#241F1C] text-[#FDF4E4] px-4 font-sans text-[10px] uppercase tracking-wider"
+              className="bg-ink text-cream px-4 font-sans text-[10px] uppercase tracking-wider hover:bg-ink/90 transition-colors"
             >
               ADD URL
             </button>
@@ -340,11 +349,11 @@ export default function AdminAddProductPage() {
           {imageUrls.length > 0 && (
             <div className="grid grid-cols-2 gap-3 pt-2">
               {imageUrls.map((url, idx) => (
-                <div key={idx} className="relative aspect-[3/4] border border-[#241F1C]/20 bg-[#FDF4E4] overflow-hidden group">
+                <div key={idx} className="relative aspect-[3/4] border border-ink/20 bg-cream overflow-hidden group">
                   <Image src={url} alt={`Upload preview ${idx + 1}`} fill className="object-cover" />
                   
                   {/* Photo Order Badge */}
-                  <div className="absolute top-1.5 left-1.5 bg-[#241F1C]/85 text-[#FDF4E4] text-[9px] font-sans px-1.5 py-0.5 tracking-wider uppercase">
+                  <div className="absolute top-1.5 left-1.5 bg-ink/85 text-cream text-[9px] font-sans px-1.5 py-0.5 tracking-wider uppercase">
                     {idx === 0 ? "1. FLAT-LAY / MAIN" : idx === 1 ? "2. DRAPED VIEW" : `${idx + 1}. DETAIL`}
                   </div>
 
@@ -352,7 +361,7 @@ export default function AdminAddProductPage() {
                   <button
                     type="button"
                     onClick={() => handleRemoveImage(idx)}
-                    className="absolute top-1.5 right-1.5 bg-[#B4470F] text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-[11px] shadow-md hover:scale-110 transition-transform"
+                    className="absolute top-1.5 right-1.5 bg-pressed text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-[11px] shadow-none hover:scale-110 transition-transform"
                   >
                     ✕
                   </button>

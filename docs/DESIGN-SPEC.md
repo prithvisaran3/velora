@@ -1,6 +1,9 @@
+> Superseded where it conflicts with `BRAND.md` and `3D-MOTION.md` (v2). Brand names and the logo
+> construction in this file were auto-updated; if anything still reads "Bharani", it is a bug — report it.
+
 # Design specification
 
-Everything here is measured off the approved frames in `design/Velora Website.dc.html`.
+Everything here is measured off the approved frames in `design/Velora Website v2.dc.html`.
 Frame ids: **D1–D7** desktop (1440), **M1–M6** mobile (390), **S1** motion sheet, **S2** component sheet.
 
 ## 1. Colour
@@ -96,7 +99,7 @@ Any block it overlaps reserves a ~60px right gutter.
 ## 5. Screens
 
 **D1 / M1 · Home** — header → hero (full-bleed fabric video, poster frame first, display headline + two CTAs)
-→ ink legacy strip ("The Erode house, since 1978." + 47 / 3 / 48) → Shop by Occasion (6 tiles, 3/4)
+→ ink legacy strip ("The Erode house, since 1977." + 47 / 3 / 48) → Shop by Occasion (6 tiles, 3/4)
 → Shop by Colour (copy left, swatch row right) → This month's edit (4-up desktop, 2-up mobile)
 → curator band on `sand` (portrait + pull quote + Tamil line + attribution) → Instagram grid (6-up)
 → footer. Mobile order: hero → legacy → colour row → occasion/curator links → edit grid → curator → Instagram → footer.
@@ -119,8 +122,8 @@ The hero carries the **loupe**: pointer becomes a 250px circle at 3× magnificat
 marigold 2px edge. Mobile: 470px media with dot indicators, pinch to zoom, spec table trimmed to four rows,
 sticky buy bar, FAB.
 
-**D5 / M6 · Our Story** — ink ground. `1978 — TODAY`, display "Three generations, one shop.", Tamil line, then
-three alternating panels (1978 / 1996 / 2026) with 560×440 archival images. Grain opacity and sepia filter
+**D5 / M6 · Our Story** — ink ground. `1977 — TODAY`, display "Three generations, one shop.", Tamil line, then
+three alternating panels (1977 / 1996 / 2026) with 560×440 archival images. Grain opacity and sepia filter
 animate to 0 as each panel enters (900ms). Mobile keeps the panels, drops the alternation.
 
 **D6 / M4 · Cart & Checkout** — single 720px column, centred logo-only header, no nav, no upsells.

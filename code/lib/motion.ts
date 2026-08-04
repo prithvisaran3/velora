@@ -62,3 +62,37 @@ export const reducedMotionOverrides = {
 export const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---- 3D additions (v2) ---- */
+
+/** Hero cloth solver. */
+export const CLOTH = {
+  segments: 24,          // halved to 12 on the 'mid' tier
+  iterations: 2,
+  gravity: 0.0012,
+  wind: 0.0004,
+  settleMs: 1400,
+  pointerInfluence: 0.15,
+  pointerSmoothingMs: 400,
+} as const;
+
+/** Silk material — anisotropic sheen across the weft, zari sharper than the ground. */
+export const SILK = {
+  roughness: 0.42,
+  sheenRoughness: 0.28,
+  sheenLighten: 0.18,   // sheenColor = hue lightened by this
+  zari: { metalness: 1, roughness: 0.18 },
+} as const;
+
+/** PDP drape orbit limits — the border must stay legible at every angle. */
+export const ORBIT = { azimuth: 40, polar: 12, damping: 0.08, zoom: false } as const;
+
+/** Macro loupe. */
+export const LOUPE = { size: 250, targetPx: 512, fovScale: 1 / 3, edgePx: 2, lagMs: 220 } as const;
+
+/** Scroll-driven pallu unroll. */
+export const UNROLL = { pinVh: 120, annotations: [0.25, 0.55, 0.85] } as const;
+
+/** Device tiers. Decide once, in three/tier.ts. */
+export const TIER_DPR = { high: 1.75, mid: 1.25, low: 0 } as const;
+export const FRAME_BUDGET_MS = { high: 16, mid: 33 } as const;

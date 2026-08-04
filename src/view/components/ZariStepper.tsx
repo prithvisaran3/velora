@@ -26,11 +26,11 @@ export const ZariStepper: React.FC<ZariStepperProps> = ({ currentStatus, classNa
       {/* Desktop Horizontal Stepper */}
       <div className="hidden md:flex items-center justify-between relative w-full px-4">
         {/* Background Track */}
-        <div className="absolute top-1/2 left-8 right-8 h-1 bg-[#241F1C]/14 -translate-y-1/2 z-0" />
+        <div className="absolute top-1/2 left-8 right-8 h-1 bg-ink/14 -translate-y-1/2 z-0" />
         
         {/* Progress Gold Zari Track */}
         <div
-          className="absolute top-1/2 left-8 h-1 zari-weave -translate-y-1/2 z-0 transition-all duration-[900ms] ease-silk"
+          className="absolute top-1/2 left-8 h-1 zari-weave -translate-y-1/2 z-0 transition-all duration-draw ease-silk"
           style={{ width: `calc(${(activeStepIndex / (STEPPER_STATES.length - 1)) * 100}% - 4rem)` }}
         />
 
@@ -42,18 +42,18 @@ export const ZariStepper: React.FC<ZariStepperProps> = ({ currentStatus, classNa
             <div key={step} className="relative z-10 flex flex-col items-center gap-2">
               <div
                 className={cn(
-                  "rounded-full transition-all duration-300 flex items-center justify-center bg-[#FDF4E4]",
+                  "rounded-full transition-all duration-300 flex items-center justify-center bg-cream",
                   isActive
-                    ? "w-[19px] h-[19px] bg-[#E8621B] shadow-[0_0_0_5px_rgba(232,98,27,0.18)]"
+                    ? "w-[19px] h-[19px] bg-saffron ring-4 ring-saffron/20"
                     : isReached
-                    ? "w-[15px] h-[15px] bg-[#F5A623]"
-                    : "w-[15px] h-[15px] border border-[#241F1C]/30 bg-transparent"
+                    ? "w-[15px] h-[15px] bg-marigold"
+                    : "w-[15px] h-[15px] border border-ink/30 bg-transparent"
                 )}
               />
               <span
                 className={cn(
                   "font-sans text-[11px] uppercase tracking-[0.16em] text-center",
-                  isReached ? "text-[#241F1C] font-medium" : "text-[#241F1C]/50"
+                  isReached ? "text-ink font-medium" : "text-ink/50"
                 )}
               >
                 {stateLabels[step]}
@@ -65,9 +65,9 @@ export const ZariStepper: React.FC<ZariStepperProps> = ({ currentStatus, classNa
 
       {/* Mobile Vertical Stepper */}
       <div className="flex md:hidden flex-col gap-6 relative px-2">
-        <div className="absolute left-[13px] top-3 bottom-3 w-1 bg-[#241F1C]/14 z-0" />
+        <div className="absolute left-[13px] top-3 bottom-3 w-1 bg-ink/14 z-0" />
         <div
-          className="absolute left-[13px] top-3 w-1 zari-weave-vertical z-0 transition-all duration-[900ms] ease-silk"
+          className="absolute left-[13px] top-3 w-1 zari-weave-vertical z-0 transition-all duration-draw ease-silk"
           style={{ height: `${(activeStepIndex / (STEPPER_STATES.length - 1)) * 80}%` }}
         />
 
@@ -79,18 +79,18 @@ export const ZariStepper: React.FC<ZariStepperProps> = ({ currentStatus, classNa
             <div key={step} className="relative z-10 flex items-center gap-4">
               <div
                 className={cn(
-                  "rounded-full transition-all duration-300 flex-shrink-0 bg-[#FDF4E4]",
+                  "rounded-full transition-all duration-300 flex-shrink-0 bg-cream",
                   isActive
-                    ? "w-[17px] h-[17px] bg-[#E8621B] shadow-[0_0_0_5px_rgba(232,98,27,0.18)]"
+                    ? "w-[17px] h-[17px] bg-saffron ring-4 ring-saffron/20"
                     : isReached
-                    ? "w-[13px] h-[13px] bg-[#F5A623]"
-                    : "w-[13px] h-[13px] border border-[#241F1C]/30 bg-transparent"
+                    ? "w-[13px] h-[13px] bg-marigold"
+                    : "w-[13px] h-[13px] border border-ink/30 bg-transparent"
                 )}
               />
               <span
                 className={cn(
                   "font-sans text-[12px] uppercase tracking-[0.16em]",
-                  isReached ? "text-[#241F1C] font-medium" : "text-[#241F1C]/50"
+                  isReached ? "text-ink font-medium" : "text-ink/50"
                 )}
               >
                 {stateLabels[step]}

@@ -42,7 +42,7 @@ export default function ColourPage({ params }: ColourPageProps) {
   return (
     <div className="flex flex-col w-full min-h-screen">
       <div className="max-w-[1440px] mx-auto px-6 md:px-[64px] py-14 flex flex-col items-center gap-8 text-center">
-        <h1 className="font-display text-[44px] md:text-[64px] text-[#241F1C] leading-none">
+        <h1 className="font-display text-[44px] md:text-[64px] text-ink leading-none">
           Choose your colour
         </h1>
 
@@ -53,7 +53,7 @@ export default function ColourPage({ params }: ColourPageProps) {
             return (
               <Link key={key} href={`/colour/${key}`} className="flex flex-col items-center gap-2.5">
                 <div
-                  className={`rounded-full transition-all duration-300 ${
+                  className={`rounded-full transition-all duration-300 shadow-none ${
                     isSelected ? "w-[104px] h-[104px]" : "w-[88px] h-[88px] hover:scale-105"
                   }`}
                   style={{
@@ -61,7 +61,7 @@ export default function ColourPage({ params }: ColourPageProps) {
                     boxShadow: isSelected ? `0 0 0 3px var(--page-bg,#F4E7DC), 0 0 0 5px ${data.hex}` : undefined,
                   }}
                 />
-                <span className={`font-sans text-[10px] tracking-[0.2em] uppercase ${isSelected ? "text-[#241F1C] font-medium" : "text-[#241F1C]/70"}`}>
+                <span className={`font-sans text-[10px] tracking-label uppercase ${isSelected ? "text-ink font-medium" : "text-ink/70"}`}>
                   {key}
                 </span>
               </Link>
@@ -73,13 +73,13 @@ export default function ColourPage({ params }: ColourPageProps) {
 
       {/* Grid Header & Filters */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-[64px] py-4 w-full flex items-baseline justify-between">
-        <h2 className="font-display text-[28px] md:text-[34px] text-[#241F1C]">
+        <h2 className="font-display text-[28px] md:text-[34px] text-ink">
           {vm.colourData.label.en} · {vm.sarees.length} sarees
         </h2>
-        <div className="flex items-center gap-4 font-sans text-[11px] tracking-[0.18em] uppercase text-[#241F1C]/65">
-          <span className="cursor-pointer hover:text-[#E8621B]">SILK</span>
-          <span className="cursor-pointer hover:text-[#E8621B]">COTTON</span>
-          <span className="cursor-pointer hover:text-[#E8621B] font-medium">NEWEST FIRST</span>
+        <div className="flex items-center gap-4 font-sans text-[11px] tracking-[0.18em] uppercase text-ink/65">
+          <span className="cursor-pointer hover:text-saffron">SILK</span>
+          <span className="cursor-pointer hover:text-saffron">COTTON</span>
+          <span className="cursor-pointer hover:text-saffron font-medium">NEWEST FIRST</span>
         </div>
       </div>
 

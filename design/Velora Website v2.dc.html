@@ -18,6 +18,102 @@
 </style>
 </helmet>
 
+<section style="display:flex;flex-direction:column;gap:44px;padding:72px;font-family:Archivo,sans-serif;background:#241F1C;border-bottom:1px solid rgba(245,166,35,.4)">
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:900px">
+    <div style="font-size:11px;letter-spacing:.42em;color:#F5A623">V2 · SAME PALETTE · NEW NAME PLATE · SIX 3D MOMENTS</div>
+    <div style="font-family:'Bodoni Moda',serif;font-size:58px;line-height:1.02;color:#FDF4E4">Six places where 3D earns its weight</div>
+    <div style="font-size:14px;line-height:1.75;color:rgba(253,244,228,.8);max-width:680px;text-wrap:pretty">Saffron and marigold stay exactly as approved. What changes: the endorsement is now <strong style="font-weight:500;color:#F5A623">by Priya Mahadevan</strong>, the V is a full capital, Our Story is rewritten in Priya's voice around her father Mahadevan — and every screen below gains a real 3D moment. Each one is specified with its placement, its technique, its fallback and its frame budget, because 3D that costs the first product image is 3D we cut.</div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:24px">
+
+    <div style="width:560px;box-sizing:border-box;border:1px solid rgba(245,166,35,.35);display:flex;flex-direction:column">
+      <div style="height:230px;background:radial-gradient(120% 90% at 50% 20%, #3A322C 0%, #14110F 70%);display:flex;align-items:center;justify-content:center;position:relative">
+        <svg viewBox="0 0 120 100" style="width:64px;height:53px;transform:perspective(320px) rotateY(38deg) rotateX(8deg)"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:34%;background:linear-gradient(0deg,#E8621B 0%,#E8621B 84%,#EE8A4A 92%,rgba(232,98,27,0) 100%)"></div>
+        <span style="position:absolute;top:14px;left:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">01 · extruded vel, 0.6 rotation → flat, then wipe</span>
+      </div>
+      <div style="background:#1B1714;padding:24px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:24px;color:#FDF4E4">The vel loader, in three dimensions</div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(253,244,228,.78)">The mark is a real extruded solid on a dark stage. It turns 0.6 of a revolution, catches one specular sweep along the spine, settles perfectly flat into the 2D lockup — then the saffron fabric wipe pulls up and the page is there.</div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;line-height:1.9;color:rgba(245,166,35,.9)">PLACEMENT first visit only, sessionStorage<br>TECH R3F + extrudeGeometry from the SVG path, MeshPhysicalMaterial, one env light<br>FALLBACK 2D stroke-draw loader (already specified)<br>BUDGET 900ms hard cap · never blocks the hero image</div>
+      </div>
+    </div>
+
+    <div style="width:560px;box-sizing:border-box;border:1px solid rgba(245,166,35,.35);display:flex;flex-direction:column">
+      <div style="height:230px;background:linear-gradient(160deg,#3A322C,#14110F);position:relative;overflow:hidden;display:flex;align-items:flex-end">
+        <div style="width:100%;height:78%;background:repeating-linear-gradient(96deg,rgba(232,98,27,.85) 0 14px,rgba(184,71,15,.85) 14px 26px,rgba(245,166,35,.9) 26px 30px);transform:perspective(600px) rotateX(46deg) translateY(18%);transform-origin:bottom"></div>
+        <span style="position:absolute;top:14px;left:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">02 · cloth solve, 24×24 grid, settles in 1.4s</span>
+      </div>
+      <div style="background:#1B1714;padding:24px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:24px;color:#FDF4E4">Hero — a saree that actually falls</div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(253,244,228,.78)">Not a video. A cloth-simulated plane with an anisotropic silk shader: sheen runs across the weft, zari threads take a sharper specular. It falls from just above frame on load, settles, then breathes with the pointer — move left, the pallu lifts. Headline sits over it, never on top of the fold.</div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;line-height:1.9;color:rgba(245,166,35,.9)">PLACEMENT home hero, desktop and mobile<br>TECH R3F, custom sheen shader (Blinn anisotropic), 24×24 verlet cloth, DPR clamped 1.5<br>FALLBACK poster image + 8s video loop under 480p on low-end devices<br>BUDGET mounts AFTER LCP · scene ≤ 180 KB · 60fps target, 30fps floor</div>
+      </div>
+    </div>
+
+    <div style="width:560px;box-sizing:border-box;border:1px solid rgba(245,166,35,.35);display:flex;flex-direction:column">
+      <div style="height:230px;background:#14110F;display:flex;align-items:center;justify-content:center;gap:14px;position:relative">
+        <div style="width:74px;height:120px;background:linear-gradient(150deg,#8C1F3D,#5E1229)"></div>
+        <div style="width:74px;height:120px;background:linear-gradient(150deg,#12514E,#0A3230)"></div>
+        <div style="width:74px;height:120px;background:linear-gradient(150deg,#E8621B,#B4470F)"></div>
+        <span style="position:absolute;top:14px;left:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">03 · same mesh, material re-tinted in 800ms</span>
+      </div>
+      <div style="background:#1B1714;padding:24px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:24px;color:#FDF4E4">Shop by Colour — the cloth dyes, not the CSS</div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(253,244,228,.78)">Choosing maroon lerps the fabric material's base colour and sheen tint over 800ms while the page ground follows. It reads as dye taking to silk rather than a div changing colour. Zari stays gold through every hue — that is what makes it look like cloth and not a filter.</div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;line-height:1.9;color:rgba(245,166,35,.9)">PLACEMENT /colour/[slug], one shared canvas across navigations<br>TECH uniform lerp on the same mesh; no re-mount, no re-upload of textures<br>FALLBACK the approved CSS page dye<br>BUDGET zero additional download between colours</div>
+      </div>
+    </div>
+
+    <div style="width:560px;box-sizing:border-box;border:1px solid rgba(245,166,35,.35);display:flex;flex-direction:column">
+      <div style="height:230px;background:radial-gradient(90% 80% at 60% 30%, #3A322C, #14110F);display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="width:120px;height:170px;background:repeating-linear-gradient(170deg,#8C1F3D 0 16px,#761832 16px 30px);border-right:3px solid #F5A623"></div>
+        <div style="position:absolute;width:104px;height:104px;border-radius:50%;border:2px solid #F5A623;background:repeating-linear-gradient(170deg,#A62A4A 0 5px,#8C1F3D 5px 9px);right:96px;top:52px"></div>
+        <span style="position:absolute;top:14px;left:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">04 · orbitable drape + macro loupe camera</span>
+      </div>
+      <div style="background:#1B1714;padding:24px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:24px;color:#FDF4E4">PDP — walk around the drape</div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(253,244,228,.78)">The saree is draped on a simple 3D form: drag to orbit 40° either side, and the border stays legible at every angle. The loupe becomes a second camera rendering a 3× macro view of the weave under the cursor — real thread detail, not a scaled bitmap.</div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;line-height:1.9;color:rgba(245,166,35,.9)">PLACEMENT product page, below the flat-lay hero — the hero stays a plain img<br>TECH one GLB form (≤ 400 KB) + per-saree 2K texture; second render target for the loupe<br>FALLBACK draped photo + the 2D loupe already specified<br>BUDGET lazy on intersection · desktop and high-end mobile only</div>
+      </div>
+    </div>
+
+    <div style="width:560px;box-sizing:border-box;border:1px solid rgba(245,166,35,.35);display:flex;flex-direction:column">
+      <div style="height:230px;background:#14110F;position:relative;display:flex;align-items:center">
+        <div style="width:100%;height:96px;background:repeating-linear-gradient(90deg,#8C1F3D 0 40px,#761832 40px 80px);transform:perspective(700px) rotateY(-24deg)"></div>
+        <div style="position:absolute;left:0;top:0;bottom:0;width:36%;border-right:1px solid rgba(245,166,35,.6)"></div>
+        <div style="position:absolute;left:36%;top:0;bottom:0;width:24%;border-right:1px solid rgba(245,166,35,.6)"></div>
+        <span style="position:absolute;top:14px;left:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">05 · scroll unrolls the roll: body → border → pallu</span>
+      </div>
+      <div style="background:#1B1714;padding:24px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:24px;color:#FDF4E4">The pallu unroll</div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(253,244,228,.78)">A rolled saree in 3D. Scroll unrolls it across the viewport — the mesh literally unwinds off the cylinder — while marigold annotations arrive on the body, the four-inch border and the mangai pallu. This is the section that teaches a 28-year-old what she is buying.</div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;line-height:1.9;color:rgba(245,166,35,.9)">PLACEMENT home, one section; also /story as the 2026 panel<br>TECH GSAP ScrollTrigger driving a single uniform (0→1) on a bent-plane shader<br>FALLBACK the approved 2D horizontal pallu strip; mobile gets staggered stills<br>BUDGET desktop only · dynamic import · pinned 120vh maximum</div>
+      </div>
+    </div>
+
+    <div style="width:560px;box-sizing:border-box;border:1px solid rgba(245,166,35,.35);display:flex;flex-direction:column">
+      <div style="height:230px;background:#14110F;display:flex;align-items:center;justify-content:center;gap:26px;position:relative">
+        <div style="width:82px;height:110px;background:repeating-linear-gradient(150deg,#E8621B 0 10px,#B4470F 10px 20px);transform:perspective(400px) rotateY(52deg) scale(.8)"></div>
+        <div style="width:34px;height:2px;background:#F5A623"></div>
+        <div style="width:46px;height:46px;border:1px solid #F5A623;display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:.14em;color:#F5A623">BAG</div>
+        <span style="position:absolute;top:14px;left:14px;font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">06 · fold on two axes, arc to the bag, gold pulse</span>
+      </div>
+      <div style="background:#1B1714;padding:24px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:24px;color:#FDF4E4">Add to bag, and the zari stepper</div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(253,244,228,.78)">The product image folds like cloth along two axes and arcs into the bag, which pulses once in marigold. On the tracking page the same material logic draws the zari thread: each newly completed segment is woven in, warp then weft, over 900ms.</div>
+        <div style="font-family:ui-monospace,monospace;font-size:10px;line-height:1.9;color:rgba(245,166,35,.9)">PLACEMENT PDP and sticky mobile bar · /track/[reference]<br>TECH FLIP measurement + a 2-fold plane in R3F for the flight; SVG stroke weave for the stepper<br>FALLBACK 720ms CSS transform flight; stepper segment simply appears<br>BUDGET no new canvas — reuses the hero renderer when present</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(245,166,35,.3);padding-top:28px">
+    <div style="flex:1;min-width:340px;font-size:12px;line-height:1.85;color:rgba(253,244,228,.8)"><span style="font-size:10px;letter-spacing:.26em;color:#F5A623">THE RULE THAT KEEPS THIS FAST</span><br>One WebGL context for the whole site, created after LCP, handed between routes. Every scene declares a poster twin. Device tiering: high (full scenes), mid (hero + dye only), low (posters and CSS). <code style="font-family:ui-monospace,monospace">prefers-reduced-motion</code> collapses to posters everywhere.</div>
+    <div style="flex:1;min-width:340px;font-size:12px;line-height:1.85;color:rgba(253,244,228,.8)"><span style="font-size:10px;letter-spacing:.26em;color:#F5A623">WHAT PRIYA MUST SUPPLY</span><br>One flat-lay per saree (2000px, even light), one 5s drape clip, and a 2K weave crop for the loupe and the 3D texture. Without the weave crop, moments 02–05 fall back to posters — the 3D is only as good as the cloth photography feeding it.</div>
+  </div>
+</section>
+
 <section style="display:flex;flex-direction:column;gap:72px;padding:72px;font-family:Archivo,sans-serif">
 
   <div style="display:flex;flex-direction:column;gap:18px;max-width:900px">
@@ -47,11 +143,11 @@
       <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px">
         <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-          <div style="display:flex;align-items:flex-end">
-            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+          <div style="display:flex;align-items:baseline">
+            <svg viewBox="0 0 120 100" style="width:26px;height:22px;margin-right:8px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
             <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
           </div>
-          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY PRIYA MAHADEVAN</div>
         </div>
         <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (0)</span></div>
       </div>
@@ -70,9 +166,9 @@
       </div>
 
       <div style="background:#241F1C;padding:44px 64px;display:flex;align-items:center;justify-content:space-between;gap:48px">
-        <div style="font-family:'Bodoni Moda',serif;font-size:38px;color:#FDF4E4;line-height:1.1">The Erode house,<br>since 1978.</div>
+        <div style="font-family:'Bodoni Moda',serif;font-size:38px;color:#FDF4E4;line-height:1.1">Chosen in Erode,<br>since 1977.</div>
         <div style="display:flex;gap:56px">
-          <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623">47</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(253,244,228,.65)">YEARS TRADING</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623">49</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(253,244,228,.65)">YEARS IN SILK</span></div>
           <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623">3</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(253,244,228,.65)">GENERATIONS</span></div>
           <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623">48</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(253,244,228,.65)">SAREES A MONTH</span></div>
         </div>
@@ -126,12 +222,12 @@
       </div>
 
       <div style="background:#F6EAD6;padding:72px 64px;display:flex;gap:56px;align-items:center">
-        <div style="width:360px;height:440px;background:repeating-linear-gradient(135deg,#E9D9BE 0 10px,#E1CDAA 10px 20px);display:flex;align-items:flex-end;padding:14px;flex-shrink:0"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.6)">curator portrait · shop interior, Erode</span></div>
+        <div style="width:360px;height:440px;background:repeating-linear-gradient(135deg,#E9D9BE 0 10px,#E1CDAA 10px 20px);display:flex;align-items:flex-end;padding:14px;flex-shrink:0"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(36,31,28,.6)">Priya at the counter, Erode</span></div>
         <div style="display:flex;flex-direction:column;gap:22px">
           <div style="font-size:11px;letter-spacing:.3em;color:#B4470F">FROM THE CURATOR</div>
-          <div style="font-family:'Bodoni Moda',serif;font-size:38px;line-height:1.25;color:#241F1C;max-width:720px;text-wrap:pretty">"I have been choosing sarees in this shop since I was nineteen. I still hold every one to the light before it goes on this website."</div>
-          <div style="font-family:'Anek Tamil',sans-serif;font-size:19px;color:rgba(36,31,28,.8)">ஒவ்வொரு புடவையும் கையால் தேர்ந்தெடுக்கப்பட்டது.</div>
-          <div style="font-size:11px;letter-spacing:.22em;color:rgba(36,31,28,.6)">— LAKSHMI, SECOND GENERATION · BHARANI PATTU CENTRE</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:38px;line-height:1.25;color:#241F1C;max-width:720px;text-wrap:pretty">"My father could tell you which loom a saree came off with his eyes shut. He sent me to the weavers alone at nineteen. I still hold every one to the light before it goes on this website."</div>
+          <div style="font-family:'Anek Tamil',sans-serif;font-size:19px;color:rgba(36,31,28,.8)">ஒவ்வொரு புடவையும் என் கையால் தேர்ந்தெடுக்கப்பட்டது.</div>
+          <div style="font-size:11px;letter-spacing:.22em;color:rgba(36,31,28,.6)">— PRIYA MAHADEVAN · FOUNDER &amp; CURATOR, ERODE</div>
         </div>
       </div>
 
@@ -153,12 +249,12 @@
       <div style="background:#241F1C;padding:56px 64px;display:flex;flex-direction:column;gap:44px">
         <div style="display:flex;justify-content:space-between;gap:64px">
           <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;align-items:flex-end">
-              <svg viewBox="0 0 100 124" style="width:20px;height:25px;margin-right:9px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#FDF4E4"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+            <div style="display:flex;align-items:baseline">
+              <svg viewBox="0 0 120 100" style="width:28px;height:23px;margin-right:9px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#FDF4E4"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
               <div style="font-family:'Bodoni Moda',serif;font-size:31px;line-height:.82;letter-spacing:.28em;color:#FDF4E4;margin-right:-.28em">ELORA</div>
             </div>
-            <div style="font-size:8px;letter-spacing:.34em;color:#F5A623;margin-right:-.34em">BY BHARANI PATTU</div>
-            <div style="font-family:'Anek Tamil',sans-serif;font-size:15px;color:rgba(253,244,228,.7);margin-top:8px">ஈரோடு · 1978 முதல்</div>
+            <div style="font-size:8px;letter-spacing:.34em;color:#F5A623;margin-right:-.34em">BY PRIYA MAHADEVAN</div>
+            <div style="font-family:'Anek Tamil',sans-serif;font-size:15px;color:rgba(253,244,228,.7);margin-top:8px">ஈரோடு · 1977 முதல்</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">SHOP</span><span>By colour</span><span>By occasion</span><span>New in</span><span>All sarees</span></div>
           <div style="display:flex;flex-direction:column;gap:12px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">HELP</span><span>Returns &amp; exchange</span><span>Delivery timelines</span><span>Track your order</span><span>Ask on WhatsApp</span></div>
@@ -182,11 +278,11 @@
       <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px;background:#8C1F3D">
         <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(253,244,228,.85)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-          <div style="display:flex;align-items:flex-end">
-            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#FDF4E4"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F8CE5A"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F8CE5A"></path></svg>
+          <div style="display:flex;align-items:baseline">
+            <svg viewBox="0 0 120 100" style="width:26px;height:22px;margin-right:8px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#FDF4E4"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F8CE5A"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F8CE5A"></path></svg>
             <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#FDF4E4;margin-right:-.28em">ELORA</div>
           </div>
-          <div style="font-size:7px;letter-spacing:.34em;color:#F8CE5A;margin-right:-.34em">BY BHARANI PATTU</div>
+          <div style="font-size:7px;letter-spacing:.34em;color:#F8CE5A;margin-right:-.34em">BY PRIYA MAHADEVAN</div>
         </div>
         <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(253,244,228,.85)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
       </div>
@@ -241,11 +337,11 @@
       <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px;border-bottom:1px solid rgba(36,31,28,.12)">
         <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-          <div style="display:flex;align-items:flex-end">
-            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+          <div style="display:flex;align-items:baseline">
+            <svg viewBox="0 0 120 100" style="width:26px;height:22px;margin-right:8px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
             <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
           </div>
-          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY PRIYA MAHADEVAN</div>
         </div>
         <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
       </div>
@@ -294,11 +390,11 @@
       <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;padding:22px 64px;border-bottom:1px solid rgba(36,31,28,.12)">
         <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-          <div style="display:flex;align-items:flex-end">
-            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+          <div style="display:flex;align-items:baseline">
+            <svg viewBox="0 0 120 100" style="width:26px;height:22px;margin-right:8px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
             <div style="font-family:'Bodoni Moda',serif;font-size:30px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
           </div>
-          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY PRIYA MAHADEVAN</div>
         </div>
         <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
       </div>
@@ -365,26 +461,26 @@
 
     <div style="width:1440px;background:#241F1C;border:1px solid rgba(36,31,28,.18);overflow:hidden">
       <div style="padding:80px 64px 56px;display:flex;flex-direction:column;gap:20px;max-width:900px">
-        <div style="font-size:11px;letter-spacing:.34em;color:#F5A623">1978 — TODAY</div>
-        <div style="font-family:'Bodoni Moda',serif;font-size:88px;line-height:.98;color:#FDF4E4">Three generations,<br>one shop.</div>
-        <div style="font-family:'Anek Tamil',sans-serif;font-size:20px;color:rgba(253,244,228,.75)">ஈரோட்டில் மூன்று தலைமுறைகள்</div>
+        <div style="font-size:11px;letter-spacing:.34em;color:#F5A623">1977 — TODAY · ERODE</div>
+        <div style="font-family:'Bodoni Moda',serif;font-size:88px;line-height:.98;color:#FDF4E4">My father taught me silk<br>before arithmetic.</div>
+        <div style="font-family:'Anek Tamil',sans-serif;font-size:20px;color:rgba(253,244,228,.75)">என் தந்தை எனக்கு கற்பித்த பட்டு</div>
       </div>
 
       <div style="display:flex;align-items:stretch;border-top:1px solid rgba(245,166,35,.3)">
-        <div style="width:560px;height:440px;background:repeating-linear-gradient(118deg,#4A423A 0 14px,#544A40 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.6)">archival 1978 · sepia, heavy grain</span></div>
+        <div style="width:560px;height:440px;background:repeating-linear-gradient(118deg,#4A423A 0 14px,#544A40 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.6)">archival 1977 · Mahadevan at his first counter</span></div>
         <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;gap:16px;justify-content:center">
-          <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#F5A623">1978</div>
-          <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">A ten-foot shop on Brough Road</div>
-          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">My grandfather sold nine-yard cottons to mill workers. He kept the stock on two shelves and the accounts in his head.</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#F5A623">1977</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">A thousand square feet of silk</div>
+          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">My father, Mahadevan, opened his first shop with his brother beside him and very little else. He was no designer and never claimed to be one — he could tell you from the cloth between two fingers which loom it came off, and whether the zari would hold its colour after ten years folded in a steel trunk.</div>
         </div>
       </div>
 
       <div style="display:flex;align-items:stretch;border-top:1px solid rgba(245,166,35,.3);flex-direction:row-reverse">
-        <div style="width:560px;height:440px;background:repeating-linear-gradient(62deg,#5A4C3C 0 14px,#665441 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.6)">1996 · warm mid-tone, light grain</span></div>
+        <div style="width:560px;height:440px;background:repeating-linear-gradient(62deg,#5A4C3C 0 14px,#665441 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.6)">1996 · Priya, nineteen, buying alone</span></div>
         <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;gap:16px;justify-content:center">
           <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#F5A623">1996</div>
-          <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">My mother takes the counter</div>
-          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">She moved the house into silk and started travelling to Kanchipuram herself. Every saree on this site is still chosen by her.</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">He sends me to the weavers alone</div>
+          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">I was nineteen. He never asked what I had bought — he would unfold it, hold it to the door light, and nod, or not nod. Thirty years later I am still buying the way he taught me.</div>
         </div>
       </div>
 
@@ -393,7 +489,7 @@
         <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;gap:16px;justify-content:center">
           <div style="font-family:'Bodoni Moda',serif;font-size:64px;line-height:1;color:#F5A623">2026</div>
           <div style="font-family:'Bodoni Moda',serif;font-size:34px;line-height:1.2;color:#FDF4E4">Velora</div>
-          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">The same hands, the same shop, now reaching a woman in Bengaluru who will never walk down Brough Road.</div>
+          <div style="font-size:14px;line-height:1.8;color:rgba(253,244,228,.75);max-width:520px">The same hands, now reaching a woman in Bengaluru who will never stand at my counter. Every saree here is one I have held to the light myself, and there is only ever one of each.</div>
           <div style="font-family:ui-monospace,monospace;font-size:10px;color:rgba(253,244,228,.5);margin-top:8px">grain opacity and sepia filter animate to 0 as each panel enters · 900ms</div>
         </div>
       </div>
@@ -410,11 +506,11 @@
     <div style="width:1440px;background:#FDF4E4;border:1px solid rgba(36,31,28,.18);overflow:hidden;display:flex;flex-direction:column;align-items:center">
       <div style="width:100%;display:flex;align-items:center;justify-content:center;padding:22px 64px;border-bottom:1px solid rgba(36,31,28,.12)">
         <div style="display:flex;flex-direction:column;align-items:center;gap:7px">
-          <div style="display:flex;align-items:flex-end">
-            <svg viewBox="0 0 100 124" style="width:19px;height:24px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+          <div style="display:flex;align-items:baseline">
+            <svg viewBox="0 0 120 100" style="width:26px;height:22px;margin-right:8px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
             <div style="font-family:'Bodoni Moda',serif;font-size:28px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
           </div>
-          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+          <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY PRIYA MAHADEVAN</div>
         </div>
       </div>
 
@@ -519,11 +615,11 @@
           <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(36,31,28,.1)">
             <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">MENU</span>
             <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
-              <div style="display:flex;align-items:flex-end">
-                <svg viewBox="0 0 100 124" style="width:14px;height:17px;margin-right:6px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+              <div style="display:flex;align-items:baseline">
+                <svg viewBox="0 0 120 100" style="width:19px;height:16px;margin-right:6px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
                 <div style="font-family:'Bodoni Moda',serif;font-size:21px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
               </div>
-              <div style="font-size:6px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+              <div style="font-size:6px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY PRIYA MAHADEVAN</div>
             </div>
             <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">BAG</span>
           </div>
@@ -533,8 +629,8 @@
             <div style="background:#E8621B;color:#FDF4E4;font-size:11px;letter-spacing:.22em;padding:17px;text-align:center">SEE THIS MONTH'S EDIT</div>
           </div>
           <div style="background:#241F1C;padding:22px;display:flex;justify-content:space-between;align-items:center">
-            <div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#FDF4E4;line-height:1.2">The Erode house,<br>since 1978.</div>
-            <div style="display:flex;gap:18px"><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#F5A623">47</span><span style="font-size:7px;letter-spacing:.2em;color:rgba(253,244,228,.6)">YEARS</span></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#F5A623">3</span><span style="font-size:7px;letter-spacing:.2em;color:rgba(253,244,228,.6)">GENS</span></div></div>
+            <div style="font-family:'Bodoni Moda',serif;font-size:19px;color:#FDF4E4;line-height:1.2">Chosen in Erode,<br>since 1977.</div>
+            <div style="display:flex;gap:18px"><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#F5A623">49</span><span style="font-size:7px;letter-spacing:.2em;color:rgba(253,244,228,.6)">YEARS</span></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#F5A623">3</span><span style="font-size:7px;letter-spacing:.2em;color:rgba(253,244,228,.6)">GENS</span></div></div>
           </div>
           <div style="padding:20px 18px 96px;display:flex;flex-direction:column;gap:14px">
             <div style="font-family:'Bodoni Moda',serif;font-size:26px;color:#241F1C">Shop by colour</div>
@@ -689,13 +785,13 @@
         <div style="width:390px;height:844px;background:#241F1C;border:1px solid rgba(36,31,28,.2);overflow:hidden;display:flex;flex-direction:column">
           <div style="padding:24px 18px;display:flex;flex-direction:column;gap:10px">
             <span style="font-size:9px;letter-spacing:.3em;color:#F5A623">OUR STORY</span>
-            <div style="font-family:'Bodoni Moda',serif;font-size:44px;line-height:.98;color:#FDF4E4">Three generations, one shop.</div>
-            <div style="font-family:'Anek Tamil',sans-serif;font-size:15px;color:rgba(253,244,228,.72)">ஈரோட்டில் மூன்று தலைமுறைகள்</div>
+            <div style="font-family:'Bodoni Moda',serif;font-size:44px;line-height:.98;color:#FDF4E4">My father taught me silk before arithmetic.</div>
+            <div style="font-family:'Anek Tamil',sans-serif;font-size:15px;color:rgba(253,244,228,.72)">என் தந்தை எனக்கு கற்பித்த பட்டு</div>
           </div>
-          <div style="height:250px;background:repeating-linear-gradient(118deg,#4A423A 0 12px,#544A40 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">1978 · sepia, heavy grain</span></div>
-          <div style="padding:20px 18px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:40px;color:#F5A623;line-height:1">1978</span><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#FDF4E4;line-height:1.25">A ten-foot shop on Brough Road</span><span style="font-size:12px;line-height:1.75;color:rgba(253,244,228,.72)">My grandfather sold nine-yard cottons to mill workers, stock on two shelves, accounts in his head.</span></div>
+          <div style="height:250px;background:repeating-linear-gradient(118deg,#4A423A 0 12px,#544A40 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">1977 · Mahadevan at his first counter</span></div>
+          <div style="padding:20px 18px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Bodoni Moda',serif;font-size:40px;color:#F5A623;line-height:1">1977</span><span style="font-family:'Bodoni Moda',serif;font-size:22px;color:#FDF4E4;line-height:1.25">A thousand square feet of silk</span><span style="font-size:12px;line-height:1.75;color:rgba(253,244,228,.72)">My father, Mahadevan, opened a thousand square feet of silk with his brother beside him. He could name the loom from the cloth between two fingers.</span></div>
           <div style="height:170px;background:repeating-linear-gradient(62deg,#5A4C3C 0 12px,#665441 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,monospace;font-size:9px;color:rgba(253,244,228,.6)">1996 · light grain</span></div>
-          <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623;line-height:1">1996</span><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#FDF4E4">My mother takes the counter</span></div>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bodoni Moda',serif;font-size:34px;color:#F5A623;line-height:1">1996</span><span style="font-family:'Bodoni Moda',serif;font-size:20px;color:#FDF4E4">He sends me to the weavers alone</span></div>
         </div>
         <div style="font-size:9px;letter-spacing:.24em;color:rgba(36,31,28,.5)">M6 · OUR STORY · STAGGERED REVEALS</div>
       </div>
@@ -726,7 +822,7 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="aspect-ratio:4/3;background:#FDF4E4;border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:center">
-            <svg viewBox="0 0 100 124" style="width:44px;height:55px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+            <svg viewBox="0 0 120 100" style="width:61px;height:51px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
           </div>
           <div style="font-size:10px;letter-spacing:.2em;color:#241F1C">420–520ms</div>
           <div style="font-size:11px;line-height:1.6;color:rgba(36,31,28,.7)">Fill floods the blade, mark held for one beat</div>
@@ -827,17 +923,17 @@
         <div style="border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:space-between;gap:48px;padding:20px 32px">
           <div style="display:flex;gap:30px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span style="border-bottom:1px solid #E8621B;padding-bottom:3px;color:#241F1C">SHOP BY COLOUR</span><span>OCCASION</span><span>NEW IN</span><span>OUR STORY</span></div>
           <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
-            <div style="display:flex;align-items:flex-end">
-              <svg viewBox="0 0 100 124" style="width:17px;height:21px;margin-right:7px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+            <div style="display:flex;align-items:baseline">
+              <svg viewBox="0 0 120 100" style="width:24px;height:20px;margin-right:7px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
               <div style="font-family:'Bodoni Moda',serif;font-size:26px;line-height:.82;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">ELORA</div>
             </div>
-            <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY BHARANI PATTU</div>
+            <div style="font-size:7px;letter-spacing:.34em;color:rgba(36,31,28,.65);margin-right:-.34em">BY PRIYA MAHADEVAN</div>
           </div>
           <div style="display:flex;gap:26px;flex-shrink:0;white-space:nowrap;font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)"><span>SEARCH</span><span>WHATSAPP</span><span>BAG (1)</span></div>
         </div>
         <div style="width:390px;border:1px solid rgba(36,31,28,.15);display:flex;align-items:center;justify-content:space-between;padding:14px 18px">
           <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">MENU</span>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:4px"><div style="font-family:'Bodoni Moda',serif;font-size:20px;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">VELORA</div><div style="font-size:6px;letter-spacing:.32em;color:rgba(36,31,28,.65);margin-right:-.32em">BY BHARANI PATTU</div></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px"><div style="font-family:'Bodoni Moda',serif;font-size:20px;letter-spacing:.28em;color:#241F1C;margin-right:-.28em">VELORA</div><div style="font-size:6px;letter-spacing:.32em;color:rgba(36,31,28,.65);margin-right:-.32em">BY PRIYA MAHADEVAN</div></div>
           <span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,28,.75)">BAG</span>
         </div>
       </div>
@@ -847,11 +943,11 @@
         <div style="background:#241F1C;padding:40px;display:flex;flex-direction:column;gap:28px">
           <div style="display:flex;justify-content:space-between;gap:56px">
             <div style="display:flex;flex-direction:column;gap:10px">
-              <div style="display:flex;align-items:flex-end">
-                <svg viewBox="0 0 100 124" style="width:18px;height:22px;margin-right:8px"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#FDF4E4"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></svg>
+              <div style="display:flex;align-items:baseline">
+                <svg viewBox="0 0 120 100" style="width:24px;height:20px;margin-right:8px"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#FDF4E4"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></svg>
                 <div style="font-family:'Bodoni Moda',serif;font-size:27px;line-height:.82;letter-spacing:.28em;color:#FDF4E4;margin-right:-.28em">ELORA</div>
               </div>
-              <div style="font-size:7px;letter-spacing:.34em;color:#F5A623;margin-right:-.34em">BY BHARANI PATTU</div>
+              <div style="font-size:7px;letter-spacing:.34em;color:#F5A623;margin-right:-.34em">BY PRIYA MAHADEVAN</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:9px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">SHOP</span><span>By colour</span><span>By occasion</span><span>New in</span></div>
             <div style="display:flex;flex-direction:column;gap:9px;font-size:11px;letter-spacing:.14em;color:rgba(253,244,228,.75)"><span style="letter-spacing:.26em;color:#F5A623;font-size:10px">HELP</span><span>Returns &amp; exchange</span><span>Delivery timelines</span><span>Track your order</span></div>

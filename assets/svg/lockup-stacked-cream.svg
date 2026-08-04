@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300"><rect width="560" height="300" fill="#FDF4E4"></rect>
-  <g transform="translate(148,52) scale(0.62)"><path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B"></path><path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623"></path><path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623"></path></g>
-  <text x="212" y="132" font-family="Bodoni Moda, Didot, serif" font-size="76" letter-spacing="21" fill="#241F1C">ELORA</text>
-  <text x="152" y="196" font-family="Archivo, Helvetica, sans-serif" font-size="17" letter-spacing="5.8" fill="rgba(36,31,28,.7)">BY BHARANI PATTU</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" width="620" height="300"><rect width="620" height="300" fill="#FDF4E4"></rect>
+  <g transform="translate(150,73)"><g transform="scale(0.5667)"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#E8621B"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#F5A623"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#F5A623"></path></g></g>
+  <text x="240" y="130" font-family="Bodoni Moda, Didot, serif" font-size="76" letter-spacing="21.3" fill="#241F1C">ELORA</text>
+  <text x="150" y="196" font-family="Archivo, Helvetica, sans-serif" font-size="16" letter-spacing="5.4" fill="rgba(36,31,28,.72)">BY PRIYA MAHADEVAN</text>
 </svg>

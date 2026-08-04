@@ -15,14 +15,14 @@ export const OccasionGrid: React.FC = () => {
         <Link
           key={key}
           href={`/occasion/${key}`}
-          className="group relative aspect-[4/5] placeholder-weave p-6 flex flex-col justify-end overflow-hidden border border-[#241F1C]/10"
+          className="group relative aspect-tile placeholder-weave p-6 flex flex-col justify-end overflow-hidden border border-ink/10"
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#241F1C]/80 via-[#241F1C]/20 to-transparent transition-opacity group-hover:opacity-90" />
-          <div className="relative z-10 text-[#FDF4E4] flex flex-col gap-1">
-            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#F8CE5A]">
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-opacity group-hover:opacity-90" />
+          <div className="relative z-10 text-cream flex flex-col gap-1">
+            <span className="font-sans text-[10px] uppercase tracking-label text-turmeric">
               MOMENT
             </span>
-            <h3 className="font-display text-[18px] md:text-[22px] font-normal group-hover:text-[#F8CE5A] transition-colors">
+            <h3 className="font-display text-[18px] md:text-[22px] font-normal group-hover:text-turmeric transition-colors">
               {data.title.en}
             </h3>
             <p className="font-sans text-[11px] opacity-80 line-clamp-2">

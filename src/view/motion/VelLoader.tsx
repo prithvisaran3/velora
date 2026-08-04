@@ -30,16 +30,16 @@ export const VelLoader: React.FC = () => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#FDF4E4] overflow-hidden">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-cream overflow-hidden">
         {/* Authentic Vel Logo Mark SVG */}
         <div className="relative flex flex-col items-center gap-3 z-10">
           <svg className="w-[60px] h-[50px]" viewBox="0 0 120 100" fill="none">
             {/* Beat 1 & 2: Saffron Blade Path */}
             <motion.path
               d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z"
-              stroke="#E8621B"
+              stroke="var(--color-saffron)"
               strokeWidth="2.5"
-              fill={stage === "fill" || stage === "wipe" ? "#E8621B" : "none"}
+              fill={stage === "fill" || stage === "wipe" ? "var(--color-saffron)" : "none"}
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
@@ -50,14 +50,14 @@ export const VelLoader: React.FC = () => {
               <>
                 <motion.path
                   d="M60 6 L65 14 L60 66 L55 14 Z"
-                  fill="#F5A623"
+                  fill="var(--color-marigold)"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.16 }}
                 />
                 <motion.path
                   d="M45 82 L75 82 L75 89 L45 89 Z"
-                  fill="#F5A623"
+                  fill="var(--color-marigold)"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.16 }}
@@ -66,7 +66,7 @@ export const VelLoader: React.FC = () => {
             )}
           </svg>
 
-          <span className="font-sans text-[9px] tracking-[0.34em] uppercase text-[#241F1C]/70">
+          <span className="font-sans text-[9px] tracking-label-wide uppercase text-ink/70">
             by Priya Mahadevan
           </span>
         </div>

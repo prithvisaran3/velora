@@ -38,13 +38,13 @@ export default function PDPPage({ params }: PDPPageProps) {
   const isBase64 = mainImg?.startsWith("data:");
 
   return (
-    <div className="w-full bg-[#FDF4E4]">
-      <div className="max-w-[1440px] mx-auto border-b border-[#241F1C]/15">
+    <div className="w-full bg-cream">
+      <div className="max-w-[1440px] mx-auto border-b border-ink/15">
         <div className="flex flex-col md:flex-row items-stretch">
           {/* D4 Left 840px Media Column */}
-          <div className="w-full md:w-[840px] flex flex-col border-r border-[#241F1C]/12 flex-shrink-0">
-            <div className="relative h-[500px] md:h-[700px] bg-[#F6EAD6] border-b border-[#241F1C]/10 flex items-center justify-center overflow-hidden">
-              <span className="absolute top-4 left-4 font-mono text-[10px] text-[#241F1C]/60 bg-[#FDF4E4]/90 px-2.5 py-1 z-20">
+          <div className="w-full md:w-[840px] flex flex-col border-r border-ink/12 flex-shrink-0">
+            <div className="relative h-[500px] md:h-[700px] bg-sand border-b border-ink/10 flex items-center justify-center overflow-hidden">
+              <span className="absolute top-4 left-4 font-mono text-[10px] text-ink/60 bg-cream/90 px-2.5 py-1 z-20">
                 FLAT-LAY HERO · 3x LOUPE MACRO ZOOM
               </span>
 
@@ -54,16 +54,16 @@ export default function PDPPage({ params }: PDPPageProps) {
                 <div
                   className="w-full h-full flex flex-col justify-between p-8"
                   style={{
-                    background: `linear-gradient(135deg, ${saree.colour.hex || "#8C1F3D"} 0%, #241F1C 100%)`,
+                    background: `linear-gradient(135deg, ${saree.colour.hex || "var(--color-saree-maroon)"} 0%, var(--color-ink) 100%)`,
                   }}
                 >
                   <div className="flex justify-between items-center">
-                    <span className="font-display text-[22px] text-[#FDF4E4] tracking-[0.28em]">VELORA</span>
-                    <span className="font-sans text-[11px] text-[#F5A623] tracking-[0.2em] uppercase">PURE SILK</span>
+                    <span className="font-display text-[22px] text-cream tracking-[0.28em]">VELORA</span>
+                    <span className="font-sans text-[11px] text-marigold tracking-label uppercase">PURE SILK</span>
                   </div>
                   <div className="flex flex-col gap-2">
-                    <h2 className="font-display text-[34px] text-[#FDF4E4]">{saree.title.en}</h2>
-                    <span className="font-sans text-[12px] text-[#F5A623] tracking-[0.2em] uppercase">{saree.fabric}</span>
+                    <h2 className="font-display text-[34px] text-cream">{saree.title.en}</h2>
+                    <span className="font-sans text-[12px] text-marigold tracking-label uppercase">{saree.fabric}</span>
                   </div>
                 </div>
               )}
@@ -71,21 +71,21 @@ export default function PDPPage({ params }: PDPPageProps) {
 
             {/* Gallery Image Thumbnails */}
             {saree.images.length > 1 && (
-              <div className="grid grid-cols-3 gap-[2px] bg-[#241F1C]/10">
+              <div className="grid grid-cols-3 gap-[2px] bg-ink/10">
                 {saree.images.slice(0, 3).map((img: any, idx: number) => {
                   const isSelected = idx === selectedImgIdx;
                   return (
                     <button
                       key={idx}
                       onClick={() => setSelectedImgIdx(idx)}
-                      className={`relative h-[140px] md:h-[180px] bg-[#F6EAD6] overflow-hidden border-2 transition-all ${
-                        isSelected ? "border-[#E8621B]" : "border-transparent opacity-75 hover:opacity-100"
+                      className={`relative h-[140px] md:h-[180px] bg-sand overflow-hidden border-2 transition-all ${
+                        isSelected ? "border-saffron" : "border-transparent opacity-75 hover:opacity-100"
                       }`}
                     >
                       {img.id && !img.id.includes("icon-flat") ? (
                         <Image src={img.id} alt={img.alt || `View ${idx + 1}`} fill unoptimized={img.id.startsWith("data:")} className="object-cover" />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center p-2 text-center font-sans text-[10px] text-[#241F1C]/60">
+                        <div className="w-full h-full flex items-center justify-center p-2 text-center font-sans text-[10px] text-ink/60">
                           VIEW {idx + 1}
                         </div>
                       )}
@@ -99,20 +99,20 @@ export default function PDPPage({ params }: PDPPageProps) {
           {/* D4 Right Detail Column */}
           <div className="flex-1 p-8 md:p-[56px] flex flex-col gap-[26px]">
             <div className="flex flex-col gap-3">
-              <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#B4470F] font-medium">
+              <span className="font-sans text-[11px] tracking-label-wide uppercase text-pressed font-medium">
                 HANDPICKED · ERODE SILK EDIT
               </span>
-              <h1 className="font-display text-[36px] md:text-[52px] leading-[1.04] text-[#241F1C]">
+              <h1 className="font-display text-[36px] md:text-[52px] leading-[1.04] text-ink">
                 {saree.title.en}
               </h1>
-              <div className="font-tamil text-[17px] text-[#241F1C]/75">
+              <div className="font-tamil text-[17px] text-ink/75">
                 {saree.title.ta}
               </div>
             </div>
 
-            <div className="flex items-baseline gap-4 py-2 border-t border-b border-[#241F1C]/15">
+            <div className="flex items-baseline gap-4 py-2 border-t border-b border-ink/15">
               <Price amountInPaise={saree.priceInPaise} className="text-[32px] md:text-[38px]" />
-              <span className="font-sans text-[11px] tracking-[0.16em] uppercase text-[#241F1C]/60">
+              <span className="font-sans text-[11px] tracking-[0.16em] uppercase text-ink/60">
                 INCL. GST · FREE SHIPPING
               </span>
             </div>
@@ -122,7 +122,7 @@ export default function PDPPage({ params }: PDPPageProps) {
                 variant={isSoldOut ? "disabled" : "primary"}
                 onClick={() => addToCart(saree)}
                 disabled={isSoldOut}
-                className="py-5 text-[12px] tracking-[0.24em]"
+                className="py-5 text-[12px] tracking-label"
                 fullWidth
               >
                 {isSoldOut ? "SOLD OUT" : isAddedToCart ? "ADDED TO BAG ✓" : "ADD TO BAG"}
@@ -133,46 +133,46 @@ export default function PDPPage({ params }: PDPPageProps) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Button variant="secondary" className="py-[19px] text-[12px] tracking-[0.24em]" fullWidth>
+                <Button variant="secondary" className="py-[19px] text-[12px] tracking-label" fullWidth>
                   ASK ON WHATSAPP
                 </Button>
               </a>
             </div>
 
             {/* Spec Table */}
-            <div className="flex flex-col border-t border-b border-[#241F1C]/15 py-1 text-[12px] font-sans">
-              <div className="flex justify-between py-3 border-b border-[#241F1C]/10">
-                <span className="tracking-[0.16em] uppercase text-[#241F1C]/55">FABRIC</span>
-                <span className="text-[#241F1C]">{saree.fabric}</span>
+            <div className="flex flex-col border-t border-b border-ink/15 py-1 text-[12px] font-sans">
+              <div className="flex justify-between py-3 border-b border-ink/10">
+                <span className="tracking-[0.16em] uppercase text-ink/55">FABRIC</span>
+                <span className="text-ink">{saree.fabric}</span>
               </div>
-              <div className="flex justify-between py-3 border-b border-[#241F1C]/10">
-                <span className="tracking-[0.16em] uppercase text-[#241F1C]/55">LENGTH</span>
-                <span className="text-[#241F1C]">{(saree.lengthCm / 100).toFixed(1)} m incl. blouse</span>
+              <div className="flex justify-between py-3 border-b border-ink/10">
+                <span className="tracking-[0.16em] uppercase text-ink/55">LENGTH</span>
+                <span className="text-ink">{(saree.lengthCm / 100).toFixed(1)} m incl. blouse</span>
               </div>
-              <div className="flex justify-between py-3 border-b border-[#241F1C]/10">
-                <span className="tracking-[0.16em] uppercase text-[#241F1C]/55">BLOUSE PIECE</span>
-                <span className="text-[#241F1C]">{(saree.blousePieceCm / 100).toFixed(1)} m, attached</span>
+              <div className="flex justify-between py-3 border-b border-ink/10">
+                <span className="tracking-[0.16em] uppercase text-ink/55">BLOUSE PIECE</span>
+                <span className="text-ink">{(saree.blousePieceCm / 100).toFixed(1)} m, attached</span>
               </div>
-              <div className="flex justify-between py-3 border-b border-[#241F1C]/10">
-                <span className="tracking-[0.16em] uppercase text-[#241F1C]/55">ZARI</span>
-                <span className="text-[#241F1C]">{saree.zari}</span>
+              <div className="flex justify-between py-3 border-b border-ink/10">
+                <span className="tracking-[0.16em] uppercase text-ink/55">ZARI</span>
+                <span className="text-ink">{saree.zari}</span>
               </div>
-              <div className="flex justify-between py-3 border-b border-[#241F1C]/10">
-                <span className="tracking-[0.16em] uppercase text-[#241F1C]/55">CARE</span>
-                <span className="text-[#241F1C]">{saree.care}</span>
+              <div className="flex justify-between py-3 border-b border-ink/10">
+                <span className="tracking-[0.16em] uppercase text-ink/55">CARE</span>
+                <span className="text-ink">{saree.care}</span>
               </div>
               <div className="flex justify-between py-3">
-                <span className="tracking-[0.16em] uppercase text-[#241F1C]/55">WEIGHT</span>
-                <span className="text-[#241F1C]">{saree.weightGrams} g</span>
+                <span className="tracking-[0.16em] uppercase text-ink/55">WEIGHT</span>
+                <span className="text-ink">{saree.weightGrams} g</span>
               </div>
             </div>
 
             {/* D4 Authenticity Panel */}
-            <div className="bg-[#F6EAD6] p-5 flex flex-col gap-2">
-              <span className="font-sans text-[10px] tracking-[0.26em] uppercase text-[#B4470F] font-medium">
+            <div className="bg-sand p-5 flex flex-col gap-2">
+              <span className="font-sans text-[10px] tracking-[0.26em] uppercase text-pressed font-medium">
                 AUTHENTICITY
               </span>
-              <p className="font-sans text-[12px] leading-[1.7] text-[#241F1C]/80">
+              <p className="font-sans text-[12px] leading-[1.7] text-ink/80">
                 Bought directly from the weaver's family in Kanchipuram and checked in our Erode shop. Silk mark on request. 7-day return, COD available, GST invoice with every order.
               </p>
             </div>
@@ -180,8 +180,8 @@ export default function PDPPage({ params }: PDPPageProps) {
         </div>
 
         {/* D4 "She also considered" section */}
-        <div className="p-8 md:p-[64px] border-t border-[#241F1C]/12 flex flex-col gap-6">
-          <h2 className="font-display text-[34px] text-[#241F1C]">She also considered</h2>
+        <div className="p-8 md:p-[64px] border-t border-ink/12 flex flex-col gap-6">
+          <h2 className="font-display text-[34px] text-ink">She also considered</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {relatedSarees.map((rel: any) => (
               <SareeCard key={rel.id} saree={rel} />
