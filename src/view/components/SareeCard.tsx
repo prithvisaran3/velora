@@ -17,16 +17,17 @@ interface SareeCardProps {
 export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const isSoldOut = saree.status === "sold";
   const isOnlyOneInStock = saree.status === "available";
 
   const firstImg = saree.images[0]?.id;
-  const isRealFirstImg = firstImg && !firstImg.includes("icon-flat");
+  const isRealFirstImg = !!firstImg && !firstImg.includes("icon-flat") && !imgError;
 
   const secondImg = saree.images[1]?.id;
-  const isRealSecondImg = secondImg && !secondImg.includes("icon-flat");
+  const isRealSecondImg = !!secondImg && !secondImg.includes("icon-flat");
 
   // IntersectionObserver for mobile scroll-into-view cross-fade
   useEffect(() => {
@@ -35,11 +36,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        } else {
-          setIsInView(false);
-        }
+        setIsInView(entry.isIntersecting);
       },
       { threshold: 0.6 }
     );
@@ -49,6 +46,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
   }, []);
 
   const showDraped = (isHovered || isInView) && isRealSecondImg;
+  const isBase64 = firstImg?.startsWith("data:");
 
   return (
     <div
@@ -59,15 +57,17 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
     >
       <Link
         href={`/saree/${saree.slug}`}
-        className="block relative aspect-[3/4] overflow-hidden placeholder-weave border border-[#241F1C]/10"
+        className="block relative aspect-[3/4] overflow-hidden border border-[#241F1C]/10 bg-[#F6EAD6]"
       >
-        {/* Real Image or Woven Placeholder */}
+        {/* Real Image or Woven Silk Backdrop Fallback */}
         {isRealFirstImg ? (
           <Image
             src={firstImg}
             alt={saree.images[0]?.alt || saree.title.en}
             fill
             priority={priority}
+            unoptimized={isBase64}
+            onError={() => setImgError(true)}
             sizes="(max-width: 768px) 50vw, 25vw"
             className={cn(
               "object-cover transition-opacity duration-600 ease-silk",
@@ -75,19 +75,39 @@ export const SareeCard: React.FC<SareeCardProps> = ({ saree, className, priority
             )}
           />
         ) : (
-          <div className="absolute inset-0 flex items-end p-3">
-            <span className="font-mono text-[9px] text-[#241F1C]/55">
-              {saree.colour.label.en} saree · 3/4 drape
-            </span>
+          <div
+            className="absolute inset-0 flex flex-col justify-between p-4"
+            style={{
+              background: `linear-gradient(135deg, ${saree.colour.hex || "#8C1F3D"} 0%, #241F1C 100%)`,
+            }}
+          >
+            <div className="flex justify-between items-start">
+              <span className="font-display text-[14px] text-[#FDF4E4] tracking-[0.2em] uppercase opacity-90">
+                VELORA
+              </span>
+              <div className="w-6 h-6 border border-[#F5A623] rounded-full flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-[#F5A623]" />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1 border-t border-[#F5A623]/40 pt-3">
+              <span className="font-display text-[16px] text-[#FDF4E4] leading-tight">
+                {saree.title.en}
+              </span>
+              <span className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#F5A623]">
+                {saree.colour.label.en} · PATTU SAREE
+              </span>
+            </div>
           </div>
         )}
 
         {/* Draped cross-fade image */}
-        {isRealSecondImg && (
+        {isRealSecondImg && !imgError && (
           <Image
             src={secondImg}
             alt={saree.images[1]?.alt || `${saree.title.en} draped`}
             fill
+            unoptimized={secondImg.startsWith("data:")}
             sizes="(max-width: 768px) 50vw, 25vw"
             className={cn(
               "object-cover transition-opacity duration-600 ease-silk absolute inset-0",

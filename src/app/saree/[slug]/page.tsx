@@ -33,8 +33,9 @@ export default function PDPPage({ params }: PDPPageProps) {
   const isSoldOut = saree.status === "sold";
   const isAddedToCart = cartItems.some((item: any) => item.id === saree.id);
 
-  const mainImg = saree.images[selectedImgIdx]?.id;
-  const isRealMainImg = mainImg && !mainImg.includes("icon-flat");
+  const mainImg = saree.images[selectedImgIdx]?.id || saree.images[0]?.id;
+  const isRealMainImg = !!mainImg && !mainImg.includes("icon-flat");
+  const isBase64 = mainImg?.startsWith("data:");
 
   return (
     <div className="w-full bg-[#FDF4E4]">
@@ -42,42 +43,64 @@ export default function PDPPage({ params }: PDPPageProps) {
         <div className="flex flex-col md:flex-row items-stretch">
           {/* D4 Left 840px Media Column */}
           <div className="w-full md:w-[840px] flex flex-col border-r border-[#241F1C]/12 flex-shrink-0">
-            <div className="relative h-[500px] md:h-[700px] placeholder-weave border-b border-[#241F1C]/10 flex items-center justify-center">
+            <div className="relative h-[500px] md:h-[700px] bg-[#F6EAD6] border-b border-[#241F1C]/10 flex items-center justify-center overflow-hidden">
               <span className="absolute top-4 left-4 font-mono text-[10px] text-[#241F1C]/60 bg-[#FDF4E4]/90 px-2.5 py-1 z-20">
-                flat-lay hero · 4:5 · LCP image
+                FLAT-LAY HERO · 3x LOUPE MACRO ZOOM
               </span>
 
               {isRealMainImg ? (
                 <Loupe src={mainImg} alt={saree.title.en} className="w-full h-full" />
               ) : (
-                <div className="w-[220px] md:w-[250px] h-[220px] md:h-[250px] rounded-full border-2 border-[#F5A623] placeholder-weave flex flex-col items-center justify-center text-center p-4">
-                  <span className="font-mono text-[11px] text-[#241F1C]/75 leading-[1.6]">
-                    loupe cursor · 3× macro<br />zari + weave detail<br />follows pointer, 220ms lag
-                  </span>
+                <div
+                  className="w-full h-full flex flex-col justify-between p-8"
+                  style={{
+                    background: `linear-gradient(135deg, ${saree.colour.hex || "#8C1F3D"} 0%, #241F1C 100%)`,
+                  }}
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="font-display text-[22px] text-[#FDF4E4] tracking-[0.28em]">VELORA</span>
+                    <span className="font-sans text-[11px] text-[#F5A623] tracking-[0.2em] uppercase">PURE SILK</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="font-display text-[34px] text-[#FDF4E4]">{saree.title.en}</h2>
+                    <span className="font-sans text-[12px] text-[#F5A623] tracking-[0.2em] uppercase">{saree.fabric}</span>
+                  </div>
                 </div>
               )}
             </div>
 
-            {/* 3 Tiles: Draped, Pallu Detail, Drape Video */}
-            <div className="grid grid-cols-3 gap-[2px] bg-[#241F1C]/10">
-              <div className="h-[140px] md:h-[180px] placeholder-weave flex items-end p-2.5">
-                <span className="font-mono text-[9px] text-[#241F1C]/60">draped on model</span>
+            {/* Gallery Image Thumbnails */}
+            {saree.images.length > 1 && (
+              <div className="grid grid-cols-3 gap-[2px] bg-[#241F1C]/10">
+                {saree.images.slice(0, 3).map((img: any, idx: number) => {
+                  const isSelected = idx === selectedImgIdx;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImgIdx(idx)}
+                      className={`relative h-[140px] md:h-[180px] bg-[#F6EAD6] overflow-hidden border-2 transition-all ${
+                        isSelected ? "border-[#E8621B]" : "border-transparent opacity-75 hover:opacity-100"
+                      }`}
+                    >
+                      {img.id && !img.id.includes("icon-flat") ? (
+                        <Image src={img.id} alt={img.alt || `View ${idx + 1}`} fill unoptimized={img.id.startsWith("data:")} className="object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center p-2 text-center font-sans text-[10px] text-[#241F1C]/60">
+                          VIEW {idx + 1}
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
-              <div className="h-[140px] md:h-[180px] placeholder-weave flex items-end p-2.5">
-                <span className="font-mono text-[9px] text-[#241F1C]/60">pallu detail</span>
-              </div>
-              <div className="h-[140px] md:h-[180px] bg-[#241F1C] text-[#FDF4E4] flex flex-col justify-end p-2.5 gap-1">
-                <span className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#F5A623]">DRAPE VIDEO</span>
-                <span className="font-mono text-[9px] text-[#FDF4E4]/65">6s · walking fabric</span>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* D4 Right Detail Column */}
           <div className="flex-1 p-8 md:p-[56px] flex flex-col gap-[26px]">
             <div className="flex flex-col gap-3">
               <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#B4470F] font-medium">
-                HANDPICKED · JULY EDIT
+                HANDPICKED · ERODE SILK EDIT
               </span>
               <h1 className="font-display text-[36px] md:text-[52px] leading-[1.04] text-[#241F1C]">
                 {saree.title.en}
@@ -102,7 +125,7 @@ export default function PDPPage({ params }: PDPPageProps) {
                 className="py-5 text-[12px] tracking-[0.24em]"
                 fullWidth
               >
-                {isSoldOut ? "SOLD OUT" : isAddedToCart ? "ADDED TO BAG" : "ADD TO BAG"}
+                {isSoldOut ? "SOLD OUT" : isAddedToCart ? "ADDED TO BAG ✓" : "ADD TO BAG"}
               </Button>
 
               <a
@@ -114,10 +137,6 @@ export default function PDPPage({ params }: PDPPageProps) {
                   ASK ON WHATSAPP
                 </Button>
               </a>
-
-              <span className="font-mono text-[10px] text-[#241F1C]/55 leading-[1.6] mt-1">
-                add-to-bag: image folds along two axes and flies to the bag icon (720ms), bag pulses once in marigold
-              </span>
             </div>
 
             {/* Spec Table */}
