@@ -11,13 +11,13 @@ export const CuratorBand: React.FC = () => {
             CURATOR'S NOTE
           </span>
           <blockquote className="font-display text-[18px] md:text-[22px] text-ink leading-relaxed italic">
-            "A saree should feel unhurried. When you wear Velora, you carry forty-eight years of Erode silk house heritage on your shoulder."
+            "My father could tell you which loom a saree came off with his eyes shut. He sent me to the weavers alone at nineteen. I still hold every one to the light before it goes on this website."
           </blockquote>
           <TamilText className="text-[13px] text-[#241F1C]/75">
-            பாரம்பரிய நெசவின் அழகு, ஒவ்வொரு இழையிலும் மிளிர்கிறது.
+            ஒவ்வொரு புடவையும் என் கையால் தேர்ந்தெடுக்கப்பட்டது.
           </TamilText>
           <span className="font-sans text-[11px] uppercase tracking-[0.2em] font-medium text-[#241F1C]/78 mt-1">
-            — Bharani Pattu Family House, Erode
+            — PRIYA MAHADEVAN · FOUNDER &amp; CURATOR, ERODE
           </span>
         </div>
       </div>

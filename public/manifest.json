@@ -1,7 +1,7 @@
 {
   "name": "Velora Admin",
   "short_name": "Velora Admin",
-  "description": "Bharani Pattu Velora Storefront Mobile Admin PWA",
+  "description": "Velora · Handpicked Silk Sarees from Erode · Admin PWA",
   "start_url": "/admin",
   "display": "standalone",
   "background_color": "#FDF4E4",

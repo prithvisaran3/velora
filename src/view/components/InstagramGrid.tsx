@@ -4,7 +4,7 @@ import { SectionHead } from "../primitives/SectionHead";
 export const InstagramGrid: React.FC = () => {
   return (
     <section className="my-12 px-4 md:px-16">
-      <SectionHead align="center" subtitle="Follow @velora.in on Instagram for drape loops and loom stories.">
+      <SectionHead align="center" subtitle="Follow @velora.in on Instagram for styling ideas and loom stories.">
         From our Showroom
       </SectionHead>
 

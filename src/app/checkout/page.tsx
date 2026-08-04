@@ -11,6 +11,7 @@ import { Button } from "@/view/primitives/Button";
 import { applyCoupon } from "@/viewmodel/actions/applyCoupon";
 import { recordPayment } from "@/viewmodel/actions/recordPayment";
 import { paise } from "@/model/domain/types";
+import { Wordmark } from "@/view/primitives/Wordmark";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -105,20 +106,8 @@ export default function CheckoutPage() {
     <div className="w-full bg-[#FDF4E4] min-h-screen flex flex-col items-center">
       {/* D6 Header: Centered Logo Only */}
       <div className="w-full py-6 flex flex-col items-center justify-center border-b border-[#241F1C]/12">
-        <Link href="/" className="flex flex-col items-center group text-center">
-          <div className="flex items-end justify-center">
-            <svg viewBox="0 0 100 124" className="w-[19px] h-[24px] mr-2">
-              <path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B" />
-              <path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623" />
-              <path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623" />
-            </svg>
-            <span className="font-display text-[28px] leading-[0.82] tracking-[0.28em] text-[#241F1C] mr-[-0.28em]">
-              ELORA
-            </span>
-          </div>
-          <span className="font-sans text-[7px] tracking-[0.34em] uppercase text-[#241F1C]/65 mr-[-0.34em] mt-[5px]">
-            BY BHARANI PATTU
-          </span>
+        <Link href="/" className="group">
+          <Wordmark fontSize={28} tone="cream" endorsement />
         </Link>
       </div>
 

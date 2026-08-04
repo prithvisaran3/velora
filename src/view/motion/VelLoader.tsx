@@ -33,12 +33,12 @@ export const VelLoader: React.FC = () => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#FDF4E4] overflow-hidden">
         {/* Authentic Vel Logo Mark SVG */}
         <div className="relative flex flex-col items-center gap-3 z-10">
-          <svg className="w-20 h-24" viewBox="0 0 100 124" fill="none">
+          <svg className="w-[60px] h-[50px]" viewBox="0 0 120 100" fill="none">
             {/* Beat 1 & 2: Saffron Blade Path */}
             <motion.path
-              d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z"
+              d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z"
               stroke="#E8621B"
-              strokeWidth="3"
+              strokeWidth="2.5"
               fill={stage === "fill" || stage === "wipe" ? "#E8621B" : "none"}
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -49,14 +49,14 @@ export const VelLoader: React.FC = () => {
             {(stage === "close" || stage === "fill" || stage === "wipe") && (
               <>
                 <motion.path
-                  d="M50 12 L55 19 L50 78 L45 19 Z"
+                  d="M60 6 L65 14 L60 66 L55 14 Z"
                   fill="#F5A623"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.16 }}
                 />
                 <motion.path
-                  d="M37 91 L63 91 L63 98 L37 98 Z"
+                  d="M45 82 L75 82 L75 89 L45 89 Z"
                   fill="#F5A623"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -67,7 +67,7 @@ export const VelLoader: React.FC = () => {
           </svg>
 
           <span className="font-sans text-[9px] tracking-[0.34em] uppercase text-[#241F1C]/70">
-            BY BHARANI PATTU
+            by Priya Mahadevan
           </span>
         </div>
 

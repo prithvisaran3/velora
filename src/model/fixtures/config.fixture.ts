@@ -20,18 +20,18 @@ export interface ConfigFixture {
 
 export const configFixture: ConfigFixture = {
   storeName: "Velora",
-  endorsement: "by Bharani Pattu",
+  endorsement: "by Priya Mahadevan",
   city: "Erode, Tamil Nadu",
-  sinceYear: 1978,
+  sinceYear: 1977,
   tagline: {
-    en: "Handpicked silk sarees, single price point ₹3,000",
-    ta: "தேர்ந்தெடுக்கப்பட்ட பட்டுப் புடவைகள், ஒரே விலை ₹3,000",
+    en: "Handpicked pure silk sarees from Erode",
+    ta: "ஈரோட்டிலிருந்து தேர்ந்தெடுக்கப்பட்ட தூய பட்டுப் புடவைகள்",
   },
   trust: {
-    authenticity: "Handpicked pure silk certified by Bharani Pattu Centre, Erode.",
+    authenticity: "Handpicked pure silk, chosen in Erode by Priya Mahadevan.",
     returnPolicy: "Easy 7-day hassle-free returns on all unstitched sarees.",
     shipping: "Free insured delivery across all pincodes in India.",
-    legacy: "Family silk house trading in Erode since 1978.",
+    legacy: "Silk chosen in Erode by hand since 1977.",
   },
   deliveryWindows: {
     tamilNadu: "2–3 days",

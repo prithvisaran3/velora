@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useAuth } from "@/viewmodel/client/useAuth";
+import { Wordmark } from "@/view/primitives/Wordmark";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -77,19 +78,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
         {/* Brand Header */}
         <div className="flex flex-col items-center text-center gap-1">
-          <div className="flex items-end justify-center">
-            <svg viewBox="0 0 100 124" className="w-[17px] h-[22px] mr-1.5">
-              <path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#E8621B" />
-              <path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623" />
-              <path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623" />
-            </svg>
-            <span className="font-display text-[24px] tracking-[0.28em] text-[#241F1C] mr-[-0.28em]">
-              ELORA
-            </span>
-          </div>
-          <span className="font-sans text-[7px] tracking-[0.34em] uppercase text-[#241F1C]/65 mr-[-0.34em]">
-            BY BHARANI PATTU
-          </span>
+          <Wordmark fontSize={24} tone="cream" endorsement />
         </div>
 
         {/* Tab Selector */}

@@ -69,10 +69,6 @@ export default function ColourPage({ params }: ColourPageProps) {
           })}
         </div>
 
-        <span className="font-mono text-[10px] text-[#241F1C]/55 max-w-[660px] leading-[1.7]">
-          selected swatch grows to 104px + 2px ring · page background, header and card frames cross-dye over 800ms cubic-bezier(.16,1,.3,1)<br />
-          text colour is recalculated for contrast, never animated
-        </span>
       </div>
 
       {/* Grid Header & Filters */}

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { TrustRow } from "../components/TrustRow";
+import { Wordmark } from "@/view/primitives/Wordmark";
 
 export const Footer: React.FC = () => {
   return (
@@ -9,23 +10,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12">
           {/* Col 1: Logo & Tamil Line */}
           <div className="flex flex-col gap-3">
-            <Link href="/" className="flex flex-col items-start group">
-              <div className="flex items-end justify-start">
-                <svg viewBox="0 0 100 124" className="w-[20px] h-[25px] mr-2">
-                  <path d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z" fill="#FDF4E4" />
-                  <path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623" />
-                  <path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623" />
-                </svg>
-                <span className="font-display text-[31px] leading-[0.82] tracking-[0.28em] text-[#FDF4E4] mr-[-0.28em]">
-                  ELORA
-                </span>
-              </div>
-              <span className="font-sans text-[8px] tracking-[0.34em] uppercase text-[#F5A623] mr-[-0.34em] mt-[6px]">
-                BY BHARANI PATTU
-              </span>
+            <Link href="/" className="group">
+              <Wordmark fontSize={27} tone="ink" endorsement layout="stacked" className="items-start" />
             </Link>
             <div className="font-tamil text-[15px] text-[#FDF4E4]/70 mt-2">
-              ஈரோடு · 1978 முதல்
+              ஈரோடு · 1977 முதல்
             </div>
           </div>
 

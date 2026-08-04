@@ -10,10 +10,11 @@ export const JsonLd: React.FC<JsonLdProps> = ({ saree, url = "https://velora-sto
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Velora by Bharani Pattu Centre",
+    "name": "Velora",
     "url": url,
     "logo": `${url}/brand/png/icon-flat-512.png`,
-    "foundingDate": "1978",
+    "foundingDate": "1977",
+    "founder": { "@type": "Person", "name": "Priya Mahadevan" },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Erode",
@@ -46,11 +47,11 @@ export const JsonLd: React.FC<JsonLdProps> = ({ saree, url = "https://velora-sto
       "@type": "Product",
       "name": saree.title.en,
       "image": saree.images.map((img) => img.id),
-      "description": `${saree.fabric} saree in ${saree.colour.label.en}. Handpicked by Bharani Pattu Centre, Erode.`,
+      "description": `${saree.fabric} saree in ${saree.colour.label.en}. Handpicked in Erode by Priya Mahadevan.`,
       "sku": saree.id,
       "brand": {
         "@type": "Brand",
-        "name": "Velora by Bharani Pattu"
+        "name": "Velora"
       },
       "offers": {
         "@type": "Offer",
@@ -61,7 +62,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ saree, url = "https://velora-sto
         "availability": saree.status === "available" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
         "seller": {
           "@type": "Organization",
-          "name": "Bharani Pattu Centre"
+          "name": "Velora"
         }
       }
     };

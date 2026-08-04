@@ -40,7 +40,7 @@ export default async function OffersPage() {
       {/* Header */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-[64px] py-14 flex flex-col gap-4 text-center md:text-left">
         <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#B4470F] font-medium">
-          CURATED SAVINGS · BHARANI PATTU
+          CURATED SAVINGS · VELORA
         </span>
         <h1 className="font-display text-[48px] md:text-[72px] leading-[0.98] text-[#241F1C]">
           Offers & Festivities

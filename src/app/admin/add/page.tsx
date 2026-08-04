@@ -25,7 +25,7 @@ export default function AdminAddProductPage() {
   const [zari, setZari] = useState("Half-fine gold zari, 4-inch border");
   const [care, setCare] = useState("Dry clean only");
   const [weightGrams, setWeightGrams] = useState(640);
-  const [authenticityNote, setAuthenticityNote] = useState("Handpicked pure silk certified by Bharani Pattu Centre, Erode.");
+  const [authenticityNote, setAuthenticityNote] = useState("Handpicked pure silk, chosen in Erode by Priya Mahadevan.");
   const [status, setStatus] = useState<"available" | "draft">("available");
   
   // Product Photos state

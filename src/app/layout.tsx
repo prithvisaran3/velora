@@ -26,9 +26,9 @@ const anekTamil = Anek_Tamil({
 });
 
 export const metadata: Metadata = {
-  title: "Velora by Bharani Pattu · Handpicked Silk Sarees",
+  title: "Velora · Handpicked Silk Sarees from Erode",
   description:
-    "Handpicked pure silk sarees. Family silk house in Erode, Tamil Nadu since 1978. India-only free shipping.",
+    "Handpicked pure silk sarees, curated in Erode by Priya Mahadevan. India-only free shipping.",
 };
 
 export default function RootLayout({

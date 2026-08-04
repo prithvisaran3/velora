@@ -6,6 +6,7 @@ import { MobileNav } from "./MobileNav";
 import { useCart } from "@/viewmodel/client/useCart";
 import { useAuth } from "@/viewmodel/client/useAuth";
 import { AuthModal } from "@/view/components/AuthModal";
+import { Wordmark } from "@/view/primitives/Wordmark";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -44,29 +45,8 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
           </button>
 
           {/* Centered Stacked Official Logo & Endorsement */}
-          <Link href="/" className="flex flex-col items-center group text-center">
-            <div className="flex items-end justify-center">
-              <svg viewBox="0 0 100 124" className="w-[19px] h-[24px] mr-2">
-                <path
-                  d="M6 8 C 21 30 39 68 50 116 C 61 68 79 30 94 8 L 77 8 C 67 28 56 58 50 84 C 44 58 33 28 23 8 Z"
-                  fill={isDark ? "#FDF4E4" : "#E8621B"}
-                />
-                <path d="M50 12 L55 19 L50 78 L45 19 Z" fill="#F5A623" />
-                <path d="M37 91 L63 91 L63 98 L37 98 Z" fill="#F5A623" />
-              </svg>
-              <span className={cn(
-                "font-display text-[28px] md:text-[30px] leading-[0.82] tracking-[0.28em] mr-[-0.28em]",
-                isDark ? "text-[#FDF4E4]" : "text-[#241F1C]"
-              )}>
-                ELORA
-              </span>
-            </div>
-            <span className={cn(
-              "font-sans text-[7px] md:text-[8px] tracking-[0.34em] uppercase mr-[-0.34em] mt-[5px]",
-              isDark ? "text-[#F5A623]" : "text-[#241F1C]/65"
-            )}>
-              BY BHARANI PATTU
-            </span>
+          <Link href="/" className="group">
+            <Wordmark fontSize={30} tone={isDark ? "ink" : "cream"} endorsement />
           </Link>
 
           {/* Desktop & Mobile Utilities */}

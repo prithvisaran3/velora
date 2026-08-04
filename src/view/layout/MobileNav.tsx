@@ -60,10 +60,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
 
           <div className="flex flex-col gap-2 pt-6 border-t border-[#241F1C]/15">
             <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#241F1C]/55">
-              BHARANI PATTU CENTRE
+              BY PRIYA MAHADEVAN
             </span>
             <TamilText className="text-[12px] text-[#241F1C]/70">
-              ஈரோடு · 1978 முதல்
+              ஈரோடு · 1977 முதல்
             </TamilText>
           </div>
         </div>

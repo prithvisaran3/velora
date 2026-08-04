@@ -19,7 +19,7 @@ export const sareesFixture: Saree[] = [
       { id: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1080&q=85", alt: "Deep Maroon Mangai Motif Silk Saree flat-lay", aspect: "3/4", order: 1 },
       { id: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1080&q=85", alt: "Deep Maroon Silk Saree draped", aspect: "3/4", order: 2 },
     ],
-    authenticityNote: "Handpicked pure silk certified by Bharani Pattu Centre, Erode.",
+    authenticityNote: "Handpicked pure silk, chosen in Erode by Priya Mahadevan.",
     publishedAt: "2026-07-01T00:00:00Z",
     createdAt: "2026-07-01T00:00:00Z",
     updatedAt: "2026-07-01T00:00:00Z",

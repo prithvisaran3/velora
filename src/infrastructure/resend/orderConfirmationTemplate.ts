@@ -29,7 +29,7 @@ export function generateOrderConfirmationEmailHtml(order: Order): string {
   <div class="container">
     <div class="logo">
       <div class="logo-text">ELORA</div>
-      <div class="logo-sub">BY BHARANI PATTU · ERODE</div>
+      <div class="logo-sub">BY PRIYA MAHADEVAN · ERODE</div>
     </div>
     
     <div class="divider"></div>
@@ -67,7 +67,7 @@ export function generateOrderConfirmationEmailHtml(order: Order): string {
     </p>
 
     <div class="footer">
-      Bharani Pattu Centre · 1978 முதல் · Erode, Tamil Nadu<br>
+      Velora · Erode, Tamil Nadu · ஈரோடு · 1977 முதல்<br>
       Need help? <a href="https://wa.me/919876543210" style="color: #12514E;">Ask on WhatsApp</a>
     </div>
   </div>

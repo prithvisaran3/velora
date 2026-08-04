@@ -23,10 +23,6 @@ export default async function HomePage() {
     <div className="flex flex-col w-full bg-[#FDF4E4]">
       {/* D1 Hero Section */}
       <section className="relative w-full h-[660px] placeholder-weave flex items-end p-8 md:p-[64px] overflow-hidden border-b border-[#241F1C]/15">
-        <div className="absolute top-6 left-6 font-mono text-[11px] text-[#241F1C]/60 bg-[#FDF4E4]/90 px-3 py-1.5 z-20">
-          hero video · 8s silent loop · silk falling in raking light
-        </div>
-
         <div className="relative z-10 max-w-[840px] flex flex-col gap-[26px]">
           <h1 className="font-display text-[52px] md:text-[104px] text-[#241F1C] leading-[0.94] text-balance">
             Handpicked, never<br />warehoused.
@@ -48,12 +44,12 @@ export default async function HomePage() {
       {/* D1 Legacy Strip */}
       <section className="bg-[#241F1C] text-[#FDF4E4] px-8 md:px-[64px] py-[44px] flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="font-display text-[32px] md:text-[38px] text-[#FDF4E4] leading-[1.1]">
-          The Erode house,<br />since 1978.
+          Chosen in Erode,<br />since 1977.
         </div>
         <div className="flex items-center gap-10 md:gap-14">
           <div className="flex flex-col gap-1 text-center md:text-left">
-            <span className="font-display text-[34px] text-[#F5A623]">47</span>
-            <span className="font-sans text-[10px] tracking-[0.24em] uppercase text-[#FDF4E4]/65">YEARS TRADING</span>
+            <span className="font-display text-[34px] text-[#F5A623]">49</span>
+            <span className="font-sans text-[10px] tracking-[0.24em] uppercase text-[#FDF4E4]/65">YEARS IN SILK</span>
           </div>
           <div className="flex flex-col gap-1 text-center md:text-left">
             <span className="font-display text-[34px] text-[#F5A623]">3</span>
@@ -94,11 +90,8 @@ export default async function HomePage() {
         <div className="flex flex-col gap-5 max-w-[400px]">
           <h2 className="font-display text-[36px] md:text-[44px] leading-[1.05] text-[#241F1C]">Shop by colour</h2>
           <p className="font-sans text-[14px] leading-[1.75] text-[#241F1C]/78">
-            How sarees are actually chosen. Pick a colour and the whole page dyes to that hue over 800ms — cards, background, and the vel scroll thread.
+            How sarees are actually chosen. Pick a colour and browse the full collection in that hue — from deep maroon bridal silks to everyday kora cottons.
           </p>
-          <span className="font-mono text-[10px] text-[#241F1C]/55 leading-[1.7]">
-            background-color 800ms cubic-bezier(.16,1,.3,1)<br />prefers-reduced-motion → instant swap
-          </span>
         </div>
 
         <div className="flex flex-wrap gap-5 flex-1 justify-center md:justify-start">
@@ -132,22 +125,20 @@ export default async function HomePage() {
 
       {/* D1 Curator Block */}
       <section className="bg-[#F6EAD6] px-8 md:px-[64px] py-[72px] flex flex-col md:flex-row gap-12 md:gap-[56px] items-center">
-        <div className="w-[280px] md:w-[360px] h-[360px] md:h-[440px] placeholder-weave flex items-end p-4 flex-shrink-0 border border-[#241F1C]/15">
-          <span className="font-mono text-[10px] text-[#241F1C]/60">curator portrait · shop interior, Erode</span>
-        </div>
+        <div className="w-[280px] md:w-[360px] h-[360px] md:h-[440px] placeholder-weave flex-shrink-0 border border-[#241F1C]/15" />
 
         <div className="flex flex-col gap-[22px]">
           <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#B4470F] font-medium">
             FROM THE CURATOR
           </span>
           <blockquote className="font-display text-[26px] md:text-[38px] leading-[1.25] text-[#241F1C] max-w-[720px]">
-            "I have been choosing sarees in this shop since I was nineteen. I still hold every one to the light before it goes on this website."
+            "My father could tell you which loom a saree came off with his eyes shut. He sent me to the weavers alone at nineteen. I still hold every one to the light before it goes on this website."
           </blockquote>
           <div className="font-tamil text-[19px] text-[#241F1C]/80">
-            ஒவ்வொரு புடவையும் கையால் தேர்ந்தெடுக்கப்பட்டது.
+            ஒவ்வொரு புடவையும் என் கையால் தேர்ந்தெடுக்கப்பட்டது.
           </div>
           <span className="font-sans text-[11px] tracking-[0.22em] uppercase text-[#241F1C]/60 mt-1">
-            — LAKSHMI, SECOND GENERATION · BHARANI PATTU CENTRE
+            — PRIYA MAHADEVAN · FOUNDER &amp; CURATOR, ERODE
           </span>
         </div>
       </section>
