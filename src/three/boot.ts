@@ -14,8 +14,15 @@
 
 type Listener = () => void;
 
-const LCP_SAFETY_MS = 2000;
+/**
+ * Outer bound on waiting for LCP. Generous on purpose: on a slow route the
+ * cost of waiting is a late scene, and the cost of not waiting is a 123 KB
+ * chunk competing with the product image for bandwidth and main thread.
+ */
+const LCP_SAFETY_MS = 7000;
 const IDLE_TIMEOUT_MS = 1200;
+/** How long the LCP entry stream must be quiet before we call it settled. */
+const LCP_QUIET_MS = 500;
 
 let lcpReady = false;
 let earlyRequested = false;
@@ -74,19 +81,60 @@ export function whenIdle(fn: Listener): () => void {
 }
 
 /**
- * Treat `load` as the outer bound of LCP: by then every render-blocking
- * resource and the hero media are done. Routes with a real hero <img> call
- * markLcpReady() sooner, and the 2s safety timer caps the wait either way.
+ * Watch for LCP itself rather than guessing at it.
+ *
+ * The first version gated on `window.load` with a 2s safety timer, which was
+ * wrong on any route whose LCP element paints late: on the PDP — a client
+ * component that fetches its view model after hydration — the flat-lay lands
+ * around 5.5s, so a 2s timer put the canvas and its 123 KB chunk in direct
+ * competition with the thing we were supposed to be waiting for. It cost a
+ * measured second of LCP on throttled 4G.
+ *
+ * Now: `load` *and* a quiet period on the largest-contentful-paint stream,
+ * whichever resolves last, capped by the safety timer. Entries keep arriving
+ * until first input, so quiet — not "an entry happened" — is the signal.
  */
 export function armLcpSignals(): () => void {
   if (typeof window === "undefined") return () => {};
-  if (document.readyState === "complete") {
-    markLcpReady();
-    return () => {};
+
+  let loaded = document.readyState === "complete";
+  let lastEntry = performance.now();
+  let quietTimer: ReturnType<typeof setTimeout> | null = null;
+  let observer: PerformanceObserver | null = null;
+
+  const settle = () => {
+    if (!loaded || lcpReady) return;
+    if (quietTimer) clearTimeout(quietTimer);
+    const waited = performance.now() - lastEntry;
+    if (waited >= LCP_QUIET_MS) {
+      markLcpReady();
+      return;
+    }
+    quietTimer = setTimeout(settle, LCP_QUIET_MS - waited);
+  };
+
+  try {
+    observer = new PerformanceObserver((list) => {
+      if (list.getEntries().length > 0) lastEntry = performance.now();
+      settle();
+    });
+    observer.observe({ type: "largest-contentful-paint", buffered: true });
+  } catch {
+    // No LCP entry type (Safari): `load` plus the safety timer carry it.
   }
-  const onLoad = () => markLcpReady();
-  window.addEventListener("load", onLoad, { once: true });
-  return () => window.removeEventListener("load", onLoad);
+
+  const onLoad = () => {
+    loaded = true;
+    settle();
+  };
+  if (loaded) settle();
+  else window.addEventListener("load", onLoad, { once: true });
+
+  return () => {
+    window.removeEventListener("load", onLoad);
+    observer?.disconnect();
+    if (quietTimer) clearTimeout(quietTimer);
+  };
 }
 
 /** The vel loader's escape hatch — see the note at the top of this file. */
