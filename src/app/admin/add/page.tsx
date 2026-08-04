@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/view/primitives/Button";
 import { Field } from "@/view/primitives/Field";
 import { Swatch } from "@/view/primitives/Swatch";
-import { ColourKey, OccasionKey, paise } from "@/model/domain/types";
+import { ColourKey, OccasionKey } from "@/model/domain/types";
 import { configFixture } from "@/model/fixtures/config.fixture";
 import { duplicateLastSaree } from "@/viewmodel/actions/duplicateLastSaree";
 import { upsertSaree } from "@/viewmodel/actions/upsertSaree";
@@ -26,6 +27,11 @@ export default function AdminAddProductPage() {
   const [weightGrams, setWeightGrams] = useState(640);
   const [authenticityNote, setAuthenticityNote] = useState("Handpicked pure silk certified by Bharani Pattu Centre, Erode.");
   const [status, setStatus] = useState<"available" | "draft">("available");
+  
+  // Product Photos state
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [pastedUrl, setPastedUrl] = useState("");
+  const [isCompressing, setIsCompressing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Duplicate last saree feature (20-sec product entry)
@@ -39,8 +45,68 @@ export default function AdminAddProductPage() {
       setCare(res.data.care);
       setWeightGrams(res.data.weightGrams);
       setAuthenticityNote(res.data.authenticityNote);
-      alert("✓ Copied specs from previous saree! Now enter Title, Price, Colour & Images.");
+      alert("✓ Copied specs from previous saree! Now enter Title, Price, Colour & Photos.");
     }
+  };
+
+  // Image Upload with Client Compression
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    setIsCompressing(true);
+    const newUrls: string[] = [];
+    let processedCount = 0;
+
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new window.Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          const maxDim = 2000;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx?.drawImage(img, 0, 0, width, height);
+
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
+          newUrls.push(compressedDataUrl);
+          processedCount++;
+
+          if (processedCount === files.length) {
+            setImageUrls((prev) => [...prev, ...newUrls]);
+            setIsCompressing(false);
+          }
+        };
+        img.src = event.target?.result as string;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleAddPastedUrl = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pastedUrl.trim()) return;
+    setImageUrls((prev) => [...prev, pastedUrl.trim()]);
+    setPastedUrl("");
+  };
+
+  const handleRemoveImage = (index: number) => {
+    setImageUrls((prev) => prev.filter((_, i) => i !== index));
   };
 
   const toggleOccasion = (key: OccasionKey) => {
@@ -55,6 +121,18 @@ export default function AdminAddProductPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const finalImages = imageUrls.length > 0
+      ? imageUrls.map((url, idx) => ({
+          id: url,
+          alt: `${titleEn} view ${idx + 1}`,
+          aspect: "3/4" as const,
+          order: idx + 1,
+        }))
+      : [
+          { id: "/brand/png/icon-flat-512.png", alt: titleEn, aspect: "3/4" as const, order: 1 },
+        ];
+
     setIsSubmitting(true);
 
     const payload = {
@@ -69,9 +147,7 @@ export default function AdminAddProductPage() {
       zari,
       care,
       weightGrams: Number(weightGrams),
-      images: [
-        { id: "/brand/png/icon-flat-512.png", alt: titleEn, aspect: "3/4" as const, order: 1 },
-      ],
+      images: finalImages,
       authenticityNote,
       status,
     };
@@ -80,7 +156,7 @@ export default function AdminAddProductPage() {
     setIsSubmitting(false);
 
     if (res.ok) {
-      alert("🎉 Saree published successfully to store!");
+      alert("🎉 Saree and Photos published successfully to storefront!");
       router.push("/admin");
     } else {
       alert(`Error: ${res.error.message}`);
@@ -216,8 +292,78 @@ export default function AdminAddProductPage() {
           </div>
         </div>
 
+        {/* Section 5: PRODUCT PHOTOS / புகைப்படங்கள் */}
+        <div className="flex flex-col gap-4 bg-white p-4 border border-[#241F1C]/15">
+          <div className="flex items-center justify-between">
+            <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-[#E8621B] font-bold">
+              5. PRODUCT PHOTOS / புகைப்படங்கள் ({imageUrls.length})
+            </span>
+            {isCompressing && <span className="font-sans text-[10px] text-[#B4470F] animate-pulse">Compressing photos...</span>}
+          </div>
+
+          {/* Mobile Camera / Multi-Upload File Input */}
+          <label className="flex flex-col items-center justify-center border-2 border-dashed border-[#E8621B]/40 hover:border-[#E8621B] bg-[#FBEEDF]/50 p-6 text-center cursor-pointer transition-colors">
+            <span className="font-sans text-[13px] font-bold text-[#E8621B]">
+              📸 TAKE PHOTO OR SELECT IMAGES
+            </span>
+            <span className="font-sans text-[10px] text-[#241F1C]/65 mt-1">
+              Select multiple photos from camera or gallery (JPEG/PNG)
+            </span>
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </label>
+
+          {/* Paste Image URL Fallback */}
+          <div className="flex gap-2 pt-1 border-t border-[#241F1C]/10">
+            <input
+              type="url"
+              value={pastedUrl}
+              onChange={(e) => setPastedUrl(e.target.value)}
+              placeholder="Or paste image URL (https://...)"
+              className="flex-1 border border-[#241F1C]/25 p-2 font-sans text-[11px] bg-transparent focus:outline-none focus:border-[#E8621B]"
+            />
+            <button
+              type="button"
+              onClick={handleAddPastedUrl}
+              className="bg-[#241F1C] text-[#FDF4E4] px-4 font-sans text-[10px] uppercase tracking-wider"
+            >
+              ADD URL
+            </button>
+          </div>
+
+          {/* Live Thumbnail Grid Preview */}
+          {imageUrls.length > 0 && (
+            <div className="grid grid-cols-2 gap-3 pt-2">
+              {imageUrls.map((url, idx) => (
+                <div key={idx} className="relative aspect-[3/4] border border-[#241F1C]/20 bg-[#FDF4E4] overflow-hidden group">
+                  <Image src={url} alt={`Upload preview ${idx + 1}`} fill className="object-cover" />
+                  
+                  {/* Photo Order Badge */}
+                  <div className="absolute top-1.5 left-1.5 bg-[#241F1C]/85 text-[#FDF4E4] text-[9px] font-sans px-1.5 py-0.5 tracking-wider uppercase">
+                    {idx === 0 ? "1. FLAT-LAY / MAIN" : idx === 1 ? "2. DRAPED VIEW" : `${idx + 1}. DETAIL`}
+                  </div>
+
+                  {/* Remove Button */}
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveImage(idx)}
+                    className="absolute top-1.5 right-1.5 bg-[#B4470F] text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-[11px] shadow-md hover:scale-110 transition-transform"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* Publish Action */}
-        <Button variant="primary" type="submit" disabled={isSubmitting} fullWidth className="h-[56px] text-[13px]">
+        <Button variant="primary" type="submit" disabled={isSubmitting || isCompressing} fullWidth className="h-[56px] text-[13px]">
           {isSubmitting ? "PUBLISHING..." : `PUBLISH SAREE FOR ₹${priceInRupees.toLocaleString("en-IN")}`}
         </Button>
       </form>
