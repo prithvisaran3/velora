@@ -1,8 +1,8 @@
 /**
  * Device tiering — decided once, here, and nowhere else.
  *
- *   high — all six moments, DPR ≤ 1.75
- *   mid  — hero cloth + colour dye only, DPR ≤ 1.25, cloth grid halved
+ *   high — cone wall + bag flight, DPR ≤ 1.75
+ *   mid  — the same two, DPR ≤ 1.25
  *   low  — posters and CSS only, no canvas is ever created
  *
  * `prefers-reduced-motion` is always `low`. So is a device without WebGL,
@@ -15,15 +15,10 @@ export type Tier = "high" | "mid" | "low";
 
 /** Moments allowed per tier. Keep in sync with docs/3D-MOTION.md §3. */
 const ALLOWED: Record<Tier, ReadonlySet<string>> = {
-  high: new Set([
-    "velLoader",
-    "heroCloth",
-    "colourDye",
-    "pdpDrape",
-    "palluUnroll",
-    "bagFlight",
-  ]),
-  mid: new Set(["heroCloth", "colourDye", "bagFlight"]),
+  high: new Set(["coneWall", "bagFlight"]),
+  // The cone wall is seven instanced cones with no texture; a mid device runs
+  // it comfortably, and it is the one 3D moment that does real navigation work.
+  mid: new Set(["coneWall", "bagFlight"]),
   low: new Set<string>(),
 };
 
