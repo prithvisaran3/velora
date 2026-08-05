@@ -25,8 +25,8 @@ type Tone = "cream" | "ink" | "saffron" | "mono";
 
 const TONE: Record<Tone, { blade: string; accent: string; text: string; endorse: string }> = {
   cream:   { blade: "var(--color-saffron)",  accent: "var(--color-marigold)", text: "text-ink",     endorse: "text-ink/72" },
-  ink:     { blade: "var(--color-cream)",    accent: "var(--color-marigold)", text: "text-cream",   endorse: "text-marigold" },
-  saffron: { blade: "var(--color-cream)",    accent: "var(--color-turmeric)", text: "text-cream",   endorse: "text-turmeric" },
+  ink:     { blade: "var(--color-panel)",    accent: "var(--color-marigold)", text: "text-panel",   endorse: "text-[var(--thread-lit)]" },
+  saffron: { blade: "var(--color-panel)",    accent: "var(--color-turmeric)", text: "text-panel",   endorse: "text-turmeric" },
   mono:    { blade: "currentColor",          accent: "currentColor",          text: "",              endorse: "opacity-70" },
 };
 

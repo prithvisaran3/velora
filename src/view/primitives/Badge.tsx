@@ -10,7 +10,7 @@ interface BadgeProps {
 export const Badge: React.FC<BadgeProps> = ({ children, variant = "cream", className }) => {
   const variantStyles = {
     cream: "bg-cream text-ink",
-    pressed: "bg-pressed text-cream",
+    pressed: "bg-pressed text-panel",
     sand: "bg-sand text-ink",
   };
 

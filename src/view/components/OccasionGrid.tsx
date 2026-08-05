@@ -18,7 +18,7 @@ export const OccasionGrid: React.FC = () => {
           className="group relative aspect-tile placeholder-weave p-6 flex flex-col justify-end overflow-hidden border border-ink/10"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-opacity group-hover:opacity-90" />
-          <div className="relative z-10 text-cream flex flex-col gap-1">
+          <div className="relative z-10 text-panel flex flex-col gap-1">
             <span className="font-sans text-[10px] uppercase tracking-label text-turmeric">
               MOMENT
             </span>

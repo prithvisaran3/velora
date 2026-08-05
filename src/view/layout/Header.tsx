@@ -10,11 +10,17 @@ import { Wordmark } from "@/view/primitives/Wordmark";
 import { BAG_PULSE_EVENT } from "@/three/store/flight";
 import { cn } from "@/lib/utils";
 
-interface HeaderProps {
-  isDark?: boolean;
-}
+const NAV = [
+  { href: "/shop", label: "SHOP" },
+  { href: "/colour/maroon", label: "BY COLOUR" },
+  { href: "/story", label: "ATELIER" },
+] as const;
 
-export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
+/**
+ * The header rule is a thread, so it takes the room's colour with everything
+ * else — open a maroon saree and the line under the nav bleeds to maroon.
+ */
+export const Header: React.FC = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { cartCount } = useCart();
@@ -26,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
     setMounted(true);
   }, []);
 
-  // The bag pulses once in marigold when a flight lands (moment 06).
+  // The bag pulses once when a flight lands.
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     const onPulse = () => {
@@ -42,79 +48,77 @@ export const Header: React.FC<HeaderProps> = ({ isDark = false }) => {
 
   return (
     <>
-      <header className={cn(
-        "sticky top-0 z-40 border-b border-marigold/35 transition-colors duration-300",
-        isDark ? "bg-ink text-cream" : "bg-cream text-ink"
-      )}>
-        <div className="max-w-[1440px] mx-auto px-gutter md:px-gutter-lg py-4 flex items-center justify-between gap-9">
-          {/* Desktop Left Nav */}
-          <nav className="hidden md:flex items-center gap-7 flex-shrink-0 whitespace-nowrap font-sans uppercase text-[11px] tracking-label opacity-85">
-            <Link href="/colour/maroon" className="hover:text-saffron transition-colors">SHOP BY COLOUR</Link>
-            <Link href="/occasion/muhurtham" className="hover:text-saffron transition-colors">OCCASION</Link>
-            <Link href="/offers" className="hover:text-saffron transition-colors font-medium text-saffron">OFFERS</Link>
-            <Link href="/saree/deep-maroon-mangai-zari-silk" className="hover:text-saffron transition-colors">NEW IN</Link>
-            <Link href="/story" className="hover:text-saffron transition-colors">OUR STORY</Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileNavOpen(true)}
-            className="md:hidden font-sans uppercase text-[12px] tracking-label py-2"
-          >
-            MENU
-          </button>
-
-          {/* Centered Stacked Official Logo & Endorsement */}
-          <Link href="/" className="group flex-shrink-0">
-            <Wordmark fontSize={30} tone={isDark ? "ink" : "cream"} endorsement />
+      <header className="sticky top-0 z-40 bg-[var(--page-bg)]">
+        <div className="mx-auto flex max-w-[1680px] items-center justify-between gap-6 px-4 py-4 md:px-[60px] md:py-5">
+          {/* The endorsement stays in the header and the footer, always. */}
+          <Link href="/" className="flex-shrink-0">
+            <Wordmark fontSize={24} tone="cream" endorsement className="items-start" />
           </Link>
 
-          {/* Desktop & Mobile Utilities */}
-          <div className="flex items-center gap-[22px] flex-shrink-0 whitespace-nowrap font-sans uppercase text-[11px] tracking-label opacity-85">
-            {/* Customer Authentication Status */}
+          <nav className="hidden items-center gap-8 font-sans text-[10.5px] uppercase tracking-[0.24em] text-ink/72 md:flex">
+            {NAV.map((item) => (
+              <Link key={item.href} href={item.href} className="transition-colors hover:text-saffron">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex flex-shrink-0 items-center gap-4 font-sans text-[10.5px] uppercase tracking-[0.24em] md:gap-6">
             {user ? (
-              <div className="flex items-center gap-2">
-                <span className="font-medium text-saffron">{user.displayName?.split(" ")[0] || "ACCOUNT"}</span>
-                <button onClick={logout} className="text-[9px] opacity-60 hover:opacity-100 underline">
+              <span className="hidden items-center gap-2 md:flex">
+                <span className="text-saffron">
+                  {user.displayName?.split(" ")[0] || "ACCOUNT"}
+                </span>
+                <button
+                  onClick={logout}
+                  className="text-[9px] tracking-label text-ink/55 underline hover:text-ink"
+                >
                   LOGOUT
                 </button>
-              </div>
+              </span>
             ) : (
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="hover:text-saffron transition-colors"
+                className="hidden transition-colors hover:text-saffron md:block"
               >
                 SIGN IN
               </button>
             )}
 
-            <Link href="/track/VLR-4821" className="hidden md:block hover:text-saffron transition-colors">
-              SEARCH
-            </Link>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="hidden md:block hover:text-saffron transition-colors">
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden transition-colors hover:text-saffron md:block"
+            >
               WHATSAPP
             </a>
+
             <Link
               href="/bag"
               data-bag-target
               className={cn(
-                "flex items-center gap-1.5 transition-colors font-medium",
-                pulsing ? "bag-pulse text-marigold" : "hover:text-saffron"
+                "transition-colors",
+                pulsing ? "bag-pulse text-[var(--thread)]" : "text-saffron hover:text-pressed"
               )}
             >
-              <span>BAG ({mounted ? cartCount : 0})</span>
+              BAG ({mounted ? cartCount : 0})
             </Link>
+
+            <button
+              onClick={() => setIsMobileNavOpen(true)}
+              className="tracking-label md:hidden"
+              aria-label="Open menu"
+            >
+              MENU
+            </button>
           </div>
         </div>
 
-        {/* Hairline Divider */}
-        <div className="rule-temple opacity-80" />
+        <div className="rule-temple" />
       </header>
 
-      {/* Mobile Drawer */}
       <MobileNav isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />
-
-      {/* Brand Auth Modal */}
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </>
   );
