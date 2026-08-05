@@ -50,16 +50,16 @@ export default function AdminPaymentsPage() {
       </div>
 
       {/* Revenue Card */}
-      <div className="bg-ink text-cream p-5 flex items-center justify-between shadow-none">
+      <div className="bg-ink text-panel p-5 flex items-center justify-between shadow-none">
         <div className="flex flex-col gap-1">
-          <span className="font-sans text-[10px] tracking-[0.24em] uppercase text-marigold">
+          <span className="font-sans text-[10px] tracking-[0.24em] uppercase text-[var(--thread-lit)]">
             CAPTURED PAYMENTS
           </span>
-          <span className="font-display text-[32px] text-cream">
+          <span className="font-display text-[32px] text-panel">
             ₹{(totalRevenuePaise / 100).toLocaleString("en-IN")}
           </span>
         </div>
-        <span className="font-sans text-[11px] text-cream/70">
+        <span className="font-sans text-[11px] text-panel/70">
           {payments.length} Transactions
         </span>
       </div>
@@ -69,7 +69,7 @@ export default function AdminPaymentsPage() {
         <h2 className="font-display text-[18px] text-ink">Transaction History Log</h2>
 
         {payments.map((record) => (
-          <div key={record.id} className="bg-white border border-ink/15 p-4 flex flex-col gap-3">
+          <div key={record.id} className="bg-panel border border-ink/15 p-4 flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <span className="font-sans text-[13px] font-bold text-saffron">
                 {record.orderReference}

@@ -17,7 +17,7 @@ export const WhatsAppFab: React.FC<WhatsAppFabProps> = ({ hasStickyBar = false }
       rel="noreferrer"
       aria-label="Ask on WhatsApp"
       className={cn(
-        "fixed right-4 z-40 w-[52px] h-[52px] rounded-full bg-peacock text-cream flex items-center justify-center shadow-none hover:scale-105 transition-all duration-hover focus:outline-none focus:ring-2 focus:ring-marigold",
+        "fixed right-4 z-40 w-[52px] h-[52px] rounded-full bg-peacock text-panel flex items-center justify-center shadow-none hover:scale-105 transition-all duration-hover focus:outline-none focus:ring-2 focus:ring-[var(--thread)]",
         hasStickyBar ? "bottom-sticky-bar" : "bottom-6"
       )}
     >

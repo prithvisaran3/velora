@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Archivo:wght@200;300;400;500&family=Anek+Tamil:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#EDE2CE; }
+  a { color:#C6521A; text-decoration:none; }
+  a:hover { color:#8E3410; }
+  @keyframes tStitch { from { stroke-dashoffset:var(--len) } to { stroke-dashoffset:0 } }
+  @keyframes tRise   { from { transform:translateY(114%) } to { transform:translateY(0) } }
+  @keyframes tFade   { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
+  @keyframes tGlint  { 0% { transform:translateX(-160%) } 100% { transform:translateX(420%) } }
+  @keyframes tHint   { 0%,100% { transform:translateY(0); opacity:.35 } 50% { transform:translateY(8px); opacity:1 } }
+  @keyframes tPulse  { 0%,100% { transform:scale(1); opacity:.5 } 50% { transform:scale(1.55); opacity:0 } }
+  @keyframes tBob    { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-9px) } }
+  @keyframes tRun    { from { stroke-dashoffset:0 } to { stroke-dashoffset:-56 } }
+  @keyframes tDraw   { from { transform:scaleX(0) } to { transform:scaleX(1) } }
+  @keyframes tFlow   { from { stroke-dashoffset:0 } to { stroke-dashoffset:-1200 } }
+  @keyframes tFlowB  { from { stroke-dashoffset:0 } to { stroke-dashoffset:1200 } }
+  @keyframes tUnd1   { 0%,100% { transform:translate(0,0) } 33% { transform:translate(-9px,16px) } 66% { transform:translate(7px,-13px) } }
+  @keyframes tUnd2   { 0%,100% { transform:translate(0,0) } 40% { transform:translate(11px,-19px) } 75% { transform:translate(-8px,14px) } }
+  @keyframes tUnd3   { 0%,100% { transform:translate(0,0) } 50% { transform:translate(-13px,-11px) } }
+  @keyframes tBreath { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+  @keyframes tHue    { 0%,16% { stroke:#F5A623 } 25%,37% { stroke:#C2384F } 46%,58% { stroke:#1B8580 } 67%,79% { stroke:#8E5AC8 } 88%,100% { stroke:#F5A623 } }
+  @keyframes tHueBase{ 0%,16% { stroke:#C9901E } 25%,37% { stroke:#8C1B30 } 46%,58% { stroke:#12514E } 67%,79% { stroke:#6B3FA0 } 88%,100% { stroke:#C9901E } }
+  @keyframes tSwatch { 0%,16% { background:#F5A623 } 25%,37% { background:#8C1B30 } 46%,58% { background:#12514E } 67%,79% { background:#6B3FA0 } 88%,100% { background:#F5A623 } }
+  @keyframes tLabel  { 0%,16% { opacity:1 } 20%,100% { opacity:0 } }
+</style>
+</helmet>
+
+<div style="font-family:Archivo,sans-serif;background:#EDE2CE;width:1802px;display:flex;flex-direction:column;align-items:flex-start;padding:0 0 130px;color:#241F1C">
+
+  <div style="width:1802px;box-sizing:border-box;padding:66px 60px 44px;display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:ui-monospace,'SF Mono',monospace;font-size:11px;letter-spacing:.34em;color:#C6521A">V9 · THE THREAD NEVER STOPS · AND IT TAKES THE ROOM'S COLOUR</div>
+    <div style="font-family:'Bodoni Moda',serif;font-size:88px;line-height:.94;max-width:1220px;text-wrap:balance">A living gold thread, always moving.</div>
+    <div style="display:grid;grid-template-columns:580px 580px;gap:44px;max-width:1220px">
+      <div style="font-size:14.5px;line-height:1.85;color:rgba(36,31,24,.72);text-wrap:pretty">The threads no longer stitch once and stop. They <span style="color:#241F1C">breathe continuously</span> — six filaments drifting on long, offset cycles, with light running along each one at its own speed. That travelling glint is what makes it read as spun gold rather than a drawn line.<br><br>The saree itself is never animated. It is only ever a still photograph.</div>
+      <div style="font-size:14.5px;line-height:1.85;color:rgba(36,31,24,.72);text-wrap:pretty">And the thread <span style="color:#241F1C">takes the colour of the room</span>. Gold at home; open a maroon saree and every filament bleeds to maroon over 900ms, then returns to gold when you leave.<br><br>It still has no idea how many sarees you sell. Six or six hundred — the thread does not care.</div>
+    </div>
+  </div>
+
+  <!-- ══ 01 HERO ══ -->
+  <div style="width:1802px;box-sizing:border-box;padding:0 60px;display:grid;grid-template-columns:1350px 312px;gap:22px;align-items:start">
+    <div style="position:relative;height:770px;overflow:hidden;background:linear-gradient(178deg,#F7F0E3 0%,#EDE2CE 62%,#E7DAC2 100%);border:1px solid rgba(36,31,24,.12)">
+
+      <svg viewBox="0 0 1348 770" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none">
+        <g style="animation:tUnd1 17s ease-in-out infinite">
+          <path d="M -30 118 C 240 92, 420 208, 660 230 C 900 252, 1080 128, 1390 154" fill="none" stroke="#C9901E" stroke-width="2.4" opacity=".55"></path>
+          <path d="M -30 118 C 240 92, 420 208, 660 230 C 900 252, 1080 128, 1390 154" fill="none" stroke="#FFDD8E" stroke-width="1.3" stroke-dasharray="34 150" style="animation:tFlow 9s linear infinite"></path>
+          <path d="M -30 118 C 240 92, 420 208, 660 230 C 900 252, 1080 128, 1390 154" fill="none" stroke="#FFF3D2" stroke-width="0.9" stroke-dasharray="10 420" style="animation:tFlow 6.2s linear infinite"></path>
+        </g>
+        <g style="animation:tUnd2 21s ease-in-out infinite">
+          <path d="M -30 196 C 280 176, 460 268, 700 286 C 940 304, 1120 202, 1390 222" fill="none" stroke="#C9901E" stroke-width="1.7" opacity=".38"></path>
+          <path d="M -30 196 C 280 176, 460 268, 700 286 C 940 304, 1120 202, 1390 222" fill="none" stroke="#FFDD8E" stroke-width="1" stroke-dasharray="26 190" style="animation:tFlowB 12s linear infinite"></path>
+        </g>
+        <g style="animation:tUnd3 25s ease-in-out infinite">
+          <path d="M -30 380 C 300 354, 520 424, 760 398 C 1000 372, 1160 430, 1390 406" fill="none" stroke="#C9901E" stroke-width="1.5" opacity=".3"></path>
+          <path d="M -30 380 C 300 354, 520 424, 760 398 C 1000 372, 1160 430, 1390 406" fill="none" stroke="#FFDD8E" stroke-width="0.9" stroke-dasharray="20 240" style="animation:tFlow 14s linear infinite"></path>
+        </g>
+        <g style="animation:tUnd2 19s 1.4s ease-in-out infinite">
+          <path d="M -30 520 C 260 548, 470 452, 700 476 C 930 500, 1120 566, 1390 542" fill="none" stroke="#C9901E" stroke-width="1.6" opacity=".34"></path>
+          <path d="M -30 520 C 260 548, 470 452, 700 476 C 930 500, 1120 566, 1390 542" fill="none" stroke="#FFDD8E" stroke-width="1" stroke-dasharray="30 170" style="animation:tFlowB 10.5s linear infinite"></path>
+        </g>
+        <g style="animation:tUnd1 23s .8s ease-in-out infinite">
+          <path d="M -30 642 C 260 670, 470 556, 700 580 C 930 604, 1120 692, 1390 664" fill="none" stroke="#C9901E" stroke-width="2.1" opacity=".5"></path>
+          <path d="M -30 642 C 260 670, 470 556, 700 580 C 930 604, 1120 692, 1390 664" fill="none" stroke="#FFDD8E" stroke-width="1.2" stroke-dasharray="34 150" style="animation:tFlow 11s linear infinite"></path>
+          <path d="M -30 642 C 260 670, 470 556, 700 580 C 930 604, 1120 692, 1390 664" fill="none" stroke="#FFF3D2" stroke-width="0.8" stroke-dasharray="10 460" style="animation:tFlow 7.4s 2s linear infinite"></path>
+        </g>
+        <g style="animation:tUnd3 29s 2.2s ease-in-out infinite;opacity:.24">
+          <path d="M -30 712 C 300 700, 520 742, 760 726 C 1000 710, 1160 748, 1390 734" fill="none" stroke="#C9901E" stroke-width="1.2"></path>
+          <path d="M -30 712 C 300 700, 520 742, 760 726 C 1000 710, 1160 748, 1390 734" fill="none" stroke="#FFDD8E" stroke-width="0.8" stroke-dasharray="18 260" style="animation:tFlowB 16s linear infinite"></path>
+        </g>
+      </svg>
+
+      <div style="position:absolute;inset:0;padding:32px 44px 40px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+          <div style="display:flex;align-items:baseline">
+            <svg viewBox="0 0 120 100" style="width:38px;height:32px;flex-shrink:0"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#241F1C"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="#C6521A"></path><path d="M45 82 L75 82 L75 89 L45 89 Z" fill="#C6521A"></path></svg>
+            <span style="font-family:'Bodoni Moda',serif;font-size:32px;line-height:.82;letter-spacing:.28em;margin-left:11px;margin-right:-.28em">ELORA</span>
+          </div>
+          <div style="display:flex;gap:32px;font-size:10.5px;letter-spacing:.24em;color:rgba(36,31,24,.72);flex-shrink:0;white-space:nowrap"><span>SHOP</span><span>BY COLOUR</span><span>ATELIER</span><span style="color:#C6521A">BAG</span></div>
+        </div>
+
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:30px">
+          <div style="display:flex;flex-direction:column">
+            <div style="overflow:hidden;height:126px"><div style="font-family:'Bodoni Moda',serif;font-size:108px;line-height:1;padding-bottom:.16em;white-space:nowrap;animation:tRise 1.2s cubic-bezier(.16,1,.3,1) both">Every saree here</div></div>
+            <div style="overflow:hidden;height:126px"><div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:108px;line-height:1;padding-bottom:.16em;white-space:nowrap;color:#C6521A;animation:tRise 1.2s .12s cubic-bezier(.16,1,.3,1) both">was held first.</div></div>
+          </div>
+          <div style="max-width:470px;font-size:14px;line-height:1.9;color:rgba(36,31,24,.7);animation:tFade 1.1s .8s both">Priya chooses each one by hand in Erode, the way her father taught her. Nothing is listed she has not seen in daylight.</div>
+        </div>
+
+        <div style="flex-shrink:0;display:flex;align-items:flex-end;justify-content:space-between;gap:60px">
+          <div style="display:flex;gap:14px;animation:tFade 1.1s 1s both">
+            <div style="position:relative;overflow:hidden;padding:20px 40px;background:#C6521A;color:#FBF6EC;font-size:11px;letter-spacing:.24em;font-weight:500;cursor:pointer;transition:all .45s cubic-bezier(.16,1,.3,1)" style-hover="background:#8E3410;transform:translateY(-3px);box-shadow:0 16px 26px -12px rgba(120,84,40,.7)">SHOP ALL SAREES<div style="position:absolute;top:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,240,214,.32),transparent);animation:tGlint 5s 2s ease-in-out infinite"></div></div>
+            <div style="padding:19px 34px;border:1px solid rgba(36,31,24,.3);font-size:11px;letter-spacing:.24em;cursor:pointer;transition:all .45s cubic-bezier(.16,1,.3,1)" style-hover="border-color:#C6521A;color:#C6521A;letter-spacing:.3em">BROWSE BY COLOUR</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+            <div style="font-size:9.5px;letter-spacing:.28em;color:rgba(36,31,24,.5)">SCROLL</div>
+            <div style="width:1px;height:26px;background:#C6521A;animation:tHint 2.2s ease-in-out infinite"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:absolute;top:100px;right:44px;display:flex;flex-direction:column;align-items:flex-end;gap:7px;pointer-events:none">
+        <div style="position:relative;width:24px;height:24px"><div style="position:absolute;inset:0;border-radius:50%;border:1px solid #F5A623"></div><div style="position:absolute;inset:0;border-radius:50%;border:1px solid #F5A623;animation:tPulse 2.6s ease-out infinite"></div></div>
+        <span style="font-family:ui-monospace,monospace;font-size:9px;letter-spacing:.2em;color:rgba(36,31,24,.45)">THE THREAD FOLLOWS YOU</span>
+      </div>
+    </div>
+
+    <div style="border:1px solid rgba(198,82,26,.34);background:#FBF6EC;padding:24px;display:flex;flex-direction:column;gap:14px;font-family:ui-monospace,monospace;font-size:10px;line-height:1.85;color:rgba(36,31,24,.78)">
+      <div style="letter-spacing:.26em;color:#C6521A">WHY IT LOOKS LIKE SILK</div>
+      <div><span style="color:#8E3410">THREE LAYERS PER THREAD</span><br>A dull base strand, a bright filament with light running along it, and a rare white specular that passes every few seconds. One strand looks like a line; three looks like twisted silk. This is the entire trick.</div>
+      <div><span style="color:#8E3410">IT REACTS TO YOU</span><br>Cursor bends the nearest control points with spring damping (stiffness .06, damping .82). Move fast and it whips; hold still and it settles. On a product card it tightens into the card's frame.</div>
+      <div><span style="color:#8E3410">NEVER STILL, NEVER BUSY</span><br>Six threads on 15–29s drift cycles, all prime-ish so they never sync. Motion is always present and never demands attention — the page feels alive when you are reading, not distracting.</div>
+      <div><span style="color:#8E3410">ZERO PRODUCT COUPLING</span><br>No saree data reaches it. Ships with the build, identical forever.</div>
+      <div style="border-top:1px solid rgba(198,82,26,.28);padding-top:13px;color:rgba(36,31,24,.6)">Everything above runs forever. In the build the threads also bend toward your cursor.</div>
+    </div>
+  </div>
+
+  <!-- ══ 02 GRID ══ -->
+  <div style="width:1802px;box-sizing:border-box;padding:64px 60px 0;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.3em;color:#C6521A">02</span><span style="font-family:'Bodoni Moda',serif;font-size:32px">The shop — the thread sews each frame as it arrives</span></div>
+    <div style="display:grid;grid-template-columns:1350px 312px;gap:22px;align-items:start">
+      <div style="position:relative;background:#F7F0E3;border:1px solid rgba(36,31,24,.12);padding:44px;display:flex;flex-direction:column;gap:30px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between">
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-size:10px;letter-spacing:.3em;color:#C6521A">CHOSEN IN ERODE</div>
+            <div style="font-family:'Bodoni Moda',serif;font-size:44px">All sarees</div>
+          </div>
+          <div style="display:flex;gap:11px;font-size:10px;letter-spacing:.2em;color:rgba(36,31,24,.6)"><span style="padding:9px 16px;border:1px solid #C6521A;color:#C6521A">ALL</span><span style="padding:9px 16px;border:1px solid rgba(36,31,24,.2)">SILK</span><span style="padding:9px 16px;border:1px solid rgba(36,31,24,.2)">COTTON</span><span style="padding:9px 16px;border:1px solid rgba(36,31,24,.2)">ORGANZA</span><span style="padding:9px 16px;border:1px solid rgba(36,31,24,.2)">UNDER ₹3,500</span></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:26px">
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#9E1B34,#6B1122);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(245,166,35,.12) 0 2px,transparent 2px 15px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#F5A623" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s .1s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(251,246,236,.65)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Ash Rose</span><span style="font-size:12px;color:#C6521A">₹4,200</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">ORGANZA</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#12514E,#0A3230);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(245,166,35,.11) 0 2px,transparent 2px 16px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#F5A623" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s .25s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(251,246,236,.65)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Deep Teal</span><span style="font-size:12px;color:#C6521A">₹3,900</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">CREPE SILK</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#C6521A,#8A3410);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(255,255,255,.15) 0 2px,transparent 2px 13px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#F5A623" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s .4s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(36,31,24,.55)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Flame</span><span style="font-size:12px;color:#C6521A">₹4,600</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">TISSUE</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#6B3FA0,#452770);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(245,166,35,.12) 0 2px,transparent 2px 15px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#F5A623" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s .55s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(251,246,236,.65)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Midnight Plum</span><span style="font-size:12px;color:#C6521A">₹5,100</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">SATIN GEORGETTE</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#C7B48A,#7E6C46);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(255,255,255,.2) 0 2px,transparent 2px 12px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#F5A623" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s .7s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(36,31,24,.55)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Raw Bone</span><span style="font-size:12px;color:#C6521A">₹3,600</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">LINEN TISSUE</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#2E4A7D,#1D3055);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(245,166,35,.12) 0 2px,transparent 2px 14px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#F5A623" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s .85s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(251,246,236,.65)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Indigo</span><span style="font-size:12px;color:#C6521A">₹3,750</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">CHANDERI</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#4E7031,#2E4A1D);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(245,166,35,.12) 0 2px,transparent 2px 15px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#F5A623" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s 1s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(251,246,236,.65)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Fern</span><span style="font-size:12px;color:#C6521A">₹3,400</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">KORA COTTON</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;cursor:pointer">
+            <div style="position:relative;aspect-ratio:3/4;background:linear-gradient(168deg,#F5A623,#B37714);overflow:hidden">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(110deg,rgba(255,255,255,.2) 0 2px,transparent 2px 13px)"></div>
+              <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none"><rect x="3" y="3" width="94" height="127" fill="none" stroke="#C6521A" stroke-width="1" style="--len:442;stroke-dasharray:442;animation:tStitch 1.5s 1.15s cubic-bezier(.16,1,.3,1) both"></rect></svg>
+              <div style="position:absolute;left:11px;top:11px;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:.2em;color:rgba(36,31,24,.55)">HER PHOTO</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:19px">Turmeric</span><span style="font-size:12px;color:#C6521A">₹2,900</span></div>
+            <span style="font-size:9.5px;letter-spacing:.2em;color:rgba(36,31,24,.5)">KORA COTTON</span>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:center;padding-top:8px"><div style="padding:17px 40px;border:1px solid rgba(36,31,24,.3);font-size:11px;letter-spacing:.24em;cursor:pointer;transition:all .45s cubic-bezier(.16,1,.3,1)" style-hover="border-color:#C6521A;color:#C6521A;letter-spacing:.3em">LOAD MORE</div></div>
+      </div>
+
+      <div style="border:1px solid rgba(198,82,26,.34);background:#FBF6EC;padding:24px;display:flex;flex-direction:column;gap:14px;font-family:ui-monospace,monospace;font-size:10px;line-height:1.85;color:rgba(36,31,24,.78)">
+        <div style="letter-spacing:.26em;color:#C6521A">COUNT-AGNOSTIC BY DESIGN</div>
+        <div><span style="color:#8E3410">NO NUMBERS ANYWHERE</span><br>"All sarees", not "Twelve sarees". No "48 a month", no "12 pieces", no edit counter. Nothing in the copy breaks when she adds stock.</div>
+        <div><span style="color:#8E3410">GRID, NOT A DECK</span><br>4-up desktop, 2-up mobile, LOAD MORE at the end. Works identically at 6 items and 600. Filters do the narrowing that a curated count used to imply.</div>
+        <div><span style="color:#8E3410">THE STITCH</span><br>Each card's gold frame draws itself on intersection, 150ms apart. That is the thread arriving — and it is the only motion in the grid, so the photographs stay the loudest thing on screen.</div>
+        <div><span style="color:#8E3410">HOVER</span><br>Card lifts 10px with a warm shadow, frame brightens. No image swap, no video, no zoom — her photo is not fighting anything.</div>
+        <div style="border-top:1px solid rgba(198,82,26,.28);padding-top:13px;color:rgba(36,31,24,.6)">Product pages keep the v5 layout you liked, minus the pile and the counter.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 02B THREAD TAKES THE COLOUR ══ -->
+  <div style="width:1802px;box-sizing:border-box;padding:64px 60px 0;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.3em;color:#C6521A">02B</span><span style="font-family:'Bodoni Moda',serif;font-size:32px">The thread takes the colour of the saree you are looking at</span></div>
+    <div style="display:grid;grid-template-columns:1350px 312px;gap:22px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:22px">
+
+        <div style="position:relative;height:300px;overflow:hidden;background:linear-gradient(178deg,#F7F0E3,#E7DAC2);border:2px solid #C6521A">
+          <svg viewBox="0 0 1346 300" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none">
+            <g style="animation:tUnd1 15s ease-in-out infinite">
+              <path d="M -30 92 C 260 66, 460 158, 700 176 C 940 194, 1120 90, 1390 112" fill="none" stroke-width="2.6" style="animation:tHueBase 20s ease-in-out infinite" opacity=".6"></path>
+              <path d="M -30 92 C 260 66, 460 158, 700 176 C 940 194, 1120 90, 1390 112" fill="none" stroke-width="1.4" stroke-dasharray="34 150" style="animation:tFlow 8s linear infinite, tHue 20s ease-in-out infinite"></path>
+            </g>
+            <g style="animation:tUnd2 19s ease-in-out infinite">
+              <path d="M -30 214 C 280 240, 470 148, 700 172 C 930 196, 1120 258, 1390 236" fill="none" stroke-width="2" style="animation:tHueBase 20s ease-in-out infinite" opacity=".45"></path>
+              <path d="M -30 214 C 280 240, 470 148, 700 172 C 930 196, 1120 258, 1390 236" fill="none" stroke-width="1.1" stroke-dasharray="28 180" style="animation:tFlowB 11s linear infinite, tHue 20s ease-in-out infinite"></path>
+            </g>
+          </svg>
+          <div style="position:absolute;inset:0;padding:30px 40px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:14px">
+              <div style="width:26px;height:26px;border-radius:50%;animation:tSwatch 20s ease-in-out infinite"></div>
+              <span style="font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.26em;color:rgba(36,31,24,.7)">LIVE — THE THREAD FOLLOWS THE ROOM</span>
+            </div>
+            <div style="font-size:13px;line-height:1.85;color:rgba(36,31,24,.72);max-width:520px">Gold is home. Open a maroon saree and every thread on the page bleeds to maroon over 900ms — the header rule, the card frames, the underlines, the tracker. Leave, and it returns to gold.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:22px">
+          <div style="flex:1;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);display:flex;flex-direction:column">
+            <div style="height:150px;background:linear-gradient(178deg,#F7F0E3,#E7DAC2);position:relative;overflow:hidden">
+              <svg viewBox="0 0 320 150" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none">
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#C9901E" stroke-width="2.4" opacity=".55"></path>
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#FFDD8E" stroke-width="1.3" stroke-dasharray="22 90" style="animation:tFlow 6s linear infinite"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#C9901E" stroke-width="1.6" opacity=".38"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#FFDD8E" stroke-width="1" stroke-dasharray="18 110" style="animation:tFlowB 8s linear infinite"></path>
+              </svg>
+            </div>
+            <div style="padding:18px;display:flex;align-items:center;gap:11px"><div style="width:16px;height:16px;border-radius:50%;background:#F5A623"></div><span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,24,.7)">HOME · ZARI GOLD</span></div>
+          </div>
+          <div style="flex:1;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);display:flex;flex-direction:column">
+            <div style="height:150px;background:linear-gradient(178deg,#F7EFE6,#EBDDD0);position:relative;overflow:hidden">
+              <svg viewBox="0 0 320 150" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none">
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#8C1B30" stroke-width="2.4" opacity=".55"></path>
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#D9536E" stroke-width="1.3" stroke-dasharray="22 90" style="animation:tFlow 6s .4s linear infinite"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#8C1B30" stroke-width="1.6" opacity=".38"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#D9536E" stroke-width="1" stroke-dasharray="18 110" style="animation:tFlowB 8s .4s linear infinite"></path>
+              </svg>
+            </div>
+            <div style="padding:18px;display:flex;align-items:center;gap:11px"><div style="width:16px;height:16px;border-radius:50%;background:#8C1B30"></div><span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,24,.7)">MAROON SAREE</span></div>
+          </div>
+          <div style="flex:1;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);display:flex;flex-direction:column">
+            <div style="height:150px;background:linear-gradient(178deg,#F2F2EA,#E0E5DA);position:relative;overflow:hidden">
+              <svg viewBox="0 0 320 150" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none">
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#12514E" stroke-width="2.4" opacity=".55"></path>
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#4FBDB4" stroke-width="1.3" stroke-dasharray="22 90" style="animation:tFlow 6s .8s linear infinite"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#12514E" stroke-width="1.6" opacity=".38"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#4FBDB4" stroke-width="1" stroke-dasharray="18 110" style="animation:tFlowB 8s .8s linear infinite"></path>
+              </svg>
+            </div>
+            <div style="padding:18px;display:flex;align-items:center;gap:11px"><div style="width:16px;height:16px;border-radius:50%;background:#12514E"></div><span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,24,.7)">PEACOCK SAREE</span></div>
+          </div>
+          <div style="flex:1;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);display:flex;flex-direction:column">
+            <div style="height:150px;background:linear-gradient(178deg,#F4F0F7,#E4DDEC);position:relative;overflow:hidden">
+              <svg viewBox="0 0 320 150" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none">
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#6B3FA0" stroke-width="2.4" opacity=".55"></path>
+                <path d="M -10 48 C 70 32, 150 96, 330 74" fill="none" stroke="#B48AE0" stroke-width="1.3" stroke-dasharray="22 90" style="animation:tFlow 6s 1.2s linear infinite"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#6B3FA0" stroke-width="1.6" opacity=".38"></path>
+                <path d="M -10 112 C 90 128, 170 76, 330 100" fill="none" stroke="#B48AE0" stroke-width="1" stroke-dasharray="18 110" style="animation:tFlowB 8s 1.2s linear infinite"></path>
+              </svg>
+            </div>
+            <div style="padding:18px;display:flex;align-items:center;gap:11px"><div style="width:16px;height:16px;border-radius:50%;background:#6B3FA0"></div><span style="font-size:11px;letter-spacing:.2em;color:rgba(36,31,24,.7)">PLUM SAREE</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid rgba(198,82,26,.34);background:#FBF6EC;padding:24px;display:flex;flex-direction:column;gap:14px;font-family:ui-monospace,monospace;font-size:10px;line-height:1.85;color:rgba(36,31,24,.78)">
+        <div style="letter-spacing:.26em;color:#C6521A">HOW THE COLOUR WORKS</div>
+        <div><span style="color:#8E3410">ONE CSS VARIABLE</span><br>Every thread reads <span style="color:#241F1C">--thread</span> and <span style="color:#241F1C">--thread-lit</span>. The product page sets them from the saree's tag; a 900ms transition does the rest. Nothing re-renders, nothing reloads.</div>
+        <div><span style="color:#8E3410">THE PAGE FOLLOWS TOO</span><br>The ground shifts 4% toward the same hue — beige stays beige, but a maroon room feels warmer and a peacock room cooler. Subtle enough that nobody names it.</div>
+        <div><span style="color:#8E3410">GOLD IS HOME</span><br>Leaving a product returns everything to zari over the same 900ms. Gold is the brand; the other colours are visits.</div>
+        <div><span style="color:#8E3410">NEVER ON THE PHOTO</span><br>The tint touches threads and ground only. Her photographs are never colour-shifted — that would be lying about the product.</div>
+        <div style="border-top:1px solid rgba(198,82,26,.28);padding-top:13px;color:rgba(36,31,24,.6)">Top strip cycles all four so you can see the transition. Live, it changes only on navigation.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 03 CONE WALL ══ -->
+  <div style="width:1802px;box-sizing:border-box;padding:64px 60px 0;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.3em;color:#C6521A">03</span><span style="font-family:'Bodoni Moda',serif;font-size:32px">Browse by colour — a wall of thread cones</span></div>
+    <div style="display:grid;grid-template-columns:1350px 312px;gap:22px;align-items:start">
+      <div style="position:relative;height:520px;overflow:hidden;background:linear-gradient(178deg,#F7F0E3,#E7DAC2);border:1px solid rgba(36,31,24,.12);padding:44px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:10px;letter-spacing:.3em;color:#C6521A">HOW WOMEN ACTUALLY SHOP</div>
+          <div style="font-family:'Bodoni Moda',serif;font-size:44px">Pick your colour</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;justify-content:center;gap:30px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-12px)">
+            <div style="width:74px;height:132px;background:conic-gradient(from 90deg at 50% 50%,#9E1B34,#7A1428,#B02540,#9E1B34);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);box-shadow:0 16px 26px -12px rgba(120,84,40,.55);animation:tBob 5s ease-in-out infinite"></div>
+            <span style="font-size:10px;letter-spacing:.22em;color:rgba(36,31,24,.7)">MAROON</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-12px)">
+            <div style="width:74px;height:132px;background:conic-gradient(from 90deg at 50% 50%,#12514E,#0A3230,#1B6A66,#12514E);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);box-shadow:0 16px 26px -12px rgba(120,84,40,.55);animation:tBob 5s .4s ease-in-out infinite"></div>
+            <span style="font-size:10px;letter-spacing:.22em;color:rgba(36,31,24,.7)">PEACOCK</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-12px)">
+            <div style="width:74px;height:132px;background:conic-gradient(from 90deg at 50% 50%,#2E4A7D,#1D3055,#3B5F9C,#2E4A7D);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);box-shadow:0 16px 26px -12px rgba(120,84,40,.55);animation:tBob 5s .8s ease-in-out infinite"></div>
+            <span style="font-size:10px;letter-spacing:.22em;color:rgba(36,31,24,.7)">INDIGO</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-12px)">
+            <div style="width:74px;height:132px;background:conic-gradient(from 90deg at 50% 50%,#4E7031,#2E4A1D,#639140,#4E7031);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);box-shadow:0 16px 26px -12px rgba(120,84,40,.55);animation:tBob 5s 1.2s ease-in-out infinite"></div>
+            <span style="font-size:10px;letter-spacing:.22em;color:rgba(36,31,24,.7)">LEAF</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-12px)">
+            <div style="width:74px;height:132px;background:conic-gradient(from 90deg at 50% 50%,#6B3FA0,#452770,#8250C4,#6B3FA0);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);box-shadow:0 16px 26px -12px rgba(120,84,40,.55);animation:tBob 5s 1.6s ease-in-out infinite"></div>
+            <span style="font-size:10px;letter-spacing:.22em;color:rgba(36,31,24,.7)">PLUM</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-12px)">
+            <div style="width:74px;height:132px;background:conic-gradient(from 90deg at 50% 50%,#C6521A,#8A3410,#E0692C,#C6521A);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);box-shadow:0 16px 26px -12px rgba(120,84,40,.55);animation:tBob 5s 2s ease-in-out infinite"></div>
+            <span style="font-size:10px;letter-spacing:.22em;color:rgba(36,31,24,.7)">SAFFRON</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-12px)">
+            <div style="width:74px;height:132px;background:conic-gradient(from 90deg at 50% 50%,#C7B48A,#9A855A,#DCCBA4,#C7B48A);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);box-shadow:0 16px 26px -12px rgba(120,84,40,.55);animation:tBob 5s 2.4s ease-in-out infinite"></div>
+            <span style="font-size:10px;letter-spacing:.22em;color:rgba(36,31,24,.7)">KORA</span>
+          </div>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(198,82,26,.34);background:#FBF6EC;padding:24px;display:flex;flex-direction:column;gap:14px;font-family:ui-monospace,monospace;font-size:10px;line-height:1.85;color:rgba(36,31,24,.78)">
+        <div style="letter-spacing:.26em;color:#C6521A">WHY CONES, NOT DOTS</div>
+        <div><span style="color:#8E3410">IT IS THE WEAVER'S SHELF</span><br>Every Erode weaving shed has a wall of thread cones. It is the most recognisable object in the trade after the loom, and it makes a colour filter feel like a place instead of a control.</div>
+        <div><span style="color:#8E3410">3D, CHEAP</span><br>Seven instanced cone meshes, one material, vertex-coloured. Hover spins the cone and unspools a short thread toward the cursor. Click and that thread whips across and stitches the filtered grid.</div>
+        <div><span style="color:#8E3410">FIXED SET</span><br>Seven colours, hard-coded. Products map onto them by tag. She never adds a cone — she just tags a saree.</div>
+        <div style="border-top:1px solid rgba(198,82,26,.28);padding-top:13px;color:rgba(36,31,24,.6)">This replaces the flat swatch row. Same function, far more memorable.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 04 THE THREAD DOES SEVEN JOBS ══ -->
+  <div style="width:1802px;box-sizing:border-box;padding:64px 60px 0;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.3em;color:#C6521A">04</span><span style="font-family:'Bodoni Moda',serif;font-size:32px">The same thread, doing the work of a design system</span></div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+      <div style="width:436px;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);padding:30px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.26em;color:#C6521A">LOADING</div>
+        <div style="height:70px;display:flex;align-items:center"><svg viewBox="0 0 376 40" style="width:100%;height:40px"><path d="M2 20 C 60 4, 120 36, 188 20 C 256 4, 316 36, 374 20" fill="none" stroke="#F5A623" stroke-width="2.5" stroke-dasharray="28 28" style="animation:tRun 1.4s linear infinite"></path></svg></div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(36,31,24,.65)">A running stitch instead of a spinner. It is the only loader on the site.</div>
+      </div>
+
+      <div style="width:436px;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);padding:30px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.26em;color:#C6521A">CHECKOUT PROGRESS</div>
+        <div style="height:70px;display:flex;align-items:center"><svg viewBox="0 0 376 40" style="width:100%;height:40px">
+          <path d="M14 20 L 362 20" fill="none" stroke="rgba(36,31,24,.18)" stroke-width="1"></path>
+          <path d="M14 20 L 246 20" fill="none" stroke="#F5A623" stroke-width="2" style="--len:232;stroke-dasharray:232;animation:tStitch 1.6s cubic-bezier(.16,1,.3,1) both"></path>
+          <circle cx="14" cy="20" r="5" fill="#C6521A"></circle><circle cx="130" cy="20" r="5" fill="#C6521A"></circle><circle cx="246" cy="20" r="5" fill="#C6521A"></circle><circle cx="362" cy="20" r="5" fill="#EDE2CE" stroke="rgba(36,31,24,.3)" stroke-width="1"></circle>
+        </svg></div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(36,31,24,.65)">Bag → address → payment → done. The thread sews forward one segment per step.</div>
+      </div>
+
+      <div style="width:436px;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);padding:30px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.26em;color:#C6521A">ORDER TRACKING</div>
+        <div style="height:70px;display:flex;align-items:center"><svg viewBox="0 0 376 40" style="width:100%;height:40px">
+          <path d="M14 20 L 362 20" fill="none" stroke="rgba(36,31,24,.18)" stroke-width="1"></path>
+          <path d="M14 12 L 40 28 L 66 12 L 92 28 L 118 12 L 144 28 L 170 12 L 196 28" fill="none" stroke="#F5A623" stroke-width="2" style="--len:400;stroke-dasharray:400;animation:tStitch 2s .3s cubic-bezier(.16,1,.3,1) both"></path>
+          <circle cx="14" cy="20" r="5" fill="#C6521A"></circle><circle cx="105" cy="20" r="5" fill="#C6521A"></circle><circle cx="196" cy="20" r="5" fill="#C6521A"></circle><circle cx="287" cy="20" r="5" fill="#EDE2CE" stroke="rgba(36,31,24,.3)"></circle><circle cx="362" cy="20" r="5" fill="#EDE2CE" stroke="rgba(36,31,24,.3)"></circle>
+        </svg></div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(36,31,24,.65)">Placed → packed → shipped → out → delivered. A cross-stitch, sewn shut on arrival.</div>
+      </div>
+
+      <div style="width:436px;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);padding:30px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.26em;color:#C6521A">LINKS &amp; BUTTONS</div>
+        <div style="height:70px;display:flex;align-items:center;gap:26px">
+          <div style="display:flex;flex-direction:column;gap:6px;cursor:pointer;width:fit-content"><span style="font-size:12.5px;letter-spacing:.16em">READ HER STORY</span><div style="height:1px;background:#F5A623;transform-origin:left;animation:tDraw 1.1s cubic-bezier(.16,1,.3,1) both"></div></div>
+          <div style="padding:16px 30px;background:#C6521A;color:#FBF6EC;font-size:10.5px;letter-spacing:.24em;cursor:pointer;transition:all .45s cubic-bezier(.16,1,.3,1)" style-hover="background:#8E3410;transform:translateY(-3px)">ADD TO BAG</div>
+        </div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(36,31,24,.65)">Every underline is the thread arriving. One easing everywhere: cubic-bezier(.16,1,.3,1).</div>
+      </div>
+
+      <div style="width:436px;background:#FBF6EC;border:1px solid rgba(36,31,24,.14);padding:30px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.26em;color:#C6521A">PAGE TRANSITION</div>
+        <div style="height:70px;display:flex;align-items:center"><svg viewBox="0 0 376 40" style="width:100%;height:40px"><path d="M-10 20 C 80 -8, 130 48, 200 20 C 270 -8, 320 48, 386 20" fill="none" stroke="#C6521A" stroke-width="2.5" style="--len:440;stroke-dasharray:440;animation:tStitch 1.3s cubic-bezier(.16,1,.3,1) infinite"></path></svg></div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(36,31,24,.65)">The thread whips across, the DOM swaps behind it, it unstitches. 780ms. No fade, no panel.</div>
+      </div>
+
+      <div style="width:436px;background:#FBF6EC;border:2px solid #C6521A;padding:30px;display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center">
+        <div style="font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.26em;color:#C6521A">AND FINALLY, THE MARK</div>
+        <div style="display:flex;align-items:baseline">
+          <svg viewBox="0 0 120 100" style="width:62px;height:52px;flex-shrink:0"><path d="M4 0 C 24 22 46 58 60 100 C 74 58 96 22 116 0 L 86 0 C 74 22 65 50 60 72 C 55 50 46 22 34 0 Z" fill="#241F1C"></path><path d="M60 6 L65 14 L60 66 L55 14 Z" fill="none" stroke="#F5A623" stroke-width="3" style="--len:130;stroke-dasharray:130;animation:tStitch 1.6s .4s cubic-bezier(.16,1,.3,1) both"></path></svg>
+          <span style="font-family:'Bodoni Moda',serif;font-size:52px;line-height:.82;letter-spacing:.28em;margin-left:15px;margin-right:-.28em">ELORA</span>
+        </div>
+        <div style="font-size:12px;line-height:1.8;color:rgba(36,31,24,.65);text-align:center">The thread's last act is to sew the vel's spine. Your logo is the end of the stitch.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HONEST ══ -->
+  <div style="width:1802px;box-sizing:border-box;padding:64px 60px 0;display:grid;grid-template-columns:1fr 1fr;gap:22px">
+    <div style="border:1px solid rgba(198,82,26,.35);background:#FBF6EC;padding:32px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.26em;color:#C6521A">WHY THIS IS THE RIGHT ANSWER FOR AN ECOMMERCE SITE</div>
+      <div style="font-size:13px;line-height:1.95;color:rgba(36,31,24,.75)">An unfolding saree is a one-joke animation — impressive once, tedious by the third visit, and it competes with the product. A thread that <span style="color:#241F1C">builds the interface</span> gets more interesting the longer you shop, because it is doing real work: loading, filtering, progressing, confirming. It is also the cheapest 3D you will ever ship — one tube, one material — so it stays fast on the Android phones your customers actually use.</div>
+    </div>
+    <div style="border:1px solid rgba(36,31,24,.2);background:#FBF6EC;padding:32px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.26em;color:#8E3410">WHAT I DROPPED FROM V5</div>
+      <div style="font-size:13px;line-height:1.95;color:rgba(36,31,24,.75)">The pile, the counter, the twelve, the snap, the deck, every hardcoded number. Products are now a plain filterable grid that behaves the same at any size, and the only motion touching them is the gold frame drawing itself.<br><br>What survived: kora beige, saffron, marigold, the warm brown shadow rule, the type, and the product page layout you liked.</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

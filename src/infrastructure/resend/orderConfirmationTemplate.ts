@@ -11,11 +11,11 @@ export function generateOrderConfirmationEmailHtml(order: Order): string {
 <head>
   <meta charset="utf-8">
   <style>
-    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #FDF4E4; color: #241F1C; margin: 0; padding: 32px 16px; }
-    .container { max-width: 600px; margin: 0 auto; background: #FDF4E4; border: 1px solid rgba(36,31,28,0.15); padding: 32px; }
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #EDE2CE; color: #241F1C; margin: 0; padding: 32px 16px; }
+    .container { max-width: 600px; margin: 0 auto; background: #FBF6EC; border: 1px solid rgba(36,31,28,0.15); padding: 32px; }
     .logo { text-align: center; margin-bottom: 24px; }
     .logo-text { font-size: 28px; font-weight: bold; letter-spacing: 0.28em; color: #241F1C; }
-    .logo-sub { font-size: 8px; letter-spacing: 0.34em; color: #E8621B; text-transform: uppercase; margin-top: 4px; }
+    .logo-sub { font-size: 8px; letter-spacing: 0.34em; color: #C6521A; text-transform: uppercase; margin-top: 4px; }
     .divider { height: 1px; background: #F5A623; margin: 24px 0; }
     .h1 { font-size: 24px; font-weight: normal; margin-bottom: 12px; }
     .p { font-size: 14px; line-height: 1.6; color: rgba(36,31,28,0.8); margin-bottom: 16px; }
@@ -40,7 +40,7 @@ export function generateOrderConfirmationEmailHtml(order: Order): string {
     <table class="spec-table">
       <tr>
         <td class="label">ORDER REF</td>
-        <td style="font-weight: bold; color: #E8621B;">${order.reference}</td>
+        <td style="font-weight: bold; color: #C6521A;">${order.reference}</td>
       </tr>
       <tr>
         <td class="label">ITEM</td>
@@ -63,7 +63,7 @@ export function generateOrderConfirmationEmailHtml(order: Order): string {
     <div class="divider"></div>
 
     <p class="p">You can track your order delivery status anytime at: <br>
-      <a href="https://velora-storefront.vercel.app/track/${order.reference}" style="color: #E8621B; font-weight: bold;">https://velora-storefront.vercel.app/track/${order.reference}</a>
+      <a href="https://velora-storefront.vercel.app/track/${order.reference}" style="color: #C6521A; font-weight: bold;">https://velora-storefront.vercel.app/track/${order.reference}</a>
     </p>
 
     <div class="footer">

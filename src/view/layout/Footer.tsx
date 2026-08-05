@@ -5,69 +5,89 @@ import Link from "next/link";
 import { TrustRow } from "../components/TrustRow";
 import { Wordmark } from "@/view/primitives/Wordmark";
 
-export const Footer: React.FC = () => {
-  return (
-    <footer className="bg-ink text-cream pt-14 pb-8">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12">
-          {/* Col 1: Logo & Tamil Line */}
-          <div className="flex flex-col gap-3">
-            <Link href="/" className="group">
-              <Wordmark fontSize={27} tone="ink" endorsement layout="stacked" className="items-start" />
-            </Link>
-            <div className="font-tamil text-[15px] text-cream/70 mt-2">
-              ஈரோடு · 1977 முதல்
-            </div>
-          </div>
-
-          {/* Col 2: SHOP */}
-          <div className="flex flex-col gap-3">
-            <span className="font-sans text-[10px] uppercase tracking-label-wide text-marigold">
-              SHOP
-            </span>
-            <ul className="flex flex-col gap-2 font-sans text-[11px] tracking-[0.14em] text-cream/75 uppercase">
-              <li><Link href="/colour/maroon" className="hover:text-turmeric transition-colors">By colour</Link></li>
-              <li><Link href="/occasion/muhurtham" className="hover:text-turmeric transition-colors">By occasion</Link></li>
-              <li><Link href="/saree/deep-maroon-mangai-zari-silk" className="hover:text-turmeric transition-colors">New in</Link></li>
-              <li><Link href="/colour/maroon" className="hover:text-turmeric transition-colors">All sarees</Link></li>
-            </ul>
-          </div>
-
-          {/* Col 3: HELP */}
-          <div className="flex flex-col gap-3">
-            <span className="font-sans text-[10px] uppercase tracking-label-wide text-marigold">
-              HELP
-            </span>
-            <ul className="flex flex-col gap-2 font-sans text-[11px] tracking-[0.14em] text-cream/75 uppercase">
-              <li><span className="cursor-pointer hover:text-turmeric transition-colors">Returns & exchange</span></li>
-              <li><span className="cursor-pointer hover:text-turmeric transition-colors">Delivery timelines</span></li>
-              <li><Link href="/track/VLR-4821" className="hover:text-turmeric transition-colors">Track your order</Link></li>
-              <li><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="hover:text-turmeric transition-colors">Ask on WhatsApp</a></li>
-            </ul>
-          </div>
-
-          {/* Col 4: THE HOUSE */}
-          <div className="flex flex-col gap-3">
-            <span className="font-sans text-[10px] uppercase tracking-label-wide text-marigold">
-              THE HOUSE
-            </span>
-            <ul className="flex flex-col gap-2 font-sans text-[11px] tracking-[0.14em] text-cream/75 uppercase">
-              <li><Link href="/story" className="hover:text-turmeric transition-colors">Our story</Link></li>
-              <li><span className="cursor-pointer hover:text-turmeric transition-colors">The Erode shop</span></li>
-              <li><span className="cursor-pointer hover:text-turmeric transition-colors">Authenticity</span></li>
-              <li><span className="cursor-pointer hover:text-turmeric transition-colors">Contact</span></li>
-            </ul>
-          </div>
+export const Footer: React.FC = () => (
+  <footer className="mt-16 bg-ink pb-8 pt-14 text-panel">
+    <div className="mx-auto max-w-[1680px] px-6 md:px-[60px]">
+      <div className="grid grid-cols-2 gap-10 pb-12 md:grid-cols-4 md:gap-12">
+        <div className="col-span-2 flex flex-col gap-3 md:col-span-1">
+          <Link href="/">
+            <Wordmark fontSize={26} tone="ink" endorsement className="items-start" />
+          </Link>
+          <div className="mt-2 font-tamil text-[15px] text-panel/70">ஈரோடு · 1977 முதல்</div>
         </div>
 
-        {/* Marigold Hairline Divider */}
-        <div className="h-[1px] bg-marigold/35 my-4" />
+        <FooterColumn
+          title="SHOP"
+          links={[
+            { label: "All sarees", href: "/shop" },
+            { label: "By colour", href: "/colour/maroon" },
+            { label: "By occasion", href: "/occasion/muhurtham" },
+            { label: "Offers", href: "/offers" },
+          ]}
+        />
 
-        {/* Trust Row */}
-        <div className="py-4">
-          <TrustRow />
-        </div>
+        <FooterColumn
+          title="HELP"
+          links={[
+            { label: "Track your order", href: "/track/VLR-4821" },
+            { label: "Returns & exchange", href: "/story" },
+            { label: "Delivery timelines", href: "/story" },
+            { label: "Ask on WhatsApp", href: "https://wa.me/919876543210", external: true },
+          ]}
+        />
+
+        <FooterColumn
+          title="THE HOUSE"
+          links={[
+            { label: "Her story", href: "/story" },
+            { label: "The Erode shop", href: "/story" },
+            { label: "Authenticity", href: "/story" },
+          ]}
+        />
       </div>
-    </footer>
-  );
-};
+
+      <div className="rule-temple my-4" />
+
+      <div className="py-4">
+        <TrustRow onInk />
+      </div>
+    </div>
+  </footer>
+);
+
+interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+const FooterColumn: React.FC<{ title: string; links: FooterLink[] }> = ({ title, links }) => (
+  <div className="flex flex-col gap-3">
+    <span className="font-sans text-[10px] uppercase tracking-label-wide text-[var(--thread-lit)]">
+      {title}
+    </span>
+    <ul className="flex list-none flex-col gap-2 p-0 font-sans text-[11px] uppercase tracking-[0.14em] text-panel/75">
+      {links.map((link) => (
+        <li key={`${link.label}-${link.href}`}>
+          {link.external ? (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="text-panel/75 transition-colors hover:text-[var(--thread-lit)]"
+            >
+              {link.label}
+            </a>
+          ) : (
+            <Link
+              href={link.href}
+              className="text-panel/75 transition-colors hover:text-[var(--thread-lit)]"
+            >
+              {link.label}
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+);

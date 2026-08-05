@@ -7,7 +7,7 @@ export const sareesFixture: Saree[] = [
     title: { en: "Deep Maroon Mangai Motif Silk Saree", ta: "ஆழ்ந்த அரக்கு மாங்காய் மொடிஃப் பட்டு" },
     priceInPaise: paise(385000), // ₹3,850
     status: "available",
-    colour: { key: "maroon", label: { en: "Deep Maroon", ta: "ஆழ்ந்த அரக்கு" }, hex: "#8C1F3D" },
+    colour: { key: "maroon", label: { en: "Deep Maroon", ta: "ஆழ்ந்த அரக்கு" }, hex: "#8C1B30" },
     occasions: ["muhurtham", "reception"],
     fabric: "Pure Kanchipuram Mulberry Silk",
     lengthCm: 630,
@@ -75,7 +75,7 @@ export const sareesFixture: Saree[] = [
     title: { en: "Saffron Flame Fine Gold Pattu Saree", ta: "செவ்வந்தி தங்கப் பட்டுப் புடவை" },
     priceInPaise: paise(480000), // ₹4,800
     status: "available",
-    colour: { key: "saffron", label: { en: "Saffron Flame", ta: "செவ்வந்தி" }, hex: "#E8621B" },
+    colour: { key: "saffron", label: { en: "Saffron Flame", ta: "செவ்வந்தி" }, hex: "#C6521A" },
     occasions: ["muhurtham", "festival"],
     fabric: "Pure Mulberry Silk",
     lengthCm: 630,

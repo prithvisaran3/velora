@@ -17,9 +17,11 @@ her father Mahadevan behind his counter from 1977. The endorsement line under th
 
 1. **The words "Bharani Pattu" must not appear anywhere** — not in copy, metadata, alt text, JSON-LD, commit
    messages, seed data, or the repo. Same for "since 1978" and the old curator name "Lakshmi". Grep before you commit.
-2. Palette is unchanged from the approved design: cream `#FDF4E4` · saffron `#E8621B` · marigold `#F5A623` ·
-   turmeric `#F8CE5A` · pressed `#B4470F` · ink `#241F1C` · sand `#F6EAD6` · peacock `#12514E` (WhatsApp only).
-   Saree hues (maroon/peacock/indigo/leaf/plum/kora) are product data, never chrome. No new colours.
+2. Palette is fixed by the approved **Thread v9** direction: cream `#EDE2CE` (ground) · panel `#FBF6EC` ·
+   sand `#F7F0E3` · dune `#E7DAC2` · saffron `#C6521A` · pressed `#8E3410` · marigold `#F5A623` ·
+   turmeric `#F8CE5A` · ink `#241F1C` · peacock `#12514E` (WhatsApp only). The thread is `#C9901E` base,
+   `#FFDD8E` lit, `#FFF3D2` specular. Saree hues (maroon/peacock/indigo/leaf/plum/kora) are product data,
+   never chrome. No new colours. Every value lives in `globals.css` under `@theme` — never inline a hex.
 3. **The logo V is a full capital.** viewBox `0 0 120 100`, ink fills the box, sized so ink height == the
    wordmark's cap height (0.75 × font-size), aligned with `align-items:baseline`. Geometry in `docs/BRAND.md`.
 4. **No developer annotation may ever render.** The live site currently ships "hero video · 8s silent loop",
@@ -27,11 +29,19 @@ her father Mahadevan behind his counter from 1977. The endorsement line under th
    "curator portrait · shop interior" as customer-facing text. Deleting those is task one.
 5. Motion easing `cubic-bezier(0.16, 1, 0.3, 1)`, durations 600–900ms. Nothing bounces or springs.
 6. **No 3D scene may delay the first product image.** One WebGL context for the whole site, created after LCP.
-   Every scene has a poster twin. LCP < 2.5s on 4G mid-range Android or the moment gets cut.
+   Every scene has a poster twin. LCP < 2.5s on 4G mid-range Android or the moment gets cut. v9 leaves two
+   scenes standing — the cone wall and the bag flight. **The saree is never animated: it is only ever a still
+   photograph.** Do not reintroduce a cloth simulation, a drape orbit or a scroll-driven unroll.
 7. `prefers-reduced-motion` collapses every 3D moment to its poster.
+7b. **The thread is the design system.** Loading, filtering, checkout progress, order tracking, underlines,
+   dividers, page transitions and card frames are all one SVG thread reading `--thread` / `--thread-lit`.
+   It never learns how many sarees there are. See `src/view/thread/`.
 8. Mobile is the primary design (70%+ of traffic is Instagram on Android). Build 390 first.
 9. One price or an honest range — pick one and be consistent. The live site mixes ₹2,450–₹4,800 with
    "all ₹3,000" copy. Ask the owner if unclear; do not invent.
+9b. **Count-agnostic, always.** No "48 sarees a month", no "twelve pieces", no month name, no edit counter —
+   in copy, headings, filters or metadata. Nothing may break when she adds stock. "All sarees", never
+   "Twelve sarees". Filters and LOAD MORE do the narrowing a curated count used to imply.
 10. Trust signals stay visible: authenticity note, 7-day return, COD, GST invoice, delivery window, and
     Priya's lineage as the anchor.
 

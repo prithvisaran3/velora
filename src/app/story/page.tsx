@@ -1,83 +1,88 @@
 import React from "react";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { UI } from "@/content/ui";
+import { cn } from "@/lib/utils";
 
+export const metadata: Metadata = {
+  title: "Her story · Velora",
+  description:
+    "Priya Mahadevan learned silk behind her father's counter in Erode from 1977. Every saree here is one she has held to the light.",
+};
+
+/** Panel grounds, until her photographs land. The last one is real. */
+const PANEL_GROUND = [
+  "linear-gradient(140deg, #4A423A, #544A40)",
+  "linear-gradient(140deg, #5A4C3C, #665441)",
+  "#3A3028",
+];
+
+/**
+ * Her lineage is the anchor of the whole site, so this page is the one place
+ * the thread goes quiet: ink ground, gold years, and nothing moving except the
+ * reader.
+ */
 export default function OurStoryPage() {
   return (
-    <div className="bg-ink text-cream min-h-screen flex flex-col w-full">
-      {/* D5 Header */}
-      <div className="px-8 md:px-[64px] pt-[80px] pb-[56px] max-w-[900px] flex flex-col gap-[20px]">
-        <span className="font-sans text-[11px] tracking-[0.34em] uppercase text-marigold">
+    <div className="flex w-full flex-col bg-ink text-panel">
+      <header className="flex max-w-[900px] flex-col gap-5 px-6 pb-14 pt-16 md:px-[60px] md:pt-20">
+        <span className="endorsement text-[11px] text-[var(--thread-lit)]">
           {UI.story.eyebrow}
         </span>
-        <h1 className="font-display text-[52px] md:text-[88px] leading-[0.98] text-cream" dangerouslySetInnerHTML={{ __html: UI.story.heading.replace('<br />', '<br/>') }} />
-        <div className="font-tamil text-[20px] text-cream/75">
-          {UI.story.tamilHeading}
-        </div>
-      </div>
+        <h1 className="font-display text-[44px] leading-[0.98] md:text-[84px]">
+          {UI.story.heading}
+        </h1>
+        <p className="m-0 font-tamil text-[20px] text-panel/75">{UI.story.tamilHeading}</p>
+      </header>
 
-      {/* D5 Panel 1: 1977 */}
-      <div className="flex flex-col md:flex-row items-stretch border-t border-marigold/30">
-        <div 
-          className="w-full md:w-[560px] h-[340px] md:h-[440px] flex-shrink-0 border-b md:border-b-0 md:border-r border-marigold/30"
-          style={{ background: "linear-gradient(to bottom right, #4A423A, #544A40)" }}
-        />
-        <div className="flex-1 p-8 md:p-[64px] md:py-[56px] flex flex-col justify-center gap-4">
-          <span className="font-display text-[48px] md:text-[64px] leading-none text-marigold">{UI.story.panels[0].year}</span>
-          <h2 className="font-display text-[26px] md:text-[34px] leading-[1.2] text-cream">
-            {UI.story.panels[0].title}
-          </h2>
-          <p className="font-sans text-[14px] leading-[1.8] text-cream/75 max-w-[520px]">
-            {UI.story.panels[0].body}
-          </p>
-        </div>
-      </div>
+      {UI.story.panels.map((panel, index) => {
+        const flipped = index % 2 === 1;
+        const isLast = index === UI.story.panels.length - 1;
+        return (
+          <section
+            key={panel.year}
+            className={cn(
+              "flex items-stretch border-t border-[var(--thread)]/30",
+              flipped ? "flex-col md:flex-row-reverse" : "flex-col md:flex-row"
+            )}
+          >
+            <div
+              className={cn(
+                "relative h-[300px] w-full flex-shrink-0 overflow-hidden border-b border-[var(--thread)]/30 md:h-[440px] md:w-[560px] md:border-b-0",
+                flipped ? "md:border-l" : "md:border-r"
+              )}
+              style={{ background: PANEL_GROUND[index] }}
+            >
+              {isLast && (
+                <Image
+                  src="/photo/priya.jpeg"
+                  alt="Priya Mahadevan at her Erode counter"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 560px"
+                  className="object-cover object-center"
+                />
+              )}
+            </div>
 
-      {/* D5 Panel 2: 1996 */}
-      <div className="flex flex-col md:flex-row-reverse items-stretch border-t border-marigold/30">
-        <div 
-          className="w-full md:w-[560px] h-[340px] md:h-[440px] flex-shrink-0 border-b md:border-b-0 md:border-l border-marigold/30"
-          style={{ background: "linear-gradient(to bottom right, #5A4C3C, #665441)" }}
-        />
-        <div className="flex-1 p-8 md:p-[64px] md:py-[56px] flex flex-col justify-center gap-4">
-          <span className="font-display text-[48px] md:text-[64px] leading-none text-marigold">{UI.story.panels[1].year}</span>
-          <h2 className="font-display text-[26px] md:text-[34px] leading-[1.2] text-cream">
-            {UI.story.panels[1].title}
-          </h2>
-          <p className="font-sans text-[14px] leading-[1.8] text-cream/75 max-w-[520px]">
-            {UI.story.panels[1].body}
-          </p>
-        </div>
-      </div>
-
-      {/* D5 Panel 3: 2026 */}
-      <div className="flex flex-col md:flex-row items-stretch border-t border-marigold/30">
-        <div 
-          className="relative w-full md:w-[560px] h-[340px] md:h-[440px] flex-shrink-0 border-b md:border-b-0 md:border-r border-marigold/30 overflow-hidden"
-          style={{ backgroundColor: "#3A3028" }}
-        >
-          <Image
-            src="/photo/priya.jpeg"
-            alt="Priya Mahadevan at her Erode counter"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 560px"
-            priority
-          />
-        </div>
-        <div className="flex-1 p-8 md:p-[64px] md:py-[56px] flex flex-col justify-center gap-4">
-          <span className="font-display text-[48px] md:text-[64px] leading-none text-marigold">{UI.story.panels[2].year}</span>
-          <h2 className="font-display text-[26px] md:text-[34px] leading-[1.2] text-cream">
-            {UI.story.panels[2].title}
-          </h2>
-          <p className="font-sans text-[14px] leading-[1.8] text-cream/75 max-w-[520px]">
-            {UI.story.panels[2].body}
-          </p>
-          <span className="font-sans text-[11px] uppercase tracking-[0.22em] text-marigold/80 mt-2">
-            {UI.story.signature} · {UI.story.signatureTitle}
-          </span>
-        </div>
-      </div>
+            <div className="flex flex-1 flex-col justify-center gap-4 p-8 md:p-[60px]">
+              <span className="font-display text-[44px] leading-none text-[var(--thread-lit)] md:text-[64px]">
+                {panel.year}
+              </span>
+              <h2 className="font-display text-[26px] leading-[1.2] md:text-[34px]">
+                {panel.title}
+              </h2>
+              <p className="m-0 max-w-[520px] font-sans text-[14px] leading-[1.8] text-panel/75">
+                {panel.body}
+              </p>
+              {isLast && (
+                <span className="mt-2 font-sans text-[11px] uppercase tracking-[0.22em] text-[var(--thread-lit)]/80">
+                  {UI.story.signature} · {UI.story.signatureTitle}
+                </span>
+              )}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

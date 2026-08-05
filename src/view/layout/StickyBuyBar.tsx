@@ -35,13 +35,13 @@ export const StickyBuyBar: React.FC<StickyBuyBarProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-ink text-cream p-4 border-t border-marigold/40 shadow-none transition-transform duration-300 transform translate-y-0">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-ink text-panel p-4 border-t border-[var(--thread)]/40 shadow-none transition-transform duration-300 transform translate-y-0">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between px-4">
         <div className="flex flex-col">
-          <span className="font-sans text-[10px] tracking-label uppercase text-marigold">
+          <span className="font-sans text-[10px] tracking-label uppercase text-[var(--thread-lit)]">
             HANDPICKED SAREE
           </span>
-          <Price amountInPaise={priceInPaise} className="text-[18px] text-cream" />
+          <Price amountInPaise={priceInPaise} className="text-[18px] text-panel" />
         </div>
 
         <Button

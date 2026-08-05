@@ -105,7 +105,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         <button
           type="button"
           onClick={handleGoogleSignIn}
-          className="w-full bg-white text-ink border border-ink/25 py-3 font-sans text-[11px] tracking-[0.16em] uppercase font-bold flex items-center justify-center gap-3 hover:border-saffron transition-colors shadow-none"
+          className="w-full bg-panel text-ink border border-ink/25 py-3 font-sans text-[11px] tracking-[0.16em] uppercase font-bold flex items-center justify-center gap-3 hover:border-saffron transition-colors shadow-none"
         >
           <svg className="w-4 h-4" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -159,7 +159,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-saffron text-cream py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-pressed transition-colors"
+              className="w-full bg-saffron text-panel py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-pressed transition-colors"
             >
               {isSubmitting ? "SIGNING IN..." : "SIGN IN TO STORE"}
             </button>
@@ -224,7 +224,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-saffron text-cream py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-pressed transition-colors"
+              className="w-full bg-saffron text-panel py-3.5 font-sans text-[11px] tracking-[0.22em] uppercase font-bold mt-2 hover:bg-pressed transition-colors"
             >
               {isSubmitting ? "CREATING ACCOUNT..." : "CREATE VELORA ACCOUNT"}
             </button>

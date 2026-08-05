@@ -4,9 +4,11 @@ import "./globals.css";
 import { Header } from "@/view/layout/Header";
 import { Footer } from "@/view/layout/Footer";
 import { WhatsAppFab } from "@/view/layout/WhatsAppFab";
-import { VelLoader } from "@/view/motion/VelLoader";
 import { CartProvider } from "@/viewmodel/client/useCart";
-import { PageTransition } from "@/view/motion/PageTransition";
+import { CanvasProvider } from "@/three/CanvasProvider";
+import { BagFlight } from "@/view/motion/BagFlight";
+import { ThreadIntro } from "@/view/thread/ThreadIntro";
+import { ThreadTransition } from "@/view/thread/ThreadTransition";
 import { Analytics } from "@vercel/analytics/react";
 
 const bodoniModa = Bodoni_Moda({
@@ -33,7 +35,8 @@ export const metadata: Metadata = {
     "Handpicked pure silk sarees, curated in Erode by Priya Mahadevan. India-only free shipping.",
   openGraph: {
     title: "Velora · Handpicked Silk Sarees from Erode",
-    description: "Handpicked pure silk sarees, curated in Erode by Priya Mahadevan. India-only free shipping.",
+    description:
+      "Handpicked pure silk sarees, curated in Erode by Priya Mahadevan. India-only free shipping.",
     url: "https://velora-saree.vercel.app",
     siteName: "Velora",
     images: [
@@ -59,15 +62,20 @@ export default function RootLayout({
       lang="en"
       className={`${bodoniModa.variable} ${archivo.variable} ${anekTamil.variable}`}
     >
-      <body className="antialiased bg-cream text-ink min-h-screen flex flex-col justify-between">
+      {/* No background on <body>: the ground is `--page-bg` on <html>, which is
+          what the thread's colour change animates. An opaque body hid it. */}
+      <body className="flex min-h-screen flex-col justify-between text-ink antialiased">
         <CartProvider>
-          <VelLoader />
-          <Header />
-          <PageTransition>
-            <main className="flex-grow">{children}</main>
-          </PageTransition>
-          <Footer />
-          <WhatsAppFab />
+          <CanvasProvider>
+            <ThreadIntro />
+            <Header />
+            <ThreadTransition>
+              <main className="flex-grow">{children}</main>
+            </ThreadTransition>
+            <Footer />
+            <WhatsAppFab />
+            <BagFlight />
+          </CanvasProvider>
           <Analytics />
         </CartProvider>
       </body>

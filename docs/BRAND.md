@@ -52,21 +52,39 @@ toggle and packaging. Never machine-translate headings into Tamil.
 
 ## Colour
 
+Retoned to the approved **Thread v9** direction. Kora beige is the ground and saffron sits deeper, so the
+gold thread is the brightest thing on the page.
+
 | Token | Hex | Use |
 | --- | --- | --- |
-| cream | `#FDF4E4` | page base |
-| saffron | `#E8621B` | primary action, blade, fabric wipe |
-| marigold | `#F5A623` | spine + collar, zari rules, stepper thread, footer headings |
+| cream | `#EDE2CE` | page base |
+| panel | `#FBF6EC` | cards, asides, quiet panels on cream |
+| sand | `#F7F0E3` | top of a raised surface |
+| dune | `#E7DAC2` | foot of a raised surface |
+| saffron | `#C6521A` | primary action, blade, links |
+| pressed | `#8E3410` | hover/pressed, small emphasis, error |
+| marigold | `#F5A623` | spine + collar of the mark |
 | turmeric | `#F8CE5A` | tint on saffron/ink grounds only |
-| pressed | `#B4470F` | hover/pressed, small emphasis, error |
-| ink | `#241F1C` | text, dark sections, footer, 3D stage |
-| sand | `#F6EAD6` | quiet panel inside cream |
+| ink | `#241F1C` | text, dark sections, footer |
 | peacock | `#12514E` | WhatsApp affordance only |
 
-Saree hues (product data, never chrome): maroon `#8C1F3D` · peacock `#12514E` · indigo `#2E4A7D` ·
-leaf `#4E7031` · plum `#6B3FA0` · kora `#F3EADC`.
+**The thread.** Three layers per filament — one strand looks like a line, three looks like twisted silk:
 
-No gradients on the logo. No shadows. No border radius except circles.
+| Token | Hex | Layer |
+| --- | --- | --- |
+| `--thread` | `#C9901E` | dull base strand |
+| `--thread-lit` | `#FFDD8E` | bright filament, light running along it |
+| `--thread-spec` | `#FFF3D2` | rare white specular, passes every few seconds |
+
+Gold is home. On a product or colour page these three are reassigned to the saree's hue over 900ms and
+returned to gold on the way out — see `src/view/thread/palette.ts`. The ground shifts about 4% toward the
+same hue. **Her photographs are never colour-shifted**: that would be lying about the product.
+
+Saree hues (product data, never chrome): maroon `#8C1B30` · peacock `#12514E` · indigo `#2E4A7D` ·
+leaf `#4E7031` · plum `#6B3FA0` · kora `#C7B48A`.
+
+No gradients on the logo. No shadows except the warm brown card lift
+(`0 16px 26px -12px rgba(120,84,40,.55)`). No border radius except circles.
 
 ## Type
 

@@ -109,7 +109,7 @@ export default function AdminDashboardPage() {
         <h2 className="font-display text-[20px] text-ink">Recent Customer Orders ({orders.length})</h2>
 
         {orders.map((order) => (
-          <div key={order.id} className="bg-white border border-ink/15 p-4 flex flex-col gap-3">
+          <div key={order.id} className="bg-panel border border-ink/15 p-4 flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <span className="font-sans text-[12px] font-bold text-saffron">{order.reference}</span>
               <Badge variant={order.status === "paid" ? "pressed" : "cream"}>
