@@ -56,7 +56,7 @@ export default function AdminOffersPage() {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div className="bg-white p-4 border border-ink/15 flex flex-col gap-3">
+        <div className="bg-panel p-4 border border-ink/15 flex flex-col gap-3">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             1. PROMO CODE / கூப்பன் குறியீடு
           </span>
@@ -69,7 +69,7 @@ export default function AdminOffersPage() {
           />
         </div>
 
-        <div className="bg-white p-4 border border-ink/15 flex flex-col gap-3">
+        <div className="bg-panel p-4 border border-ink/15 flex flex-col gap-3">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             2. OFFER TITLE / தலைப்பு
           </span>
@@ -77,7 +77,7 @@ export default function AdminOffersPage() {
           <Field label="TITLE (TAMIL / தமிழ்)" required value={titleTa} onChange={(e) => setTitleTa(e.target.value)} />
         </div>
 
-        <div className="bg-white p-4 border border-ink/15 flex flex-col gap-3">
+        <div className="bg-panel p-4 border border-ink/15 flex flex-col gap-3">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             3. DISCOUNT VALUE / தள்ளுபடி விவரம்
           </span>
@@ -86,7 +86,7 @@ export default function AdminOffersPage() {
               type="button"
               onClick={() => setDiscountType("percentage")}
               className={`flex-1 py-3 font-sans text-[11px] uppercase tracking-wider border ${
-                discountType === "percentage" ? "bg-saffron text-cream border-saffron" : "border-ink/30 text-ink hover:border-saffron"
+                discountType === "percentage" ? "bg-saffron text-panel border-saffron" : "border-ink/30 text-ink hover:border-saffron"
               }`}
             >
               Percentage (%)
@@ -95,7 +95,7 @@ export default function AdminOffersPage() {
               type="button"
               onClick={() => setDiscountType("fixed_paise")}
               className={`flex-1 py-3 font-sans text-[11px] uppercase tracking-wider border ${
-                discountType === "fixed_paise" ? "bg-saffron text-cream border-saffron" : "border-ink/30 text-ink hover:border-saffron"
+                discountType === "fixed_paise" ? "bg-saffron text-panel border-saffron" : "border-ink/30 text-ink hover:border-saffron"
               }`}
             >
               Flat Amount (₹)

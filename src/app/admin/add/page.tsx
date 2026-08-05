@@ -193,7 +193,7 @@ export default function AdminAddProductPage() {
       </div>
 
       {/* Single-tap "Duplicate Last Product" Button */}
-      <div className="bg-saffron text-cream p-4 flex items-center justify-between shadow-none">
+      <div className="bg-saffron text-panel p-4 flex items-center justify-between shadow-none">
         <div className="flex flex-col">
           <span className="font-sans text-[12px] font-medium uppercase tracking-wider">
             DUPLICATE LAST PRODUCT
@@ -213,7 +213,7 @@ export default function AdminAddProductPage() {
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         {/* Titles & Dynamic Price Input */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+        <div className="flex flex-col gap-3 bg-panel p-4 border border-ink/15">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             1. TITLE & PRICE / பெயர் மற்றும் விலை
           </span>
@@ -242,7 +242,7 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Swatch Colour Picker */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+        <div className="flex flex-col gap-3 bg-panel p-4 border border-ink/15">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             2. COLOUR / நிறம்
           </span>
@@ -261,7 +261,7 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Occasion Chips */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+        <div className="flex flex-col gap-3 bg-panel p-4 border border-ink/15">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             3. OCCASION (MULTI-SELECT)
           </span>
@@ -274,7 +274,7 @@ export default function AdminAddProductPage() {
                   type="button"
                   onClick={() => toggleOccasion(key)}
                   className={`px-3 py-2 font-sans text-[11px] uppercase tracking-wider border transition-colors ${
-                    isSelected ? "bg-saffron text-cream border-saffron" : "border-ink/30 text-ink"
+                    isSelected ? "bg-saffron text-panel border-saffron" : "border-ink/30 text-ink"
                   }`}
                 >
                   {data.title.en}
@@ -285,7 +285,7 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Specs */}
-        <div className="flex flex-col gap-3 bg-white p-4 border border-ink/15">
+        <div className="flex flex-col gap-3 bg-panel p-4 border border-ink/15">
           <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
             4. SPECIFICATIONS
           </span>
@@ -302,7 +302,7 @@ export default function AdminAddProductPage() {
         </div>
 
         {/* Section 5: PRODUCT PHOTOS / புகைப்படங்கள் */}
-        <div className="flex flex-col gap-4 bg-white p-4 border border-ink/15">
+        <div className="flex flex-col gap-4 bg-panel p-4 border border-ink/15">
           <div className="flex items-center justify-between">
             <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-saffron font-bold">
               5. PRODUCT PHOTOS / புகைப்படங்கள் ({imageUrls.length})
@@ -339,7 +339,7 @@ export default function AdminAddProductPage() {
             <button
               type="button"
               onClick={handleAddPastedUrl}
-              className="bg-ink text-cream px-4 font-sans text-[10px] uppercase tracking-wider hover:bg-ink/90 transition-colors"
+              className="bg-ink text-panel px-4 font-sans text-[10px] uppercase tracking-wider hover:bg-ink/90 transition-colors"
             >
               ADD URL
             </button>
@@ -353,7 +353,7 @@ export default function AdminAddProductPage() {
                   <Image src={url} alt={`Upload preview ${idx + 1}`} fill className="object-cover" />
                   
                   {/* Photo Order Badge */}
-                  <div className="absolute top-1.5 left-1.5 bg-ink/85 text-cream text-[9px] font-sans px-1.5 py-0.5 tracking-wider uppercase">
+                  <div className="absolute top-1.5 left-1.5 bg-ink/85 text-panel text-[9px] font-sans px-1.5 py-0.5 tracking-wider uppercase">
                     {idx === 0 ? "1. FLAT-LAY / MAIN" : idx === 1 ? "2. DRAPED VIEW" : `${idx + 1}. DETAIL`}
                   </div>
 
