@@ -3,16 +3,13 @@ import { Saree } from "@/model/domain/types";
 import { configFixture } from "@/model/fixtures/config.fixture";
 
 export interface HomeViewModel {
-  heroSaree: Saree;
-  latestEdit: Saree[];
+  /** Everything in stock. The grid filters and pages it — nothing is sliced
+   *  to a fixed number here, because no number in the UI may depend on one. */
+  sarees: Saree[];
   config: typeof configFixture;
 }
 
 export async function getHomeViewModel(): Promise<HomeViewModel> {
   const sarees = await container.sareeRepository.listAvailable();
-  return {
-    heroSaree: sarees[0],
-    latestEdit: sarees.slice(0, 8),
-    config: configFixture,
-  };
+  return { sarees, config: configFixture };
 }
