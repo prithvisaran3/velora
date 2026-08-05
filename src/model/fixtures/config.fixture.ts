@@ -40,13 +40,13 @@ export const configFixture: ConfigFixture = {
   },
   codPincodePrefixes: ["60", "61", "62", "63", "64", "56", "57", "50", "40", "11"],
   colours: {
-    maroon: { hex: "#8C1F3D", label: { en: "Deep Maroon", ta: "ஆழ்ந்த அரக்கு" } },
+    maroon: { hex: "#8C1B30", label: { en: "Deep Maroon", ta: "ஆழ்ந்த அரக்கு" } },
     peacock: { hex: "#12514E", label: { en: "Peacock Blue", ta: "மயில் நீலம்" } },
     indigo: { hex: "#2E4A7D", label: { en: "Royal Indigo", ta: "அரச நீலம்" } },
     leaf: { hex: "#4E7031", label: { en: "Leaf Green", ta: "இலை பச்சை" } },
     plum: { hex: "#6B3FA0", label: { en: "Plum Purple", ta: "நாவல் ஊதா" } },
-    kora: { hex: "#F3EADC", label: { en: "Kora Silk Cream", ta: "கோரா பட்டு" } },
-    saffron: { hex: "#E8621B", label: { en: "Heritage Saffron", ta: "பாரம்பரிய காவி" } },
+    kora: { hex: "#C7B48A", label: { en: "Kora Silk Cream", ta: "கோரா பட்டு" } },
+    saffron: { hex: "#C6521A", label: { en: "Heritage Saffron", ta: "பாரம்பரிய காவி" } },
     marigold: { hex: "#F5A623", label: { en: "Marigold Yellow", ta: "சம்பங்கி மஞ்சள்" } },
   },
   occasions: {

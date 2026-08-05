@@ -3,28 +3,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Brand palette ── */
-  --color-cream: #FDF4E4;
-  --color-saffron: #E8621B;
+  /* ── Brand palette ──
+     Retoned to the v9 thread direction. Kora beige is the ground, panel is the
+     card/aside surface, and saffron sits deeper than it used to so the gold
+     thread reads as the brightest thing on the page. */
+  --color-cream: #EDE2CE;
+  --color-panel: #FBF6EC;
+  --color-sand: #F7F0E3;
+  --color-dune: #E7DAC2;
+  --color-saffron: #C6521A;
+  --color-pressed: #8E3410;
   --color-marigold: #F5A623;
   --color-turmeric: #F8CE5A;
-  --color-pressed: #B4470F;
   --color-ink: #241F1C;
-  --color-sand: #F6EAD6;
   --color-peacock: #12514E;
 
+  /* The thread itself. Three layers per filament: a dull base, a bright
+     travelling filament, and a rare white specular. One strand looks like a
+     line; three looks like twisted silk. */
+  --color-thread-base: #C9901E;
+  --color-thread-lit: #FFDD8E;
+  --color-thread-spec: #FFF3D2;
+
   /* saree hues — product data only, never chrome */
-  --color-saree-maroon: #8C1F3D;
+  --color-saree-maroon: #8C1B30;
   --color-saree-peacock: #12514E;
   --color-saree-indigo: #2E4A7D;
   --color-saree-leaf: #4E7031;
   --color-saree-plum: #6B3FA0;
-  --color-saree-kora: #F3EADC;
+  --color-saree-kora: #C7B48A;
 
   /* ── Type ── */
   --font-display: var(--font-bodoni-moda), "Bodoni Moda", Didot, serif;
   --font-sans: var(--font-archivo), "Archivo", Helvetica, sans-serif;
   --font-tamil: var(--font-anek-tamil), "Anek Tamil", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
 
   /* ── Tracking ── */
   --tracking-wordmark: 0.28em;
@@ -37,11 +50,12 @@
 
   /* ── Motion ── */
   --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-dye: 800ms;
+  --duration-dye: 900ms;
   --duration-wipe: 780ms;
   --duration-crossfade: 600ms;
   --duration-flight: 720ms;
   --duration-draw: 900ms;
+  --duration-stitch: 1500ms;
   --duration-hover: 220ms;
   --duration-loupe: 220ms;
 
@@ -61,19 +75,27 @@
   --max-width-media: 840px;
 
   /* ── Display scale — clamp so mobile is primary, not a scaled-down desktop ── */
-  --font-size-display-xl: clamp(3rem, 7vw, 6.5rem);
+  --font-size-display-xl: clamp(3rem, 7vw, 6.75rem);
   --font-size-display-lg: clamp(2.5rem, 5vw, 4.75rem);
   --font-size-display-md: clamp(1.75rem, 3vw, 2.75rem);
   --font-size-display-sm: clamp(1.25rem, 2vw, 1.375rem);
 }
 
 :root {
-  /* set by useColourDye on <html>; defaults to the brand ground */
+  /* The ground. Nudged toward the room's hue by ThreadColour; gold is home
+     and the default. */
   --page-bg: var(--color-cream);
   --page-fg: var(--color-ink);
 
+  /* The thread's live colour. Every filament, rule, frame and stepper reads
+     these and nothing else — which is why a whole page changes hue from one
+     assignment on <html> with no re-render. See view/thread/ThreadColour. */
+  --thread: var(--color-thread-base);
+  --thread-lit: var(--color-thread-lit);
+  --thread-spec: var(--color-thread-spec);
+
   /* The shared WebGL canvas. 5 sits above page content and below the sticky
-     header (40) and modals (50); the vel loader raises it to 60 for 900ms. */
+     header (40) and modals (50); the loader raises it to 60 for 900ms. */
   --velora-canvas-z: 5;
 }
 
@@ -104,7 +126,7 @@ a { color: var(--color-saffron); text-decoration: none; }
 a:hover { color: var(--color-pressed); }
 
 :focus-visible {
-  outline: 2px solid var(--color-marigold);
+  outline: 2px solid var(--thread);
   outline-offset: 3px;
 }
 
@@ -123,49 +145,123 @@ a:hover { color: var(--color-pressed); }
   margin-right: calc(var(--tracking-endorsement) * -1);
 }
 
-/* Zari weave — used by the tracking stepper and the hangtag rule. */
-.zari-weave {
-  background-image: repeating-linear-gradient(90deg, var(--color-marigold) 0 7px, var(--color-turmeric) 7px 14px);
-}
-.zari-weave-vertical {
-  background-image: repeating-linear-gradient(180deg, var(--color-marigold) 0 7px, var(--color-turmeric) 7px 14px);
+/* ══════════════════════════════════════════════════════════════════════
+   THE THREAD
+   Every keyframe the design system needs. Nothing here knows about a
+   saree, a price or a count — it ships with the build, identical forever.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* A stroke sews itself in. `--len` is the path length, set per element. */
+@keyframes thread-stitch {
+  from { stroke-dashoffset: var(--len); }
+  to   { stroke-dashoffset: 0; }
 }
 
-/* The bag acknowledges a landed flight — once, in marigold. */
+/* Light running along a filament. Offsets are negative so it travels forward. */
+@keyframes thread-flow      { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1200; } }
+@keyframes thread-flow-back { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 1200; } }
+
+/* The six drift cycles. Prime-ish periods so they never sync up. */
+@keyframes thread-drift-a {
+  0%, 100% { transform: translate(0, 0); }
+  33%      { transform: translate(-9px, 16px); }
+  66%      { transform: translate(7px, -13px); }
+}
+@keyframes thread-drift-b {
+  0%, 100% { transform: translate(0, 0); }
+  40%      { transform: translate(11px, -19px); }
+  75%      { transform: translate(-8px, 14px); }
+}
+@keyframes thread-drift-c {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-13px, -11px); }
+}
+
+/* A line of display type rises out of its own overflow box. */
+@keyframes thread-rise { from { transform: translateY(114%); } to { transform: translateY(0); } }
+
+/* Everything else arrives by lifting 12px. */
+@keyframes thread-fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* A specular pass across a filled button. */
+@keyframes thread-glint { 0% { transform: translateX(-160%); } 100% { transform: translateX(420%); } }
+
+/* The scroll hint under the hero. */
+@keyframes thread-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.35; }
+  50%      { transform: translateY(8px); opacity: 1; }
+}
+
+/* The live-marker ring. */
+@keyframes thread-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50%      { transform: scale(1.55); opacity: 0; }
+}
+
+/* Cones on the colour wall breathe. */
+@keyframes thread-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+
+/* The running stitch — the only loader on the site. */
+@keyframes thread-run { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -56; } }
+
+/* An underline arriving. */
+@keyframes thread-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Utility classes so components never inline an animation shorthand. */
+.thread-rise  { animation: thread-rise 1.2s var(--ease-silk) both; }
+.thread-fade  { animation: thread-fade 1.1s var(--ease-silk) both; }
+.thread-hint  { animation: thread-hint 2.2s ease-in-out infinite; }
+.thread-pulse { animation: thread-pulse 2.6s ease-out infinite; }
+.thread-glint { animation: thread-glint 5s 2s ease-in-out infinite; }
+.thread-bob   { animation: thread-bob 5s ease-in-out infinite; }
+.thread-run   { animation: thread-run 1.4s linear infinite; }
+.thread-draw  { animation: thread-draw 1.1s var(--ease-silk) both; transform-origin: left; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   SURFACES
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* The raised ground every thread field is drawn on. */
+.thread-ground {
+  background-image: linear-gradient(178deg, var(--color-sand) 0%, var(--color-cream) 62%, var(--color-dune) 100%);
+}
+.thread-ground-flat {
+  background-image: linear-gradient(178deg, var(--color-sand), var(--color-dune));
+}
+
+/* Zari weave — the tracking stepper and the hangtag rule. Follows the thread. */
+.zari-weave {
+  background-image: repeating-linear-gradient(90deg, var(--thread) 0 7px, var(--thread-lit) 7px 14px);
+}
+.zari-weave-vertical {
+  background-image: repeating-linear-gradient(180deg, var(--thread) 0 7px, var(--thread-lit) 7px 14px);
+}
+
+/* The bag acknowledges a landed flight — once. */
 @keyframes bag-pulse {
   0%   { transform: scale(1); }
   38%  { transform: scale(1.16); }
   100% { transform: scale(1); }
 }
-.bag-pulse {
-  animation: bag-pulse 620ms var(--ease-silk);
-}
+.bag-pulse { animation: bag-pulse 620ms var(--ease-silk); }
 
-/* Temple hairline divider. */
+/* Temple hairline divider — now a thread, not a fixed marigold. */
 .rule-temple {
   height: 1px;
-  background-image: linear-gradient(90deg, transparent, var(--color-marigold) 12%, var(--color-marigold) 88%, transparent);
-}
-
-/* Hero poster — the silk ground that renders with JS disabled, and the ground
-   the hero cloth is composited over. Raking light from the upper right, the
-   weave running at 118° exactly as approved. */
-.hero-silk {
-  background-image:
-    linear-gradient(104deg, rgba(36, 31, 28, 0.12) 0%, rgba(36, 31, 28, 0) 46%),
-    radial-gradient(120% 92% at 74% 22%, rgba(253, 244, 228, 0.9) 0%, rgba(253, 244, 228, 0) 62%),
-    repeating-linear-gradient(118deg, #E9D9BE 0 22px, #E3D0B0 22px 44px);
-}
-
-/* The drape stage — the dark ground the 3D form stands on, and the poster's. */
-.drape-stage {
-  background-image: radial-gradient(90% 80% at 60% 26%, #3A322C 0%, #14110F 72%);
+  background-image: linear-gradient(90deg, transparent, var(--thread) 12%, var(--thread) 88%, transparent);
 }
 
 /* Placeholder ground for imagery that has not shipped yet. */
 .placeholder-weave {
-  background-image: repeating-linear-gradient(135deg, #F1E3CB 0 9px, #EAD8B9 9px 18px);
+  background-image: repeating-linear-gradient(135deg, var(--color-sand) 0 9px, var(--color-dune) 9px 18px);
 }
+
+/* Hide a scrollbar without losing the scroll. */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { transition: none; }

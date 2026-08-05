@@ -33,7 +33,7 @@ export async function upsertSaree(input: unknown): Promise<ActionResult<Saree>> 
     colour: {
       key: data.colourKey,
       label: colourConfig ? colourConfig.label : { en: data.colourKey, ta: data.colourKey },
-      hex: colourConfig ? colourConfig.hex : "#8C1F3D",
+      hex: colourConfig ? colourConfig.hex : "#8C1B30",
     },
     occasions: data.occasions,
     fabric: data.fabric,
