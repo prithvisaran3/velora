@@ -23,17 +23,41 @@ export const CAP_RATIO = 0.75;
 
 type Tone = "cream" | "ink" | "saffron" | "mono";
 
+/**
+ * `accent` is the thread's own colour, per ground: the base reads on cream,
+ * the lit strand is what survives on ink, and the specular is what survives on
+ * saffron. All three follow the room, so the mark is dyed with everything else
+ * rather than being a fixed marigold that ignores the page it sits on.
+ */
 const TONE: Record<Tone, { blade: string; accent: string; text: string; endorse: string }> = {
-  cream:   { blade: "var(--color-saffron)",  accent: "var(--color-marigold)", text: "text-ink",     endorse: "text-ink/72" },
-  ink:     { blade: "var(--color-panel)",    accent: "var(--color-marigold)", text: "text-panel",   endorse: "text-[var(--thread-lit)]" },
-  saffron: { blade: "var(--color-panel)",    accent: "var(--color-turmeric)", text: "text-panel",   endorse: "text-turmeric" },
-  mono:    { blade: "currentColor",          accent: "currentColor",          text: "",              endorse: "opacity-70" },
+  cream:   { blade: "var(--color-saffron)",  accent: "var(--thread)",      text: "text-ink",   endorse: "text-ink/72" },
+  ink:     { blade: "var(--color-panel)",    accent: "var(--thread-lit)",  text: "text-panel", endorse: "text-[var(--thread-lit)]" },
+  saffron: { blade: "var(--color-panel)",    accent: "var(--thread-spec)", text: "text-panel", endorse: "text-[var(--thread-spec)]" },
+  mono:    { blade: "currentColor",          accent: "currentColor",       text: "",           endorse: "opacity-70" },
 };
 
-/** The vel mark alone. `size` is the ink height in px — pass the cap height of the type beside it. */
-export const VelMark: React.FC<{ size: number; tone?: Tone; className?: string }> = ({
+/** The thread's last act: 1.6s, after a 0.4s beat. Long enough to be noticed once. */
+const SPINE_LENGTH = 130;
+const SEW = `thread-stitch 1.6s 0.4s var(--ease-silk) both`;
+
+interface VelMarkProps {
+  /** Ink height in px — pass the cap height of the type beside it. */
+  size: number;
+  tone?: Tone;
+  /**
+   * Sew the spine in on mount. Header and footer only, and only once: the
+   * animation string is constant, so a re-render never restarts it. Reduced
+   * motion is handled by the global block, which collapses the draw to its
+   * finished state rather than removing the spine.
+   */
+  sew?: boolean;
+  className?: string;
+}
+
+export const VelMark: React.FC<VelMarkProps> = ({
   size,
   tone = "cream",
+  sew = false,
   className,
 }) => {
   const c = TONE[tone];
@@ -47,7 +71,24 @@ export const VelMark: React.FC<{ size: number; tone?: Tone; className?: string }
       focusable="false"
     >
       <path d={VEL_BLADE} fill={c.blade} />
-      <path d={VEL_SPINE} fill={c.accent} />
+      {sew ? (
+        // Stroked, not filled, so it can draw itself — the same treatment the
+        // intro gives this path. At 22–26px the sliver reads solid either way.
+        <path
+          d={VEL_SPINE}
+          fill="none"
+          stroke={c.accent}
+          strokeWidth="3"
+          style={{
+            // @ts-expect-error -- --len is read by the thread-stitch keyframe.
+            "--len": SPINE_LENGTH,
+            strokeDasharray: SPINE_LENGTH,
+            animation: SEW,
+          }}
+        />
+      ) : (
+        <path d={VEL_SPINE} fill={c.accent} />
+      )}
       {size >= 20 && <path d={VEL_COLLAR} fill={c.accent} />}
     </svg>
   );
@@ -61,6 +102,8 @@ interface WordmarkProps {
   endorsement?: boolean;
   /** Stacked (endorsement below) or inline (endorsement to the right, divided). */
   layout?: "stacked" | "inline";
+  /** Sew the spine on mount. Header and footer only. */
+  sew?: boolean;
   className?: string;
 }
 
@@ -69,6 +112,7 @@ export const Wordmark: React.FC<WordmarkProps> = ({
   tone = "cream",
   endorsement = true,
   layout = "stacked",
+  sew = false,
   className,
 }) => {
   const c = TONE[tone];
@@ -85,7 +129,7 @@ export const Wordmark: React.FC<WordmarkProps> = ({
     >
       {/* items-baseline: apex lands on the cap line, tip lands on the baseline */}
       <span className="flex items-baseline">
-        <VelMark size={cap} tone={tone} />
+        <VelMark size={cap} tone={tone} sew={sew} />
         <span
           className={cn(
             "font-display uppercase leading-[0.82] tracking-[0.28em] mr-[-0.28em]",
