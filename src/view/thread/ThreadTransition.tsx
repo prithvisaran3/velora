@@ -46,7 +46,7 @@ export const ThreadTransition: React.FC<{ children: React.ReactNode }> = ({ chil
           <path
             d="M-10 20 C 80 -8, 130 48, 200 20 C 270 -8, 320 48, 386 20"
             fill="none"
-            stroke="var(--color-saffron)"
+            stroke="var(--thread)"
             strokeWidth="2.5"
             vectorEffect="non-scaling-stroke"
             style={{
