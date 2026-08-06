@@ -6,6 +6,7 @@ import { OccasionKey } from "@/model/domain/types";
 import { SareeGrid } from "@/view/components/SareeGrid";
 import { ThreadField } from "@/view/thread/ThreadField";
 import { ThreadRule } from "@/view/thread/ThreadRule";
+import { SectionHead } from "@/view/primitives/SectionHead";
 import { configFixture } from "@/model/fixtures/config.fixture";
 import { UI } from "@/content/ui";
 import { cn } from "@/lib/utils";
@@ -40,30 +41,32 @@ export default async function OccasionPage({ params }: OccasionPageProps) {
   ][];
 
   return (
-    <div className="flex w-full flex-col gap-12 px-4 pb-20 pt-6 md:gap-[64px] md:px-[60px]">
-      <section className="thread-ground relative overflow-hidden border border-ink/12">
+    <div className="flex w-full flex-col gap-12 pb-20 md:gap-[64px]">
+      <section className="thread-ground relative overflow-hidden">
         <ThreadField variant="band" />
-        <div className="relative z-10 flex flex-col gap-3 px-6 py-12 md:px-11 md:py-14">
-          <span className="font-sans text-[10px] uppercase tracking-label-wide text-saffron">
-            {UI.occasions.subline}
-          </span>
-          <h1 className="font-display text-[40px] leading-none md:text-[64px]">
-            {vm.occasionData.title.en}
-          </h1>
-          <p className="m-0 max-w-[560px] font-sans text-[14px] leading-[1.85] text-ink/72">
-            {vm.occasionData.description.en}
-          </p>
+        <div className="measure relative z-10 py-12 md:py-14">
+          <SectionHead
+            eyebrow={UI.occasions.subline}
+            title={vm.occasionData.title.en}
+            as="h1"
+            size="page"
+            subtitle={
+              <p className="m-0 max-w-[560px] font-sans text-[14px] leading-[1.85] text-ink/72">
+                {vm.occasionData.description.en}
+              </p>
+            }
+          />
         </div>
       </section>
 
       {/* Every other moment, so a shopper can cross over without going back. */}
-      <nav className="no-scrollbar flex gap-2.5 overflow-x-auto">
+      <nav className="measure no-scrollbar flex gap-2.5 overflow-x-auto">
         {occasions.map(([key, data]) => (
           <Link
             key={key}
             href={`/occasion/${key}`}
             className={cn(
-              "flex-shrink-0 border px-4 py-2.5 font-sans text-[10px] uppercase tracking-label transition-colors duration-hover",
+              "flex min-h-11 flex-shrink-0 items-center border px-4 font-sans text-[10px] uppercase tracking-label transition-colors duration-hover",
               key === occasionKey
                 ? "border-saffron text-saffron"
                 : "border-ink/20 text-ink/60 hover:border-ink/40"
@@ -75,15 +78,19 @@ export default async function OccasionPage({ params }: OccasionPageProps) {
         ))}
       </nav>
 
-      <ThreadRule soft />
+      <div className="measure">
+        <ThreadRule soft />
+      </div>
 
-      {vm.sarees.length > 0 ? (
-        <SareeGrid sarees={vm.sarees} />
-      ) : (
-        <p className="py-16 text-center font-sans text-[15px] text-ink/70">
-          {UI.emptyStates.occasion(vm.occasionData.title.en.toLowerCase())}
-        </p>
-      )}
+      <div className="measure">
+        {vm.sarees.length > 0 ? (
+          <SareeGrid sarees={vm.sarees} />
+        ) : (
+          <p className="py-16 text-center font-sans text-[15px] text-ink/70">
+            {UI.emptyStates.occasion(vm.occasionData.title.en.toLowerCase())}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

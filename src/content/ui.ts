@@ -44,6 +44,20 @@ export const UI = {
     liveMarker: "THE THREAD FOLLOWS YOU",
   },
 
+  whatsapp: {
+    label: "ASK ON WHATSAPP",
+    aria: "Ask on WhatsApp",
+    prefill: "Hello Velora, I have a question about a saree.",
+  },
+
+  offers: {
+    eyebrow: "DIRECT FROM THE SHOP IN ERODE",
+    heading: "Offers",
+    body:
+      "Her prices come straight from the counter. When there is a voucher running, it is here — and it applies at checkout, not on a banner.",
+    empty: "No vouchers running right now. Prices are the shop's own either way.",
+  },
+
   shop: {
     eyebrow: "CHOSEN IN ERODE",
     heading: "All sarees",
@@ -111,6 +125,7 @@ export const UI = {
     gstNote: "Inclusive of GST. Invoice emailed on dispatch.",
     shippingLabel: "Free",
     placeOrder: "PLACE ORDER",
+    placing: "PLACING ORDER",
   },
 
   tracking: {

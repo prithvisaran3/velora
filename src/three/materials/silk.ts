@@ -15,6 +15,7 @@
 import * as THREE from "three";
 import { SILK } from "@/lib/motion";
 import { blankMask } from "./zari";
+import { THREAD_GOLD } from "@/view/thread/palette";
 
 /**
  * `displacement` lets a scene rewrite the vertex before lighting — the pallu
@@ -179,6 +180,26 @@ export interface SilkOptions {
   displacement?: { glsl: string; uniforms: Record<string, THREE.IUniform> };
 }
 
+/**
+ * The thread's current colour, as a THREE.Color.
+ *
+ * A shader uniform cannot read a CSS custom property, so this samples it once
+ * at material construction. Falls back to gold when there is no document or
+ * the property has not resolved — never to a hardcoded marigold that would
+ * ignore the room.
+ */
+function liveThread(property: string, fallback: string): THREE.Color {
+  if (typeof document === "undefined") return new THREE.Color(fallback);
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(property)
+    .trim();
+  try {
+    return new THREE.Color(value || fallback);
+  } catch {
+    return new THREE.Color(fallback);
+  }
+}
+
 /** sheenColor = the saree hue lightened by 18%, per docs/3D-MOTION.md §02. */
 export function lightenedSheen(base: THREE.Color): THREE.Color {
   const hsl = { h: 0, s: 0, l: 0 };
@@ -210,8 +231,12 @@ export class SilkMaterial extends THREE.ShaderMaterial {
         ...(options.displacement?.uniforms ?? {}),
         uBaseColor: { value: base },
         uSheenColor: { value: sheen },
-        uZariColor: { value: new THREE.Color("#F5A623") },
-        uRimColor: { value: new THREE.Color("#F8CE5A") },
+        // Zari is thread, so it takes the room's colour like every other
+        // thread on the site. Read once at construction — a flight is built
+        // when it is fired, by which point <html> already carries the hue of
+        // the saree being bought.
+        uZariColor: { value: liveThread("--thread", THREAD_GOLD.base) },
+        uRimColor: { value: liveThread("--thread-lit", THREAD_GOLD.lit) },
         uKeyDirection: { value: new THREE.Vector3(-0.45, 0.72, 0.53).normalize() },
         uFillDirection: { value: new THREE.Vector3(0.8, -0.2, 0.56).normalize() },
         uTangentAxis: { value: options.tangentAxis ?? new THREE.Vector3(1, 0, 0) },

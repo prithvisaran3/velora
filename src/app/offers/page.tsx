@@ -5,6 +5,7 @@ import { container } from "@/infrastructure/container";
 import { Button } from "@/view/primitives/Button";
 import { ThreadField } from "@/view/thread/ThreadField";
 import { ThreadRule } from "@/view/thread/ThreadRule";
+import { SectionHead } from "@/view/primitives/SectionHead";
 import { UI } from "@/content/ui";
 
 export const metadata: Metadata = {
@@ -16,27 +17,30 @@ export default async function OffersPage() {
   const offers = await container.offerRepository.listActive();
 
   return (
-    <div className="flex w-full flex-col gap-12 px-4 pb-20 pt-6 md:gap-[64px] md:px-[60px]">
-      <section className="thread-ground relative overflow-hidden border border-ink/12">
+    <div className="flex w-full flex-col gap-12 pb-20 md:gap-[64px]">
+      <section className="thread-ground relative overflow-hidden">
         <ThreadField variant="band" />
-        <div className="relative z-10 flex flex-col gap-3 px-6 py-12 md:px-11 md:py-14">
-          <span className="font-sans text-[10px] uppercase tracking-label-wide text-saffron">
-            DIRECT FROM THE SHOP IN ERODE
-          </span>
-          <h1 className="font-display text-[40px] leading-none md:text-[64px]">Offers</h1>
-          <p className="m-0 max-w-[560px] font-sans text-[14px] leading-[1.85] text-ink/72">
-            Her prices come straight from the counter. When there is a voucher running, it is here —
-            and it applies at checkout, not on a banner.
-          </p>
+        <div className="measure relative z-10 py-12 md:py-14">
+          <SectionHead
+            eyebrow={UI.offers.eyebrow}
+            title={UI.offers.heading}
+            as="h1"
+            size="page"
+            subtitle={
+              <p className="m-0 max-w-[560px] font-sans text-[14px] leading-[1.85] text-ink/72">
+                {UI.offers.body}
+              </p>
+            }
+          />
         </div>
       </section>
 
       {offers.length === 0 ? (
-        <p className="py-16 text-center font-sans text-[15px] text-ink/70">
-          No vouchers running right now. Prices are the shop&apos;s own either way.
+        <p className="measure py-16 text-center font-sans text-[15px] text-ink/70">
+          {UI.offers.empty}
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="measure grid grid-cols-1 gap-6 md:grid-cols-2">
           {offers.map((offer) => (
             <article
               key={offer.id}

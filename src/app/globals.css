@@ -139,6 +139,12 @@
      header (40) and modals (50); the loader raises it to 60 for 900ms. */
   --velora-canvas-z: 5;
 
+  /* The header's own height. The hero reserves exactly this much at the top so
+     the nav can overlay the thread ground without ever reaching the headline,
+     and the header's IntersectionObserver uses the same number as its margin —
+     one value, so the two can never disagree. */
+  --header-h: 62px;
+
   /* The bleed. The three registered properties above interpolate here on the
      root, and every descendant inherits the animating value frame by frame —
      so filaments, rules, frames, steppers and underlines all cross to the new
@@ -276,6 +282,28 @@ html {
 .thread-bob   { animation: thread-bob 5s ease-in-out infinite; }
 .thread-run   { animation: thread-run 1.4s linear infinite; }
 .thread-draw  { animation: thread-draw 1.1s var(--ease-silk) both; transform-origin: left; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   THE MEASURE
+   One container, defined once. The header's wordmark, the hero's headline
+   and every section's text sit on the same two vertical lines at every
+   width — which they did not when the header carried max-w-[1680px] and the
+   page bodies carried none, so above 1680px the logo stopped and the hero
+   kept going.
+
+   Grounds are full-bleed and break out of it: a band paints edge to edge and
+   puts a .measure inside itself. Never add a gutter in a page file.
+   ══════════════════════════════════════════════════════════════════════ */
+.measure {
+  width: 100%;
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@media (min-width: 768px) {
+  .measure { padding-inline: 60px; }
+  :root { --header-h: 72px; }
+}
 
 /* ══════════════════════════════════════════════════════════════════════
    SURFACES

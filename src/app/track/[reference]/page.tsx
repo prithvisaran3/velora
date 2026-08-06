@@ -5,7 +5,7 @@ import { getOrderTrackingVM } from "@/viewmodel/server/order.viewmodel";
 import type { OrderTrackingViewModel } from "@/viewmodel/server/order.viewmodel";
 import { ThreadTracker } from "@/view/thread/ThreadTracker";
 import { ThreadField } from "@/view/thread/ThreadField";
-import { ThreadLoaderPage } from "@/view/thread/ThreadLoader";
+import { ThreadLoader, ThreadLoaderPage } from "@/view/thread/ThreadLoader";
 import { Button } from "@/view/primitives/Button";
 import { Price } from "@/view/primitives/Price";
 import { verifyTrackingAccess } from "@/viewmodel/actions/verifyTrackingAccess";
@@ -22,6 +22,7 @@ export default function TrackingPage({ params }: TrackingPageProps) {
   const [isVerified, setIsVerified] = useState(false);
   const [phoneLast4, setPhoneLast4] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [isVerifying, setIsVerifying] = useState(false);
   const [vm, setVm] = useState<OrderTrackingViewModel | null>(null);
 
   useEffect(() => {
@@ -31,7 +32,10 @@ export default function TrackingPage({ params }: TrackingPageProps) {
   const handleVerify = async (event: React.FormEvent) => {
     event.preventDefault();
     setErrorMsg("");
-    const res = await verifyTrackingAccess(reference, phoneLast4);
+    setIsVerifying(true);
+    const res = await verifyTrackingAccess(reference, phoneLast4).finally(() =>
+      setIsVerifying(false)
+    );
     if (res.ok) setIsVerified(true);
     else setErrorMsg(res.error.message);
   };
@@ -69,8 +73,8 @@ export default function TrackingPage({ params }: TrackingPageProps) {
             className="w-full border border-ink/30 bg-transparent p-3 text-center font-mono text-[20px] tracking-widest focus:border-saffron focus:outline-none"
           />
           {errorMsg && <span className="font-sans text-[11px] text-pressed">{errorMsg}</span>}
-          <Button variant="primary" type="submit" fullWidth>
-            {UI.tracking.verifyCta}
+          <Button variant="primary" type="submit" fullWidth disabled={isVerifying}>
+            {isVerifying ? <ThreadLoader size="inline" /> : UI.tracking.verifyCta}
           </Button>
         </form>
       </div>
@@ -78,15 +82,15 @@ export default function TrackingPage({ params }: TrackingPageProps) {
   }
 
   return (
-    <div className="flex w-full flex-col gap-11 px-4 pb-20 pt-6 md:px-[60px]">
-      <section className="thread-ground relative overflow-hidden border border-ink/12">
+    <div className="flex w-full flex-col gap-11 pb-20">
+      <section className="thread-ground relative overflow-hidden">
         <ThreadField variant="band" />
-        <div className="relative z-10 flex flex-col justify-between gap-6 px-6 py-10 md:flex-row md:items-end md:px-11 md:py-12">
+        <div className="measure relative z-10 flex flex-col justify-between gap-6 py-10 md:flex-row md:items-end md:py-12">
           <div className="flex flex-col gap-3">
-            <span className="font-sans text-[10px] uppercase tracking-label-wide text-ink/55">
+            <span className="font-mono text-[11px] uppercase tracking-label-wide text-ink/55">
               ORDER {order.reference}
             </span>
-            <h1 className="font-display text-[32px] leading-[1.05] md:text-[48px]">
+            <h1 className="font-display text-[32px] leading-[1.04] md:text-[48px]">
               On its way to {order.address.city}
             </h1>
           </div>
@@ -99,9 +103,12 @@ export default function TrackingPage({ params }: TrackingPageProps) {
         </div>
       </section>
 
-      <ThreadTracker currentStatus={order.status} reference={order.reference} />
+      <div className="measure">
+        <ThreadTracker currentStatus={order.status} reference={order.reference} />
+      </div>
 
-      <div className="flex flex-col gap-3 border border-ink/15 bg-panel p-6">
+      <div className="measure">
+        <div className="flex flex-col gap-3 border border-ink/15 bg-panel p-6">
         <span className="font-sans text-[10px] font-medium uppercase tracking-[0.26em] text-saffron">
           ORDER SUMMARY
         </span>
@@ -121,9 +128,10 @@ export default function TrackingPage({ params }: TrackingPageProps) {
           Delivery to {order.customer.name}, {order.address.line1}, {order.address.city},{" "}
           {order.address.state} — {order.address.pincode}
         </span>
+        </div>
       </div>
 
-      <div className="flex flex-col items-center gap-4 border-t border-ink/12 py-8">
+      <div className="measure flex flex-col items-center gap-4 py-8">
         <span className="font-sans text-[13px] text-ink/75">
           Need help with your delivery or order details?
         </span>

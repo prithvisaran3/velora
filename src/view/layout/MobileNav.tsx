@@ -68,9 +68,14 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
               )}
             </div>
 
-            <nav className="flex flex-col gap-5 font-sans text-[13px] uppercase tracking-label text-ink">
+            <nav className="flex flex-col gap-1 font-sans text-[13px] uppercase tracking-label text-ink">
               {LINKS.map((link) => (
-                <Link key={link.href} href={link.href} onClick={onClose}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={onClose}
+                  className="flex min-h-11 items-center text-ink"
+                >
                   {link.label}
                 </Link>
               ))}

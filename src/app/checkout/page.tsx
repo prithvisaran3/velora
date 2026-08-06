@@ -12,6 +12,7 @@ import { Button } from "@/view/primitives/Button";
 import { Wordmark } from "@/view/primitives/Wordmark";
 import { ThreadStepper } from "@/view/thread/ThreadStepper";
 import { ThreadRule } from "@/view/thread/ThreadRule";
+import { ThreadLoader } from "@/view/thread/ThreadLoader";
 import { applyCoupon } from "@/viewmodel/actions/applyCoupon";
 import { UI } from "@/content/ui";
 import { cn } from "@/lib/utils";
@@ -45,6 +46,7 @@ export default function CheckoutPage() {
   const [couponCode, setCouponCode] = useState("");
   const [discountPaise, setDiscountPaise] = useState(0);
   const [appliedCouponName, setAppliedCouponName] = useState("");
+  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
   const [couponError, setCouponError] = useState("");
   const [couponSuccess, setCouponSuccess] = useState("");
 
@@ -64,7 +66,10 @@ export default function CheckoutPage() {
     setCouponSuccess("");
     if (!couponCode.trim()) return;
 
-    const res = await applyCoupon(couponCode, Money.fromPaise(subtotalPaise));
+    setIsApplyingCoupon(true);
+    const res = await applyCoupon(couponCode, Money.fromPaise(subtotalPaise)).finally(() =>
+      setIsApplyingCoupon(false)
+    );
     if (res.ok) {
       setDiscountPaise(res.data.discountInPaise);
       setAppliedCouponName(res.data.code);
@@ -243,9 +248,10 @@ export default function CheckoutPage() {
             <button
               type="button"
               onClick={handleApplyCoupon}
-              className="bg-ink px-5 font-sans text-[10px] font-medium uppercase tracking-label text-panel transition-colors hover:bg-pressed"
+              disabled={isApplyingCoupon}
+              className="flex min-h-11 min-w-[86px] items-center justify-center bg-ink px-5 font-sans text-[10px] font-medium uppercase tracking-label text-panel transition-colors hover:bg-pressed disabled:opacity-80"
             >
-              APPLY
+              {isApplyingCoupon ? <ThreadLoader size="inline" /> : "APPLY"}
             </button>
           </div>
           {couponSuccess && (
@@ -392,9 +398,11 @@ export default function CheckoutPage() {
             )}
 
             <Button variant="primary" type="submit" disabled={isSubmitting} fullWidth glint className="mt-2">
-              {isSubmitting
-                ? "PLACING ORDER…"
-                : `${UI.checkout.placeOrder} · ${Money.formatRupees(Money.fromPaise(finalTotalPaise))}`}
+              {isSubmitting ? (
+                <ThreadLoader size="inline" label={UI.checkout.placing} />
+              ) : (
+                `${UI.checkout.placeOrder} · ${Money.formatRupees(Money.fromPaise(finalTotalPaise))}`
+              )}
             </Button>
           </div>
         </form>

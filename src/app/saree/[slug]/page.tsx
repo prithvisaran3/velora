@@ -51,7 +51,7 @@ export default async function PDPPage({ params }: PDPPageProps) {
   };
 
   return (
-    <div className="flex w-full flex-col gap-14 px-4 pb-24 pt-6 md:gap-[64px] md:px-[60px]">
+    <div className="measure flex w-full flex-col gap-14 pb-24 pt-6 md:gap-[64px]">
       <ThreadColour colour={saree.colour.key} />
       <JsonLd saree={saree} />
 
@@ -59,7 +59,7 @@ export default async function PDPPage({ params }: PDPPageProps) {
         saree={saree}
         header={
           <div className="flex flex-col gap-4">
-            <span className="font-sans text-[10px] uppercase tracking-label-wide text-saffron">
+            <span className="font-mono text-[11px] uppercase tracking-label-wide text-saffron">
               {UI.pdp.handpicked}
             </span>
             <h1 className="font-display text-[34px] leading-[1.04] md:text-[52px]">

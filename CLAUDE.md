@@ -11,7 +11,9 @@ Read in this order: this file → `docs/BRAND.md` → `docs/3D-MOTION.md` → `d
 
 Velora sells handpicked sarees from Erode, Tamil Nadu, curated by **Priya Mahadevan**, who learned silk from
 her father Mahadevan behind his counter from 1977. The endorsement line under the wordmark is
-**"by Priya Mahadevan"** — in the header and the footer, always.
+**"by Priya Mahadevan"** — in the **footer and the mobile drawer**, always. It is deliberately *not* in the
+header: the v9 nav is VelMark + ELORA on one baseline, so the nav can sit on the hero's thread ground
+without becoming a two-line block. (Superseded the older "header and footer, always" rule — v9 takeover.)
 
 ## Hard rules
 

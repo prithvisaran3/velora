@@ -4,6 +4,7 @@ import { getHomeViewModel } from "@/viewmodel/server/home.viewmodel";
 import { SareeGrid } from "@/view/components/SareeGrid";
 import { ConeWall } from "@/view/components/ConeWall";
 import { ThreadField } from "@/view/thread/ThreadField";
+import { SectionHead } from "@/view/primitives/SectionHead";
 import { UI } from "@/content/ui";
 
 export const metadata: Metadata = {
@@ -20,20 +21,23 @@ export default async function ShopPage() {
   const vm = await getHomeViewModel();
 
   return (
-    <div className="flex w-full flex-col gap-14 px-4 pb-20 pt-6 md:gap-[64px] md:px-[60px]">
-      <section className="thread-ground relative overflow-hidden border border-ink/12">
+    <div className="flex w-full flex-col gap-14 pb-20 md:gap-[64px]">
+      {/* Full-bleed ground; only the text keeps the measure. */}
+      <section className="thread-ground relative overflow-hidden">
         <ThreadField variant="band" />
-        <div className="relative z-10 flex flex-col gap-2 px-6 py-12 md:px-11 md:py-14">
-          <span className="font-sans text-[10px] uppercase tracking-label-wide text-saffron">
-            {UI.shop.eyebrow}
-          </span>
-          <h1 className="font-display text-[40px] leading-none md:text-[64px]">
-            {UI.shop.heading}
-          </h1>
+        <div className="measure relative z-10 py-12 md:py-14">
+          <SectionHead
+            eyebrow={UI.shop.eyebrow}
+            title={UI.shop.heading}
+            as="h1"
+            size="page"
+          />
         </div>
       </section>
 
-      <SareeGrid sarees={vm.sarees} />
+      <div className="measure">
+        <SareeGrid sarees={vm.sarees} />
+      </div>
 
       <ConeWall eyebrow={UI.colours.eyebrow} heading={UI.colours.heading} />
     </div>
