@@ -146,7 +146,9 @@ const Chip: React.FC<{ label: string; active: boolean; onClick: () => void }> = 
     onClick={onClick}
     aria-pressed={active}
     className={cn(
-      "border px-4 py-2.5 font-sans text-[10px] uppercase tracking-label transition-colors duration-hover",
+      // min-h-11 is the 44px touch floor — a filter chip is a primary control
+      // on a phone and 37px was under it.
+      "flex min-h-11 items-center border px-4 font-sans text-[10px] uppercase tracking-label transition-colors duration-hover",
       active ? "border-saffron text-saffron" : "border-ink/20 text-ink/60 hover:border-ink/40"
     )}
   >
