@@ -86,6 +86,37 @@ export const HERO_FILAMENTS: FilamentSet = {
 };
 
 /**
+ * The hero on a very wide monitor.
+ *
+ * The desktop set is 1348 × 770 drawn with preserveAspectRatio="none". At
+ * 2560 × 900 that is a 1.90× horizontal stretch against a 1.17× vertical one,
+ * so every curve flattens by about 1.6 and the field turns into lazy near-
+ * horizontal lines — the v9 curve is gone.
+ *
+ * The fix is not to stretch further but to draw more thread: one extra cubic
+ * per filament across a 2200 × 770 box, which is close enough to an ultra-wide
+ * aspect that the two axes scale together again. Amplitudes, widths, dashes and
+ * every duration are inherited from the desktop set, so this is the same six
+ * threads with a longer run — not a second design to keep in sync by hand.
+ */
+const WIDE_TAILS: readonly (readonly Point[])[] = [
+  [[1640, 130], [1900, 250], [2240, 214]],
+  [[1650, 244], [1900, 330], [2240, 300]],
+  [[1660, 382], [1920, 448], [2240, 420]],
+  [[1650, 566], [1900, 470], [2240, 500]],
+  [[1650, 690], [1900, 590], [2240, 620]],
+  [[1660, 748], [1920, 706], [2240, 726]],
+];
+
+export const HERO_WIDE_FILAMENTS: FilamentSet = {
+  viewBox: [2200, 770],
+  filaments: HERO_FILAMENTS.filaments.map((filament, index) => ({
+    ...filament,
+    points: [...filament.points, ...(WIDE_TAILS[index] ?? [])],
+  })),
+};
+
+/**
  * The hero on a phone.
  *
  * The desktop set is 1348 × 770 drawn with preserveAspectRatio="none", so on a
@@ -170,6 +201,7 @@ export const PANEL_FILAMENTS: FilamentSet = {
 export const FILAMENT_SETS = {
   hero: HERO_FILAMENTS,
   heroMobile: HERO_MOBILE_FILAMENTS,
+  heroWide: HERO_WIDE_FILAMENTS,
   band: BAND_FILAMENTS,
   panel: PANEL_FILAMENTS,
 } as const;
