@@ -16,6 +16,25 @@ export const CONE_CAMERA: CameraSpec = {
   target: [0, -0.15, 0],
 };
 
+/**
+ * How much world the camera sees, vertically, at the target plane.
+ *
+ * ThreeRoot frames the whole tracked box with the camera's vertical fov, so
+ * this constant is what converts a pixel measured in the DOM into a world unit
+ * in the scene — which is how the 3D shelf lands exactly on the CSS poster it
+ * replaces instead of near it.
+ */
+export const CONE_VIEW_HEIGHT =
+  2 *
+  Math.hypot(
+    (CONE_CAMERA.position?.[1] ?? 0) - (CONE_CAMERA.target?.[1] ?? 0),
+    CONE_CAMERA.position?.[2] ?? 0
+  ) *
+  Math.tan((((CONE_CAMERA.fov ?? 30) / 2) * Math.PI) / 180);
+
+/** Camera-space y of the point that projects to the centre of the box. */
+export const CONE_TARGET_Y = CONE_CAMERA.target?.[1] ?? 0;
+
 /** Seven cones, hard-coded. She never adds one — she just tags a saree. */
 export const CONE_COLOURS = [
   { key: "maroon", hex: "#9E1B34", label: "Maroon" },

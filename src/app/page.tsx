@@ -70,7 +70,9 @@ export default async function HomePage() {
               className="group flex w-fit flex-col gap-1.5 font-sans text-[12px] uppercase tracking-[0.16em] text-ink hover:text-saffron"
             >
               {UI.legacy.readStory}
-              <span className="h-px w-full origin-left bg-[var(--thread-lit)] transition-transform duration-500 ease-silk group-hover:scale-x-100" />
+              {/* Draws on hover: it needs a scale-x-0 to grow *from*, and the
+                  base strand to be visible on cream at all. */}
+              <span className="h-px w-full origin-left scale-x-0 bg-[var(--thread)] transition-transform duration-500 ease-silk group-hover:scale-x-100" />
             </Link>
           </div>
         </div>

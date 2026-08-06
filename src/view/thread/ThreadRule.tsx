@@ -32,7 +32,9 @@ export const ThreadRule: React.FC<ThreadRuleProps> = ({
       aria-hidden
       className={cn(
         "h-px w-full origin-left",
-        soft ? "rule-temple" : "bg-[var(--thread-lit)]",
+        // The base strand, not the lit one: #FFDD8E on cream is 1.16:1, so in
+        // the gold room — the site's default — a lit rule is not there at all.
+        soft ? "rule-temple" : "bg-[var(--thread)]",
         animate && sewn && "thread-draw",
         className
       )}

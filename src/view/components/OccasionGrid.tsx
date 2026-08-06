@@ -19,10 +19,10 @@ export const OccasionGrid: React.FC = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-opacity group-hover:opacity-90" />
           <div className="relative z-10 text-panel flex flex-col gap-1">
-            <span className="font-sans text-[10px] uppercase tracking-label text-turmeric">
+            <span className="font-sans text-[10px] uppercase tracking-label text-[var(--thread-lit)]">
               MOMENT
             </span>
-            <h3 className="font-display text-[18px] md:text-[22px] font-normal group-hover:text-turmeric transition-colors">
+            <h3 className="font-display text-[18px] md:text-[22px] font-normal group-hover:text-[var(--thread-lit)] transition-colors">
               {data.title.en}
             </h3>
             <p className="font-sans text-[11px] opacity-80 line-clamp-2">

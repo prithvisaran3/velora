@@ -11,7 +11,7 @@ export const Footer: React.FC = () => (
       <div className="grid grid-cols-2 gap-10 pb-12 md:grid-cols-4 md:gap-12">
         <div className="col-span-2 flex flex-col gap-3 md:col-span-1">
           <Link href="/">
-            <Wordmark fontSize={26} tone="ink" endorsement className="items-start" />
+            <Wordmark fontSize={26} tone="ink" endorsement sew className="items-start" />
           </Link>
           <div className="mt-2 font-tamil text-[15px] text-panel/70">ஈரோடு · 1977 முதல்</div>
         </div>

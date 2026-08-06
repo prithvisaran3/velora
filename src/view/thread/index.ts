@@ -16,6 +16,7 @@ export { ThreadTransition } from "./ThreadTransition";
 export { ThreadIntro } from "./ThreadIntro";
 export { StitchFrame } from "./StitchFrame";
 export { useSewn } from "./useSewn";
+export { useMediaQuery } from "./useMediaQuery";
 export { THREAD_GOLD, THREAD_PALETTE, threadTone, type ThreadTone } from "./palette";
 export {
   FILAMENT_SETS,

@@ -65,9 +65,14 @@
   --spacing-sticky-bar: 96px;
   --spacing-fab-gutter: 60px;
 
-  /* ── Aspect ratios ── */
-  --aspect-ratio-saree: 3 / 4;
-  --aspect-ratio-tile: 4 / 5;
+  /* ── Aspect ratios ──
+     The Tailwind v4 namespace is --aspect-*, so these must be --aspect-saree
+     and --aspect-tile. Named --aspect-ratio-* they emitted `aspect-ratio-saree`
+     while the components asked for `aspect-saree`, which meant the utility did
+     not exist, the card's media box collapsed to 0px, and every product
+     photograph on the site rendered at zero height. */
+  --aspect-saree: 3 / 4;
+  --aspect-tile: 4 / 5;
 
   /* ── Max widths ── */
   --max-width-measure: 62ch;
@@ -79,6 +84,42 @@
   --font-size-display-lg: clamp(2.5rem, 5vw, 4.75rem);
   --font-size-display-md: clamp(1.75rem, 3vw, 2.75rem);
   --font-size-display-sm: clamp(1.25rem, 2vw, 1.375rem);
+}
+
+/* ── The thread's colour has to be interpolable ──
+   An unregistered custom property is just a token string, so assigning a new
+   one snaps: every stroke bound to var(--thread) would change hue in a single
+   frame. Registering the three with a `<color>` syntax makes them animatable,
+   which is what lets ThreadColour bleed a whole page from gold to maroon with
+   one assignment on <html> and no re-render.
+
+   initial-value must be a literal — @property does not accept var() — so these
+   are the only place the thread's hexes appear outside @theme and palette.ts.
+   Keep them in step with --color-thread-* above. */
+@property --thread {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #C9901E;
+}
+@property --thread-lit {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #FFDD8E;
+}
+@property --thread-spec {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #FFF3D2;
+}
+/* The ground travels with the thread. Registering it too means the header,
+   the stepper's unreached nodes and anything else painting var(--page-bg)
+   read one animating value rather than each running its own transition
+   toward it — so they cannot drift out of step with <html>, and a component
+   written next year inherits the behaviour without knowing it exists. */
+@property --page-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #EDE2CE;
 }
 
 :root {
@@ -97,6 +138,16 @@
   /* The shared WebGL canvas. 5 sits above page content and below the sticky
      header (40) and modals (50); the loader raises it to 60 for 900ms. */
   --velora-canvas-z: 5;
+
+  /* The bleed. The three registered properties above interpolate here on the
+     root, and every descendant inherits the animating value frame by frame —
+     so filaments, rules, frames, steppers and underlines all cross to the new
+     hue together, in 900ms, without one of them knowing it happened. */
+  transition:
+    --thread var(--duration-dye) var(--ease-silk),
+    --thread-lit var(--duration-dye) var(--ease-silk),
+    --thread-spec var(--duration-dye) var(--ease-silk),
+    --page-bg var(--duration-dye) var(--ease-silk);
 }
 
 /* One context for the whole site — see src/three/CanvasProvider.tsx.
@@ -105,25 +156,31 @@
   z-index: var(--velora-canvas-z);
 }
 
+/* The ground itself. The transition lives on :root above, with the thread. */
 html {
   background-color: var(--page-bg);
-  transition: background-color var(--duration-dye) var(--ease-silk);
 }
 
-body {
-  margin: 0;
-  color: var(--page-fg);
-  font-family: var(--font-sans);
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
+/* These are defaults, so they belong in @layer base — unlayered rules outrank
+   every Tailwind utility, and an element default that a utility cannot override
+   is not a default. `a { color: saffron }` unlayered is what made the hero's
+   own SHOP ALL SAREES button saffron text on a saffron fill: text-panel lost. */
+@layer base {
+  body {
+    margin: 0;
+    color: var(--page-fg);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Type defaults — no border radius anywhere except circles. */
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  a { color: var(--color-saffron); text-decoration: none; }
+  a:hover { color: var(--color-pressed); }
 }
-
-/* Type defaults — no border radius anywhere except circles. */
-h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
-p { text-wrap: pretty; }
-
-a { color: var(--color-saffron); text-decoration: none; }
-a:hover { color: var(--color-pressed); }
 
 :focus-visible {
   outline: 2px solid var(--thread);
@@ -264,7 +321,8 @@ a:hover { color: var(--color-pressed); }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  html { transition: none; }
+  /* :root, not html — the dye transition is declared at :root specificity. */
+  :root { transition: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

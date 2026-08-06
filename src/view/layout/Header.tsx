@@ -52,7 +52,7 @@ export const Header: React.FC = () => {
         <div className="mx-auto flex max-w-[1680px] items-center justify-between gap-6 px-4 py-4 md:px-[60px] md:py-5">
           {/* The endorsement stays in the header and the footer, always. */}
           <Link href="/" className="flex-shrink-0">
-            <Wordmark fontSize={24} tone="cream" endorsement className="items-start" />
+            <Wordmark fontSize={24} tone="cream" endorsement sew className="items-start" />
           </Link>
 
           <nav className="hidden items-center gap-8 font-sans text-[10.5px] uppercase tracking-[0.24em] text-ink/72 md:flex">
