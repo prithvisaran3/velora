@@ -34,13 +34,15 @@ export default async function ColourPage({ params }: ColourPageProps) {
   const vm = await getColourCollectionVM(colourKey);
 
   return (
-    <div className="flex w-full flex-col gap-14 px-4 pb-20 pt-6 md:gap-[64px] md:px-[60px]">
+    <div className="flex w-full flex-col gap-14 pb-20 md:gap-[64px]">
       <ThreadColour colour={colourKey} />
 
-      <section className="thread-ground relative overflow-hidden border border-ink/12">
+      <section className="thread-ground relative overflow-hidden">
         <ThreadField variant="band" />
-        <div className="relative z-10 flex flex-col gap-3 px-6 py-12 md:px-11 md:py-14">
-          <span className="flex items-center gap-3 font-sans text-[10px] uppercase tracking-label-wide text-ink/60">
+        <div className="measure relative z-10 flex flex-col gap-3 py-12 md:py-14">
+          {/* The swatch is product data, so it stays a literal hex — it is the
+              one dot on the page that must not follow the thread. */}
+          <span className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-label-wide text-ink/60">
             <span
               className="h-[18px] w-[18px] flex-shrink-0 rounded-full"
               style={{ backgroundColor: vm.colourData.hex }}
@@ -48,19 +50,21 @@ export default async function ColourPage({ params }: ColourPageProps) {
             />
             {vm.colourData.label.ta}
           </span>
-          <h1 className="font-display text-[40px] leading-none md:text-[64px]">
+          <h1 className="font-display text-[40px] leading-[1.04] md:text-[64px]">
             {vm.colourData.label.en}
           </h1>
         </div>
       </section>
 
-      {vm.sarees.length > 0 ? (
-        <SareeGrid sarees={vm.sarees} />
-      ) : (
-        <p className="py-16 text-center font-sans text-[15px] text-ink/70">
-          {UI.emptyStates.generic(vm.colourData.label.en.toLowerCase())}
-        </p>
-      )}
+      <div className="measure">
+        {vm.sarees.length > 0 ? (
+          <SareeGrid sarees={vm.sarees} />
+        ) : (
+          <p className="py-16 text-center font-sans text-[15px] text-ink/70">
+            {UI.emptyStates.generic(vm.colourData.label.en.toLowerCase())}
+          </p>
+        )}
+      </div>
 
       <ConeWall
         eyebrow={UI.colours.eyebrow}

@@ -25,11 +25,11 @@ const PANEL_GROUND = [
 export default function OurStoryPage() {
   return (
     <div className="flex w-full flex-col bg-ink text-panel">
-      <header className="flex max-w-[900px] flex-col gap-5 px-6 pb-14 pt-16 md:px-[60px] md:pt-20">
+      <header className="measure flex flex-col gap-5 pb-14 pt-16 md:pt-20">
         <span className="endorsement text-[11px] text-[var(--thread-lit)]">
           {UI.story.eyebrow}
         </span>
-        <h1 className="font-display text-[44px] leading-[0.98] md:text-[84px]">
+        <h1 className="max-w-[900px] font-display text-[44px] leading-[0.98] md:text-[84px]">
           {UI.story.heading}
         </h1>
         <p className="m-0 font-tamil text-[20px] text-panel/75">{UI.story.tamilHeading}</p>

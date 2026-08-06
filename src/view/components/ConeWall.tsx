@@ -28,6 +28,7 @@ import {
   CONE_VIEW_HEIGHT,
 } from "@/three/scenes/coneWall/camera";
 import type { ConeLayout } from "@/three/scenes/coneWall/Scene";
+import { SectionHead } from "@/view/primitives/SectionHead";
 import { cn } from "@/lib/utils";
 
 const ConeWallScene = dynamic(
@@ -105,12 +106,10 @@ export const ConeWall: React.FC<ConeWallProps> = ({
   const posterRetired = showCones && scenePainted;
 
   return (
-    <section className="thread-ground relative flex flex-col justify-between gap-10 overflow-hidden border border-ink/12 px-6 py-10 md:h-[520px] md:px-11 md:py-11">
-      <div className="flex flex-col gap-2">
-        <span className="font-sans text-[10px] uppercase tracking-label-wide text-saffron">
-          {eyebrow}
-        </span>
-        <h2 className="font-display text-[32px] md:text-[44px]">{heading}</h2>
+    /* Full-bleed ground, text on the measure. */
+    <section className="thread-ground relative flex flex-col justify-between gap-10 overflow-hidden py-10 md:h-[520px] md:py-11">
+      <div className="measure">
+        <SectionHead eyebrow={eyebrow} title={heading} />
       </div>
 
       {/* The 3D shelf sits exactly over the poster row — see `layout`. The box
