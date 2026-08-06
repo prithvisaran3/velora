@@ -1,5 +1,18 @@
 import { Order } from "@/model/domain/types";
 
+/**
+ * The one place a thread colour is deliberately a literal.
+ *
+ * An email client has no CSS custom properties and no room to dye with, so
+ * this divider cannot read var(--thread) — it is a still photograph of the
+ * thread at rest, and it must stay gold. Kept in step with THREAD_GOLD.base in
+ * view/thread/palette.ts by hand rather than imported, because infrastructure/
+ * must not reach into view/.
+ *
+ * If a sweep flags this hex again: it is not a miss, it is the exception.
+ */
+const THREAD_GOLD_EMAIL = "#C9901E";
+
 export function generateOrderConfirmationEmailHtml(order: Order): string {
   const item = order.items[0];
   const itemTitle = item ? item.title.en : "Handpicked Saree";
@@ -16,7 +29,7 @@ export function generateOrderConfirmationEmailHtml(order: Order): string {
     .logo { text-align: center; margin-bottom: 24px; }
     .logo-text { font-size: 28px; font-weight: bold; letter-spacing: 0.28em; color: #241F1C; }
     .logo-sub { font-size: 8px; letter-spacing: 0.34em; color: #C6521A; text-transform: uppercase; margin-top: 4px; }
-    .divider { height: 1px; background: #F5A623; margin: 24px 0; }
+    .divider { height: 1px; background: ${THREAD_GOLD_EMAIL}; margin: 24px 0; }
     .h1 { font-size: 24px; font-weight: normal; margin-bottom: 12px; }
     .p { font-size: 14px; line-height: 1.6; color: rgba(36,31,28,0.8); margin-bottom: 16px; }
     .spec-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
