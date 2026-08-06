@@ -85,6 +85,50 @@ export const HERO_FILAMENTS: FilamentSet = {
   ],
 };
 
+/**
+ * The hero on a phone.
+ *
+ * The desktop set is 1348 × 770 drawn with preserveAspectRatio="none", so on a
+ * ~390 × 560 hero it is squeezed to a third of its width: the six filaments
+ * pile into an unreadable vertical band. This is the same field re-drawn for a
+ * portrait box — taller, narrower, four strands instead of six so they have
+ * room to read as separate threads.
+ *
+ * Same three-layer construction and the same drift and flow durations as the
+ * desktop set, so the two are the same thread at two sizes, not two designs.
+ */
+export const HERO_MOBILE_FILAMENTS: FilamentSet = {
+  viewBox: [390, 620],
+  filaments: [
+    {
+      points: [[-20, 96], [70, 74], [122, 150], [190, 164], [260, 178], [312, 92], [410, 112]],
+      baseWidth: 2.4, baseOpacity: 0.55,
+      litWidth: 1.3, litDash: "34 150", litDuration: 9,
+      specWidth: 0.9, specDash: "10 420", specDuration: 6.2,
+      drift: "a", driftDuration: 17,
+    },
+    {
+      points: [[-20, 232], [78, 214], [130, 292], [196, 306], [262, 320], [318, 240], [410, 258]],
+      baseWidth: 1.7, baseOpacity: 0.38,
+      litWidth: 1, litDash: "26 190", litDuration: 12, litReverse: true,
+      drift: "b", driftDuration: 21,
+    },
+    {
+      points: [[-20, 392], [74, 418], [134, 336], [200, 356], [266, 376], [320, 434], [410, 412]],
+      baseWidth: 1.6, baseOpacity: 0.34,
+      litWidth: 1, litDash: "30 170", litDuration: 10.5, litReverse: true,
+      drift: "b", driftDuration: 19, driftDelay: 1.4,
+    },
+    {
+      points: [[-20, 528], [74, 552], [134, 470], [200, 490], [266, 510], [320, 570], [410, 548]],
+      baseWidth: 2.1, baseOpacity: 0.5,
+      litWidth: 1.2, litDash: "34 150", litDuration: 11,
+      specWidth: 0.8, specDash: "10 460", specDuration: 7.4, specDelay: 2,
+      drift: "a", driftDuration: 23, driftDelay: 0.8,
+    },
+  ],
+};
+
 /** A wide band — section backdrops and the colour strip. */
 export const BAND_FILAMENTS: FilamentSet = {
   viewBox: [1346, 300],
@@ -125,6 +169,7 @@ export const PANEL_FILAMENTS: FilamentSet = {
 
 export const FILAMENT_SETS = {
   hero: HERO_FILAMENTS,
+  heroMobile: HERO_MOBILE_FILAMENTS,
   band: BAND_FILAMENTS,
   panel: PANEL_FILAMENTS,
 } as const;

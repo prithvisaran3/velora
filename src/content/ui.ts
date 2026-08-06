@@ -40,6 +40,8 @@ export const UI = {
     ctaPrimary: "SHOP ALL SAREES",
     ctaSecondary: "BROWSE BY COLOUR",
     scroll: "SCROLL",
+    /** The live-marker, top right. Desktop only — it labels the cursor bend. */
+    liveMarker: "THE THREAD FOLLOWS YOU",
   },
 
   shop: {
